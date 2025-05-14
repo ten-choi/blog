@@ -5,16 +5,24 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "node publish.js",
-    "publish:single": "node publish.js",
-    "validate": "node validate.js",
-    "create": "node validate.js create"
+    "build": "tsc",
+    "start": "ts-node src/publish.ts",
+    "publish": "ts-node src/publish.ts",
+    "publish:single": "ts-node src/publish.ts",
+    "validate": "ts-node src/validate.ts",
+    "create": "ts-node src/validate.ts create"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.5.0",
     "front-matter": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/node": "^22.15.18",
+    "dotenv": "^16.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }
