@@ -1,0 +1,20 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "i'm gonna deploy document to dev.to",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "node publish.js",
+    "publish:single": "node publish.js",
+    "validate": "node validate.js",
+    "create": "node validate.js create"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "front-matter": "^4.0.2"
+  }
+}
