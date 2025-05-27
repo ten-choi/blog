@@ -1,0 +1,106 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>[ Spring ] aopを適用して例外処理をしましょう</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">[ Spring ] aopを適用して例外処理をしましょう</h2>
+                                <div class="box-info">
+                                    <p class="category">Java, Kotlin/spring</p>
+                                    <p class="date">2023-12-11 21:59:14</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h2 data-ke-size="size26"><b>What is the AOP</b></h2>
+<p style=" text-align: start;" data-ke-size="size16">AOPとは、Aspect Oriented Programmingの略語で、「観点指向プログラミング」と呼ばれます。&nbsp;</p>
+<p style=" text-align: start;" data-ke-size="size16">観点指向は簡単に言えば、あるロジックを基準に核心的な観点、付加的な観点に分けて見て、その観点を基準にそれぞれモジュール化するということです。</p>
+<p style=" text-align: start;" data-ke-size="size16">ここでモジュール化とは、ある共通のロジックや機能を一つの単位にまとめることを言います。</p>
+<p style=" text-align: start;" data-ke-size="size16">例えば、核心的な観点は結局、私たちが適用しようとする核心ビジネスロジックになります。</p>
+<p style=" text-align: start;" data-ke-size="size16">また、付加的な観点としては、コアロジックを実行するために行われるデータベース接続、ロギング、ファイル入出力などが挙げられます。</p>
+<p data-ke-size="size16">&nbsp;</p>
+<h2 data-ke-size="size26"><b>Create error api</b></h2>
+<p data-ke-size="size16">beanで管理するapiを作ってみましょう。</p>
+<p data-ke-size="size16">そして呼び出す時、以下のようにエラーを発生させてみましょう。</p>
+<div style="background-color: #1e1f22; color: #bcbec4;">
+<pre class="typescript" data-ke-language="typescript"><code>@RestController
+public class HelloWorldController {
+
+    @GetMapping(path = "/hello-world")
+    public HelloWorldBean helloWorldBean() {
+        throw new RuntimeException("this is test error");
+    }
+}</code></pre>
+</div>
+<p data-ke-size="size16">&nbsp;</p>
+<h2 style="color: #000000; text-align: start;" data-ke-size="size26"><b>Create exception response class</b></h2>
+<p data-ke-size="size16">exception Responseの基本的な形態を作ってくれます。</p>
+<p data-ke-size="size16">error Created At, error Title, error Detailをreturnするclassを作ります。</p>
+<p data-ke-size="size16">深く作るとissueLevel、issueTagなどすることが多くなるので、<br />今後追加文書に適用する予定です 。</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>@Data: Lombokのannotationでgetter、setterなどを簡単に作ってくれます 。</li>
+<li>@AllArgsConstructor: 該当class内に存在するすべてのフィールドをパラメータとする生成子を作ってくれます。</li>
+<li>@NoArgsConstructor:&nbsp; パラメーターを持たない基本生成子を生成します。</li>
+</ol>
+<pre id="code_1702296573468" class="typescript" style="background-color: #f8f8f8; color: #383a42; text-align: start;" data-ke-type="codeblock" data-ke-language="typescript"><code>@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ExceptionResponse {
+    
+    private String title;
+    private String detail;
+    private Date createdAt;
+}</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<h2 style="color: #000000; text-align: start;" data-ke-size="size26"><b>Create exception handler </b></h2>
+<p data-ke-size="size16">ExceptionHandlerを作ります。</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>@RestControllerAdvice: @Componentの特殊なケースで、SpringBootapplicationでグローバルに例外をハンドリングできるannotationです。</li>
+<li>@ExceptionHandler: Beanで発生する例外をつかみ、1つのメソッドで処理するannotationです。</li>
+</ol>
+<pre id="code_1702279717304" class="typescript" data-ke-language="typescript" data-ke-type="codeblock"><code>@RestControllerAdvice
+public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(Exception.class)
+    public final ResponseEntity&lt;Object&gt; handleAllExceptions(Exception ex, WebRequest request) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(ex.getMessage(), request.getDescription(true), new Date());
+        return new ResponseEntity&lt;&gt;(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<h2 style="color: #000000; text-align: start;" data-ke-size="size26"><b>Testing</b></h2>
+<p data-ke-size="size16">postManを使ってapiテストを行います。</p>
+<p><figure class="imageblock alignCenter" width="663" height="445" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" width="663" height="445"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">今後errTag、errLevel、errLogging、sendSlackなどを追加で文書化する予定です。</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #Java #AOP #Spring #jp 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

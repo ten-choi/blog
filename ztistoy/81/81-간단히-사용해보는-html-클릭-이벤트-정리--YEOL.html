@@ -1,0 +1,103 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>간단히 사용해보는 html 클릭 이벤트 정리 -YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">간단히 사용해보는 html 클릭 이벤트 정리 -YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">ETC/Html5, Css3</p>
+                                    <p class="date">2021-02-02 13:35:55</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-filename="html.png" data-origin-width="565" data-origin-height="392" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-filename="html.png" data-origin-width="565" data-origin-height="392" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">일반적으로 웹을 사용할 때 마우스는 필수적인 요소입니다. html에서는 마우스에 관련된 이벤트를</span></p>
+<p><span style="color: #666666;">여러 가지 지원하는데 그 이벤트들을 유용한 것들 위주로 모아놓았습니다.</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 data-ke-size="size23"><span style="color: #666666;">-마우스 클릭 이벤트 모음</span></h3>
+<p>&nbsp;</p>
+<p><b><span style="color: #666666;">- onclick</span></b></p>
+<p><span style="color: #666666;">사용자가 해당 요소를 클릭할 경우 지정된 이벤트가 발생합니다.</span></p>
+<pre id="code_1612232812497" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>&lt;button onclick="function()"&gt;Click Here&lt;/button&gt;</code></pre>
+<p>&nbsp;</p>
+<p><b><span style="color: #666666;">-oncontextmenu</span></b></p>
+<p><span style="color: #666666;">사용자가 해당 요소에서 마우스를 우클릭할 경우 지정된 이벤트가 발생합니다.</span></p>
+<pre id="code_1612233079086" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>&lt;div oncontextmenu="function()" contextmenu="menu"&gt;
+</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><b><span style="color: #666666;">-ondblclick</span></b></p>
+<p><span style="color: #666666;">사용자가 해당 요소를 두 번 연속으로 클릭할 경우 이벤트가 발생합니다.</span></p>
+<pre id="code_1612233085582" class="html xml" style="margin: 20px auto 0px; display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" data-ke-language="html" data-ke-type="codeblock"><code>&lt;div ondblclick="function()"&gt;Double Click&lt;/div&gt;</code></pre>
+<p>&nbsp;</p>
+<p><span style="color: #666666;"><b>-onmousedown <span style="color: #f89009;">●</span></b></span></p>
+<p><span style="color: #666666;">사용자가 해당 요소 위에서 마우스를 눌렀을 경우 이벤트가 발생합니다.</span></p>
+<pre id="code_1612233086269" class="html xml" style="margin: 20px auto 0px; display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" data-ke-language="html" data-ke-type="codeblock"><code>&lt;div onmousedown="function()"&gt;Click Here&lt;/div&gt;
+</code></pre>
+<p>&nbsp;</p>
+<p><b><span style="color: #666666;">-onmouseup <b><span style="color: #f89009;">●</span></b></span></b></p>
+<p><span style="color: #666666;">사용자가 해당 요소 위에서 마우스를 누른 손가락을 떼었을 경우 이벤트가 발생합니다.</span></p>
+<pre id="code_1612233086573" class="html xml" style="margin: 20px auto 0px; display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" data-ke-language="html" data-ke-type="codeblock"><code>&lt;div onmouseup="function()"&gt;Click Here&lt;/div&gt;
+</code></pre>
+<p>&nbsp;</p>
+<p><b><span style="color: #666666;">-onmouseenter <span style="color: #009a87;">●</span></span></b></p>
+<p><span style="color: #666666;">사용자의 마우스 포인터가 해당 요소로 안으로 이동했을 경우 이벤트가 발생합니다.</span></p>
+<pre id="code_1612233086813" class="html xml" style="margin: 20px auto 0px; display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" data-ke-language="html" data-ke-type="codeblock"><code>&lt;img onmouseenter="funcEnter()" src="small.gif" alt="small"&gt;</code></pre>
+<p>&nbsp;</p>
+<p><b><span style="color: #666666;">-onmouseleave <b><span style="color: #666666;"><span style="color: #009a87;">●</span></span></b></span></b></p>
+<p><span style="color: #666666;">사용자의 마우스 포인터가 해당 요소로 밖으로 이동했을 경우 이벤트가 발생합니다.</span></p>
+<pre id="code_1612233087086" class="html xml" style="margin: 20px auto 0px; display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" data-ke-language="html" data-ke-type="codeblock"><code>&lt;img onmouseleave="funcLeave()" src="Big.gif" alt="Big"&gt;
+</code></pre>
+<p>&nbsp;</p>
+<p><b><span style="color: #666666;">-onmousemove&nbsp;<span style="color: #006dd7;"></span></span></b></p>
+<p><span style="color: #666666;">사용자의 마우스 포인터가 해당 요소 위에서 이동할 때 이벤트가 발생합니다.</span></p>
+<pre id="code_1612233087348" class="html xml" style="margin: 20px auto 0px; display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" data-ke-language="html" data-ke-type="codeblock"><code>&lt;div onmousemove="func()"&gt;Move Over Here&lt;/div&gt;</code></pre>
+<p>&nbsp;</p>
+<p><b><span style="color: #666666;">-onmouseover <b><span style="color: #666666;"><span style="color: #006dd7;"><b>●</b></span></span></b></span></b></p>
+<p><span style="color: #666666;">사용자의 마우스 포인터가 해당 요소 또는 해당 요소의 하위 요소 중 하나의 안으로 이동될 때 이벤트가 발생합니다.</span></p>
+<pre id="code_1612233556341" class="html xml" style="margin: 20px auto 0px; display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" data-ke-language="html" data-ke-type="codeblock"><code>&lt;img onmouseover="bigImg()" src="big.gif" alt="big"&gt;
+</code></pre>
+<p>&nbsp;</p>
+<p><b><span style="color: #666666;">-onmouseout <span style="color: #666666;"><span style="color: #006dd7;">●</span></span></span></b></p>
+<p><span style="color: #666666;">사용자의 마우스 포인터가 해당 요소 또는 해당 요소의 하위 요소 중 하나의 밖으로 이동될 때 이벤트가 발생합니다.</span></p>
+<pre id="code_1612233556890" class="html xml" style="margin: 20px auto 0px; display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" data-ke-language="html" data-ke-type="codeblock"><code>&lt;img onmouseout="smallImg()" src="small.gif" alt="small"&gt;
+</code></pre>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">이상 간단하게 정리한 마우스 클릭관련 이벤트였습니다. 성실한 코딩 하세요.</span></p>
+<p>&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #html 클릭 이벤트 #html5 마우스 클릭 모음 #html5 mouse event #html5 마우스 이벤트 #html5 클릭 이벤트 #html5 클릭 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

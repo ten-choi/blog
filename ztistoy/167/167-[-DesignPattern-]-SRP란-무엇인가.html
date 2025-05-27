@@ -1,0 +1,83 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>[ DesignPattern ] SRP란 무엇인가</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">[ DesignPattern ] SRP란 무엇인가</h2>
+                                <div class="box-info">
+                                    <p class="category">Architecture/design_pattern</p>
+                                    <p class="date">2023-05-11 16:13:24</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16"><span>SRP:&nbsp;Single&nbsp;Responsibility&nbsp;Principle&nbsp;(단일책임의&nbsp;원칙)&nbsp;class나&nbsp;module은&nbsp;하나의&nbsp;책임을&nbsp;가져야&nbsp;한다는&nbsp;말이다&nbsp;이게&nbsp;뭔소릴까&nbsp;싶다</span></p>
+<p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16"><span>chat-gpt를&nbsp; 사용해서 sample code를 만들어보자</span><br /><span>밑에 있는 첫 번째 sample code를 확인해 보자</span></p>
+<pre id="code_1683102368542" class="ruby" style="background-color: #f8f8f8; color: #383a42; text-align: left;" data-original-attrs="{&quot;contenteditable&quot;:&quot;false&quot;,&quot;data-ke-language&quot;:&quot;python&quot;,&quot;data-ke-type&quot;:&quot;codeblock&quot;,&quot;style&quot;:&quot;&quot;}"><code>class Customer:
+    def __init__(self, name, email, phone):
+        self.name = name
+        self.email = email
+        self.phone = phone
+    
+    def place_order(self, order_items):
+        # 주문 정보 검증 및 처리
+        pass
+    
+    def send_email(self, subject, message):
+        # 이메일 전송
+        pass</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16"><span>customer라는 주체에 다른 2가지 주체인 order, emailService가 들어가 있는 class다</span><br /><span>저런 code를 보면 벌써 불편하지만 조금 참기로 하자..<br /></span><span>예를 들어 order 쪽이 고도화가 된다 치자</span><br /><span>order라는 주체에는 조회, 결제, 환불, 부분환불, validation, logging 등이 추가될 것이다</span><br /><br /><span>order 쪽 code의 비율이 80%를 넘어간다고 가정하자</span><br /><span>그렇다면 customer class가 아니라 order class가 아닌가</span><br /><span>주체가 모호해지면 class name도 신뢰도가 떨어진다</span><br /><br /><span>그리고 고도화가 진행될수록 아래의 customer class는 정말 거대 해질 것이다</span><br /><span>아래의 class에서 code를 추가하며 확장하기도 별로고 다른 사람들이 읽기도 별로가 될 것이다</span></p>
+<p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16">&nbsp;</p>
+<p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16"><span>주체 별로 단일 책임을 주자</span><br /><span>여기서 나온 주체는 customer, order, emailService 다</span><br /><span>class 단위로만 나눠도 고도화가 진행될 경우 안정적인 개발이 가능할 것이다</span><br /><span>file structure는 해당 예시에서 고려하지 말도록 하자</span></p>
+<pre id="code_1683102378292" class="ruby" style="background-color: #f8f8f8; color: #383a42; text-align: left;" data-original-attrs="{&quot;contenteditable&quot;:&quot;false&quot;,&quot;data-ke-language&quot;:&quot;python&quot;,&quot;data-ke-type&quot;:&quot;codeblock&quot;,&quot;style&quot;:&quot;&quot;}"><code>class Customer:
+    def __init__(self, name, email, phone):
+        self.name = name
+        self.email = email
+        self.phone = phone
+    
+class Order:
+    def __init__(self, customer, order_items):
+        self.customer = customer
+        self.order_items = order_items
+    
+    def validate_order(self):
+        # 주문이 유효한지 검증하는 코드
+        pass
+    
+    def process_order(self):
+        # 주문을 처리하는 코드
+        pass
+
+class EmailService:
+    def send_email(self, customer, subject, message):
+        # 이메일 전송
+        pass</code></pre>
+<p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16"><span>딱 봐도 확장성과 가독성이 좋아졌다</span><br /><span>기초적인 개념이지만 기본은 중요하다</span></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #architecture #OOP #solid #KR #SRP #DesignPattern 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

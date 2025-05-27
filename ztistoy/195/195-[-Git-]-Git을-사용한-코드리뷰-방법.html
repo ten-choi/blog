@@ -1,0 +1,108 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>[ Git ] Git을 사용한 코드리뷰 방법</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">[ Git ] Git을 사용한 코드리뷰 방법</h2>
+                                <div class="box-info">
+                                    <p class="category">ETC/Git</p>
+                                    <p class="date">2023-10-17 15:52:24</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">단어정리</p>
+<ul style="list-style-type: disc; background-color: #ffffff; color: #333333; text-align: start;" data-ke-list-type="disc">
+<li><span>리뷰어 : 다른 사람이 작성한 코드를 리뷰하는 사람들</span></li>
+<li><span>리뷰이 : 본인이 작성한 코드를 다른 사람들에게 리뷰받는 사람</span></li>
+<li><span>PR : GitHub의 Pull Request 약어</span></li>
+<li><span>LGTM: Looks Good To Me 약어</span></li>
+</ul>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<h2 data-ke-size="size26">코드리뷰에 대해</h2>
+<p data-ke-size="size16">리뷰어가 리뷰이에게 정해진 방법으로 피드백을 주고받는 것을 말한다</p>
+<p data-ke-size="size16">코드 리뷰도 피드백이기 때문에 <a href="https://brunch.co.kr/@brunchnopu/9" target="_blank" rel="noopener">넷플릭스 4A</a> 같은 정책을 정하여 진행하는 것을 추천한다</p>
+<p data-ke-size="size16">코드리뷰를 하면 아래와 같은 장점이 있다</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Apple SD Gothic Neo', Arial, sans-serif; letter-spacing: 0px;">본인이 발견하지 못한 실수를 다른 사람이 발견할 수 있다</span></li>
+<li>코드의 컨벤션을 유지하여 코드 퀄리티가 높아진다</li>
+<li>다른 사람의 코드를 보고 학습하여 나의 개발에도 적용할 수 있다</li>
+</ol>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<h2 style="color: #000000; text-align: start;" data-ke-size="size26">비동기 커뮤니케이션</h2>
+<p data-ke-size="size16">코드리뷰는 비동기적인 커뮤니케이션일 때 더욱 효율적이다</p>
+<p data-ke-size="size16">동기적인 커뮤니케이션이라고 함은 리뷰어와 리뷰이가 시간을 맞추어 같이 코드를 보고 리뷰해 나가는 과정이다</p>
+<p data-ke-size="size16">같이 보는 것에 장점도 물론 있겠지만 효율성이 떨어질 것이다</p>
+<p data-ke-size="size16">비동기 커뮤니케이션의 경우는 '너의 코드를 내가 리뷰해 놓았으니 네가 보고 싶을 때 봐'라고 메시지를 보내는 행위이다</p>
+<p data-ke-size="size16">기간을 정해주고 개인의 업무시간 내에 스스로 볼 수 있게 하기 때문에 서로 본인의 업무에 한층 집중할 수 있다&nbsp;</p>
+<p data-ke-size="size16">GitHub을 툴로 사용하는 이유도 비동기 코드리뷰에 용이한 환경이기 때문이다</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<h2 id="리뷰-우선순위-판단을-돕는-d-n-룰" style="color: #000000; text-align: start;" data-ke-size="size26">리뷰 우선순위 판단을 돕는 D-n</h2>
+<p style="color: #000000; text-align: start;" data-ke-size="size16">리뷰이는 나의 PR이 언제까지 리뷰되었으면 좋겠다는 기간을 정해야 한다</p>
+<p style="color: #000000; text-align: start;" data-ke-size="size16">PR이 많아질수록 우선순위를 고려하지 않으면 개발자는 어떤 걸 먼저 처리할지 판단하기 어려울 것이다</p>
+<p style="color: #000000; text-align: start;" data-ke-size="size16">Git의 PR을 생성하는 경우 우측 사이드바에 Labels를 표시하는 곳이 있다</p>
+<p style="color: #000000; text-align: start;" data-ke-size="size16">PR을 요청하면서 해당태그에 며칠까지 리뷰해 줬으면 좋겠는지 날짜를 <span style="color: #000000; text-align: start;">D-0, D-2 등의 </span>태그로 표시한다</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>D-0: 가능한 한 빨리 진행해 주세요</li>
+<li>D-1: 내일까지 처리해 주세요</li>
+<li>D-N: 내일모레부터는 상황에 맞게 설정한다</li>
+</ul>
+<p style="color: #000000; text-align: start;" data-ke-size="size16">&nbsp;</p>
+<p style="color: #000000; text-align: start;" data-ke-size="size16">&nbsp;</p>
+<h2 id="리뷰-우선순위-판단을-돕는-d-n-룰" style="color: #000000; text-align: start;" data-ke-size="size26">리뷰어의 의견 중요도</h2>
+<p data-ke-size="size16"><span style="color: #000000; text-align: start;">priorty의 P라는 단어를 차용한다. 1~5까지 우선순위로 존재하며 숫자가 낮아질수록 중요도가 높다</span></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>P1: 꼭 반영해 주세요 (Request changes)<br />리뷰어는 PR의 내용이 서비스에 중대한 오류를 발생할 수 있는 수준의 반드시 수정이 필요하다고 판단되는 경우 P1태그를 사용해 리뷰 이에게 수정을 요청합니다. 리뷰이는 리뷰어의 요청을 반영하거나 그럴 수 없는 이유를 리뷰어에게 납득시켜야 한다<br /><br /></li>
+<li>P2: 적극적으로 고려해 주세요 (Request changes)<br />리뷰어는 P2에 대해 수용하거나 그럴 수 없다면 합리적인 토론을 권장한다<br /><br /></li>
+<li>P3: 웬만하면 반영해 주세요 (Comment)<br />리뷰어는 P3에 대해 수용하거나 그럴 수 없다면 반영할 수 없는 이유를 설명하거나 다음에 반영하겠다는 구체적인 계획을 명시적으로 남겨야 합니다<br /><br /></li>
+<li>P4: 반영해도 좋고 넘어가도 좋습니다 (Approve)<br /><br /></li>
+<li>P5: 그냥 사소한 의견입니다 (Approve)<br />리뷰어의 사소한 의견입니다 리뷰어는 무시해도 괜찮습니다</li>
+</ol>
+<pre id="code_1697525258690" class="typescript" data-ke-language="typescript" data-ke-type="codeblock"><code>e.g) P4:해당부분에 대한 컨벤션이 기존과 다른데 이유가있을까요?</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<h2 id="리뷰-우선순위-판단을-돕는-d-n-룰" style="color: #000000; text-align: start;" data-ke-size="size26">코드리뷰 흐름</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>리뷰이는 언제까지 해달라는 D-n태그를 사용하여 리뷰어에게 코드리뷰를 요청한다</li>
+<li>리뷰어는 기간을 확인하고 본인의 업무시간 중에 코드리뷰를 진행한다</li>
+<li>리뷰이는 리뷰어의 리뷰에 답글을 달거나 간단하게 처리 가능한 경우 엄지 이모티콘을 달아 확인했다는 표시를 남긴다</li>
+<li>리뷰어 본인이 생각할 때 코드리뷰가 마무리되었으면 LGTM이라고 코멘트를 달아놓는다</li>
+<li>모든 리뷰어가 LGTM을 달면 마지막 리뷰어가 머지를 한다<span style="color: #000000;"></span></li>
+</ol>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<h2 id="리뷰-우선순위-판단을-돕는-d-n-룰" style="color: #000000; text-align: start;" data-ke-size="size26">참조</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><a style="background-color: #e6f5ff; color: #0070d1; text-align: left;" href="https://blog.banksalad.com/tech/banksalad-code-review-culture/">뱅크샐러드기술블로그</a></li>
+<li><a href="https://tech.kakao.com/2022/03/17/2022-newkrew-onboarding-codereview/" target="_blank" rel="noopener">카카오기술블로그</a></li>
+</ol>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #KR #Git #code review 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

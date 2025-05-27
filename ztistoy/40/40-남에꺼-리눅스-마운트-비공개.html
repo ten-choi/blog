@@ -1,0 +1,485 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>남에꺼 리눅스 마운트-비공개</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">남에꺼 리눅스 마운트-비공개</h2>
+                                <div class="box-info">
+                                    <p class="category"></p>
+                                    <p class="date">2020-08-19 16:55:03</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p id="SE-864565c3-c62f-489e-a236-ffa59b969bbc"><span><b><span><a href="https://jhnyang.tistory.com/notice/45">리눅스 완전 정복 : 리눅스 목차</a></span></b></span></p>
+<p id="SE-864565c3-c62f-489e-a236-ffa59b969bbc"><span><b>&nbsp;</b></span></p>
+<p id="SE-864565c3-c62f-489e-a236-ffa59b969bbc"><span>아마 마운트라는게 윈도우 운영체제에서는 우리가 실감할 일이 없기 때문에</span></p>
+<p id="SE-6b212635-5f48-49ce-8bf5-4229ec4bb0d3"><span>리눅스를 처음 접하시는 분들은 헷갈릴 수 있는 개념이예요.</span></p>
+<p id="SE-6b212635-5f48-49ce-8bf5-4229ec4bb0d3"><span>&nbsp;</span></p>
+<p id="SE-f95bc5a4-dc28-489d-b3c3-382434fe5279">&nbsp;</p>
+<p id="SE-8b6d1d52-a943-4d14-9c3a-dc604ca3cfdf"><span>오늘은 마운트에 대해서 끄적여보도록 하겠습니다.</span></p>
+<p id="SE-8b6d1d52-a943-4d14-9c3a-dc604ca3cfdf"><span>글을 일기전 먼저<span>&nbsp;</span><a href="https://jhnyang.tistory.com/11">사용자 권한 rwx에 대해서 모르는 분은 전 포스팅</a>을 읽고 오기 추천해요~</span></p>
+<p id="SE-8b6d1d52-a943-4d14-9c3a-dc604ca3cfdf"><span>&nbsp;</span></p>
+<p id="SE-434980a2-c84c-49b6-893e-7ebfa68123f2">&nbsp;</p>
+<p id="SE-f26e38e3-2efb-4f30-bc23-05616376f2cf"><span><b><span>MOUNT가 뭐야?</span></b></span></p>
+<p id="SE-0897995c-366d-461a-82aa-333624c660c0"><span>보통 개인 PC나 노트북의 운영체제가 주로 윈도우이기 때문에 윈도우는 다들 익숙하게 알고 계시죠?</span></p>
+<p id="SE-7cce1340-b46c-4638-b064-c191aecd821f"><span>요새 점점 사라져가지만 예전에 책을 사면 강의가 들은 CD를 주고는 했죠</span></p>
+<p id="SE-d15c7c87-2f42-4f18-892a-7f2ce5fb9eeb"><span>음악을 CD로 굽기도 했었고..(몇년지나면 애들은 이걸 모르겠군...마치 내가 늙은거같넴;;)</span></p>
+<p id="SE-d15c7c87-2f42-4f18-892a-7f2ce5fb9eeb"><span>&nbsp;</span></p>
+<p id="SE-1a2c63b1-5b42-4903-8484-492e938112de">&nbsp;</p>
+<p id="SE-36523792-1bdc-483c-b10f-0179d4211ca0"><span>또는 USB를 꼽으면 내컴퓨터 폴더에 USB파일이 뜨면서 자동으로 연결되죠?!</span></p>
+<p id="SE-92c07be6-a54b-4e8b-8552-fdb761381943"><span>또는! 외장하드를 꼽아도 :E 이런식으로 폴더가 만들어져요</span></p>
+<p id="SE-504939e2-c35b-4414-adb9-33ccceec7382"><span>SSD외에 추가로 하드디스크를 넣어도 :D 폴더가 자동으로 생성되죠!</span></p>
+<p id="SE-504939e2-c35b-4414-adb9-33ccceec7382"><span>&nbsp;</span></p>
+<p id="SE-8ad4256f-bb1e-4db8-b280-d5bda00dbf2d">&nbsp;</p>
+<p id="SE-da9d1965-4143-4800-aad5-6d53079e6fd5"><span>이렇게 디스크와 같은 물리적인 장치를 특정 위치 즉 디렉터리에 연결시켜주는 것을 마운트라고 합니다</span></p>
+<p id="SE-4dca2ca8-6349-4e58-b4d4-22b60e31e21f"><span>근데 우리는 왜 이런 용어를 몰랐냐!</span></p>
+<p id="SE-a397ebbf-7d08-48bf-a72b-d7c77b63194a"><span>윈도우에서는 이거를 얘네가 자동으로 해줘요</span></p>
+<p id="SE-c3e73462-ad61-4e18-8bff-09b0bab6d7ee"><span>저렇게 되는거부터가 자동으로 얘네가 해줬기 때문에 CD-ROM을 넣자마자! USB를 꼽자마자! 폴더가 잡히는 거랍니다.</span></p>
+<p id="SE-c3e73462-ad61-4e18-8bff-09b0bab6d7ee"><span>&nbsp;</span></p>
+<p id="SE-5112b987-377f-4b9b-b790-d92a5396cea6">&nbsp;</p>
+<p id="SE-bf807461-508e-47c4-9f6e-e811d01cbb11"><span>요새는 PnP(Plug and play 플러그 앤 플레이 = 디바이스를 꼽기만 하면 알아서 설정하고 플레이되는..)라는 기능 덕분에 사용자가 직접 해줄필요는 없어요</span></p>
+<p id="SE-53665f23-9e71-48ff-9868-21d119e1ca0f"><span>결국 다 내부에서 마운트 작업이 이뤄지는 것</span></p>
+<p id="SE-53665f23-9e71-48ff-9868-21d119e1ca0f"><span>&nbsp;</span></p>
+<p id="SE-8e58dbd3-5696-4a31-be46-885734361b40">&nbsp;</p>
+<p id="SE-b4ad13b5-94ae-4d85-82d7-04dcfbcd5b6f"><span>하지만</span><span><span>!<span>&nbsp;</span></span>리눅스의 경우 특히 서버 환경의 경우는 PnP 기능이 작동하지 않고 일일이 직접 우리가 연결을 해줘야 합니다.</span></p>
+<p id="SE-d5107ac5-a03d-4cac-9d62-050fa913bec8"><span>관리자가 직접 특정 디렉터리에 붙이는 작업을 수행해줘야 해요 --&gt; mount 작업!</span></p>
+<p id="SE-d5107ac5-a03d-4cac-9d62-050fa913bec8"><span>&nbsp;</span></p>
+<p id="SE-468ed83e-174f-4e0d-b994-57a7773dbf6c">&nbsp;</p>
+<p id="SE-4716717a-7d54-4ed7-a6eb-64eb02fb6b15"><span><b><span>'보조기억장치(HDD, FDD, CD-ROM 등)나 파일 시스템이 다른 디스크를</span></b></span></p>
+<p id="SE-bbabbb7b-d895-40ef-85d0-c9fc8fe1d31e"><span><b><span>/의 하위 디렉터리로 연결하여 사용 가능하게 해주는 명령어</span></b></span></p>
+<p id="SE-9b11cd05-20c6-4896-b07c-05b241e6e7ef"><span><b><span>mount</span></b></span></p>
+<p id="SE-9b11cd05-20c6-4896-b07c-05b241e6e7ef"><span><b>&nbsp;</b></span></p>
+<p id="SE-053eb5de-14e3-476d-b8f7-a7e81dddb8ca">&nbsp;</p>
+<p id="SE-b13eb66a-3133-41f6-b6a2-38df9d44f56d"><span>리눅스를 더 잘 이해하기 위해서는 리눅스의 파일 시스템 구조에 대해서 알아야합니다.</span></p>
+<p id="SE-ebe3cdd4-6b3a-4780-a027-97884d4edded"><span>리눅스는 Unix 시스템으로 윈도우와는 다르게 하나의 디렉터리로부터 뻗어지는 single directory tree 구조를 갖고 있습니다.</span></p>
+<p id="SE-4e069fc7-29fe-45c5-b4e4-86e877a73dfc"><span>접근 가능한 모~~든 저장공간의 뿌리가 결국 하나의 디렉터리랑 연결되는 거죠</span></p>
+<p id="SE-43ef442f-4341-4d66-ba91-f2751e222234"><span>(참고로 윈도우의 경우 드라이브당 각 하나의 디렉터리 트리 구조를 갖죠 D:드라이브, E:드라이브, C:드라이브 이렇게 분리된거처럼)</span></p>
+<p id="SE-9c26c385-673b-466c-adae-fe90287b345b"><span>그래서 리눅스는 마운팅하면 저런 형식의 파일 경로를 갖지 않고</span></p>
+<p id="SE-b96283bc-50ec-4058-9935-de1e8ed86b3f"><span>예를 들어 '/media/cdrom' 이런식으로 /의 하위 경로를 갖습니다.</span></p>
+<p id="SE-eaaf73ea-3c14-4e6e-9a1c-3dd8967c32f7"><span>(Linux FileSystem 리눅스 파일 시스템을 키워드로 검색하면 더 자세한 정보를 습득할 수 있어요~~)</span></p>
+<p><figure class="imageblock alignCenter" width="711" height="415" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" width="711" height="415" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p id="SE-eaaf73ea-3c14-4e6e-9a1c-3dd8967c32f7"><span>&nbsp;</span></p>
+<p id="SE-0e0fe3c3-25a2-4a6a-b416-edcdf9c56bd2">&nbsp;</p>
+<p>&nbsp;</p>
+<p id="SE-d302d88f-8c39-4f40-96a9-6d98dd353cd4"><span>그림으로 보는 리눅스의 파일 시스템 예시~</span></p>
+<p id="SE-6b03642a-28b1-4444-84d7-ec8d799394fd">&nbsp;</p>
+<p id="SE-d99e8080-ee84-440e-bb37-29442ab2a48a"><span><b>&nbsp;</b></span></p>
+<p id="SE-d99e8080-ee84-440e-bb37-29442ab2a48a"><span><b><span>MOUNT 명령어</span></b></span></p>
+<p id="SE-7250a875-bcb6-4835-89c6-ebc0185bb758"><span>자 이제 파일 시스템에 대해 대략적으로 이해를 했으면 mount 명령어 사용법을 살펴봅시다.</span></p>
+<p id="SE-7250a875-bcb6-4835-89c6-ebc0185bb758"><span>&nbsp;</span></p>
+<p id="SE-29d96648-2806-473e-9e02-f1f2759c450f">&nbsp;</p>
+<p id="SE-c076579d-a5c0-4443-811b-27ec0d958ecf"><span><b><span>사용법</span></b></span></p>
+<p id="SE-8acc7e7e-3a6f-4cbb-8793-8e6988149ad2"><span><b><span># mount [option] [device] [directory]</span></b></span></p>
+<p id="SE-366879f6-6d8f-4332-bad9-eee376134c42">&nbsp;</p>
+<p id="SE-366879f6-6d8f-4332-bad9-eee376134c42">마운트의 주요 옵션은 3가지 입니다.</p>
+<table style="border-collapse: collapse; width: 100%;" border="1" width="764">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;옵션</p>
+</td>
+<td>&nbsp;내용&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;-a</td>
+<td>&nbsp;/etc/fstab에 명시된 파일 시스템을 마운트할 때 쓰이는 옵션입니다.</td>
+</tr>
+<tr>
+<td>&nbsp;-t<span>&nbsp;</span><i>fs_type</i></td>
+<td>
+<p>&nbsp;파일 시스템의 유형을 지정하는 옵션으로 지정하지 않으면 /etc/fstab 파일을 참조합니다.&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td rowspan="1">&nbsp;-o 항목</td>
+<td rowspan="1">&nbsp;마운트할 때 추가적인 설정을 적용할 때 사용하는 옵션으로 다수의 조건을 적용할 때는 콤마(,)로 구분하면 됩니다.&nbsp;&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p id="SE-366879f6-6d8f-4332-bad9-eee376134c42">&nbsp;</p>
+<p id="SE-366879f6-6d8f-4332-bad9-eee376134c42">-o주요 항목</p>
+<table style="border-collapse: collapse; width: 100%;" border="1" width="764">
+<tbody>
+<tr>
+<td>
+<p>&nbsp; 유형</p>
+</td>
+<td>
+<p>&nbsp;내용&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;ro&nbsp;</p>
+</td>
+<td>
+<p>&nbsp;읽기 전용으로 마운트합니다&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;rw</p>
+</td>
+<td>
+<p>&nbsp;읽기 쓰기 모드로 마운트합니다 (기본값으로 설정되어 있습니다.)&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;remount</p>
+</td>
+<td>
+<p>&nbsp;해당 파티션을 다시 마운트 합니다. 파티션 정보를 바꾸었을 떄 사용합니다.</p>
+</td>
+</tr>
+<tr>
+<td rowspan="1">
+<p>&nbsp;loop</p>
+</td>
+<td rowspan="1">
+<p>&nbsp;loop 디바이스로 마운트 할 때 사용합니다.&nbsp;</p>
+<p>&nbsp;CD-ROM 이미지 파일인 iso를 마운트해서 사용할 때 사용합니다.&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td rowspan="1">
+<p>&nbsp;noatime</p>
+</td>
+<td rowspan="1">
+<p>&nbsp;파일의 내용을 읽게 되면 access time이 변경되는데 이 옵션을 사용하면 파일이 변경되기 전까지는 Access time이 변경되지 않습니다. 따라서 이 옵션을 사용하게 되면 시스템의 작업을 줄여 성능 향상을 가져옵니다. 노트북에서 사용하면 디스크 접근에 따른 배터리 시간을 늘려줍니다.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p id="SE-366879f6-6d8f-4332-bad9-eee376134c42">등등</p>
+<p id="SE-366879f6-6d8f-4332-bad9-eee376134c42">&nbsp;</p>
+<p><b><span>test</span></b></p>
+<p>아무런 옵션 없이 mount 명령어만 실행했을 경우, 다음 그림처럼 현재 시스템에 마운트된 정보를 확인할 수 있습니다.</p>
+<p>잘 보면 가로 안에 rw 익숙한 알파벳이 보이죠<span>&nbsp;</span><a href="https://jhnyang.tistory.com/11">저번 포스팅에서 봤던 파일 권한식</a>입니다.</p>
+<p>읽기/쓰기 모드로 마운트되어있다는 것</p>
+<p><figure class="imageblock alignCenter" width="788" height="324" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.jpg" width="788" height="324" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>하지만 우리는 직접 디바이스를 디렉터리에 마운팅 할 줄 알아야 하죠</p>
+<p>&nbsp;</p>
+<p><b><span>디스크 직접 마운트 해보기</span></b></p>
+<p>&nbsp;</p>
+<p>디스크 하나를 추가해서 마운트 작업을 해봅시다.</p>
+<p>&nbsp;</p>
+<p>디스크를 추가하기 전에 비교를 위해 disk를 확인해볼까요?</p>
+<p>&nbsp;</p>
+<p id="SE-d01b81b0-6f86-4e2d-90b5-3074f726e10f">&nbsp;</p>
+<p id="SE-3a286b6e-dd8e-4e8d-9b65-5ce7156a10ce"><span><b><span>디스크 파티션을 확인하고 추가 삭제하는 명령</span></b></span></p>
+<p id="SE-c26527b4-3fac-4480-bfd2-152e5b2f6058"><span><b><span>fdisk</span></b></span></p>
+<p id="SE-c26527b4-3fac-4480-bfd2-152e5b2f6058"><span><b>&nbsp;</b></span></p>
+<p id="SE-dfa36470-b50f-4180-8ba6-771ca7176829">&nbsp;</p>
+<p id="SE-5b095e4e-47ce-470e-b3c1-7f6ecbc04eb3"><span>fdisk -l 명령어를 쳐줍니다.</span></p>
+<p id="SE-60d91bf4-517f-4d13-8135-b9d41f4e4f49"><span>여기서 -l옵션은 디스크의 파티션 테이블 정보를 출력하는 옵션이예요</span></p>
+<p id="SE-60d91bf4-517f-4d13-8135-b9d41f4e4f49"><span>&nbsp;</span></p>
+<table style="border-collapse: collapse; width: 100%;" border="1" width="764">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;옵션&nbsp;</p>
+</td>
+<td>
+<p>&nbsp;내용&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;-l&nbsp;&nbsp;</p>
+</td>
+<td>
+<p>&nbsp;현재 디스크의 파티션 테이블 정보를 출력합니다&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;-s<span>&nbsp;</span><i>partition&nbsp;</i></p>
+</td>
+<td>
+<p>특정 파티션의 크기를 출력합니다 (단위는 block)&nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p id="SE-60d91bf4-517f-4d13-8135-b9d41f4e4f49"><span>&nbsp;</span></p>
+<p id="SE-e6441981-1883-4796-a997-c8df7a040cd1"><span>그러면 아래 그림과 같이 정보를 쭈우욱 출력해줄겁니다</span></p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" width="776" height="586" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" width="776" height="586" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p id="SE-b87f4d78-ce79-4a67-9abc-05e38d69809e">&nbsp;</p>
+<p id="SE-a2a341cf-0c39-4725-ab71-456185846b9c">&nbsp;</p>
+<p id="SE-5fea28b9-cc8e-42c0-a5e7-0f753c89fb80"><span>디스크 추가하러 가기~</span></p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" width="673" height="552" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png" width="673" height="552" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p id="SE-fe7305b5-9e7b-40ad-8b57-c2e120aaa1bf">&nbsp;</p>
+<p id="SE-62cf255a-947e-4325-9f42-93588fcc0e01"><span><span style="color: #000000;">디스크 추가를 위해 Edit virtual machine settings 클릭</span></span></p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" width="691" height="680" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_3.png" width="691" height="680" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p id="SE-4da5f671-108c-4ce9-84f5-db81e38f2b39">&nbsp;</p>
+<p id="SE-7301355f-7471-46a4-834b-9bddfbae8044"><span style="color: #000000;">여기서 Add해준 후 harddisk 클릭 --&gt; next --&gt; SCSI -&gt; next --&gt; create new virtual disk --&gt; next~~</span></p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" width="458" height="437" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_4.png" width="458" height="437" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p id="SE-238105c3-6450-47aa-8a89-b3a69fb8dec6">&nbsp;</p>
+<p id="SE-51a0997f-a081-42dc-afc7-833068f8a5e7"><span style="color: #000000;">우리는 마운트를 위한 테스트용으로만 쓸거니까 용량은 작게 2G 잡아줄게요</span></p>
+<p id="SE-0bd27625-98c2-4d01-923c-2229d0f50fb8"><span style="color: #000000;">용량도 조그마니까 single file로</span></p>
+<p><figure class="imageblock alignCenter" width="474" height="461" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_5.png" width="474" height="461" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p id="SE-0bd27625-98c2-4d01-923c-2229d0f50fb8">&nbsp;</p>
+<p>&nbsp;</p>
+<p id="SE-edf9620b-ec25-4cdd-8984-27c7ab2cfe84"><span style="color: #000000;">이름은 걍 지어주는대로 후 finish</span></p>
+<p><figure class="imageblock alignCenter" width="433" height="359" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_6.png" width="433" height="359" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>고럼 이렇게 새로 생긴 new hard disk 2기가짜리를 확인할 수 있습니다.</p>
+<p><figure class="imageblock alignCenter" width="333" height="344" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_7.png" width="333" height="344" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p id="SE-a228858a-9a21-4d9d-ae69-526308d8900b">&nbsp;</p>
+<p id="SE-cef77d4b-e330-4b98-afe3-f299a1f973a9"><span style="color: #000000;">다시 쉘로 돌아가서 fdisk -l 명령어를 수행시켜볼까요?</span></p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" width="800" height="601" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_8.png" width="800" height="601" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p id="SE-88f5ab5c-7a22-443f-b5e4-4b4fc075835a">&nbsp;</p>
+<p id="SE-2e8e51dd-821b-4a0d-8169-49209b98dd96"><span style="color: #000000;">처음에 이렇게 20G짜리 디스크밖에 보이지 않았던 게</span></p>
+<p id="SE-37a75193-c444-48b6-8316-d4b93d779584"><span style="color: #000000;">디스크 추가 후에는 아래처럼 20G가와 우리가 나중에 추가해줬던 2G짜리까지 추가된 것을 알 수 있어요</span></p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" width="800" height="671" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_9.png" width="800" height="671" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p id="SE-7b4ae80f-235a-4869-bbe0-fdd35e9059da">&nbsp;</p>
+<p id="SE-ffa08d21-fc99-4c24-9c20-c1e74949bef5"><span style="color: #000000;">디스크가 제대로 추가가 된 것을 확인했으니</span></p>
+<p id="SE-9ef2bf39-10be-4a7b-b09c-fa00e3ad349c"><span style="color: #000000;">마운트 정보를 확인해볼까요?</span></p>
+<p id="SE-9ef2bf39-10be-4a7b-b09c-fa00e3ad349c"><span style="color: #000000;">&nbsp;</span></p>
+<p id="SE-2b34a0c8-1908-495f-af37-a910f1208894">&nbsp;</p>
+<p id="SE-5b99c3c7-1611-4b09-82f6-c0807f259249"><span><b><span>현재 마운트된 디스크 정보 출력</span></b></span></p>
+<p id="SE-61cf68cc-d22a-410a-9a81-906257161b47"><span><b><span>df</span></b></span></p>
+<p><figure class="imageblock alignCenter" width="517" height="194" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_10.png" width="517" height="194" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p id="SE-61cf68cc-d22a-410a-9a81-906257161b47">&nbsp;</p>
+<p id="SE-444a30d0-f84d-44e1-ad1b-4e7f29969617"><span><span style="color: #000000;">디스크가 추가되었는데도 sdb 마운트 정보를 찾을 수 없네요</span></span></p>
+<p id="SE-7573f7a0-10e9-435e-85e5-01ac4c0bdfb9"><span><span style="color: #000000;">디렉터리를 만들어서 우리 하드디스크와 연결해주면 됩니다! (이것이 마운트니까)</span></span></p>
+<p id="SE-7573f7a0-10e9-435e-85e5-01ac4c0bdfb9"><span><span style="color: #000000;">&nbsp;</span></span></p>
+<p id="SE-ee76d2db-5161-40a1-be82-02c68c65ddf7">&nbsp;</p>
+<p id="SE-6cd909fd-e091-4f37-8e7d-a765ba13b925"><span><span style="color: #000000;"><b><span>파티션 설정</span></b></span></span></p>
+<p id="SE-f20fc633-88de-4a73-8124-4cdefab325f0"><span><span style="color: #000000;">사실 마운팅을 하기 전에 우리가 추가하는게 디스크이기때문에 하드디스크 영역인 파티셔닝 설정과 포맷 작업을 해줘야 해요.</span></span></p>
+<p id="SE-caef1b04-d173-4833-8057-de8f8a0c06ff"><span><span style="color: #000000;">fdisk를 통해서 디스크를 확인할 수도 있지만 파티션을 추가해줄 수도 있어요.</span></span></p>
+<p><figure class="imageblock alignCenter" width="599" height="527" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_11.png" width="599" height="527" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p id="SE-caef1b04-d173-4833-8057-de8f8a0c06ff"><span><span style="color: #000000;">&nbsp;</span></span></p>
+<p>&nbsp;</p>
+<p id="SE-489e3f52-4410-4bcf-9780-455b00919e50">&nbsp;</p>
+<p id="SE-205e8388-8d2b-4b99-b426-7d15c1b1da62">&nbsp;</p>
+<p>fdisk /dev/sdb&nbsp;</p>
+<p>dev/sdb는 새로 추가한 하드디스크 위치예요</p>
+<p>fdisk /dev/sdb 엔터 치면&nbsp;</p>
+<p>거기서 작업할 명령어를 치라고 나옵니다</p>
+<p>&nbsp;</p>
+<p>그럼 fdisk 실행 시 주요 명령이 뭐가 있는지 알아볼까요~~</p>
+<table style="border-collapse: collapse; width: 100%;" border="1" width="605">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;주요 명령</p>
+</td>
+<td>
+<p>&nbsp;내용&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;p&nbsp;</p>
+</td>
+<td>
+<p>&nbsp;현재 디스크의 정보를 출력합니다&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>d</p>
+</td>
+<td>
+<p>&nbsp;파티션을 삭제합니다 delete의 약자겠죠?&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;n</p>
+</td>
+<td>
+<p>&nbsp;new~ 파티션을 새롭게 생성하는 것&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;t&nbsp;</p>
+</td>
+<td>
+<p>&nbsp;파티션의 속성을 변경합니다&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td rowspan="1">&nbsp;w</td>
+<td rowspan="1">
+<p>&nbsp;변경된 파티션의 정보를 저장하고 종료합니다</p>
+</td>
+</tr>
+<tr>
+<td rowspan="1">
+<p>&nbsp;q</p>
+</td>
+<td rowspan="1">
+<p>&nbsp;변경된 파티션의 정보를 저장하지 않고 종료합니다.&nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p id="SE-44aa4d63-28cb-4852-8525-efa328615781"><span style="color: #000000;">1. 파티션을 생성할 거니까 n을 눌러줬어요</span></p>
+<p id="SE-e9ee32b4-09f9-4443-a70a-5de6f5814b6c"><span style="color: #000000;">2. 그러면 그림처럼 파티션이 extended인지 primary 파티션인지 선택하라고 나옵니다 굳이 확장필요 없으니 p입력</span></p>
+<p id="SE-1371a2e7-1555-4ec2-856e-088206dfeffb"><span style="color: #000000;">3. 파티션 숫자로는 default인 1을 입력해줍시다.</span></p>
+<p id="SE-86d132ff-9403-4cc9-b3ac-295e0279b922"><span style="color: #000000;">4 ~5 첫 섹터와 마지막 섹터를 적어달라고 나오는데 엔터를 입력하면 기본값으로 됩니다 (섹터가 뭔지 궁금하시면 하드디스크 구조를 찾아보시면 됩니다. 일단은 그냥 넘어가도 상관 없어요)</span></p>
+<p id="SE-fe709d3e-2f89-4f19-9c55-37661ca02700"><span style="color: #000000;">이렇게 하면 파티션이 완성됩니다!</span></p>
+<p id="SE-fe709d3e-2f89-4f19-9c55-37661ca02700"><span style="color: #000000;">&nbsp;</span></p>
+<p id="SE-5992381b-8ad2-494e-a02f-9d4d2628f6b2">&nbsp;</p>
+<p id="SE-f5411212-d948-41ac-8698-658c08409537"><span style="color: #000000;">p명령어를 입력하면</span></p>
+<p id="SE-12945bd1-e8e7-48b8-ad2f-b4656b8aaa36"><span style="color: #000000;">파티션이 잘 생성되어 sdb1 이렇게 뒤에 숫자 1이 붙은 것을 볼 수 있어요</span></p>
+<p id="SE-12945bd1-e8e7-48b8-ad2f-b4656b8aaa36"><span style="color: #000000;">&nbsp;</span></p>
+<p id="SE-2846283c-26ad-460d-b587-57727c373940">&nbsp;</p>
+<p id="SE-aa9c50f1-c5a1-49e0-b17b-f2d5338f33c2"><span style="color: #000000;">w로 파티션을 저장해줍시다.</span></p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" width="679" height="143" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_12.png" width="679" height="143" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p id="SE-b1ef400b-8990-4819-9ddd-8a9a2c02dd0d">&nbsp;</p>
+<p id="SE-b9497e7e-ba4a-4f0d-9a93-7e737776493d">&nbsp;</p>
+<p id="SE-92fd8d9a-a146-4756-bcd5-e161ad5397c5"><span><b><span style="color: #000000;">포맷 하기</span></b></span></p>
+<p id="SE-3c900363-90a0-4c70-bf41-0ac9c1ffaf60"><span style="color: #000000;">ext4방식으로 포맷해줄거예요</span></p>
+<p id="SE-bb798bdd-a306-4ff6-8b58-51d91a0484a2"><span style="color: #000000;">ext4는 파일 시스템이라고 생각하면 됩니다.</span></p>
+<p id="SE-bb798bdd-a306-4ff6-8b58-51d91a0484a2"><span style="color: #000000;">&nbsp;</span></p>
+<p id="SE-c544d40f-bd0a-45bf-bd5d-8d47a2db7f7c">&nbsp;</p>
+<p id="SE-583057ae-44b2-4f56-9f2a-dcae7a5334d3"><span><b><span>새로운 파일 시스템을 만드는 명령</span></b></span></p>
+<p id="SE-4e3fceff-f462-4b70-b47e-c2f92dd74a23"><span><b><span>mkfs (make filesystem)</span></b></span></p>
+<p id="SE-6e389c66-4485-4e8d-8c1d-37b13b284b41"><span><b><span># mkfs [-t fs_type] [option] 장치명</span></b></span></p>
+<p id="SE-c953c91e-ce8b-4254-b0bc-332efe4daa47">&nbsp;</p>
+<p id="SE-1ca4dcc8-2057-4ee4-8ff4-2fba6b55646d"><span style="color: #000000;">&nbsp;</span></p>
+<p id="SE-1ca4dcc8-2057-4ee4-8ff4-2fba6b55646d"><span style="color: #000000;">mkfs 명령어를 이용해서 /dev/sdb1 장치에다가 파일 시스템 유형을 지정해줍시다.</span></p>
+<p id="SE-9fada396-5cd3-4474-a8e1-6bd49546e4a8"><span style="color: #000000;">mkfs -t ext4 /dev/sdb1</span></p>
+<p><figure class="imageblock alignCenter" width="800" height="279" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_13.png" width="800" height="279" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p id="SE-80cdaadd-0d59-4b7a-afd0-499893f544c8">&nbsp;</p>
+<p id="SE-eea316d7-a6b0-453a-bf13-755ad54e70f9"><span style="color: #000000;"><b><span>마운트 작업!</span></b></span></p>
+<p id="SE-f85a918c-b4d2-447d-acf5-1e149bd2a385"><span style="color: #000000;">드디어 ㅠㅠ 마운트하기</span></p>
+<p id="SE-174eb271-41a7-4186-b05b-38fd378e82da"><span style="color: #000000;">이 마운트를 하기 위해 앞의 별의 별 작업을 다 해줬죠 .ㅎㅎ</span></p>
+<p id="SE-54f04e1a-1b0e-486f-a172-f29414e91393"><span style="color: #000000;">물론 책으로만 이해하고 명령어를 외워도 좋지만</span></p>
+<p id="SE-b8fb0989-49e7-4272-8772-434f609503a1"><span style="color: #000000;">아무래도 해보는게 암기는 빠르니까요</span></p>
+<p id="SE-b8fb0989-49e7-4272-8772-434f609503a1"><span style="color: #000000;">&nbsp;</span></p>
+<p id="SE-b2e3f31d-0a76-4b31-bba7-6492aa90634c">&nbsp;</p>
+<p id="SE-07e0e8ab-8414-4a90-a376-f491b965e7b1"><span style="color: #000000;">디바이스를 연결시켜줄 디렉터리를 하나 만들어줍시다.</span></p>
+<p id="SE-6c8ce9ca-de7a-4b2e-89f4-66c0b5e94c74"><span style="color: #000000;">저는 그냥 drv라고 했으요</span></p>
+<p id="SE-6c8ce9ca-de7a-4b2e-89f4-66c0b5e94c74"><span style="color: #000000;">&nbsp;</span></p>
+<p id="SE-83d5fa70-bc5d-430b-bc3d-07a73a41f2a4"><span style="color: #000000;">mount /dev/sdb1 /drv</span></p>
+<p id="SE-ecdc716a-ea3d-4b33-a125-722483592235"><span style="color: #000000;">--&gt; /dev/sdb1 디바이스를 drv 디렉터리에 마운트 (매핑) 시키겠다!</span></p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" width="526" height="241" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_14.png" width="526" height="241" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p id="SE-be638164-621a-4364-abe0-2dddf08808f7">&nbsp;</p>
+<p id="SE-0fd9a9a8-5acf-490c-9dc6-fb0c730c85f7"><span>잘 됐나 확인을 위해 df 명령어를 입력하니</span></p>
+<p id="SE-627aa458-f883-4eae-bb9e-9346d19246a3"><span>맨 마지막에 /dev/sdb1 ~~~ 라인에서 전에 없던 마운트 정보가 입력된 것을 확인할 수 있습니다.</span></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

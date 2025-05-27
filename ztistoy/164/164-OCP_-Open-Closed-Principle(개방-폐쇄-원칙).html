@@ -1,0 +1,98 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>OCP: Open-Closed Principle(개방-폐쇄 원칙)</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">OCP: Open-Closed Principle(개방-폐쇄 원칙)</h2>
+                                <div class="box-info">
+                                    <p class="category"></p>
+                                    <p class="date">2023-05-09 11:34:57</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">OCP: Open-Closed Principle(개방-폐쇄 원칙)</p>
+<p data-ke-size="size16">class나 module의 확장에는 열려있지만 수정에는 폐쇄적이라는 원칙이다<br />말만 보면 뭔 소린가 싶다<br />chatGPT를&nbsp; 사용해서 sampleCode를 만들어보자<br />밑에 있는 첫 번째 sampleCode를 확인해 보자<br /><br />shape이라는 domain의 class가 있다<br />그려야 하는 종류가 늘어날 때마다 shape class의 method는 늘어날 것이다<br />그에 맞게 if 문도 계속 늘어날 것이다<br />shape에서 그릴 수 있는 모양이 30개면 하나의 class에 30개의 유사한 method를 생성해야 한다&nbsp;</p>
+<pre id="code_1683102368542" class="python" data-ke-language="python" data-ke-type="codeblock"><code>class Shape:
+    def __init__(self, type, color):
+        self.type = type
+        self.color = color
+    
+    def draw(self):
+        if self.type == "circle":
+            self.draw_circle()
+        elif self.type == "square":
+            self.draw_square()
+        elif self.type == "triangle":
+            self.draw_triangle()
+    
+    def draw_circle(self):
+        # 원 그리기 코드
+    
+    def draw_square(self):
+        # 사각형 그리기 코드
+    
+    def draw_triangle(self):
+        # 삼각형 그리기 코드</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">2번째 코드처럼 상속을 이용해 보자<br />shape class는 draw가 추가될 때 내부코드가 변경될 필요가 없다<br />그래고 확장할 때는 shape class를 상속받는 class에서 구현하면 된다<br />if-elif 구문이 없어져 유지보수도 용이하다<span style="background-color: #444654; color: #d1d5db; text-align: start;"></span></p>
+<pre id="code_1683102378292" class="python" data-ke-language="python" data-ke-type="codeblock"><code>class Shape:
+    def __init__(self, color):
+        self.color = color
+    
+    def draw(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self, radius, color):
+        super().__init__(color)
+        self.radius = radius
+    
+    def draw(self):
+        # 원 그리기 코드
+
+class Square(Shape):
+    def __init__(self, size, color):
+        super().__init__(color)
+        self.size = size
+    
+    def draw(self):
+        # 사각형 그리기 코드
+
+class Triangle(Shape):
+    def __init__(self, base, height, color):
+        super().__init__(color)
+        self.base = base
+        self.height = height
+    
+    def draw(self):
+        # 삼각형 그리기 코드</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">딱 봐도 확장성과 가독성이 좋아졌다<br />기초적인 개념이지만 기본을 신경 쓰자</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

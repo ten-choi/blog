@@ -1,0 +1,236 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>쉽게 쉽게 hooks 사용하기! -YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">쉽게 쉽게 hooks 사용하기! -YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">TS, JS/react</p>
+                                    <p class="date">2020-06-11 09:43:07</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-filename="react.png" data-origin-width="632" data-origin-height="602" width="383" height="NaN" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-filename="react.png" data-origin-width="632" data-origin-height="602" width="383" height="NaN" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>hooks 란 react 16.8 버전부터 도입된 기능으로 함수형 컴포넌트에서 할 수 없었던</p>
+<p>상태 관리를 가능하게 해주는 내장 라이브러리입니다.</p>
+<p><u><b>useState<span> useEffect </span></b></u><u><b>useReducer 설명합니다.<span>&nbsp;</span></b></u></p>
+<p>create react app을 이용하여 새로운 프로젝트를 만들어 줍시다!</p>
+<p>&nbsp;</p>
+<p><u><b>먼저 useState를 설명드리겠습니다 딱 한 페이지 분량으로 설명합니다.</b></u></p>
+<p>클래스형 컴포넌트의 setState와 동일하게 값이 변경되면 리 렌더링을 해줍니다.&nbsp;</p>
+<p>하지만 useState는 사용할 때 요렇게 사용한다. 간단하게 짜 봤는데 설명드리자면</p>
+<pre id="code_1591768770417" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>import React , {useState} from 'react';
+
+const App =()=&gt;{
+
+const [data , setData] = useState(0);
+
+		return(
+        	&lt;div&gt;
+            	데이터값:{data}
+            	&lt;button onClick={()=&gt;{setData(data+1); }} &gt;증가&lt;/button&gt;
+            &lt;/div&gt;
+        )
+}
+
+export default App;
+
+</code></pre>
+<p>&nbsp;useState의 파라미터는 문자열이든 숫자든 관계없이 배열의 첫 번째 인자를(현재는 data) 초기화해주는</p>
+<p>값으로 사용됩니다. 그리고 두 번째 인자는 (현재 setData) 저 값을 밑의 onClick처럼 사용해주면 됩니다.&nbsp;</p>
+<p>setData에 파라미터를 대입한 후 실행하면 data에 그 값을 대입하고 해당 함수형 컴포넌트를 리 렌더링 해줍니다.</p>
+<p>사용해보면 setState보다 간편하다고 느껴집니다. 저는 그랬습니다.&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><u><b>다음 useEffect입니다 기능이 2가지라 2페이지 분량입니다.&nbsp;</b></u></p>
+<p>&nbsp;</p>
+<p>useEffect는 컴포넌트가 렌더링 될 때마다 특정 작업을 수행하도록 하는 hook입니다.&nbsp;</p>
+<p>클래스형 컴포넌트에선 componentDidMount, componentDidUpdate를 hooks에서는 useEffect</p>
+<p>사용한다고 생각하시면 됩니다. 코드 보면서 설명해드리겠습니다.&nbsp;</p>
+<pre id="code_1591769333887" class="html xml" style="display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;" data-ke-language="html" data-ke-type="codeblock"><code>import React , {useState , useEffect } from 'react';
+
+const App =()=&gt;{
+
+const [data , setData] = useState(0);
+
+useEffect(()=&gt;{          //여기가 useEffect 사용하는부분
+	console.log('렌더링 확인하는거 보이십니까?');
+});
+
+		return(
+        	&lt;div&gt;
+            	데이터값:{data}
+            	&lt;button onClick={()=&gt;{setData(data+1); }} &gt;증가&lt;/button&gt;
+            &lt;/div&gt;
+        )
+}
+
+export default App;
+
+</code></pre>
+<p>&nbsp;</p>
+<p>react를 실행해서 3000 포트로 보고 계시다면 개발자 도구</p>
+<p><figure class="imageblock floatRight" width="415" height="NaN" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" width="415" height="NaN" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>F12 키를 눌러서 콘솔 창을 확인해줍시다.</p>
+<p>밑의 화면과 같은 콘솔창을 띄우시면 됩니다.&nbsp;</p>
+<p>처음 렌더링과 onClick로 인한 리 렌더링이 될 때마다&nbsp;</p>
+<p>console.log의 문자열이 출력될 것입니다.</p>
+<p>didmount와 didupdate를 동시에 수행합니다.&nbsp;</p>
+<p>&nbsp;</p>
+<p>단 mount 시에만 사용하고 싶은데 didupdate까지 원하시지 않는다면 코드 블록의 useEffect 부분에서</p>
+<pre id="code_1591769762000" class="html xml" style="display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;" data-ke-language="html" data-ke-type="codeblock"><code>import React , {useState , useEffect } from 'react';
+
+const App =()=&gt;{
+
+const [data , setData] = useState(0);
+
+useEffect(()=&gt;{        
+	console.log('렌더링 확인하는거 보이십니까?');
+}, [] );  // 요기로 확인하세요~!
+
+		return(
+        	&lt;div&gt;
+            	데이터값:{data}
+            	&lt;button onClick={()=&gt;{setData(data+1); }} &gt;증가&lt;/button&gt;
+            &lt;/div&gt;
+        )
+}
+
+export default App;
+
+</code></pre>
+<p>빈 배열 하나를 useEffect의 두 번째 파라미터에 추가하시면 됩니다. 그럼 didmount 만 사용할 수 있습니다.&nbsp;</p>
+<p>아니면<b> didupdate를 실행하는데</b> 특정값이 업데이트될 때만 실행하고 싶다면 &nbsp;&nbsp;</p>
+<pre id="code_1591770144632" class="html xml" style="display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;" data-ke-language="html" data-ke-type="codeblock"><code>import React , {useState , useEffect } from 'react';
+
+const App =()=&gt;{
+
+const [data , setData] = useState(0);
+
+useEffect(()=&gt;{        
+	console.log('렌더링 확인하는거 보이십니까?');
+}, [data] );  // 요기로 확인하세요~!
+
+		return(
+        	&lt;div&gt;
+            	데이터값:{data}
+            	&lt;button onClick={()=&gt;{setData(data+1); }} &gt;증가&lt;/button&gt;
+            &lt;/div&gt;
+        )
+}
+
+export default App;
+
+</code></pre>
+<p>&nbsp;예를 들어 useState의 첫 번째 인자인 useEffect의 2번째 파라미터의 배열 인자로 넣어주게 된다면</p>
+<p>인자 값이 변할 때마다 console.log 가 출력되는 걸 확인하실수 있습니다. 매우 간단합니다.&nbsp;</p>
+<p>마지막 정리로 useEffect를 사용하여 DidMount 나 DidUpdate가 기능하기 직전에 특정 작업을 수행하고 싶다면</p>
+<pre id="code_1591770381732" class="html xml" style="display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;" data-ke-language="html" data-ke-type="codeblock"><code> 
+useEffect(()=&gt;{        
+	console.log('렌더링 확인하는거 보이십니까?');
+    
+    return ()=&gt;{    // 이렇게 사용합니다. 
+    	console.log('cleanup = 뒷정리나 청소 라는 의미인데 업데이트 하기전 뒷마무리 정도로..생각 '); 
+    }
+}, [] ); 
+ </code></pre>
+<p>요렇게 리턴해주시면 됩니다. 어떤 책에서는 뒷정리 함수라고 칭했습니다. &nbsp;</p>
+<p><b>축하드립니다. 벌써 주요한 hooks 기능 2가지를 마스터하셨습니다.&nbsp;</b></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><u><b>다음은 useReducer입니다. redux를 알고 오셨다면 이해가 용이합니다. 난이도가 소폭 올라갑니다.&nbsp;</b></u></p>
+<p>useReducer는 useState보다 더 다양하게 컴포넌트의 상황에 따라 값을 업데이트해줘야 할 때 사용하는 hook입니다.&nbsp;</p>
+<p>리듀서는 현재 상태, 업데이트를 위해 필요한 정보를 담은 액션 값을 전달받아 새로운 값을 반환하는 함수입니다.&nbsp;</p>
+<pre id="code_1591775456666" class="html xml" style="display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;" data-ke-language="html" data-ke-type="codeblock"><code>import React , { useReducer} from 'react';
+
+function reducer(state, action){
+	switch(action.type){
+    	case 'INCREASE':
+        return{ value: state.value +1 };
+        case 'DECREASE':
+        return{ value: state.value -1 };
+        default :
+        return state;
+    }
+}
+
+const App =()=&gt;{
+
+  const [state, dispatch]= useReducer(reducer, {value :0 } ) ;
+		return(
+        	&lt;div&gt;
+  	         데이터값: {state.value}
+            	&lt;button onClick={()=&gt;{ dispatch({type:'INCREASE'} ) }} &gt;증가&lt;/button&gt;
+                &lt;button onClick={()=&gt;{ dispatch({type:'DECREASE'} ) }} &gt;감소&lt;/button&gt;
+                {console.log(useReducer())}
+                {console.log(dispatch)}
+          &lt;/div&gt;
+        );
+}
+
+export default App;
+
+</code></pre>
+<p>reducer 용 함수를 2개의 파라미터를 가 진상태로 만들어줍니다.&nbsp;</p>
+<p>첫 번째 파라미터는 사용할 변수이고 두 번째 파라미터는 타입입니다. 위의 function reducer의 switch에서 보시면</p>
+<p>타입에 따라서 실행할 케이스를 구분해줍니다.</p>
+<p>&nbsp;</p>
+<p>그러면 본격적으로 사용해봅시다.&nbsp; &nbsp;일단 useReducer을 선언합시다.&nbsp;</p>
+<p>const { a } = this.state;&nbsp; 이런 문장을 써보셨다면 state내부의 제이슨 타입으로 설정된 a값을 가져오는 구문이란 걸</p>
+<p>알 수 있습니다. 아마 위의 배열도 그런 의미로 되어있지 않나 싶습니다.</p>
+<p>state, dispatch를 선언해줍니다. state는 값을 나타내고 dispatch는 핸들러입니다.</p>
+<p>dispatch에서 타입을 정해주고 실행하면 useReducer를 실행합니다.</p>
+<p><span style="color: #333333;">value<span> 초기값을 reducer함수에서 타입에 맞게 사용하고 결괏값을 리턴합니다. </span></span></p>
+<p>console을 찍어보시면 아시겠지만 렌더링을 2번 합니다. 첫 렌더링과 useReducer렌더링</p>
+<p>그리고 dispatch를 해주면 렌더링을 다시 2번 해줍니다.&nbsp;</p>
+<p>useEffect와는 조금 다른 느낌으로 사용하시면 될 것 같습니다.&nbsp;</p>
+<p>&nbsp;</p>
+<p>바로 이해되셨다면 축하드립니다.&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #React Hooks #react useState #react useEffect #react useReducer 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

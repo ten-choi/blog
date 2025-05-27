@@ -1,0 +1,225 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>정말 쉬운! React 에서 RTSP 사용하기 2 -YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">정말 쉬운! React 에서 RTSP 사용하기 2 -YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">TS, JS/react</p>
+                                    <p class="date">2021-01-04 15:15:10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-filename="react.png" data-origin-width="632" data-origin-height="602" width="395" height="NaN" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-filename="react.png" data-origin-width="632" data-origin-height="602" width="395" height="NaN" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size14"><span style="color: #666666;">-해당 글은 streamedian 사이트의 rtsp 기술을 참조합니다. 윈도에서 개발하시는 분들이 RTSP 하시기에 적합하며</span></p>
+<p data-ke-size="size14"><span style="color: #666666;">실무라면 라이선스 구매나 리눅스 환경에서 실행을 위한 공부가 필요할 수 있습니다.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<h4 data-ke-size="size20"><span style="color: #333333;"><b>-필요 프로젝트 준비</b></span></h4>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>React</b>의 프로젝트 내에서 <b>Rtsp</b>를 실행할 수 있게끔 해야겠죠?&nbsp;&nbsp;</span></p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>[정말 쉬운! React에서 RTSP 사용하기 1 -YEOL]에서</b> 사용했던 <b>Streamedian 프로젝트</b>를 준비합니다.</span></p>
+<p data-ke-size="size16"><span style="color: #666666;">그다음<b> npm crate react-app [프로젝트명]을</b> 통해 새 프로젝트를 만들어줍니다.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"> <b>Streamedian<span>&nbsp;</span></b>프로젝트를 살펴봅시다! </span></p>
+<p data-ke-size="size16"><span style="color: #666666;">이 프로젝트에서 <b>Rtsp</b><span style="color: #666666;">실행에 관계된 파일들을&nbsp;</span></span><span style="color: #666666;"><span style="color: #666666;"><b>React<span>&nbsp;</span></b>프로젝트에 옮겨주어야 합니다. free.player.1.8.4.js</span></span><span style="color: #666666;"> 는 소켓 통신으로 <b>Rtsp</b>를 가능하게 해 주는 기능이 들어있는</span><span style="color: #666666;"> 코드입니다. </span></p>
+<p data-ke-size="size16"><span style="color: #666666;">따라서 <b><span style="color: #000000;"><a style="color: #000000;" href="http://free.player.1.8.4.js">free.player.1.8.4.js을</a></span></b> <b>Rtsp</b></span><span style="color: #666666;"><b>프로젝트</b>로부터 <b>React 프로젝트</b>의 <b>public</b> 경로에 복사 후 붙여 넣기 해줍시다.&nbsp;</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b><span style="color: #000000;"><a style="color: #000000;" href="http://free.player.1.8.4.js">free.player.1.8.4.js</a></span></b> 파일을 옮겼다면 사용해야겠죠? <b>index.html</b> 파일에서는 <span style="letter-spacing: 0px;">해당 자바스크립트를&nbsp;</span></span></p>
+<p data-ke-size="size16"><span style="color: #666666;">사용한다는 코드를 넣어줍니다.&nbsp; -&gt;&nbsp; <b>index.html을</b> 클릭해줍니다.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;">아래의 코드를 참고하셔서 <b>&lt;head&gt;</b> 태그 사이에 저런 형태로 끼워 넣어 주시면 됩니다.</span><span style="color: #666666;"></span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<pre id="code_1609725496827" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>  &lt;head&gt;
+    
+    &lt;script src="free.player.1.8.4.js"&gt;&lt;/script&gt; // 요거만 넣어주세요
+    
+  &lt;/head&gt;</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>Rtsp </b>기능을 하는 코드를 옮겨주었다면 그다음에는 기능을 실행하는 부분을 옮겨줘야겠지요?</span></p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>React 프로젝트</b>의 src 경로에 <b>Streamedian이라는</b> 폴더 하나를 생성합니다.</span></p>
+<p data-ke-size="size16"><span style="color: #666666;"><span style="color: #666666;"><span style="color: #666666;">아래의 파일들은 </span>실행을 위한 부분의 컴포넌트입니다</span>.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_3.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>Rtsp<span>&nbsp;</span></b>프로젝트에서 아래 빨간 줄이 있는 부분입니다.&nbsp; </span><span style="color: #666666;">(css는 수정해보고 싶으시다면 옮기셔도 좋습니다)</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_4.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;">파일을 옮기는 부분은 끝났습니다!!!&nbsp; 벌써 반 왔습니다 힘내세요!</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<h4 data-ke-size="size20"><span style="color: #333333;"><b>-React 프로젝트 수정</b></span></h4>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>React 프로젝트</b>의 <b>Streamedian</b> 폴더를 살펴봐주세요. <b><a style="color: #666666;" href="http://StreamedianPlayer.jsx">StreamedianPlayer.jsx</a>&nbsp;</b>파일은 video 재생을 위한 부분과 아닌 부분이 섞여있는 컴포넌트입니다.</span></p>
+<p data-ke-size="size16"><span style="color: #666666;">사용하지 않는 부분을 과감히 제거해줍니다. 아래처럼 <b>video</b> 만남 겨주시면 됩니다.</span></p>
+<pre id="code_1609727104349" class="html xml" style="margin: 20px auto 0px; display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; cursor: default; z-index: 1;" data-ke-language="html" data-ke-type="codeblock"><code>  render() {
+    return (
+      &lt;div&gt;
+        &lt;video id={this.props.id} controls autoPlay&gt;
+          {this.props.children}
+        &lt;/video&gt;
+      &lt;/div&gt;
+    );
+  }</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;">그리고 사용하지 않는다면 <b>import</b> 해주는 부분도 없애주어야겠지요? <b>import</b>는 <b>React<span>&nbsp;</span></b>만 남겨줍니다.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_5.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>Rtsp의</b> 기능인 <b><span style="color: #000000;"><a style="color: #000000;" href="http://free.player.1.8.4.js">free.player.1.8.4.js</a></span></b><span style="color: #666666;"><span>&nbsp;</span></span>가 있고 영상을 실행하는 <b>player</b> 부분인 <b>Streamedian </b>폴더가 존재합니다.</span></p>
+<p data-ke-size="size16"><span style="color: #666666;">그러면<b> App.js</b> 컴포넌트에서 호출할 일만 남았겠네요..? 그럼 <b>Streamedian에서</b> 호출할 부분인 <b>index</b>를 살펴봅시다.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;">저처럼 <b>index</b> 파일을 수정해주세요. <span style="color: #666666;">필요한 부분만 남겨준 형태입니다.</span></span></p>
+<pre id="code_1609729066778" class="html xml" style="margin: 20px auto 0px; display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; cursor: default; z-index: 1;" data-ke-language="html" data-ke-type="codeblock"><code>import React from 'react';
+import StreamedianPlayer from './StreamedianPlayer';
+// import './index.css';
+
+const App = ({url, id}) =&gt; (
+	&lt;div&gt;
+		&lt;StreamedianPlayer id={id} &gt;
+			{ &lt;source  src={url} type="application/x-rtsp" /&gt; }
+		&lt;/StreamedianPlayer&gt;
+	&lt;/div&gt;
+);
+
+export default App;
+</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>id와</b> <b>rtsp</b> <b>url </b>이 영상 실행을 위한 핵심 요소이기 때문에 꼭 사용해야 합니다. </span></p>
+<p data-ke-size="size16"><span style="color: #666666;">매 컴포넌트에서 쉽게 </span><span style="color: #666666;">사용하기 위해 props로 값을 전달한 것이고요. 그래야 호출할 땐 &lt;Streamedian id={} url={} /&gt; 방식으로 </span><span style="color: #666666;">쉽게 호출할 테니까요.&nbsp;</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>자 이제 모든 준비가 끝났습니다</b>. <b>React</b>의 <b>App.js</b> 파일을 정리해줍니다.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<pre id="code_1609729006041" class="html xml" style="margin: 20px auto 0px; display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" data-ke-language="html" data-ke-type="codeblock"><code>import './App.css';
+
+const App=()=&gt;{
+  return (
+    &lt;div className="App" &gt;
+
+ 
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;">그리고 저희가 만든 폴더의 경로 (폴더를 경로로 지정하면 해당 폴더의 index.js를 호출합니다)를 사용하여 <b>Streamedian를</b> 호출합니다. </span><span style="color: #666666;">그와 동시에 당연히 <b>id와</b> <b>url</b> 도 넘겨주세요!</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<pre id="code_1609726442706" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>import './App.css';
+import Streamedian from './Streamedian';
+
+const App=()=&gt;{
+  return (
+    &lt;div className="App" &gt;
+
+      &lt;Streamedian id="test" url="rtsp://여러분들의 rtsp url" /&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+
+(이때 제가 사용했던 rtsp는 제 소유가 아니어서 공개할 수 없는 점 양해 부탁드립니다.)</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>Rtsp</b>가 잘 실행되셨나요?&nbsp;&nbsp;</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-filename="tunnel.png" data-origin-width="1007" data-origin-height="646" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_6.png" data-filename="tunnel.png" data-origin-width="1007" data-origin-height="646" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption>가린거는 좀 다보여주기 그래서요....</figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;">더욱 정확한 정보를 원하신다면 <b>공식 사이트</b>를 찾아주세요.</span><span style="color: #666666;"></span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_7.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;">쉽고 간편하게 이해하셨길 바랍니다. 성실한 코딩 하세요.&nbsp;</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #react rtsp #react rtsp 실행 #react hls #react cctv #rtsp 실행 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

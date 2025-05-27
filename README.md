@@ -76,6 +76,9 @@ npm run publish
 
 # 특정 게시물만 게시
 npm run publish:single posts/my-post.md
+
+e.g npm run publish:single posts/category1/test-post.md
+e.g npm run publish:single posts/practices/agile-scrum-a-simple-guide-for-easy-learning.md
 ```
 
 게시 결과로 DEV.to 게시물 URL이 표시됩니다.

@@ -1,0 +1,68 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>[ Pattern ] database per service pattern</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">[ Pattern ] database per service pattern</h2>
+                                <div class="box-info">
+                                    <p class="category">Architecture/design_pattern</p>
+                                    <p class="date">2023-12-07 17:45:22</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h2 data-ke-size="size26"><b>database per service patternとは</b></h2>
+<p style="color: #333333; text-align: start;" data-ke-size="size16"><span>msaArchitectureで使われる</span><span style="letter-spacing: 0px;">パターンの一つで、一つのサービスに一つのdatabaseを使うパターンであります。</span></p>
+<p style="color: #333333; text-align: start;" data-ke-size="size16"><span style="letter-spacing: 0px;">下図のようにorderServiceとcustomerServiceはそれぞれ異なるdbのtableを使用すると見えます。</span></p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<h2 data-ke-size="size26"><b>このようにする理由</b></h2>
+<p data-ke-size="size16">monolithicProjectが巨大するほど理解, 変更, 拡張などが難しいです。</p>
+<p data-ke-size="size16">各サービスでdbをprivateに管理するためセキュリティが上がります。</p>
+<p data-ke-size="size16">dbを分けて使うのでその分負荷が減少し、頻繁に使用されるdbと頻繁に使用されないdbのスペックを異なるように設定することで、リソースの無駄を減らすことができます。</p>
+<p data-ke-size="size16">サービスのスキーマの所有権が明確になり管理しやすいです。</p>
+<p data-ke-size="size16">&nbsp;</p>
+<h2 data-ke-size="size26"><b>する前に確認</b></h2>
+<p data-ke-size="size16">サービスとdbのドメインがうまく区分されていない場合は、orderServiceでorderDbを照会しても希望する値がない場合があります。<br /><br />こうなると、該当サーバーですべきことを毎回他のサーバーに照会して使用するため、むしろトラフィックは増加し、効率性は低下します。</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">Reference</p>
+<p data-ke-size="size16"><a href="https://microservices.io/post/microservices/patterns/data/2019/07/15/ftgo-database-per-service.html" target="_blank" rel="noopener&nbsp;noreferrer">https://microservices.io/post/microservices/patterns/data/2019/07/15/ftgo-database-per-service.html</a></p>
+<div style="background-color: #ffffff; color: #222222; text-align: start;">
+<div>
+<div>
+<p data-ke-size="size16">&nbsp;</p>
+</div>
+</div>
+</div>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #jp #Pattern #MSA 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

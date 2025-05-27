@@ -1,0 +1,310 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>javascript 불변성 정확하게 설명해드립니다 -YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">javascript 불변성 정확하게 설명해드립니다 -YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">TS, JS/javascript</p>
+                                    <p class="date">2021-01-29 11:29:22</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-filename="javascript.png" data-origin-width="571" data-origin-height="440" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-filename="javascript.png" data-origin-width="571" data-origin-height="440" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 data-ke-size="size23"><span style="color: #666666;"><b>-javascript Type 설명</b></span></h3>
+<p>&nbsp;</p>
+<p><span style="color: #666666;"><b>javascript</b>에서 데이터 타입은 2가지로 나뉩니다. <b>원시 타입</b>과 <b>참조 타입입니다.</b></span><span style="color: #666666;"></span></p>
+<p><span style="color: #666666;">원시 타입은 <b>number</b>(숫자), <b>boolean</b>(논리), <b>string</b>(문자), <b>undefined</b>(초기화 안 함), <b>null</b>(없다고 초기화)가 있습니다.</span></p>
+<p><figure class="imageblock alignCenter" data-filename="화면 캡처 2021-01-29 102603.png" data-origin-width="611" data-origin-height="152" width="410" height="NaN" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" data-filename="화면 캡처 2021-01-29 102603.png" data-origin-width="611" data-origin-height="152" width="410" height="NaN" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption>초기화 안해주면 undefined인거 설명하는 이미지</figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">참조 타입은 <b>array</b>(배열), <b>function</b>(함수),&nbsp; <b>object</b>(객체)가 있습니다.&nbsp;</span></p>
+<p><span style="color: #666666;">왜 <b>javascript</b> 는 데이터 타입을 크게 <b>2가지</b>로 나누었을까요? 차이는 <b>저장 방식</b>에서 나옵니다.</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 data-ke-size="size23"><b><span style="color: #666666;">-javascript 메모리 저장 방식</span></b></h3>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">javascript는 값을 저장할 때 변수와 값을 <b>나누어</b> 저장해줍니다.</span></p>
+<p><span style="color: #666666;">이 말이 어떤 말이냐면 <b>x= 2</b> 라면 <b>변수</b> x를 저장하는 메모리 따로 <b>값</b> 2를 저장하는 메모리 따로 저장하는 개념이란 뜻입니다.</span></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;"><b>원시 타입 예제</b>를 통해 설명드리겠습니다.</span></p>
+<p>&nbsp;</p>
+<p data-ke-size="size14"><span style="color: #666666;"><span style="color: #666666;">-예시 코드-</span></span></p>
+<pre id="code_1611824521913" class="html xml" style="margin: 20px auto 0px; display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; cursor: default; z-index: 1;" data-ke-language="html" data-ke-type="codeblock"><code>let x = 3;   //원시타입
+let y = 5;
+let z = x;
+
+console.log(x); // 3   *100
+console.log(y): // 5   *101
+console.log(z): // 3   *100</code></pre>
+<p>&nbsp;</p>
+<table style="border-collapse: collapse; width: 98.783%; height: 69px;" border="1" data-ke-style="style13">
+<tbody>
+<tr style="height: 20px;">
+<td style="width: 16.1393%; height: 20px; text-align: center;">주소</td>
+<td style="width: 27.1699%; height: 20px; text-align: center;">100</td>
+<td style="width: 28.7975%; height: 20px; text-align: center;">101</td>
+<td style="width: 27.8933%; height: 20px; text-align: center;">102</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 16.1393%; height: 20px; text-align: center;"><span style="color: #333333;">메모리&nbsp;</span></td>
+<td style="width: 27.1699%; height: 20px; text-align: center;"><span style="color: #333333;">x = *200</span></td>
+<td style="width: 28.7975%; height: 20px; text-align: center;"><span style="color: #333333;">y = *201</span></td>
+<td style="width: 27.8933%; height: 20px; text-align: center;"><span style="color: #333333;">z = *200</span></td>
+</tr>
+</tbody>
+</table>
+<table style="letter-spacing: 0px; border-collapse: collapse; width: 98.3776%; height: 40px;" border="1" data-ke-style="style15">
+<tbody>
+<tr style="height: 20px;">
+<td style="width: 16.1651%; height: 20px; text-align: center;">주소</td>
+<td style="width: 27.7295%; height: 20px; text-align: center;">200</td>
+<td style="width: 29.1742%; height: 20px; text-align: center;">201</td>
+<td style="width: 29.9002%; height: 20px; text-align: center;">202</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 16.1651%; height: 20px; text-align: center;"><span>메모리</span></td>
+<td style="width: 27.7295%; height: 20px; text-align: center;">3</td>
+<td style="width: 29.1742%; height: 20px; text-align: center;">5</td>
+<td style="width: 29.9002%; height: 20px; text-align: center;">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">x =&nbsp; 데이터 3이 저장되어있는 <b>200 주소 사용</b>&nbsp; &nbsp; &nbsp; y&nbsp;=&nbsp; 데이터 5가 저장되어있는 <b>201 주소 사용</b></span></p>
+<p><span style="color: #666666;">z =&nbsp;&nbsp;데이터 3이 저장되어있는<b> 200 주소 사용 &nbsp;</b></span></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">변수는 주소를 가진 채로 메모리에 변수명을 보존하고 있고&nbsp; 값은 값 자체를 메모리에 보존하고 있습니다.&nbsp;</span></p>
+<p><span style="color: #666666;">z = x 같은 식을 만들게 된다면 같은 <b>주소를 공유하여 메모리</b>를 사용합니다.</span></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">만약 이상태에서 값을 바꾸어 준다면 어떻게 될까요?</span></p>
+<p data-ke-size="size14"><span style="color: #666666;">-예시 코드-</span></p>
+<pre id="code_1611824779985" class="html xml" style="margin: 20px auto 0px; display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" data-ke-language="html" data-ke-type="codeblock"><code>let x = 3;   //원시타입
+let y = 5;
+let z = x;
+
+z = 7;   //이걸해주면 
+
+console.log(x); // 3   *100
+console.log(y): // 5   *101
+console.log(z): // 7   *102</code></pre>
+<p>&nbsp;</p>
+<table style="border-collapse: collapse; width: 99.5349%; height: 62px;" border="1" data-ke-style="style13">
+<tbody>
+<tr style="height: 20px;">
+<td style="width: 16.1393%; height: 20px; text-align: center;">주소</td>
+<td style="width: 27.1699%; height: 20px; text-align: center;">100</td>
+<td style="width: 28.7975%; height: 20px; text-align: center;">101</td>
+<td style="width: 27.8933%; height: 20px; text-align: center;">102</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 16.1393%; height: 20px; text-align: center;"><span style="color: #333333;">메모리</span></td>
+<td style="width: 27.1699%; height: 20px; text-align: center;">x = *200</td>
+<td style="width: 28.7975%; height: 20px; text-align: center;"><span style="color: #333333;">y = *201</span></td>
+<td style="width: 27.8933%; height: 20px; text-align: center;"><span style="color: #333333;">z = *202</span></td>
+</tr>
+</tbody>
+</table>
+<table style="letter-spacing: 0px; border-collapse: collapse; width: 99.3644%; height: 75px;" border="1" data-ke-style="style15">
+<tbody>
+<tr style="height: 20px;">
+<td style="width: 16.5819%; text-align: center; height: 20px;">주소</td>
+<td style="width: 27.0629%; text-align: center; height: 20px;">200</td>
+<td style="width: 28.0304%; text-align: center; height: 20px;">201</td>
+<td style="width: 28.2085%; text-align: center; height: 20px;">202</td>
+</tr>
+<tr style="height: 21px;">
+<td style="width: 16.5819%; text-align: center; height: 21px;"><span>메모리</span></td>
+<td style="width: 27.0629%; text-align: center; height: 21px;">3</td>
+<td style="width: 28.0304%; text-align: center; height: 21px;">5</td>
+<td style="width: 28.2085%; text-align: center; height: 21px;">7</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">x =&nbsp; 데이터 3이 저장되어있는 <b>200 주소 사용&nbsp; </b>&nbsp; &nbsp; y&nbsp;=&nbsp; 데이터 5가 저장되어있는 <b>201 주소 사용</b></span></p>
+<p><span style="color: #666666;">z =&nbsp;&nbsp;데이터 7이 저장되어있는 <b>202 주소 사용&nbsp;&nbsp;</b></span></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">원시 타입의 경우 z의 값을 변경한다면 새로운 메모리 공간에 값을 넣어주고 그 주소를 사용합니다.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">하지만 <b>참조 타입</b>의 경우 방식이 달라집니다.</span></p>
+<p>&nbsp;</p>
+<p data-ke-size="size14"><span style="color: #666666;">-예시 코드-</span></p>
+<pre id="code_1611723083692" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>let obj ={
+     a:10,
+     b:21
+}
+
+let copy = obj;
+console.log(obj);
+copy.b= 0;
+console.log(obj);</code></pre>
+<p>&nbsp;</p>
+<table style="letter-spacing: 0px; border-collapse: collapse; width: 100%; height: 40px;" border="1" data-ke-style="style13">
+<tbody>
+<tr style="height: 20px;">
+<td style="width: 14.3951%; height: 20px; text-align: center;">주소</td>
+<td style="width: 28.7978%; height: 20px; text-align: center;">100</td>
+<td style="width: 28.9138%; height: 20px; text-align: center;">101</td>
+<td style="width: 27.8933%; height: 20px; text-align: center;">102</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 14.3951%; height: 20px; text-align: center;"><span>메모리</span></td>
+<td style="width: 28.7978%; height: 20px; text-align: center;">obj = *200~*201</td>
+<td style="width: 28.9138%; height: 20px; text-align: center;"><span>copy = *200~*201</span></td>
+<td style="width: 27.8933%; height: 20px; text-align: center;">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table style="letter-spacing: 0px; border-collapse: collapse; width: 100%; height: 40px;" border="1" data-ke-style="style15">
+<tbody>
+<tr style="height: 20px;">
+<td style="width: 14.3951%; height: 20px; text-align: center;">주소</td>
+<td style="width: 28.6815%; height: 20px; text-align: center;">200</td>
+<td style="width: 29.2627%; height: 20px; text-align: center;">201</td>
+<td style="width: 27.6607%; height: 20px; text-align: center;">202</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 14.3951%; height: 20px; text-align: center;"><span>메모리</span></td>
+<td style="width: 28.6815%; height: 20px; text-align: center;">a = *300</td>
+<td style="width: 29.2627%; height: 20px; text-align: center;">b = *301</td>
+<td style="width: 27.6607%; height: 20px; text-align: center;">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table style="letter-spacing: 0px; border-collapse: collapse; width: 100%; height: 39px;" border="1" data-ke-style="style12">
+<tbody>
+<tr style="height: 19px;">
+<td style="width: 14.5349%; height: 19px; text-align: center;">주소</td>
+<td style="width: 28.9535%; height: 19px; text-align: center;">300</td>
+<td style="width: 28.721%; height: 19px; text-align: center;">301</td>
+<td style="width: 27.6744%; height: 19px; text-align: center;">302</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 14.5349%; height: 20px; text-align: center;"><span>메모리</span></td>
+<td style="width: 28.9535%; height: 20px; text-align: center;">10</td>
+<td style="width: 28.721%; height: 20px; text-align: center;">21</td>
+<td style="width: 27.6744%; height: 20px; text-align: center;">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">눈치채셨나요?</span></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">원시 타입의 경우 값을 변경한다면 새로운 메모리 공간에 값을 만들어주었는데 참조 타입의 경우는</span></p>
+<p><span style="color: #666666;">copy의 값을 변경했더니 원래 object의 값도 변경이 돼버렸습니다.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">왜인지 이해하기 쉽게 설명드리겠습니다. 코딩하면서 아래의 표와 함께 진행해주시면 이해하시기 좋습니다.</span></p>
+<p>&nbsp;</p>
+<table style="border-collapse: collapse; width: 100%; height: 40px;" border="1" data-ke-style="style13">
+<tbody>
+<tr style="height: 20px;">
+<td style="height: 20px; width: 10.9302%; text-align: center;">주소</td>
+<td style="height: 20px; width: 25.4651%; text-align: center;">100</td>
+<td style="height: 20px; width: 33.3721%; text-align: center;">101</td>
+<td style="height: 20px; width: 30.1163%; text-align: center;">102</td>
+</tr>
+<tr style="height: 20px;">
+<td style="height: 20px; width: 10.9302%; text-align: center;"><span style="color: #333333;">메모리</span></td>
+<td style="height: 20px; width: 25.4651%; text-align: center;">obj = *200~*201</td>
+<td style="height: 20px; width: 33.3721%; text-align: center;"><span style="color: #333333;">copy = *200~*201</span></td>
+<td style="height: 20px; width: 30.1163%; text-align: center;">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table style="border-collapse: collapse; width: 100%; height: 40px;" border="1" data-ke-style="style15">
+<tbody>
+<tr style="height: 20px;">
+<td style="height: 20px; width: 10.4651%; text-align: center;">주소</td>
+<td style="height: 20px; width: 26.3953%; text-align: center;">200</td>
+<td style="height: 20px; width: 33.0233%; text-align: center;">201</td>
+<td style="height: 20px; width: 30%; text-align: center;">202</td>
+</tr>
+<tr style="height: 20px;">
+<td style="height: 20px; width: 10.4651%; text-align: center;"><span style="color: #333333;">메모리</span></td>
+<td style="height: 20px; width: 26.3953%; text-align: center;">a = *300</td>
+<td style="height: 20px; width: 33.0233%; text-align: center;">b = *301</td>
+<td style="height: 20px; width: 30%; text-align: center;">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table style="border-collapse: collapse; width: 100%; height: 40px;" border="1" data-ke-style="style12">
+<tbody>
+<tr style="height: 20px;">
+<td style="width: 10.4651%; height: 20px; text-align: center;">주소</td>
+<td style="width: 26.6279%; height: 20px; text-align: center;">300</td>
+<td style="width: 32.5581%; height: 20px; text-align: center;">301</td>
+<td style="width: 30.2326%; height: 20px; text-align: center;">302</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 10.4651%; height: 20px; text-align: center;"><span style="color: #333333;">메모리</span></td>
+<td style="width: 26.6279%; height: 20px; text-align: center;">10</td>
+<td style="width: 32.5581%; height: 20px; text-align: center;">21 -&gt; 0</td>
+<td style="width: 30.2326%; height: 20px; text-align: center;">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">저희는 <b>copy.b</b>의 값을 0으로 변경했습니다. 즉 <b>201</b>의 값을 변경했기 때문에 <b>301</b> 이 0 이 됩니다.</span></p>
+<p><span style="color: #666666;">하지만 <b>100</b>과 <b>101</b> 은 아무것도 모른 채 <b>주소를 유지</b>하고 있는 것입니다. 저희는 copy.b만 변경했고 그 주소에 해당하는 값만 변경했거든요.</span></p>
+<p><span style="color: #666666;">그래서 301 은 0이 되고 원본도 결국 <b>object.b </b>가<b> 0</b>으로 표현되는 것입니다.</span></p>
+<p>&nbsp;</p>
+<h3 data-ke-size="size23"><b><span style="color: #666666;">-결론-</span></b></h3>
+<p>&nbsp;</p>
+<p data-ke-size="size16"><b><span style="color: #666666;">원본을 보존하기 </span></b><span style="color: #666666;">위해 카피본을 사용하는 경우가 많고 그렇기 때문에 이 부분은 <b>큰 문제</b>가 되겠죠? </span></p>
+<p data-ke-size="size16"><span style="color: #666666;">그래서 이러한<b> 불상사</b>를 막기 위해 </span><span style="color: #666666;"><span style="color: #f89009;"><b>불변성 유지</b> </span>= (카피본을 바꿔도 원본은 변경되면 안 됩니다)&nbsp;</span></p>
+<p data-ke-size="size16"><span style="color: #666666;">를 하라는 말이 나온 것입니다. </span></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;"><b>javascript 불변성</b>에 대해 간단히 이해하셨길 바랍니다. 성실한 코딩 하세요.</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #불변성 #javascript 불변성 #js 불변성 #자바스크립트 불변성 #javascript 특징 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

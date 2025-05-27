@@ -1,0 +1,79 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>[ Spring ] java web api server 만들기</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">[ Spring ] java web api server 만들기</h2>
+                                <div class="box-info">
+                                    <p class="category">Java, Kotlin/spring</p>
+                                    <p class="date">2023-12-07 20:21:50</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">간단한 서버를 만들어봅시다</p>
+<p data-ke-size="size16">pakage에 controller를 만들어줍니다</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">그리고 거기서 bean으로 실행할 class하나를 만들어줍니다</p>
+<p data-ke-size="size16">restController를 통해 (controller에서 responseBody가합쳐진 annotation)</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<div style="background-color: #1e1f22; color: #bcbec4;">
+<p data-ke-size="size16">&nbsp;</p>
+<pre class="crystal"><code>package com.example.demo.controller;
+
+import com.example.demo.bean.HelloWorldBean;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+/**
+ * rest contorller, 일반 contorller 차이는?
+ */
+@RestController
+public class HelloWorldController {
+
+    //GET
+    //
+//    @RequestMapping(method = RequestMethod.GET, path = "/asdf")
+    @GetMapping(path = "/hello-world")
+    public String helloWorld() {
+        return "test";
+    }
+
+    @GetMapping(path = "/hello-world-bean")
+    public HelloWorldBean helloWorldBean() {
+        return new HelloWorldBean("hello");
+    }
+}
+</code></pre>
+</div>
+<p data-ke-size="size16">ㅇ</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

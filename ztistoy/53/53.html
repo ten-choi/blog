@@ -1,0 +1,87 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>centos7 에서 node.js 설치하기 -YEOL (How to install nodejs on centos)</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">centos7 에서 node.js 설치하기 -YEOL (How to install nodejs on centos)</h2>
+                                <div class="box-info">
+                                    <p class="category">OS/Linux</p>
+                                    <p class="date">2020-10-13 13:29:28</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h2 data-ke-size="size26">&nbsp;</h2>
+<h2 data-ke-size="size26"><span style="color: #333333;"><b>-CENTOS 7 명령어</b></span></h2>
+<h3 data-ke-size="size23">&nbsp;</h3>
+<h3 data-ke-size="size23"><span style="color: #333333;">sudo</span></h3>
+<p data-ke-size="size16"><span style="color: #333333;">root 권한을 사용하기 위한 명령어입니다.</span></p>
+<h3 data-ke-size="size23"><span style="color: #333333;">curl&nbsp;</span></h3>
+<p data-ke-size="size16"><span style="color: #333333;">command line에서 사용하는 데이터 통신 도구입니다. 업로드와 다운로드에 용이하여</span></p>
+<p data-ke-size="size16"><span style="color: #333333;">필요한 데이터를 요청할 때 주로 사용합니다.</span></p>
+<h3 data-ke-size="size23"><span style="color: #333333;">bash</span></h3>
+<p data-ke-size="size16"><span style="color: #333333;">shell의 한 종류로 shell을 사용하여 컴퓨터에 명령을 텍스트로 작성하여 실행시킵니다.</span></p>
+<h3 data-ke-size="size23"><span style="color: #333333;">yum</span></h3>
+<p data-ke-size="size16"><span style="color: #333333;">yellodog update modified 약자이며 레드헷 계열에서 사용되는 패키지 설치 관리 도구입니다.&nbsp;</span></p>
+<h2 data-ke-size="size26">&nbsp;</h2>
+<h2 data-ke-size="size26"><span style="color: #333333;"><b>-node 설치를 위한 명령어 순서</b></span></h2>
+<h3 data-ke-size="size23">&nbsp;</h3>
+<h3 data-ke-size="size23"><span style="color: #333333;"><b>curl -sL&nbsp;<a style="color: #333333;" href="https://rpm.nodesource.com/setup_12.x">https://rpm.nodesource.com/setup_12.x</a>&nbsp;| sudo bash -</b><b></b></span><span style="color: #333333;"><b></b></span></h3>
+<h3 data-ke-size="size23"><span style="color: #333333;"><b>curl -sL https://rpm.nodesource.com/setup_16.x | sudo bash -</b></span></h3>
+<p data-ke-size="size16"><span style="color: #333333;">위의 주소는 Node.js 12 or 16 버전의 git url이며 바이너리 배포와 설정 지원 및 스크립트 사용에 대한 url입니다.</span></p>
+<p data-ke-size="size16"><span style="color: #333333;">쉽게 말하면 node 특정 버전을 사용하기 위해 본인 컴퓨터에 node xx 버전 데이터를 받아주는 겁니다.</span></p>
+<h3 data-ke-size="size23">&nbsp;</h3>
+<h3 data-ke-size="size23"><span style="color: #333333;"><b>sudo yum clean all &amp;&amp; sudo yum makecache fast</b></span></h3>
+<p data-ke-size="size16"><span style="color: #333333;">yum clean all 은 cache를 모두 지워줍니다. </span></p>
+<p data-ke-size="size16"><span style="color: #333333;">또한 makecacahe는 클리어 된 다음 cache를 최신으로 두어 작업 속도를 향상한다고 합니다.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<h3 data-ke-size="size23"><span style="color: #333333;"><b>sudo yum install -y gcc-c++ make</b></span></h3>
+<p data-ke-size="size16"><span style="color: #333333;">GNU Compiler Comllection 가 gcc일 때 GNU C++ Compiler를 인스톨하는 것입니다.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<h3 data-ke-size="size23"><span style="color: #333333;"><b>sudo yum install -y nodejs</b></span></h3>
+<p data-ke-size="size16"><span style="color: #333333;">이제 node.js를 인스톨합니다.&nbsp;</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<h3 data-ke-size="size23"><b>node -v</b></h3>
+<p data-ke-size="size16">잘 설치되었는지 버전을 확인합니다.</p>
+<h3 data-ke-size="size23">&nbsp;</h3>
+<p><figure class="imageblock alignCenter" data-origin-width="90" data-origin-height="64" width="181" height="129" data-ke-mobilestyle="widthOrigin">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-origin-width="90" data-origin-height="64" width="181" height="129" data-ke-mobilestyle="widthOrigin" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><b>err case1</b></p>
+<p data-ke-size="size16"><b>no package nodejs available 가 나온다면 curl로 yum 저장소에 node가 설치가 안돼 있다는 의미</b></p>
+<h3 data-ke-size="size23">yum install epel-release -y</h3>
+<p data-ke-size="size16">Extra Packages of Enterprise Linux의 약어가 epel입니다. 리눅스 추가 패키지 인스톨하고 다시 아래의 명령어를 실행해주세요 그리고 다시 yum install node -y 해주세요. 하지만 이렇게 하면 원하는 버전의 정보가 없어서 node 기본 버전이 설치됩니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">잘되셨길 바랍니다 성실한 코딩 하세요.</p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #centos 7 node 설치 #linux node 설치 #centos7 nodejs 설치 #centos node 설치 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

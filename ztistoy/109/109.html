@@ -1,0 +1,89 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Window MariaDB 비밀번호 분실 시 수정 -YEOL (MySql root password reset and update windows)</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Window MariaDB 비밀번호 분실 시 수정 -YEOL (MySql root password reset and update windows)</h2>
+                                <div class="box-info">
+                                    <p class="category">DB/rdb</p>
+                                    <p class="date">2021-11-19 16:45:35</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h4 data-ke-size="size20"><span style="color: #333333;">-Environment</span></h4>
+<p data-ke-size="size16"><span style="color: #333333;">OS: Window 10</span><br /><span style="color: #333333;">DB: MariaDB 10.3.13</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<h3 data-ke-size="size23"><span style="color: #333333;">-PassWord initialize and Update </span></h3>
+<p data-ke-size="size16">&nbsp;</p>
+<h4 data-ke-size="size20"><span style="color: #333333;"><b>1. mysql 서비스 종료</b></span></h4>
+<p data-ke-size="size16"><span style="color: #333333;">Window에서 '실행'을 시작합니다. (단축키 window+R)</span><br /><span style="color: #333333;">내용에 <span style="color: #f89009;"><b>services.msc를</b></span> 입력하여 실행해 주세요. 서비스 창을 켜고 mysql 서비스를 중지합니다.</span></p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<h4 data-ke-size="size20"><b><span style="color: #333333;">2. mysql 실행 권한 스킵</span></b><b><span style="color: #333333;"></span></b></h4>
+<p data-ke-size="size16"><span style="color: #333333;">본인의 MySql 혹은 MariaDB의 경로의 bin 경로를 찾습니다. 그 후 cmd에서 해당 경로로 진입합니다.<br />(제경우 C:\Program&nbsp;Files\MariaDB&nbsp;10.3\bin)</span><br /><br /></p>
+<p data-ke-size="size16">&nbsp;</p>
+<pre id="code_1637304787955" class="html xml" style="display: block; overflow: auto; padding: 20px; color: #383a42; background: #f8f8f8; font-size: 14px; font-family: 'SF Mono', Menlo, Consolas, Monaco, monospace; border: 1px solid #ebebeb; line-height: 1.71; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" data-ke-language="html" data-ke-type="codeblock"><code>cd C:\Program Files\MariaDB 10.3\bin</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #333333;">첫 번째 혹은 두 번째 명령어 중 하나를 실행해줍니다. 권한을 스킵하고 실행하겠다는 의미입니다.</span></p>
+<pre id="code_1637301756745" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>mysqld -uroot --skip-grant-tables 
+OR
+mysqld --skip-grant</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #333333;">그러면 cmd 화면이 정지되면서 mysqld starting process 이와 비슷한 특정 로그가 나옵니다.</span></p>
+<h4 data-ke-size="size20">&nbsp;</h4>
+<h4 data-ke-size="size20"><b><span style="color: #333333;">3. mysql 실행 및 비밀번호 변경</span></b><b><span style="color: #333333;"></span></b></h4>
+<p data-ke-size="size16"><span style="color: #333333;">새로운 cmd 창을 실행하고 동일한 경로에서 아래의 명령어를 실행해줍니다.&nbsp;</span></p>
+<pre id="code_1637301841467" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>mysql -uroot mysql</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #333333;">-그리고 update 문을 통해 원하는 비밀번호를 설정합니다.&nbsp;</span></p>
+<pre id="code_1637304875160" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code> update user set password = PASSWORD('plz input your password') WHERE user = 'root';</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="background-color: #ffffff; color: #666666;">-mysql 5.7 이후 버전일 경우( FLUSH PRIVILEGES: 기존 캐시 지우고 새 설정 적용)</span></p>
+<pre id="code_1637305629842" class="html xml" style="display: block; overflow: auto; padding: 20px; color: #383a42; background: #f8f8f8; font-size: 14px; font-family: 'SF Mono', Menlo, Consolas, Monaco, monospace; border: 1px solid #ebebeb; line-height: 1.71; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" data-ke-language="html" data-ke-type="codeblock"><code> update user set authentication_string= PASSWORD('plz input your password') WHERE user = 'root';
+ FLUSH PRIVILEGES;</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">실행 완료 로그가 나올 것입니다. 로그 중 Changed에 숫자가 생기면 잘 변경된 것입니다.<br /></span><span style="background-color: #ffffff; color: #333333;">제어판에서 mysql 서비스를 다시 시작합니다. 이때 에러가 난다면 컴퓨터를 끄고 다시 실행해주세요</span></p>
+<h4 data-ke-size="size20">&nbsp;</h4>
+<h4 data-ke-size="size20"><b><span style="color: #333333;">4. 완료 후 테스트</span></b><b><span style="color: #333333;"></span></b></h4>
+<p data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">Workbanch 같은 에디터를 사용하는 유저라면 명령어와 비밀번호를 입력하여 직접 cmd에서 접근해서 실행하시면 명령어로 실행해주세요</span></p>
+<pre id="code_1637302562984" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>mysql -u root -p</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><b>최후의 수단</b></p>
+<p data-ke-size="size16"><a href="https://goodteacher.tistory.com/291" target="_blank" rel="noopener">https://goodteacher.tistory.com/291</a></p>
+<p data-ke-size="size16"><span style="color: #333333;">이 분것을 참조</span></p>
+<p data-ke-size="size16"><span style="color: #333333;">성실한 코딩 하세요.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #mysql password #MariaDB 비번 분실 #MariaDB 비번 초기화 #mysql 비번 분실 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

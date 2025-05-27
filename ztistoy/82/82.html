@@ -1,0 +1,198 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>React, Vue, Html 등 구분없는! CSS로 font 적용하기-YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">React, Vue, Html 등 구분없는! CSS로 font 적용하기-YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">TS, JS/react</p>
+                                    <p class="date">2021-02-03 13:10:24</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-filename="react.png" data-origin-width="632" data-origin-height="602" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-filename="react.png" data-origin-width="632" data-origin-height="602" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p data-ke-size="size14"><br /><span style="color: #666666;"><b>Css</b>에서 <b>font</b>를 적용할 수 있게끔 지원하는 기능이 있습니다. 그래서<b> html, vue, anguler</b> 이런 구분이 없이 적용할 수 있습니다.</span></p>
+<p data-ke-size="size14"><span style="color: #666666;">필자는 <b>React</b>를 주로 쓰기 때문에 <b>React</b>에서 <b>font</b>를 적용하는 예시를 보여드립니다. </span></p>
+<p data-ke-size="size14"><span style="color: #666666;">(다른 프런트 언어를 사용하셔도 이해하기 쉬운 글입니다)</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 data-ke-size="size23"><span style="color: #666666;"><b>-폰트 적용하는 방법</b></span></h3>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">1. npm 명령어를 사용하여 <b>React </b>프로젝트를 만들어줍니다.&nbsp;</span></p>
+<pre id="code_1612320238071" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>npm create-react-app font-test  // 이름은 편한대로 설정해주세요.</code></pre>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">그리고 <b>App.js</b> 파일로 이동하여 화면에 보이는 부분을 <b>깔끔하게 정리</b>해줍니다.</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">보기 편하기 위해<b> 폰트 사이즈</b>를 50px로 설정했습니다.</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_3.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption>첫화면은 이렇게 생겼습니다.</figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">2. <b>눈누</b>라는 무료 폰트 사이트를 이용했습니다.&nbsp;</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_4.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">원하는 폰트 하나를 정해서 클릭해주세요. 저는 <b>산돌 삼립 호빵체</b>를 사용했습니다. (호빵이 꽂히네요)</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_5.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">여기서 선택지가 나뉩니다. <b>font</b>를 <b>다운로드</b>해서 적용하느냐 <b>웹주소</b>로<b> 폰트</b>를 불러와서 적용을 하느냐입니다. </span></p>
+<p><span style="color: #666666;">2개다 해볼 텐데 먼저&nbsp;웹폰트를 사용해보겠습니다.</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 data-ke-size="size23"><b><span style="color: #666666;">-웹폰트를 사용하는 법</span></b></h3>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_6.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;"><b>React</b> 프로젝트에서<b> App.css</b> 에 폰트를 적용하기 위한 코드를 입력해줍니다.&nbsp;</span></p>
+<p><span style="color: #666666;"><b><span style="color: #666666;">*font-face 란 css3부터 적용가능한 글꼴 명세 기능입니다.</span></b></span></p>
+<pre id="code_1612317575674" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>@font-face {
+    font-family: 'this_is_font_name';  //원하는 이름을 입력해주세요
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    ㄴ  // 폰트의 경로를 설정해주세요
+     font-weight: normal; //폰트의 두께를 설정해주세요
+     font-style: normal;  //폰트의 스타일을 설정해주세요
+}
+.App {
+  text-align: center;
+  font-size: 50px;  //폰트 사이즈 키웠습니다.
+  font-family: this_is_font_name;  // font-face에서 설정한 폰트 이름입니다.
+}</code></pre>
+<p>&nbsp;</p>
+<p><span style="color: #666666;"><b>Css</b>에 변경이 끝났다면 <b>React</b>&nbsp;화면을 보시면 예쁘게 잘 적용이 됐습니다.&nbsp;</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_7.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 data-ke-size="size23"><b><span style="color: #666666;">-저장된 폰트 사용하는 법</span></b></h3>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">1. 웹폰트가 아닌 <b>다운로드</b>를 클릭해줍니다.</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_8.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">2. 아래와 같은 화면이 나오면 <b>다운로드</b>를 클릭해주면 아래로 이동됩니다.</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_9.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p><span style="color: #666666;"><b>이동된 화면</b>에서 <b>TTF</b> 다운로드를 클릭해줍니다.</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_10.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">3. <b>React</b> 프로젝트에서 src 폴더에 <b>fonts</b>라는 폴더를 만들어주세요.</span></p>
+<p><span style="color: #666666;">&nbsp; &nbsp;다운로드한 <b>font</b> 압축파일을 해당 폴더에서 압축 풀기를 진행해주세요.</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_11.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p><span style="color: #666666;"><span style="color: #666666;">&nbsp;</span></span></p>
+<p><span style="color: #666666;">4. 위와 같은 설정이지만 <b>src</b>(경로) 부분이 다릅니다. <b>App.css</b> 에서 fonts 경로를 통해 다운로드한 <b>ttf</b> 폰트 파일명을 적어줍니다.</span></p>
+<pre id="code_1612318443940" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>@font-face {
+    font-family: 'write_font_name';
+    src: url(./fonts/SDSamliphopangcheTTFOutline.ttf) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.App {
+  text-align: center;
+  font-size: 50px;
+  font-family: write_font_name;
+}
+</code></pre>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">font의 종류는 2가지였습니다. <b>SDSamliphopangcheTTFOutline</b>를 사용한 이유는 <b>Outline</b> 폰트가 변경했다는 부분이 부각되서입니다</span></p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_12.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">변경됐다는 점을 위해 글자도 바꿔보았습니다. </span></p>
+<p><span style="color: #666666;">font 적용 잘 되셨길 바랍니다. 성실한 코딩 하세요~</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #폰트 적용하는법 #react font 적용 #html font 적용 #vue font 적용 #css font 적용 #angular font 적용 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

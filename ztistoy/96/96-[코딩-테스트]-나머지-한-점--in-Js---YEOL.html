@@ -1,0 +1,73 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>[코딩 테스트] 나머지 한 점  in Js - YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">[코딩 테스트] 나머지 한 점  in Js - YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">CodingTest</p>
+                                    <p class="date">2021-05-22 16:53:06</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="755" data-origin-height="404" data-ke-mobilestyle="widthOrigin">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-origin-width="755" data-origin-height="404" data-ke-mobilestyle="widthOrigin" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="688" data-origin-height="405" data-ke-mobilestyle="widthOrigin">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" data-origin-width="688" data-origin-height="405" data-ke-mobilestyle="widthOrigin" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">규칙을 찾았습니다.</p>
+<p data-ke-size="size16">첫항에 같은 숫자가 2개 들어가는 것과 1개 들어가는 것 두 번째 항도 동일한 개념입니다.</p>
+<p data-ke-size="size16">첫 번째 예를 기준으로 배열에서 [0] 부분은 1, 3, 3 이면 3이 겹치는 상태입니다.</p>
+<p data-ke-size="size16">배열에서 [1] 부분은 4, 4, 10 이면 4가 겹치는 상태입니다. 겹치는 부분을 소거해주면 하나의 좌표가 나옵니다.</p>
+<p data-ke-size="size16">[1, 10] result 값입니다. 이런 식으로 저는 답을 찾았습니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<pre id="code_1621669976348" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>function solution(v) {
+    let arr1=new Set(), arr2=new Set();   // set은 그냥 array 비슷한 개념인데 es6 익숙해지려고 썼습니다. (여러분도 써보세요)
+    for(let i of v){
+        arr1.has(i[0])?arr1.delete(i[0]):arr1.add(i[0]);   // 여기서 숫자가 같은 숫자가 있으면 제거해줍니다. 0번 항
+        arr2.has(i[1])?arr2.delete(i[1]):arr2.add(i[1]);   // 여기서 숫자가 같은 숫자가 있으면 제거해줍니다. 1번 항
+    }
+    return [...arr1, ...arr2]; // spread 연산자를 써줘서 배열 안에 각 숫자를 담아줍니다.
+}</code></pre>
+<p data-ke-size="size16">어떤 분은 저와 같은 개념이지만 식을 ^= (비트 연산)으로 만드셨습니다. 제기준엔 비트 연산이 제일 효율적인 코드였습니다.</p>
+<p data-ke-size="size16">제 코드는 비트 연산을 나열한 코드고요.&nbsp; 읽어주셔서 감사합니다 성실한 코딩 하세요.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #코딩테스트 #나머지 한 점 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

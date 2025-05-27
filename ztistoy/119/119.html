@@ -1,0 +1,179 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Nginx Load Balancing 설정 및 활용 - YEOL (how to set load balancer on nginx )</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Nginx Load Balancing 설정 및 활용 - YEOL (how to set load balancer on nginx )</h2>
+                                <div class="box-info">
+                                    <p class="category">ETC/Nginx</p>
+                                    <p class="date">2022-01-17 13:48:27</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h4 data-ke-size="size20">환경&nbsp;</h4>
+<p data-ke-size="size16"><span style="color: #333333;"><span style="background-color: #ffffff; color: #555555;">Linux (Redhat or centos)</span><br />Nginx<br /><br /></span></p>
+<h4 data-ke-size="size20">개요</h4>
+<p data-ke-size="size16">Nginx의 기능을 통해 서버 2대를 이용한 lb test를 진행할 예정입니다.<br />-&gt; load balancing의 약어로 lb라 부르겠습니다.</p>
+<h4 data-ke-size="size20">목차</h4>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Nginx 설치하기</li>
+<li>upstream 설정하기</li>
+<li>Nginx lb 실전 설정을 위한 설계</li>
+<li>selinux로 인한 보안 문제</li>
+</ul>
+<h3 data-ke-size="size23">&nbsp;</h3>
+<h3 data-ke-size="size23"><b><span style="color: #333333;">- Nginx 설치하기</span></b></h3>
+<p data-ke-size="size16"><span style="color: #333333;">패키지 관리 도구 업데이트 및 nginx를 install 해줍니다. dnf로 설치해도 상관없습니다.</span></p>
+<pre id="code_1642144388621" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>sudo yum update -y  
+sudo yum install nginx -y</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #333333;">설치 완료했다면<b> nginx -v</b> 명령어로 버전을 확인하여 잘 설치된 지 확인해줍니다. 그리고 아래의 이미지와 같은 경로로 이동합니다. pwd는 현재 디렉터리 경로를 보여주는 명령어입니다.</span><span style="color: #333333;"></span></p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #333333;">해당 경로에 존재하는 <b>nginx.conf</b>는 <b>nginx</b>서버에서 할 행동에 대한 환경설정을 지정하는 파일입니다. <b>vi nginx.conf</b> 명령어를 통해 nginx 설정을 확인하거나 수정할 수 있습니다.&nbsp; <b>vi nginx.conf</b> 명령어를 실행해줍니다.</span></p>
+<p data-ke-size="size16"><span style="color: #333333;"><b>nginx.conf</b> 파일의 <b>default port</b>를 확인해줍니다. nginx를 설치한 서버의 ip와 nginx에 설정한 default port를 사용해 pc에서 접속해봅니다. 저는 80 포트를 사용 중이라 3001번으로 교체했습니다.</span></p>
+<pre id="code_1642149823657" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>http {
+ 
+   server {
+        listen       3001 default_server; # 80 쓰고있어서 3001로 변경
+        root         /usr/share/nginx/html;
+ 
+    }
+}</code></pre>
+<p data-ke-size="size16"><span style="color: #333333;">만약 외부에서 접속이 안된다면 방화벽을 해제해줍니다. 서비스에서 방화벽을 멈추고 reload로 잘 멈췄는지 확인해줍니다.&nbsp;</span></p>
+<pre id="code_1642149902412" class="dockerfile" data-ke-language="html" data-ke-type="codeblock"><code>systemctl stop firewalld
+firewall-cmd --reload</code></pre>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">외부 환경인 웹에서 ip를 통해 접근을 시도해주세요.</p>
+<p data-ke-size="size16">nginx 기본 화면에 접근이 되셨다면 설치 및 테스트가 완료되었습니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<h3 data-ke-size="size23"><b><span style="color: #333333;">- upstream 설정하기</span></b><span style="color: #333333;"></span></h3>
+<p data-ke-size="size16"><span style="color: #333333;">upstream은 nginx에서 lb를 적용하기 위해 접속할 서버를 등록하는 곳입니다. lb를 어떻게 할지 따로 지정하지 않으면&nbsp; round robin 방식으로 설정됩니다. 저는 아래의 코드 블록과 같이 upstream명을 lbtest로 설정했습니다.</span></p>
+<pre id="code_1642149289011" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>http {
+    upstream lbtest {
+        server 준비한 서버 ip:81;
+        server 준비한 서버 ip:82;
+   }
+
+   server {
+        listen       3001 default_server; # 80 쓰고있어서 3001로 변경
+        root         /usr/share/nginx/html;
+ 
+        location /{
+           proxy_pass http://lbtest;
+        }
+ 
+
+        #error_page 404 /404.html;
+        #    location = /40x.html {
+        #}
+
+        # error_page 500 502 503 504 /50x.html;
+        #    location = /50x.html {
+        #}
+    }</code></pre>
+<p data-ke-size="size16">실제 이미지는 아래와 같습니다.</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/제목 없음.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16"><span style="color: #333333;">upstream lbtest에 서버를 2개 이상 등록해줍니다. httpd, node, java 등 접속 가능한 서버면 상관없습니다. </span></p>
+<p data-ke-size="size16"><span style="color: #333333;"><b>proxy_pass</b>는 외부에서 nginx ip에 접근 시 사용됩니다. proxy_pass에 입력된 경로에 기존 접근을 우회시켜줍니다. upstream을 따로 설정했다면 upstream에 지정된 서버들을 lb 하면서 호출합니다.</span><span style="color: #333333;"></span></p>
+<p data-ke-size="size16"><span style="color: #333333;">loadbalancing 테스트를 위해 위와 같이 location에 proxy_pass를 lbtest로 설정합니다.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #333333;"><b><span style="color: #006dd7;">주의할 점</span> <br /></b></span><span style="color: #333333;"><b>1. location /<br /><b>2. location /test<br /></b>위와 같은 nginx 서버 경로에 같은 upstream ip를 등록해서 사용할 경우 upstream 예시 ip가 111.111.111.111:81일 때 </b></span><span style="color: #333333;"><b>1번은 설정된 대로 111.111.111.111:81에 접근하지만 2번은 111.111.111.111:81/test에 접근하여 의도하지 않은 접근이 될 수 있습니다.<br /><br /></b></span></p>
+<p data-ke-size="size16"><span style="color: #333333;"><b>[아래의 예시 코드 블록 참조]</b></span></p>
+<pre id="code_1642150641801" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>http {
+    upstream lbtest {
+        server 111.111.111.111:81; 
+        server 준비한 서버 ip:82;   
+   }
+
+   server {
+        listen       3001 default_server; # 80 쓰고있어서 3001로 변경
+        root         /usr/share/nginx/html;
+        location /{
+           proxy_pass http://lbtest;
+        }
+        
+        #######################################
+        #location /test{
+        #  proxy_pass http://lbtest; 
+             
+           #이렇게 할 경우 lbtest에 설정한 ip + 추가된경로 -&gt; 아래와 같은 현상 발생
+           #server 111.111.111.111:81/test  
+           
+        #}
+        ########################################
+    }</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #333333;">nginx 설정을 완료했다면 restart 명령어를 통해 설정을 적용합니다. reload도 가능하지만 간혹 conf 파일에 오류가 있을 때 restart가 잘 잡아내기 때문에 restart를 애용합니다.</span></p>
+<pre id="code_1642148337159" class="css" data-ke-language="html" data-ke-type="codeblock"><code>systemctl restart nginx.service</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #333333;">nginx를 외부에서 접속하여 새로고침 할 때마다 등록한 서버를 번갈아 띄우는 걸 반복하는지 확인해줍니다.</span></p>
+<p data-ke-size="size16"><span style="color: #333333;">upstream에 등록되어있는 2개의 url 중 하나를 다운시킨다면 남은하나만 접속됩니다.</span></p>
+<p data-ke-size="size16"><span style="color: #333333;">loadBalancing 설정 글이지만 유사한 개념인 ServerClustering 부분 또한 테스트하였습니다.</span></p>
+<p data-ke-size="size16"><span style="color: #333333;">proxy ip를 하나 두고 모든 서버에서 대응하여 문제가 생긴 서버를 제외하고 호출하는 기능도 Nginx upstream과 Azure lb에서 별다른 설정 없이 지원해주는 걸 테스트 결과로 확인했습니다.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<h3 data-ke-size="size23"><b>- Nginx lb 실전 설정을 위한 설계</b></h3>
+<p data-ke-size="size16"><span style="color: #333333;">aws나 azure의 lb기능을 사용하지 않는다면 nginx upstream 기능을 통해 lb전용 서버를 만들 수 있습니다.&nbsp;</span></p>
+<p data-ke-size="size16"><span style="color: #333333;">nginx 서버를 접속하면 upstream frontLoadBalancer에 등록한 front서버에 접근합니다. </span></p>
+<p data-ke-size="size16"><span style="color: #333333;">그리고 front에서는 nginx 서버의 graphql에 api를 호출합니다. 그럼 nginx서버는 backLoadBalancer에 등록한 서버에 api를 호출하기 때문에 front와 back의 lb가 가능합니다.&nbsp;</span><span style="color: #333333;"></span></p>
+<pre id="code_1642148455858" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>       location /{
+           proxy_pass http://frontLoadBalancer;
+        }
+
+        location /graphql {
+           proxy_pass http://backLoadBalancer;
+        }</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<h3 data-ke-size="size23"><b><span style="color: #333333;">- selinux로 인한 보안 문제</span></b></h3>
+<p data-ke-size="size16"><span style="color: #333333;">만약 nginx 접근에 실패하고 nginx error log를 검사하는 경우에서 아래와 같은 문구가 뜰 경우가 있습니다.&nbsp;</span></p>
+<p data-ke-size="size16"><span style="color: #333333;">-&gt; nginx permission denied while connecting to upstream</span></p>
+<p data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">아래의 명령어를 통해 http 네트워크 연결 상태를 확인해줍니다.</span></p>
+<pre id="code_1642147569891" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>#getsebool -a | grep http</code></pre>
+<p data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">httpd_can_network_connect 상태가 off 라면 on으로 바꿔줘야 합니다.</span></p>
+<p data-ke-size="size16"><span style="background-color: #ffffff;">http의 접근 보안정책입니다.</span></p>
+<pre id="code_1642147551051" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>#setsebool httpd_can_network_connect on -P</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">nginx lb에 관한 글이었습니다. 성실한 코딩 하세요.</span></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #nginx 로드밸런싱 #nginx lb #nginx loadbalancing #nginx loadbalancer 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

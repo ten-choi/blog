@@ -1,0 +1,219 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>[RPA UiPath 사용해보기] 2. Uipath 실행 테스트 -YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">[RPA UiPath 사용해보기] 2. Uipath 실행 테스트 -YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">ETC/RPA</p>
+                                    <p class="date">2021-04-21 16:01:04</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-filename="uipath-og-image.webp" data-origin-width="1200" data-origin-height="800" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.webp" data-filename="uipath-og-image.webp" data-origin-width="1200" data-origin-height="800" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 data-ke-size="size23"><span style="color: #666666;">UiPath 실행 프로젝트</span></h3>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">이번에 진행할 내용은 <b>UiPath</b>를 사용해 유저가 크롬에서 구글링 했던 행동을 <b>저장하여 실행</b>하는 부분까지</span></p>
+<p>진행하려 합니다.</p>
+<p>&nbsp;</p>
+<h4 data-ke-size="size20"><span style="color: #666666;">1.<span> 프로젝트 환경설정</span></span></h4>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">새로운 프로젝트를 만들어줍니다.</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">프로젝트 명은 <b>googleSearch</b>로 진행하겠습니다.&nbsp;</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">그리고 <b>Uipath</b>의 기능을 크롬 브라우저에서 사용할 예정입니다.</span></p>
+<p><span style="color: #666666;">그렇게 하기 위해선 크롬에서 <span style="color: #666666;">Uipath </span>확장 프로그램을 설치해주어야 합니다.</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">모든 크롬 사이트를 한번 종료해야 되니까 참고하고 진행해주세요.</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_3.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">설치가 <b>완료</b>되셨다면 아래와 같이 <b>모든 사이트에서 적용</b> 가능하게끔 설정해주세요.</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_4.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>만약 확장 프로그램을 설치하지 않았다면 아래와 같은 에러와 맞닥뜨렸을 겁니다!!</p>
+<p><figure class="imageblock alignCenter" data-filename="크롬 uipath 브라우저.png" data-origin-width="545" data-origin-height="151" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_5.png" data-filename="크롬 uipath 브라우저.png" data-origin-width="545" data-origin-height="151" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;"><span style="color: #666666;">자 이제 절반은 끝냈습니다. 거의 다 오셨습니다!</span></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 data-ke-size="size23"><span style="color: #666666;"><span style="color: #666666;"><span style="color: #666666;">2.<span><span> 간단한 </span>프로젝트 구현</span></span></span></span></h3>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">시작 카테고리로 가셔서 최근 생성 항목을 찾아봅시다! </span><span style="color: #666666;">저희가 앞서 만든 googleSearch를 클릭하여 실행해주세요.</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_6.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">드디어 프로젝트로 입성했습니다. </span></p>
+<p><span style="color: #666666;">이번에 사용해볼 기능은 <b>상단 바에 있는 레코딩,</b><b> 파일 디버그</b> 이렇게 2가지가 있습니다.</span></p>
+<p><span style="color: #666666;"><b><b>레코딩</b>버튼을</b> <b>클릭</b>해주세요.</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_7.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">데스크톱이나 웹을 클릭하셔서 진행해주세요. 데스크톱을 선택해도 가능은 하지만 웹 브라우저를</span><span style="color: #666666;"></span></p>
+<p><span style="color: #666666;">이용할 예정이니 웹을 선택해주세요.</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_8.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">그럼 아래와 같은 <b>레코딩</b><b>&nbsp;창</b>이 나타납니다.&nbsp;</span><span style="color: #666666;">마우스를 올려보면 친절하게 설명도 나오니 참고해주세요.</span></p>
+<p><span style="color: #666666;">(구글 초기화면을 띄워놓고 진행해주세요)</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_9.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;"><b>레코드 버튼</b>을 클릭하면 마우스가 변화합니다.&nbsp; </span><span style="color: #666666;">마우스를 입력 창에 올려놓고 <b>클릭</b>해주세요.</span></p>
+<p><img style="text-align: center; caret-color: transparent; letter-spacing: 0px;" src="https://blog.kakaocdn.net/dn/msUXw/btq21MeojhC/uvXcWaM7N5oqMXo2kdMn0k/img.png" data-image-src="https://blog.kakaocdn.net/dn/msUXw/btq21MeojhC/uvXcWaM7N5oqMXo2kdMn0k/img.png" data-origin-width="0" data-origin-height="0" /></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">그럼 아래와 같이<b> 원하는 값을 입력</b>하라고 나옵니다. </span><span style="color: #666666;">저는 한글로<b> "검색"</b>이라고 입력한 후<b> 엔터</b>를 눌렀습니다.</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_10.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">엔터까지 누르면 <b>입력 <b>레코딩</b>이</b> 완료된 것입니다.</span></p>
+<p><span style="color: #666666;">다음 <b>레코딩</b>이 가능한 상태로 돌아오면 마우스를 밑으로 가져가서 <b>"Google 검색"</b>을 클릭해주세요</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_11.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">아래와 같은 화면으로 넘어갔다면 <b>저장 및 종료</b> 버튼을 누릅니다.</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_12.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">새 시퀀스를 만들어 달라는 말이 나옵니다. <b>만들기를 클릭</b>해주세요. 제 경우 명칭은 기본값 그대로 사용했습니다.</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_13.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">완료되면 uipath studio 화면에 <b>진행했던 프로세스</b>가 <b>플로우 차트</b>처럼 나타날 것입니다.</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_14.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">이제 대망의 <b>실행</b>입니다. 여러분이 잘 따라와 주셨길 바라면서 <b>파일 디버그</b> 버튼을 눌러주세요!!</span></p>
+<p><span style="color: #666666;">(구글 초기화면 띄워 둔 상태가 설정할 때와 동일해야 합니다.)</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_15.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">저와 같이 시퀀스를 따라서 잘 진행이 되셨나요?</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_16.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;"><b>RPA UiPath</b>에 기초적인 개념이 잡히셨나요? 그렇다면 <span style="color: #666666;">축하드립니다.&nbsp;</span></span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" width="600" height="NaN" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_17.png" data-origin-width="0" data-origin-height="0" width="600" height="NaN" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>다음글을 만든다면 액티비티를 사용한 글을 올리려 합니다. 감사합니다.</p>
+<p>&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #UiPath #uipath 설치 #rpa uipath #rpa 란 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

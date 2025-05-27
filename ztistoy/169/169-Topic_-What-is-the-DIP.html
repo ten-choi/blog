@@ -1,0 +1,91 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Topic: What is the DIP</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Topic: What is the DIP</h2>
+                                <div class="box-info">
+                                    <p class="category"></p>
+                                    <p class="date">2023-05-12 14:20:49</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h4 data-ke-size="size20"><b><span style="background-color: #ffffff; color: #000000; text-align: start;">Topic: What is the DIP</span></b><span style="background-color: #ffffff; color: #000000; text-align: start;"><br /></span></h4>
+<p data-ke-size="size16">DIP:Dependency Inversion Principle(의존성 역전 원칙)<br />고차원 모듈은 저 차원 모듈에 의존해서는 안 되며, 추상화된 것은 구체적인 것에 의존해서는 안 된다는 원칙이다<br />즉, 추상화된 인터페이스를 통해 두 모듈 모두 추상화에 의존해야 한다<br />chatGPT의 설명이다. </p>
+<p data-ke-size="size16">이게 뭔 말일까<br /><span style="font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Apple SD Gothic Neo', Arial, sans-serif; letter-spacing: 0px;">chatGPT를&nbsp; 사용해서 sampleCode를 만들어보자<br /></span>밑에 있는 첫 번째 sampleCode를 확인해 보자</p>
+<pre id="code_1683604143214" class="java" style="background-color: #f8f8f8; color: #383a42; text-align: start;" data-ke-language="java" data-ke-type="codeblock"><code>public class OrderProcessor {
+    private EmailSender emailSender = new EmailSender();
+
+    public void processOrder(Order order) {
+        // 주문 처리 로직
+        emailSender.sendEmail("주문이 접수되었습니다.", order.getCustomerEmail());
+    }
+}
+
+public class EmailSender {
+    public void sendEmail(String message, String recipientEmail) {
+        // 이메일 발송 로직
+    }
+}</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p style="color: #333333; text-align: start;" data-ke-size="size16">위의 코드를 보자<br />order method를 사용하면 무조건 order는 email로 해야 한다<br />sourceCode가 그렇게 돼있다</p>
+<p style="color: #333333; text-align: start;" data-ke-size="size16">만약 email이 아니라 다른 매체로 발송하고 싶다면?<br />order method로직을 수정하고 다른 매체 class도 추가해야 할 것이다<br />즉, 저 차원 module인 send 동작이 추가되는데 <span style="color: #333333; text-align: start;">고차원 module인 order가<span> 변경된다는 소리다</span></span></p>
+<p style="color: #333333; text-align: start;" data-ke-size="size16">2번째 코드예시처럼 interface를 이용해 보자<br />email과 sms를 보내는 class가 있다</p>
+<p style="color: #333333; text-align: start;" data-ke-size="size16">interface를 통하기 때문에 order class는 수정하지 않아도 된다<br />새로운 기능을 추가할 때는 새로 class를 구현하고 interface를 상속(inheritance)하면 된다<br />decoupling 되고 확장성이 올라간다</p>
+<pre id="code_1683604143217" class="java" style="background-color: #f8f8f8; color: #383a42; text-align: start;" data-ke-language="java" data-ke-type="codeblock"><code>public class OrderProcessor {
+    private IMessageSender messageSender;
+
+    public OrderProcessor(IMessageSender messageSender) {
+        this.messageSender = messageSender;
+    }
+
+    public void processOrder(Order order) {
+        // 주문 처리 로직
+        messageSender.sendMessage("주문이 접수되었습니다.", order.getCustomerEmail());
+    }
+}
+
+public interface IMessageSender {
+    void sendMessage(String message, String recipientEmail);
+}
+
+public class EmailSender implements IMessageSender {
+    public void sendMessage(String message, String recipientEmail) {
+        // 이메일 발송 로직
+    }
+}
+
+public class SMSSender implements IMessageSender {
+    public void sendMessage(String message, String recipientEmail) {
+        // SMS 발송 로직
+    }
+}</code></pre>
+<p style="color: #333333; text-align: start;" data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

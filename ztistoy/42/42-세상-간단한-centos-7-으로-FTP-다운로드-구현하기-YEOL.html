@@ -1,0 +1,180 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>세상 간단한 centos 7 으로 FTP 다운로드 구현하기-YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">세상 간단한 centos 7 으로 FTP 다운로드 구현하기-YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">OS/Linux</p>
+                                    <p class="date">2020-08-26 11:01:51</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-filename="ftp.png" data-origin-width="631" data-origin-height="526" width="459" height="NaN" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-filename="ftp.png" data-origin-width="631" data-origin-height="526" width="459" height="NaN" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;이 글은 gui 버전입니다.&nbsp;<br />cli글은 이쪽을 참고해주세요 -&gt;&nbsp; (금방올릴게요 ㄱㄷㄱㄷ)</p>
+<h2 data-ke-size="size26"><span style="color: #333333;">- FTP 란</span></h2>
+<p>&nbsp;</p>
+<p>파일 전송 프로토콜(File Transfer Protocol)은 TCP/IP 프로토콜을 이용해서 서버와 클라이언트 사이에서&nbsp;</p>
+<p>파일을 전송하는 개념입니다. 서버에서 파일을 업로드하고 클라이언트에서 다운로드한다고 생각하시면 됩니다.<span style="color: #333333;"><span></span></span></p>
+<p>&nbsp;</p>
+<h2 data-ke-size="size26"><span style="color: #333333;">- 서버에서 해줄일</span></h2>
+<p>&nbsp;</p>
+<p>vmware 혹은 virtualbox에서 centos 7을 실행해줍시다.</p>
+<p>터미널을 실행해줍니다. 그다음 root에서 사용하기 위해&nbsp; su -&nbsp; 명령어를 입력합니다.&nbsp;&nbsp;</p>
+<p>아주 간단하게 FTP를 사용해주려 하는데 현재는 FTP 관련 기능을 가지고 있지 않습니다.</p>
+<p>따라서 아래의 yum 명령어를 통해 vsftpd를 다운로드해줍니다.</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>이렇게 실행해주면 원래 없던 ftp라는 폴더가 var 경로에 생성됩니다.&nbsp;</p>
+<p>pub는 public을 의미하며 pub 폴더에 주로 파일을 업로드합니다.</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>자 이제 테스트를 위해 파일을 만들어주겠습니다. vi 텍스트 편집기를 활용하여 index.js 파일을 만들어줍시다.</p>
+<p>(file1 은 개인적으로 테스트한 거니까 무시해주세요)</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_3.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>vi 텍스트는 아래 이미지를 참고해주세요&nbsp; i를 누르고 원하는 글을 입력 후 esc로 탈출해줍니다.</p>
+<p>:wq가 저장 종료 구문입니다. 커맨드를 입력해줍니다.</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_4.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>첫 번째 커맨드는 설치한 ftp를 실행해주는 커맨드이고</p>
+<p>두 번째 커맨드는 재부팅 시 자동 실행하겠다는 enable 커맨드입니다.</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_5.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>(저는 테스트 후 블로그용으로 다시 진행하기에 enable을 사용해도 service관련 설명 코드가 화면에 보이진 않습니다)</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_6.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_7.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>ftp 방화벽을 해제해주는 이유는 외부에서 centos 7에 업로드되어있는 파일을 접근할 때 접근을 허용해주기 위함입니다.</p>
+<p>벌써 centos7에서 해줄 일은 다끝났습니다.&nbsp; 서버는 자기역할을 완수했습니다.&nbsp;</p>
+<p>&nbsp;</p>
+<h2 data-ke-size="size26">-클라이언트에서 해줄일</h2>
+<p>&nbsp;</p>
+<p>알드라이브 다운로드하시면 됩니다.</p>
+<p><a href="https://www.altools.co.kr/">https://www.altools.co.kr/</a></p>
+<figure id="og_1598406591511" contenteditable="false" data-ke-type="opengraph" data-og-type="website" data-og-title="알툴즈 - 내 PC 필수품" data-og-description="알툴즈 제품 최신 소식을 가장 신속하게, 최신 버전 다운로드를 가장 간편하게 제공하는 알툴즈 공식 사이트입니다. 알툴즈 사이트에서 알툴즈 통합팩, 알집, 알씨, 알송, 알툴바, 알약, 알약 익�" data-og-host="www.altools.co.kr" data-og-source-url="https://www.altools.co.kr/" data-og-url="https://www.altools.co.kr/Main/Default.aspx" data-og-image="https://scrap.kakaocdn.net/dn/jsKIi/hyHgyaa4yU/5Qcu7BOcEyhMvNI1Qsvy60/img.png?width=359&amp;height=359&amp;face=0_0_359_359"><a href="https://www.altools.co.kr/" target="_blank" rel="noopener" data-source-url="https://www.altools.co.kr/">
+<div class="og-image" style="background-image: url('https://scrap.kakaocdn.net/dn/jsKIi/hyHgyaa4yU/5Qcu7BOcEyhMvNI1Qsvy60/img.png?width=359&amp;height=359&amp;face=0_0_359_359');">&nbsp;</div>
+<div class="og-text">
+<p class="og-title">알툴즈 - 내 PC 필수품</p>
+<p class="og-desc">알툴즈 제품 최신 소식을 가장 신속하게, 최신 버전 다운로드를 가장 간편하게 제공하는 알툴즈 공식 사이트입니다. 알툴즈 사이트에서 알툴즈 통합팩, 알집, 알씨, 알송, 알툴바, 알약, 알약 익�</p>
+<p class="og-host">www.altools.co.kr</p>
+</div>
+</a></figure>
+<p>알드라이브를 통해 다운로드할 겁니다.</p>
+<p>윈도그대로 쓰셔도되고 저처럼 vmware에서 윈도우 하나 더 실행하셔도 됩니다.</p>
+<p><span style="color: #333333;">다운로드된 알드라이브를 실행하면<span>아래와 같은 이미지가 출력됩니다.</span></span></p>
+<p>내 사이트를 클릭하시고 추가 버튼 누르시면 됩니다. 저는 서버라고 이름을 설정했습니다.</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_8.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>오른쪽처럼 ip를 적으라고 나옵니다.&nbsp;centos7의 ip를 적어주시면 됩니다.</p>
+<p>포트번호는 21로 했습니다.(포트번호 범위를 벗어나지 않는 한 숫자는 임의로 적어주시면 됩니다)</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_9.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #333333;">수동으로 설정하신 거 아니면 명령어 ip addr을 사용하여 본인 ip를 찾아줍니다.&nbsp;</span></p>
+<p><span style="color: #333333;">아래 두 번째 동그라미쯤에 ip가 나옵니다.&nbsp;</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_10.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>이렇게 확인된 본인 ip를 적어주면 됩니다. 이제 오른쪽 아래의 연결 버튼을 눌러줍니다.</p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_11.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_12.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>이제 다운로드해주시면 centos7 서버에서 FTP를 활용한 파일 다운로드가 완료됩니다.&nbsp;</p>
+<p>아주 쉽게 설명한 만큼 여러분도 이해가 잘 되셨길 바랍니다. 감사합니다.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #ftp #리눅스 FTP #centos 7 ftp 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

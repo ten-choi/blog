@@ -1,0 +1,41 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>aws</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">aws</h2>
+                                <div class="box-info">
+                                    <p class="category"></p>
+                                    <p class="date">2023-10-06 10:39:30</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">aws&nbsp;summit&nbsp;log <br />d<br />1.&nbsp; <br />스타트업&nbsp;서버리스&nbsp;기반&nbsp;SAAS데이터&nbsp;처리&nbsp;및&nbsp;데이터&nbsp;웨어하우스&nbsp;구축사례 <br />커뮤니티&nbsp;섹션 <br />에이슬릿&nbsp;-&nbsp;회사명? <br />BEFORE <br />초기&nbsp;아키텍처는&nbsp;ECS에서&nbsp;API사용량&nbsp;측정하고&nbsp;API사용할때마다&nbsp;DB업데이트를하며 <br />실패케이스&nbsp;가&nbsp;누락되는&nbsp;아키였습니다&nbsp;사진참조 <br />AFTER <br />아마존&nbsp;아테나를&nbsp;사용,&nbsp;이유는&nbsp;표준&nbsp;SQL을&nbsp;사용하여&nbsp;S3데이터&nbsp;를&nbsp;분석가능한&nbsp;대화형&nbsp;쿼리서비스&nbsp;,&nbsp;,&nbsp;사진참조하고&nbsp;이유는&nbsp;쿼리당&nbsp;비용이&nbsp;효율적이라서&nbsp;라고합니다&nbsp; <br /><br />사용량&nbsp;측정플로우 <br />데이터&nbsp;스트림&nbsp;생성&nbsp;-&gt;&nbsp;access&nbsp;log&nbsp;적재&nbsp;-&gt; <br /><br />초기&nbsp;아키텍처&nbsp;캡처가있으&nbsp;ㅁ <br />aws&nbsp;아테나를&nbsp;사용한&nbsp;이유&nbsp; <br />서버리스이며&nbsp;스캔한&nbsp;데이터만&nbsp;과금하고&nbsp;큰단위&nbsp;기간의&nbsp;배치&nbsp;작업에&nbsp;적함함&nbsp; <br />AWS&nbsp;모든&nbsp;프라는&nbsp;PYTHON을&nbsp;통한&nbsp;CDK로&nbsp;설정하고있음 <br />데스티네이션은&nbsp;firehose로&nbsp;설정함이게&nbsp;쌓이면&nbsp;s3에&nbsp;로그로&nbsp;적재하는데&nbsp;이것도&nbsp;cdk를&nbsp;사용 <br /><br />에드테크&nbsp;스타트업&nbsp;메드업&nbsp;에서&nbsp;일하는&nbsp;사람임 <br />agenda&nbsp;대용량&nbsp;데이터&nbsp;수집,&nbsp;적재&nbsp;소비에&nbsp;대해서&nbsp;설명해준다고함 <br />트랜잭션,&nbsp;,분산키,&nbsp;정렬키&nbsp; <br />DELETE대신&nbsp;trunkate를&nbsp;쓸수있는거아닌가?&nbsp;trunkate는&nbsp;쿼리&nbsp;동작과&nbsp;뭐가&nbsp;다르다고함 <br />저장할때&nbsp;압축하는데&nbsp;red&nbsp;shift <br />red&nbsp;shift에&nbsp;사용량이&nbsp;etl&nbsp;작업&nbsp;하나에&nbsp;많이쓰임 <br />ra3&nbsp;를&nbsp;aqua를&nbsp;통해&nbsp;10배&nbsp;까지&nbsp;향상 <br />REDSHIIFT&nbsp;로&nbsp;클러스터간&nbsp;데이터&nbsp;쉐어가&nbsp;가능 <br />데이터를&nbsp;어떻게&nbsp;관리하느냐&nbsp;red&nbsp;shift&nbsp;serverless&nbsp;를&nbsp;써서&nbsp;rpus를&nbsp;필수로&nbsp;제어,&nbsp;관리한다면 <br />transaction&nbsp;을&nbsp;끝내지&nbsp;않으면&nbsp;connction이&nbsp;있을때&nbsp;비용&nbsp;계속나오니까&nbsp;주의 <br />용량&nbsp;문제로&nbsp;아테나로&nbsp;커버해야하는&nbsp;문제가&nbsp;있음 <br />매드업에서는&nbsp;아테나를&nbsp;잘&nbsp;쓰기위해&nbsp;고민하고있음&nbsp; <br /><br />2. <br />데이터&nbsp;공유와&nbsp;활용&nbsp;전사데이터&nbsp;거버넌스를&nbsp;위한&nbsp;3가지&nbsp;비밀무기 <br />중급기술&nbsp;2 <br />aws&nbsp;에서&nbsp;애널리틱스&nbsp;사업개발&nbsp;김윤건 <br />대부분ㅇ의&nbsp;회사에서&nbsp;데이터&nbsp;기반의&nbsp;회사가&nbsp;되어야한다고&nbsp;생각함 <br />데이터&nbsp;문제를&nbsp;거버넌스&nbsp;소프트웨어로&nbsp;해결하는건&nbsp;어떨까요&nbsp; <br />거버넌스&nbsp;쓴다고&nbsp;문제가&nbsp;해결되지는&nbsp;않음 <br />거버넌스는&nbsp;데이터&nbsp;커뮤니티를&nbsp;가속화하는게&nbsp;중요함 <br /><br />데이터&nbsp;오너의&nbsp;부재,&nbsp;데이터&nbsp;웨어하우스던&nbsp;데이터&nbsp;렉이던&nbsp;인프라의&nbsp;데이터에&nbsp;오너쉽이없음 <br />데이터&nbsp;품질이&nbsp;낮아지면&nbsp;데이터를&nbsp;소비하는쪽에서&nbsp;장애를&nbsp;느낌 <br />-&gt;&nbsp;데이터&nbsp;거버넌스의&nbsp;부재 <br />확인해야할건&nbsp;데이터&nbsp;오너쉽인제&nbsp;이문제를&nbsp;해결하는방법은? <br />데이터를&nbsp;거래하는&nbsp;마켓&nbsp;-&gt;&nbsp;데이터가&nbsp;상품이되면&nbsp;오너쉽이&nbsp;생김 <br />이게&nbsp;뭔말인지?&nbsp; <br />박성원&nbsp;솔루션 <br />데이터&nbsp;메시&nbsp;아키텍처&nbsp;구축하기 <br /><br />데이터메시가뭐지? <br /><br />데이터&nbsp;메시&nbsp;원칙 <br />데터&nbsp;생산자 <br />사용자-데이터-도구&nbsp;상품화 <br />데이터는&nbsp;어떤&nbsp;상품이라고&nbsp;볼수있음&nbsp;,&nbsp;apis,&nbsp;sql,&nbsp;reports&nbsp;써있는데&nbsp;report는&nbsp;뭐지 <br /><br />셀프서비스데이터&nbsp;인프라&nbsp; <br /><br />aws&nbsp;lake&nbsp;formation&nbsp;과&nbsp;거버넌스&nbsp;에&nbsp;대해&nbsp;분석하고&nbsp;정리&nbsp;ㄱㄱ <br /><br />쿠팡&nbsp;데이터&nbsp;플랫폼&nbsp;조직&nbsp;정재원 <br />self&nbsp;service&nbsp;emr&nbsp;을&nbsp;왜&nbsp;도입했고&nbsp;어떤&nbsp;거버넌스를&nbsp;구축했는지? <br /><br />data&nbsp;lake&nbsp;라는&nbsp;표현이&nbsp;계속나옴&nbsp;이게&nbsp;데이터&nbsp;웨어하우스에&nbsp;저장이됨 <br /><br />데이터&nbsp;플랫폼&nbsp;역할:&nbsp;데이터&nbsp;인프라,&nbsp;코어데이터,&nbsp;데이터&nbsp;인텔리전스&nbsp; <br />하이브테이블,&nbsp;아파치&nbsp;레인저&nbsp;,&nbsp;퍼미션&nbsp;매니지먼트&nbsp;(지들이&nbsp;개발한거) <br />HDFS는&nbsp;뭐지?&nbsp;임시데이터&nbsp;,&nbsp;스테이징&nbsp;데이터가&nbsp;들어간다고함 <br />컴퓨팅은&nbsp;amazon&nbsp;emr&nbsp;이랑&nbsp;eks&nbsp;쓰고&nbsp;dw&nbsp;cluster&nbsp; <br />hive,&nbsp;spark&nbsp;데이터&nbsp;프로세싱&nbsp;엔진? <br />스케줄러&nbsp;aieflow&nbsp;만쓴다고보면됨 <br /><br />넷플릭스의&nbsp;지니라는&nbsp;툴을&nbsp;본인들이&nbsp;바꾼&nbsp;orca라는&nbsp;툴 <br />hue는&nbsp;뭔지? <br />slack,&nbsp;promethus&nbsp;,&nbsp;그라파나&nbsp;이렇게&nbsp;메신저&nbsp;뭐&nbsp;쓴다함 <br /><br />바틀넥-&gt;&nbsp;병목&nbsp; <br />sla가&nbsp;보장이안된다&nbsp; <br /><br />포탈&nbsp;api,&nbsp;emr&nbsp;api?&nbsp; <br />hive&nbsp;meta&nbsp;store&nbsp;란? <br /><br />거버넌스&nbsp;4개로&nbsp;분류&nbsp;:&nbsp;security,&nbsp;cost&nbsp;estimation,&nbsp;lifecyle,&nbsp;resource&nbsp;utilization <br />emr은&nbsp;내가끄지않으면&nbsp;계속&nbsp;돌아감&nbsp;관리해야함 <br />트랜전스&nbsp;클러스터,&nbsp;스태틱&nbsp;클러스트 <br />spark&nbsp;striming&nbsp;job?&nbsp; <br /><br />3 <br />하시코프&nbsp;보안정책&nbsp; <br /><br /><br />4.&nbsp; <br />12가지&nbsp;아키텍처 <br />클라우드&nbsp;네이티브&nbsp;란? <br /><br />안정적으로&nbsp;개발이&nbsp;되었는지?&nbsp;지금&nbsp;본&nbsp;6가지 <br />필라나&nbsp;렌즈&nbsp;를&nbsp;통해서&nbsp;웰아키텍티드&nbsp;되있는지&nbsp;확인 <br />워크로드? <br />워크로드를&nbsp;클라우드&nbsp;네이티브로&nbsp;마이그레이션&nbsp;이게&nbsp;뭐소리지?&nbsp; <br />amazon&nbsp;sns&nbsp;&nbsp;메시지&nbsp;브로커&nbsp;존재&nbsp; <br />strangler&nbsp;fig&nbsp;패턴? <br />엘라스틱&nbsp;캐시,&nbsp;이벤트&nbsp;브릿지&nbsp; <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>[ TroubleShooting ] Aws RDS 자동 업데이트로 인한 문제 발생</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">[ TroubleShooting ] Aws RDS 자동 업데이트로 인한 문제 발생</h2>
+                                <div class="box-info">
+                                    <p class="category">TroubleShooting/Aws</p>
+                                    <p class="date">2023-06-02 13:50:00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p style="text-align: left;" data-original-attrs="{&quot;data-ke-size&quot;:&quot;size20&quot;,&quot;style&quot;:&quot;&quot;}" data-ke-size="size16"><span style=""><span style="font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Apple SD Gothic Neo', Arial, sans-serif;">&nbsp;</span><span style="font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Apple SD Gothic Neo', Arial, sans-serif; font-size: 16px; letter-spacing: 0px;">aws rds 사용 도중에 issue가 발생했다<br /></span>문서화를 진행해 보자</span></p>
+<p style="text-align: left;" data-original-attrs="{&quot;data-ke-size&quot;:&quot;size20&quot;,&quot;style&quot;:&quot;&quot;}" data-ke-size="size16">&nbsp;</p>
+<p style="text-align: left;" data-original-attrs="{&quot;data-ke-size&quot;:&quot;size20&quot;,&quot;style&quot;:&quot;&quot;}" data-ke-size="size16"><span style=""><span style="font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Apple SD Gothic Neo', Arial, sans-serif; letter-spacing: 0px;">1. 문제정의<br /></span>server에서 아래와 같은 error가 등장한다</span></p>
+<pre id="code_1685680493151" class="smali" style="background-color: #f8f8f8; color: #383a42; text-align: start;" data-ke-language="java" data-ke-type="codeblock"><code>Cannot execute statement in a READ ONLY transaction.
+Error: Cannot execute statement in a READ ONLY transaction.</code></pre>
+<p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16"><span>2. 원인규명</span><br /><span>aws rds의 setting 중에 "Automatic&nbsp;Minor&nbsp;Version&nbsp;Upgrades<span style="text-align: left;">" 설정이 체크되어 있었다<br />upgrade scheduler에 시간을 보니까 에러가 시작된 시간과 일치한다<br /></span><span style="text-align: left;"></span><span style="text-align: left;"><span style="text-align: left;">rds cluster의 spec은 <span style="text-align: left;">instance가 총 3개이고 </span>write 1개 read 2개이다</span></span></span></p>
+<p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16">&nbsp;</p>
+<p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16"><span><span style="text-align: left;">예상 시나리오는 아래와 같다<br /></span><span style="text-align: left;">설정된 시간에 rds cluster 전체에서 각 instance 별 update를 진행되었다<br />write db에서 memory 부족으로 error 발생했다는 로그가 확인했다<br />write instance가 reboot 되면서 write 할 수 있는 instance가 없고<br /></span><span style="text-align: left;">자체적으로 read instance에 write 역할을 부여하게 될 것이다<br /></span><span style="text-align: left;">재시작한 instance는 read의 역할을 부여하여 비율을 맞추게 된다<br />이때 server에서 db를 호출하는 endPoint가 문제가 있었다<br />rds를 사용하는 server에서 rds cluster의 write endPoint가 아닌 instance의 endPoint를 사용 중이었다<br />역할이 바뀌어도 cluster의 write, read endPoint를 사용하면 문제가 없다 알아서 구분해 주기 때문이다</span></span></p>
+<p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16">&nbsp;</p>
+<p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16"><span style="text-align: left;">하지만 instance의 endPoint를 사용했다<br />그리고 재시작한 instance는 read의 역할이다<br />그러면 server에서는 write 하기 위해 호출하는 instance가 read의 endPoint를 이용하는 경우가 생긴다<br />그럼 권한이 없고 위와 같은 에러가 나오게 된다</span></p>
+<p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16">&nbsp;</p>
+<p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16"><span style="text-align: left;">3. 수정 및 검수<br />cluster에 지정되어 있는 write endPoint를 사용하도록 변경했다<br />read는 cluster의 endPoint로 잘되어 있었다<br />이게 정석인데 write 쪽 endPoint는 누군가 초기설정을 잘못한듯하다<br />load&nbsp;balancer역할도 cluster에서 역할별로 해주는 듯하다</span></p>
+<p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16">&nbsp;</p>
+<p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16"><span style="text-align: left;"><span style="text-align: left;">server는 aws의 eb를 사용 중이다</span><br /><span style="text-align: left;">eb의 env에 write instacne endPoint를 cluster의 endPoint로 변경하자</span></span></p>
+<p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16">&nbsp;</p>
+<p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16"><span>4. 배포</span><br /><span>env에 환경 변수를 바꾸고 저장한다</span><br /><span>그러면 server instance가 알아서 재시작하며 적용된다</span></p>
+<p style="text-align: left;" data-original-attrs="{&quot;style&quot;:&quot;&quot;}" data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #TroubleShooting #KR #aws #RDS 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

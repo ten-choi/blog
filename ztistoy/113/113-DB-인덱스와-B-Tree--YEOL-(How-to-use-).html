@@ -1,0 +1,119 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>DB 인덱스와 B-Tree -YEOL (How to use )</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">DB 인덱스와 B-Tree -YEOL (How to use )</h2>
+                                <div class="box-info">
+                                    <p class="category">DB/rdb</p>
+                                    <p class="date">2021-12-13 15:39:10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">사전 단어 설명</p>
+<p data-ke-size="size16">Full Scan : 테이블에 포함된 레코드를 처음부터 끝까지 읽어들인다.</p>
+<pre id="code_1640176822224" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>explain SELECT * FROM 테이블명;</code></pre>
+<p data-ke-size="size16">Range Scan : 테이블의 일부 레코드만 읽어들인다.</p>
+<pre id="code_1640176819320" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>explain SELECT * FROM 테이블명 where no &gt; 1 and no &lt; 5;</code></pre>
+<p data-ke-size="size16">index Scan : (인덱스 컬럼을 등록했다면 ) 인덱스를 기준으로 조건문을 호출하여 레코를 호출합니다.&nbsp;</p>
+<pre id="code_1640176823303" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>explain SELECT * FROM 테이블명 where 인덱스컬럼 = '비교값'</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">Duration : 쿼리를 실행할때 걸리는 시간입니다. 최소화 할수록 성능에 도움이 됩니다.</p>
+<h3 data-ke-size="size23">&nbsp;</h3>
+<p data-ke-size="size16">Fetch : 쿼리의 결과값을 가져오는데 사용한 시간입니다. 네트워크 성능에 따른 시간을 나타냅니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<h3 data-ke-size="size23"><b>인덱스란</b></h3>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">RDBMS를 사용할때 검색 성능을 향상시키는 기술중 하나입니다. 키값을 기초로 정렬하여 정렬된 데이터를 검색하기에 성능이 향상됩니다.</p>
+<p data-ke-size="size16">Index 없이 Select와 Where 절을 사용하면 Full Scan을 하게됩니다. 하지만 Index를 적용한다면 Index Range Scan을&nbsp;<span style="letter-spacing: 0px;">통해 검색하기때문에 검색영역 범위 차이가 적어져 속도가 향상됩니다. 단 일정 양을 넘어간다면 풀스캔이 좋을수도있음</span><span style="letter-spacing: 0px;"></span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">장점</p>
+<ol style="list-style-type: disc;" data-ke-list-type="decimal">
+<li>SQL문을 변경하지 않아도 성능 개선을 할 수 있다.&nbsp;</li>
+<li>테이블의 데이터에 영향을 주지 않는다.&nbsp;</li>
+<li>일정한(때로는 극적인) 효과를 기대할 수 있다.&nbsp;</li>
+</ol>
+<p data-ke-size="size16"><b>단점</b></p>
+<p data-ke-size="size16">하지만 데이터 변경이 자주일어난다면 insert의 경우 기존index에&nbsp;index를 리빌드 해야해서 성능에 영향을 끼친다.</p>
+<p data-ke-size="size16">index를 리빌드 db의 성능에 포함되기때문에 남용할경우 부하를 초래합니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">만들때 필요한 기준</p>
+<p data-ke-size="size16"><b>1. 크기가 큰 테이블만<span>&nbsp;</span>만든다.&nbsp;</b></p>
+<p data-ke-size="size16"><b>3. Cardinality(카디널리티)가 높은 열에 만든다.&nbsp;</b></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<h3 data-ke-size="size23"><b>B-Tree (Balanced Tree)인덱스</b></h3>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">최상위에 루트 노드가 존재하고 그아래 브랜치노드가 뻗어나갑니다. 최하위노드를 리프노트 라고 부릅니다.&nbsp;</p>
+<p data-ke-size="size16">인덱스와 실제 데이터가 저장된 데이터는 따로 관리 되는데, 인덱스의 리프노드는 항상 실제 데이터 레코드를 찾아가기 위한 주소값을 가지고있습니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">저장될위치가 결정되면 레코드의 키값과 대상레코드의 주소 정보를 B-Tree 의 리프노드에 저장합니다. 만약리프노드가 꽉 차서 더는 저장할 수 없을때 는 리프노드가 분리 돼야하는데 이는 상위 브랜치 노드까지 범위가 넓어집니다. 그래서 쓰기작업에 비용이 많이 듭니다.&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<h3 data-ke-size="size23"><b>사용법</b></h3>
+<p data-ke-size="size16">ex를 생성하는것도 db의 성능에 포함</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">테이블에 인덱스가 있나 보기</p>
+<pre id="code_1640049451587" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>show index from 테이블명;</code></pre>
+<p data-ke-size="size16">테이블에 인덱스 추가하기&nbsp;</p>
+<pre id="code_1640049450107" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>create index testindex on  WORK_DAILY_SEQ (CAR_NUM);
+ALTER TABLE 테이블명 ADD INDEX 인덱스컬럼명 USING BTREE (인덱스할컬럼);</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<pre id="code_1640049448570" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>ALTER TABLE 테이블명 ADD INDEX 인덱스컬럼명 USING BTREE (인덱스할컬럼);</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<pre id="code_1640049445972" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>ALTER TABLE 테이블명 ADD INDEX 인덱스컬럼명 USING BTREE (인덱스할컬럼);</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<pre id="code_1640049430504" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>ALTER TABLE 테이블명 ADD INDEX 인덱스컬럼명 USING BTREE (인덱스할컬럼);</code></pre>
+<h3 data-ke-size="size23"><b>인덱스 실행시</b></h3>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">인덱스를 실행하면 인덱스를 걸고 스캔한것과 일반 레인지 스캔 그리고 풀스캔 할때&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<h3 data-ke-size="size23"><b>인덱스 리빌드</b></h3>
+<p data-ke-size="size16">검색 이외의 인서트 업데이트 딜리트를 하다보면 트리의 한쪽이 무거워져서 성능 저하로 이어질수있다고합니다.</p>
+<p data-ke-size="size16">검색과정에서 속도가 저하되기 때문에 리빌딩 작업이 주기적으로 필요하다합니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">인덱스를 그냥 배열로 안하는이유</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png"  />
+    </span>
+    <figcaption>출처 https://www.geeksforgeeks.org/search-insert-and-delete-in-a-sorted-array/</figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">참고사이트</p>
+<p data-ke-size="size16"><a href="https://zorba91.tistory.com/292" target="_blank" rel="noopener">https://zorba91.tistory.com/292</a></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #B-tree #SQL INDEX #DB Index 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

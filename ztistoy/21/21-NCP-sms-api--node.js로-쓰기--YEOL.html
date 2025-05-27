@@ -1,0 +1,231 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>NCP sms api  node.js로 쓰기 -YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">NCP sms api  node.js로 쓰기 -YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">TS, JS/nodejs</p>
+                                    <p class="date">2020-06-11 12:46:26</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-filename="express.png" data-origin-width="575" data-origin-height="571" width="423" height="NaN" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-filename="express.png" data-origin-width="575" data-origin-height="571" width="423" height="NaN" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><b>naver의 50건 무료 sms api 기능을 사용하기 위한 페이지입니다. 코드를 분할하여 놓은 부분 양해 바랍니다.</b></p>
+<p>에디터는 아톰을 사용했습니다.&nbsp;</p>
+<p>일단 node.js 파일을 만들어줍시다.&nbsp;</p>
+<p>npm init을 하시고 json파일 수정하신 다음에 npm install 해주시면 기본 구성이 완료됩니다.</p>
+<p>저는 app.js 파일을 만들어서 실행하겠습니다.</p>
+<p>경로는 편하게 잡으시면 됩니다.</p>
+<p>이것만 하더라도 node app을 실행하실 수 있습니다.&nbsp;</p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-filename="2.PNG" data-origin-width="1287" data-origin-height="277" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" data-filename="2.PNG" data-origin-width="1287" data-origin-height="277" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<pre id="code_1591689581324" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>const express = require('express');
+
+const app = express(); 
+const crypto = require('crypto');  //암호화를 위해 사용해줍니다. sms api 사용할때 조건에도 이거쓰라고있습니다.
+const request = require('request'); 
+const app = express(); // 
+const PORT = 3000 ; 
+
+
+ 
+app.listen(PORT, ()=&gt;{console.log('http://localhost:3000/m gonna be your localhost')}  );</code></pre>
+<p>암호화 부분은 이해가 어려울 수 있으니 일단 빼둡시다.</p>
+<p>require 부분과 listen 사이에 get방식으로 코드를 만듭니다.&nbsp;</p>
+<p>왜냐하면 웹 주소창에서 호출할 예정이기 때문입니다. 주소는 기본 주소창에 message의 약자 m을 사용했습니다.</p>
+<pre id="code_1591689466595" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>app.get('/m', (req, res)=&gt;{    // we use localhost3000/m 
+	 const phone = '01088889999'; // 전화 받는사람
+	 const accessKey = 'access key';		엑세스키 
+     const secretKey = 'secret key';        씨크릿키 
+     const serviceID = '서비스 아이디'     서비스아이디 넣어야할부분
+     const myphone = '01012314564'; //    본인 등록의 전화번호
+     
+     </code></pre>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-filename="1.PNG" data-origin-width="1880" data-origin-height="877" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png" data-filename="1.PNG" data-origin-width="1880" data-origin-height="877" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>서비스 아이디는 여기에 있습니다. 오른쪽에 키 부분을 클릭하시면 시크릿 말고 id 값있는 걸 가지고 옵시다.</p>
+<p>그리고 api를 호출하기 위한 값을 설정하겠습니다.</p>
+<p><a href="https://apidocs.ncloud.com/ko/common/ncpapi/#API-%ED%98%B8%EC%B6%9C%ED%95%98%EA%B8%B0">https://apidocs.ncloud.com/ko/common/ncpapi/#API-%ED%98%B8%EC%B6%9C%ED%95%98%EA%B8%B0</a></p>
+<figure id="og_1591690228188" contenteditable="false" data-ke-type="opengraph" data-og-type="website" data-og-title="NAVER CLOUD PLATFORM API - API 참조서" data-og-description="개요 네이버 클라우드 플랫폼에서 제공하는 인프라/솔루션 상품을 이용할 수 있도록 지원하는 응용 프로그램 인터페이스(Application Programming Interface, API) 제공하고 있습니다. 본 페이지에서는 NAVE" data-og-host="apidocs.ncloud.com" data-og-source-url="https://apidocs.ncloud.com/ko/common/ncpapi/#API-%ED%98%B8%EC%B6%9C%ED%95%98%EA%B8%B0" data-og-url="https://apidocs.ncloud.com/ko/common/ncpapi/#API-%ED%98%B8%EC%B6%9C%ED%95%98%EA%B8%B0" data-og-image=""><a href="https://apidocs.ncloud.com/ko/common/ncpapi/#API-%ED%98%B8%EC%B6%9C%ED%95%98%EA%B8%B0" target="_blank" rel="noopener" data-source-url="https://apidocs.ncloud.com/ko/common/ncpapi/#API-%ED%98%B8%EC%B6%9C%ED%95%98%EA%B8%B0">
+<div class="og-image" style="background-image: url();">&nbsp;</div>
+<div class="og-text">
+<p class="og-title">NAVER CLOUD PLATFORM API - API 참조서</p>
+<p class="og-desc">개요 네이버 클라우드 플랫폼에서 제공하는 인프라/솔루션 상품을 이용할 수 있도록 지원하는 응용 프로그램 인터페이스(Application Programming Interface, API) 제공하고 있습니다. 본 페이지에서는 NAVE</p>
+<p class="og-host">apidocs.ncloud.com</p>
+</div>
+</a></figure>
+<p>다들 이거 보고 한다는데 저는 사람들 한거 보고 이거보고 완성부터 한 다음 이해했습니다.&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-filename="1.PNG" data-origin-width="1365" data-origin-height="490" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_3.png" data-filename="1.PNG" data-origin-width="1365" data-origin-height="490" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>저기 사이트 들어가시면 인증키 이렇게 생성하라고 나옵니다.&nbsp;</p>
+<p>로그인하신 후에 마이페이지에서 인증키 관리 들어가시면 만드실 수 있습니다.</p>
+<p><figure class="imageblock alignCenter" data-filename="1.PNG" data-origin-width="1859" data-origin-height="710" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_4.png" data-filename="1.PNG" data-origin-width="1859" data-origin-height="710" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>액세스 키와 시크릿키는 요기서 받습니다.&nbsp;</p>
+<p>이렇게 프로젝트의 id와 계정의 api 인증을 해야만 sms api를 사용할 수 있습니다.</p>
+<p><a href="https://docs.ncloud.com/ko/sens/sens-1-3.html">https://docs.ncloud.com/ko/sens/sens-1-3.html</a></p>
+<figure id="og_1591690541739" contenteditable="false" data-ke-type="opengraph" data-og-type="website" data-og-title="설명서" data-og-description="네이버 클라우드 플랫폼의 상품 사용 방법을 보다 상세하게 제공하고, 다양한 API의 활용을 돕기 위해 [설명서]와 [API 참조서]를 구분하여 제공하고 있습니다. 2019년 1월 10일부터 Ncloud의 OPEN API 설" data-og-host="docs.ncloud.com" data-og-source-url="https://docs.ncloud.com/ko/sens/sens-1-3.html" data-og-url="https://docs.ncloud.com/ko/sens/sens-1-3.html" data-og-image="https://scrap.kakaocdn.net/dn/laYFt/hyGlN0ohS9/HAwGQq7bl6mRNysrKKtf6K/img.png?width=1490&amp;height=1476&amp;face=0_0_1490_1476,https://scrap.kakaocdn.net/dn/c34ca2/hyGlEI76TH/vTQRezkSGfBQyZhVSYI8p0/img.png?width=1602&amp;height=970&amp;face=0_0_1602_970,https://scrap.kakaocdn.net/dn/ci61VV/hyGmJa0hep/5Kbr0ezpOgojwSknSnOTnk/img.png?width=1599&amp;height=969&amp;face=0_0_1599_969"><a href="https://docs.ncloud.com/ko/sens/sens-1-3.html" target="_blank" rel="noopener" data-source-url="https://docs.ncloud.com/ko/sens/sens-1-3.html">
+<div class="og-image" style="background-image: url('https://scrap.kakaocdn.net/dn/laYFt/hyGlN0ohS9/HAwGQq7bl6mRNysrKKtf6K/img.png?width=1490&amp;height=1476&amp;face=0_0_1490_1476,https://scrap.kakaocdn.net/dn/c34ca2/hyGlEI76TH/vTQRezkSGfBQyZhVSYI8p0/img.png?width=1602&amp;height=970&amp;face=0_0_1602_970,https://scrap.kakaocdn.net/dn/ci61VV/hyGmJa0hep/5Kbr0ezpOgojwSknSnOTnk/img.png?width=1599&amp;height=969&amp;face=0_0_1599_969');">&nbsp;</div>
+<div class="og-text">
+<p class="og-title">설명서</p>
+<p class="og-desc">네이버 클라우드 플랫폼의 상품 사용 방법을 보다 상세하게 제공하고, 다양한 API의 활용을 돕기 위해 [설명서]와 [API 참조서]를 구분하여 제공하고 있습니다. 2019년 1월 10일부터 Ncloud의 OPEN API 설</p>
+<p class="og-host">docs.ncloud.com</p>
+</div>
+</a></figure>
+<p>sms 프로젝트를 등록하고 본인 전화번호를 등록해야 사용 가능합니다. 여기까지는 네이버의 설명도 친절합니다.</p>
+<p>그럼 위의 코드에 등록한 번호를 적으시면 인증을 위한 기본 설정이 끝납니다.</p>
+<p>이제 시그니쳐 부분입니다. 여기부터 naver의 설명을 자세하게 봐야 했습니다.</p>
+<pre id="code_1591690685062" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>     const space = " ";          	 // one space
+     const newLine = "\n";           // new line
+     const method = "POST";          // method
+
+     const url = `https://sens.apigw.ntruss.com/sms/v2/services/${serviceID}/messages`;
+
+	 // url (include query string) 시그니처 만들때 더해줍니다. 
+     const urlsub = `/sms/v2/services/${serviceID}/messages`;
+
+     const timestamp = Date.now().toString();   // 시간차가 많이 나면 작동안된다고 써있습니다.
+     												//그래서 시간값도 넣어줍니다.
+    
+     let hmac=crypto.createHmac('sha256',secretKey);
+	 let mes = [];    //배열을 만들어줍니다. 인증서는 그냥 했지만 이렇게 하면 보기 편합니다.
+     //message 의 약자입니다. 경로설정할때와같이 의미있게 써줍시다.
+     mes.push(method);
+     mes.push(space);
+     mes.push(urlsub);
+     mes.push(newLine);
+     mes.push(timestamp);
+     mes.push(newLine);
+     mes.push(accessKey);
+     const signature = hmac.update(mes.join('')).digest('base64');
+     //update는 mes 값을 hmac으로 설정한 크립토(암호화)함수에 대입해주는것입니다. 
+     //join 으로 해주면 배열의 값을 구분해주는데 파라미터값이 존재한다면 배열 사이사이에
+     // 파라미터값을 넣어줍니다. </code></pre>
+<p><a href="https://apidocs.ncloud.com/ko/common/ncpapi/migration_server/">https://apidocs.ncloud.com/ko/common/ncpapi/migration_server/</a></p>
+<figure id="og_1591690762572" contenteditable="false" data-ke-type="opengraph" data-og-type="website" data-og-title="Server-V2 마이그레이션 - API 참조서" data-og-description="Ncloud API V2로 마이그레이션 가이드 ※ Ncloud APIs 제공 안내 편리한 클라우드 서비스 이용을 위해 지속적으로 네이버 클라우드 플랫폼의 API를 추가하고, 호출 방식을 개선하고 있습니다. 사용성 편" data-og-host="apidocs.ncloud.com" data-og-source-url="https://apidocs.ncloud.com/ko/common/ncpapi/migration_server/" data-og-url="https://apidocs.ncloud.com/ko/common/ncpapi/migration_server/" data-og-image=""><a href="https://apidocs.ncloud.com/ko/common/ncpapi/migration_server/" target="_blank" rel="noopener" data-source-url="https://apidocs.ncloud.com/ko/common/ncpapi/migration_server/">
+<div class="og-image" style="background-image: url();">&nbsp;</div>
+<div class="og-text">
+<p class="og-title">Server-V2 마이그레이션 - API 참조서</p>
+<p class="og-desc">Ncloud API V2로 마이그레이션 가이드 ※ Ncloud APIs 제공 안내 편리한 클라우드 서비스 이용을 위해 지속적으로 네이버 클라우드 플랫폼의 API를 추가하고, 호출 방식을 개선하고 있습니다. 사용성 편</p>
+<p class="og-host">apidocs.ncloud.com</p>
+</div>
+</a></figure>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_5.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>시그니쳐를 생성하는 방법 설명해보면 띄어쓰기와 라인 변경도 다 정해져 있습니다.&nbsp;</p>
+<p>naver sms api에서는 시그니쳐와 request를 이용한 api 사용 이렇게 2가지로 구분해주시면 편합니다.</p>
+<p><b>축하드립니다. 얼마 남지 않았고 이제 거의 다 왔습니다.</b></p>
+<p>시그니쳐를 완성하였으니 이제 호출 준비를 해줍니다.</p>
+<p><a href="https://apidocs.ncloud.com/ko/ai-application-service/sens/sms_v2/">https://apidocs.ncloud.com/ko/ai-application-service/sens/sms_v2/</a></p>
+<figure id="og_1591691735480" contenteditable="false" data-ke-type="opengraph" data-og-type="website" data-og-title="SMS API v2 가이드 - API 참조서" data-og-description="기본 정보 API URL https://sens.apigw.ntruss.com/sms/v2 항목 Mandatory 설명 Content-Type Mandatory 요청 Body Content Type을 application/json으로 지정 (POST) x-ncp-apigw-timestamp Mandatory 1970년 1월 1일 00:00:00 협정 세계시(UTC)부��" data-og-host="apidocs.ncloud.com" data-og-source-url="https://apidocs.ncloud.com/ko/ai-application-service/sens/sms_v2/" data-og-url="https://apidocs.ncloud.com/ko/ai-application-service/sens/sms_v2/" data-og-image=""><a href="https://apidocs.ncloud.com/ko/ai-application-service/sens/sms_v2/" target="_blank" rel="noopener" data-source-url="https://apidocs.ncloud.com/ko/ai-application-service/sens/sms_v2/">
+<div class="og-image" style="background-image: url();">&nbsp;</div>
+<div class="og-text">
+<p class="og-title">SMS API v2 가이드 - API 참조서</p>
+<p class="og-desc">기본 정보 API URL https://sens.apigw.ntruss.com/sms/v2 항목 Mandatory 설명 Content-Type Mandatory 요청 Body Content Type을 application/json으로 지정 (POST) x-ncp-apigw-timestamp Mandatory 1970년 1월 1일 00:00:00 협정 세계시(UTC)부��</p>
+<p class="og-host">apidocs.ncloud.com</p>
+</div>
+</a></figure>
+<p>여기가 sms를 보내기 위한 api 부분입니다.&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_6.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>그림 보시면 나와있습니다. 이렇게 하라고 따라가 봅시다.</p>
+<p>하지만 저는 완성된 후 보면서 이해하는 과정을 거쳤기 때문에 아래의 완성 구조를 먼저 보시는 걸 추천합니다.</p>
+<pre id="code_1591691809085" class="html xml" style="display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;" data-ke-language="html" data-ke-type="codeblock"><code>  // 저희는 경로 설정을 완료했으니 request로 요청합시다.
+  
+    request({
+         method: method,    //post 로 설정을 해줬습니다. 위에서
+         json: true,   	//json 을 true 로 해줘야 header 값이 제이슨값
+         uri: url,  //경로 파라미터를 여기다 넣어줍니다. 
+         headers: {
+             'Content-Type': 'application/json; charset=utf-8',
+             'x-ncp-iam-access-key' : accessKey,         //요기
+             'x-ncp-apigw-timestamp': timestamp,
+             'x-ncp-apigw-signature-v2': signature.toString()
+         },
+         body: {
+             "type":"SMS",
+             "contentType":"COMM",
+             "countryCode":"82",
+             "from": myPhoneNumber,
+             "content":`code service ${인증번호를 원한다면} 입니다.`,        //요기
+             "messages":[
+                 {
+                     "to":`${phone}`,          //요기
+                 }
+             ]
+         }
+     },function (err, res, html) {
+         if(err) console.log(err);
+         console.log(html);
+     });
+ });</code></pre>
+<p>어떻게 사용하라는 명시가 각각 있습니다. 잘 확인해가면서 진행해주세요.</p>
+<p>&nbsp;</p>
+<p>자 이제 코드가 완성됐습니다. cmd에서 해당 경로의 node를 실행합니다.</p>
+<p>주소창에서 <a href="http://localhost:3000/">http://localhost:3000/m</a>을 실행해줍니다.&nbsp;&nbsp;</p>
+<p>핸드폰 등록 및 코딩이 잘됬다면 멋지게 핸드폰에 본인이 보낸 sms 메시지가 도착할 것입니다. 감사합니다.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #sms api #naver ncp #naver sms api #sens sms api 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>[ Aws ] ec2로 bastion host 만드는법</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">[ Aws ] ec2로 bastion host 만드는법</h2>
+                                <div class="box-info">
+                                    <p class="category">Cloud/aws</p>
+                                    <p class="date">2023-06-15 18:50:36</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h3 style="text-align: left;" data-ke-size="size23">aws에서 bastionHost란</h3>
+<p style="text-align: left;" data-ke-size="size16">bastionHost란 직접 접근할 수 없는 private network의 instance에</p>
+<p style="text-align: left;" data-ke-size="size16">접근하기 위해 private network와 통신할 수 있는 public network 내에 존재하는 instance다</p>
+<p style="text-align: left;" data-ke-size="size16">&nbsp;</p>
+<p style="text-align: left;" data-ke-size="size16">bastionHost에서 ssh를 통해 private instance 혹은 db를 private subnet에</p>
+<p style="text-align: left;" data-ke-size="size16">놓은 경우 bastionHost를 통해 외부에서 접근가능하며 이러한 절차로 인해 보안성이 올라간다</p>
+<p style="text-align: left;" data-ke-size="size16">&nbsp;</p>
+<h3 style="text-align: left;" data-ke-size="size23">bastionHost를 위한 instance를 생성을 하자</h3>
+<p style="text-align: left;" data-ke-size="size16">vpc는 미리 생성한 vpc를 지정해 주자. vpc가 없다면? <a href="https://yeolceo.tistory.com/175" target="_blank" rel="noopener">aws vpc 만드는 법</a><br />해당 instance에 접근하기 위해 vpc의 public subnet에 지정하고 public ip도 활성해 두자</p>
+<p><figure class="imageblock alignLeft" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p style="text-align: left;" data-ke-size="size16">접근할 때 vpc에 보안그룹의 inbound 규칙에 목록을 확인하자</p>
+<p style="text-align: left;" data-ke-size="size16">규칙에서 모든 트래픽을 받아주는 규칙을 추가하거나 접속하려는 특정 ip가 있다면 지정해서 추가하자</p>
+<p style="text-align: left;" data-ke-size="size16">&nbsp;</p>
+<h3 style="text-align: left;" data-ke-size="size23">ec2 접근 및 ssh를 위한 pem 파일 작업</h3>
+<p style="text-align: left;" data-ke-size="size16">위와 같이 만들었다면 ec2를 접속해 보자. 우리는 vpc내부에 있는 private instance에 접근해야 한다</p>
+<p style="text-align: left;" data-ke-size="size16">private instance를 만들어줄 때 사용한 keyPair인 pem file을 통해 ssh 접근을 한다</p>
+<p style="text-align: left;" data-ke-size="size16">&nbsp;</p>
+<p style="text-align: left;" data-ke-size="size16">scp명령어를 통해 pem 파일을 업로드해 본다</p>
+<p style="text-align: left;" data-ke-size="size16"><span style="text-align: start;">내 경우에는 오른쪽 링크의 issue처리가 필요했다. </span><span style="text-align: start;">해당 글을 참고하자 -&gt;&nbsp;</span><a style="text-align: start;" href="https://yeolceo.tistory.com/176">scp issue fix</a></p>
+<pre id="code_1686821752822" class="shell" data-ke-language="shell" data-ke-type="codeblock"><code>scp -i /path/key-pair-name.pem /path/my-file.txt ec2-user@instance-public-dns-name:path/</code></pre>
+<p style="text-align: left;" data-ke-size="size16">&nbsp;</p>
+<p style="text-align: left;" data-ke-size="size16">위와 같이 수정 후 scp명령어를 다시 해보자. 업로드가 완료되었다</p>
+<p style="text-align: left;" data-ke-size="size16">private instance의 ip를 통해 pem과 함께 ssh 로그인을 진행하자</p>
+<pre id="code_1686821971472" class="shell" data-ke-language="shell" data-ke-type="codeblock"><code>ssh -i /path/key-pair-name.pem instance-user-name@instance-public-dns-name</code></pre>
+<p style="text-align: left;" data-ke-size="size16">&nbsp;</p>
+<p style="text-align: left;" data-ke-size="size16">scp 할 때까지는 난 전부 root user의 권한을 사용했다</p>
+<p style="text-align: left;" data-ke-size="size16">하지만 private instance에 접근할 때는 ec2-user로 접근해야 한다</p>
+<p style="text-align: left;" data-ke-size="size16">권한 때문인지 root로는 접근 못하게 해 놨다&nbsp;</p>
+<pre id="code_1686822587857" class="routeros" style="background-color: #f8f8f8; text-align: start;" data-ke-language="shell" data-ke-type="codeblock"><code>Warning: Permanently added '10.0.142.98' (ED25519) to the list of known hosts.
+Please login as the user "ec2-user" rather than the user "root".</code></pre>
+<p style="text-align: left;" data-ke-size="size16">&nbsp;</p>
+<p style="text-align: left;" data-ke-size="size16">pem file도 ec2-user에서 사용하기 위해 권한을 변경하자</p>
+<pre id="code_1686822164774" class="shell" data-ke-language="shell" data-ke-type="codeblock"><code>chmod 755 &lt;keyPair file&gt;</code></pre>
+<p style="text-align: left;" data-ke-size="size16">그리고 private instance의 ec2에 다시 접근해 보자</p>
+<p style="text-align: left;" data-ke-size="size16">로그인이 성공적으로 되었다면 해당작업은 마무리가 된다</p>
+<p style="text-align: left;" data-ke-size="size16">&nbsp;</p>
+<h3 style="text-align: left;" data-ke-size="size23">마지막 간단 순서 정리</h3>
+<p style="text-align: left;" data-ke-size="size16">터미널에서 pem파일 기반 ssh를 통해 ec2 instance에 접근합니다</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p style="text-align: left;" data-ke-size="size16">&nbsp;</p>
+<p style="text-align: left;" data-ke-size="size16">아래와 같이 접근이 완료가 돼야 합니다</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p style="text-align: left;" data-ke-size="size16">사전에 pem 파일을 옮겨둔 usr/pem 위치로 이동합니다</p>
+<p style="text-align: left;" data-ke-size="size16">한 번 더 pem 파일기반 ssh 접근을 시도합니다</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_3.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">접근이 잘되면 절차가 마무리됩니다</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #KR #EC2 #aws #BastionHost 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

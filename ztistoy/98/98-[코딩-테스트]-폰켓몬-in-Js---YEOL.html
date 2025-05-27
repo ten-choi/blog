@@ -1,0 +1,66 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>[코딩 테스트] 폰켓몬 in Js - YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">[코딩 테스트] 폰켓몬 in Js - YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">CodingTest</p>
+                                    <p class="date">2021-05-22 17:13:53</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p><figure class="imageblock alignCenter" data-origin-width="748" data-origin-height="688" data-ke-mobilestyle="widthOrigin">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-origin-width="748" data-origin-height="688" data-ke-mobilestyle="widthOrigin" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="732" data-origin-height="429" data-ke-mobilestyle="widthOrigin">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" data-origin-width="732" data-origin-height="429" data-ke-mobilestyle="widthOrigin" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">더 간결할 수 있었지만 한 줄로 하고 싶어서 억지로 한 줄 만들기 했습니다.&nbsp;</p>
+<p data-ke-size="size16">문제는 간단합니다.</p>
+<p data-ke-size="size16">N이 nums.length 즉 마릿수일때&nbsp;</p>
+<p data-ke-size="size16">포켓몬을 N/2만큼 가져갈수있고 단 종류별로 하나씩이라서 3번 포켓몬이 3, 3, 3, 3 이렇게 4 마리 있으면 1마리만</p>
+<p data-ke-size="size16">가져갈 수 있는 시스템입니다.</p>
+<p data-ke-size="size16">즉 중복제거를해서 N/2 값보다 중복제거 값이 작으면 중복제거 값을 출력하고 아니면 N/2 값 출력하는 문제입니다.&nbsp;</p>
+<pre id="code_1621670960803" class="html xml" style="display: block; overflow: auto; padding: 20px; color: #383a42; background: #f8f8f8; font-size: 14px; font-family: 'SF Mono', Menlo, Consolas, Monaco, monospace; border: 1px solid #ebebeb; line-height: 1.71; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" data-ke-language="html" data-ke-type="codeblock"><code>function solution(nums) {
+    
+    return nums.length/2 &lt; new Set(nums).length? 
+    nums.length/2 : Array.from(new Set(nums)).length;
+}</code></pre>
+<p data-ke-size="size16">성실한 코딩하세요.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #코딩테스트 #폰켓몬 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

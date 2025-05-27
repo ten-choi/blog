@@ -1,0 +1,106 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>간단하게 바라보는 express와 koa의 차이-YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">간단하게 바라보는 express와 koa의 차이-YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">TS, JS/nodejs</p>
+                                    <p class="date">2020-08-11 17:45:09</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-filename="koa.png" data-origin-width="576" data-origin-height="527" style="width: 51.4418%; margin-right: 10px;">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-filename="koa.png" data-origin-width="576" data-origin-height="527" style="width: 51.4418%; margin-right: 10px;" />
+    </span>
+    <figcaption></figcaption>
+</figure><figure class="imageblock alignCenter" data-filename="express.png" data-origin-width="575" data-origin-height="571" style="width: 47.3954%;">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" data-filename="express.png" data-origin-width="575" data-origin-height="571" style="width: 47.3954%;" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<h2 data-ke-size="size26">&nbsp;</h2>
+<p>&nbsp;</p>
+<h2 data-ke-size="size26"><b>-개요</b></h2>
+<p>&nbsp;</p>
+<p>node.js를 토대로 한 웹 프레임워크 중에 가장 유명한&nbsp;프레임워크 2개는</p>
+<p>express와 koa로&nbsp;입니다. 이 둘의 차이에 대해 소개해보려고 합니다.&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2 data-ke-size="size26"><b>-내용</b></h2>
+<p>&nbsp;</p>
+<h3 data-ke-size="size23"><b>. Express&nbsp;</b></h3>
+<p>&nbsp;</p>
+<p><b>*장점</b></p>
+<p>&nbsp;</p>
+<p>1. express는 많은 기능을 내장하고 있습니다.</p>
+<p>&nbsp; &nbsp;기능이 많기 때문에 기능을 사용할 때 번거로움 없이 사용할 수 있습니다.&nbsp; &nbsp;</p>
+<p>예를 들면 app.get( '/', , (req, res)=&gt;{&nbsp; &nbsp; &nbsp;} );&nbsp; 이런 기능을 바로 사용 가능합니다.</p>
+<p>&nbsp;-&gt; koa는 안 그렇습니다. route 기능을 npm으로 추가해줘야 사용 가능합니다.</p>
+<p>&nbsp;</p>
+<p>2. 유명하고 기간이 오래되었습니다.</p>
+<p>&nbsp; 정보량이 정말 많이 차이 납니다. express는 많은 사람들이 본인들의 문제에 관한 글을 이나 궁금증에 대한 글들을</p>
+<p>&nbsp; 수없이 남겨왔고 그 글들이 인터넷에 잘 보존되어있기 때문에 정보를 얻기 용이합니다.&nbsp;</p>
+<p>&nbsp; 유명하기 때문에 express 만쓰면 node.js 서버에 관한 문제는 대부분 처리 가능합니다.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><b>*단점</b></p>
+<p>&nbsp;</p>
+<p><span style="color: #333333;">기능을 쓰지 않아도 일단 보유하고 있습니다. 조금 무겁다고 볼 수 있습니다.</span></p>
+<p><span style="color: #333333;">async-await를 사용할 때 try-catch로 감싸줘야 합니다. (안 하면 오류와 함께 경고를 출력합니다.)&nbsp;</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 data-ke-size="size23"><b>. Koa</b></h3>
+<p>&nbsp;</p>
+<p><b>*장점</b></p>
+<p>&nbsp;</p>
+<p>1. express 개발자들이 만들었습니다. (근본)</p>
+<p>기본적인 구조만 가지고 있고 기능들은 모듈화 되어 나누어져 있습니다. 필요할 때 필요한 부분만 쓴다는 건</p>
+<p>장점입니다. 솔직히 얼마 차이 안 나겠지만 하드웨어에 서버를 올릴 때 용량이 줄어드는 부분이나</p>
+<p>실행 속도 등에서 효율적인 면모를 보일 거라 생각합니다.</p>
+<p>&nbsp;</p>
+<p><span style="color: #333333;">2. es6기반이라서 async-await를 사용 가능합니다. try-catch를 사용하지 않아도 됩니다.</span></p>
+<p><span style="color: #333333;">&nbsp; &nbsp;자잘한 거긴 한데 이런 게 편합니다.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><b>*단점</b></p>
+<p>&nbsp;</p>
+<p>기능을 쓰고 싶으면 다 수동으로 개발자가 가져와야 합니다. 불편할 수 있습니다.</p>
+<p>(예를 들면 express는 router 가 그냥 있는데 koa는 npm이나 yarn으로 다운해야 사용 가능합니다.)</p>
+<p>아무래도 koa 검색하면 express보다 찾기 불편합니다.(필자의 경우 찾을 때 예시가 적다고 느낍니다.)</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>필자는 두 가지다 사용해본 결과 어차피 웹 프레임워크는 부수적이었습니다.&nbsp;</p>
+<p>서버 구축 자체에 시간이 들 뿐입니다.(학습 레벨이 비슷하다면) 하지만 처음이라면 express를 추천하고 싶습니다.</p>
+<p>정보가 많습니다.&nbsp; 중점적인 정보만 다루었습니다. 도움이 되었길 바랍니다.&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #koa express #express koa 차이 #koa express 비교 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

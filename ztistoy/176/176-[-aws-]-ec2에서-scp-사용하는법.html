@@ -1,0 +1,61 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>[ aws ] ec2에서 scp 사용하는법</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">[ aws ] ec2에서 scp 사용하는법</h2>
+                                <div class="box-info">
+                                    <p class="category">Cloud/aws</p>
+                                    <p class="date">2023-06-15 18:34:46</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16"><span>scp는 secure copy protocol의 약어로 ssh접근 기반의 sftp를 해주는 수단이다</span><br /><span>aws에서 찾아보면 친절하게 아래와 같은 명령어로 scp를 사용하라고 나와있다&nbsp;</span><br /><span><a href="https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html" target="_blank" rel="noopener">aws문서참조</a></span></p>
+<pre id="code_1686733540751" class="shell" data-ke-language="shell" data-ke-type="codeblock"><code>scp -i /path/key-pair-name.pem /path/my-file.txt ec2-user@instance-public-dns-name:path/</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span>위의 명령어 진행하면 내 경우에는 아래와 같은 에러가 나왔다</span></p>
+<pre id="code_1686733478559" class="shell" data-ke-language="shell" data-ke-type="codeblock"><code>scp: Received message too long 1349281121
+scp: Ensure the remote shell produces no output for non-interactive sessions.</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span>찾아본 결과 sftp인증을 시도할 때 발생하는 에러다<br /></span><span>scp 말고 sftp로 접속 테스트를 해보면 동일한 issue가 생긴다</span><br /><span>openSsh의 sftp server를 사용할 수 없거나 경로를 못 찾는 경우 혹은</span><br /><span>sftp가 session을 초기 생성할 때 불필요한 정보를 출력해서 문제가 되는듯하다</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span>aws경로에서 /etc/ssh/sshd_config를 확인해 보자</span><br /><span>아래 #으로 주석처리돼 있는 line이 주석 없이 존재할 것이다. </span><span>해당 부분 아래와 같이 주석처리하고</span><br /><span>openSsh package의 내부에 있는 sftp를 아래 codeBlock처럼 사용하자</span></p>
+<pre id="code_1686735733129" class="shell" data-ke-language="shell" data-ke-type="codeblock"><code>#Subsystem      sftp    /usr/libexec/openssh/sftp-server
+
+Subsystem sftp internal-sftp
+ForceCommand internal-sftp -u 0002</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span>forceCommand를 붙이는 이유는</span><br /><span>내경우에 Subsystem sftp internal-sftp 명령어로만 했을 경우 동일한 error가 나왔다</span><br /><span>다른 사람들 글에는 이걸로 해결했다는 사람이 꽤 많았다</span></p>
+<p data-ke-size="size16"><span>나는 추가로 ForceCommand internal-sftp -u 0002 명령어를 사용했다</span><br /><span>첫 번째 code의 명령을 좀 더 강제하는 코드다. </span><span>option은 umask permision 설정이다</span></p>
+<pre id="code_1686735733637" class="shell" data-ke-language="shell" data-ke-type="codeblock"><code>sudo service sshd restart</code></pre>
+<p data-ke-size="size16"><span>sshd를 재실행하여 설정을 적용한다. </span><span>scp를 실행할 경우 정상 동작이 일어났다<br />위처럼 진행할 경우 나중에 접근할 때 sftp로만 접근가능하다. 그래서 파일을 옮겼다면 원래대로 설정을 돌려놓아야한다<br />아니면 아래와같은 에러가 나오면서 이후 접근이 불가능해진다</span></p>
+<pre id="code_1688462947623" class="typescript" data-ke-language="typescript" data-ke-type="codeblock"><code>This service allows sftp connections only</code></pre>
+<p data-ke-size="size16"><span>&nbsp;</span></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #scp #KR #EC2 #aws 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

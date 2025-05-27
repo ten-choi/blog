@@ -1,0 +1,88 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>[ Aws ] ec2 보안그룹 만들기- YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">[ Aws ] ec2 보안그룹 만들기- YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">Cloud</p>
+                                    <p class="date">2022-12-12 18:48:27</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h4 data-ke-size="size20">?<span>&nbsp;</span><b>환경&nbsp;</b></h4>
+<p data-ke-size="size16">Aws web</p>
+<h4 data-ke-size="size20">? <b>개요</b></h4>
+<p data-ke-size="size16">ec2 사용하면서 보안 그룹 설정을 해봅시다!</p>
+<h4 data-ke-size="size20">?<span>&nbsp;</span><b>목차</b></h4>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>보안 그룹 만들기</li>
+</ul>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">보안 그룹이란? Aws에서 지원하는 Ec2의 IP, Port의 인바운드, 아웃바운드 등을 설정에 사용에 제한을 줘서 <br />보안성을 올리는 EC2의 부속 기능입니다.</p>
+<h2 data-ke-size="size26"><b>- 보안 그룹 만들기</b></h2>
+<p data-ke-size="size16">ec2를 검색해줍니다<br />카테고리에 보안 그룹을 선택합니다.</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">보안 그룹을 생성합니다.<br /><br />보안 그룹의 이름, 설명은 간단하게 작성해줍니다.</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Apple SD Gothic Neo', Arial, sans-serif; letter-spacing: 0px;">인바운드는 외부에서 ec2로 접속할 때 허용하는 ip와 포트입니다.&nbsp;<br /></span>http, https로 접속할 예정이기 때문에 80, 443을 설정했습니다.<br />그게 아니신 분들은 유형에서 사용자 지정 TCP 등을 쓰시면 됩니다.</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_3.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16"><br />안에서 밖으로 나가는 트래픽에는 제한이 없게 처리했습니다.<br /><span>보안상 별다른 제한을 걸지 않아도 되는 경우입니다.<span>&nbsp;</span></span><br />이또 한 마찬가지로 설정이 필요하신 분들은 특정 대상 ip, port만 아웃 바운드될 수 있도록 설정합니다.<br /><span style="font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Apple SD Gothic Neo', Arial, sans-serif; letter-spacing: 0px;">보안 그룹 생성 버튼을 눌러주세요.</span></p>
+<p data-ke-size="size16">이제 필요할 때 해당 보안 그룹을 사용할 수 있습니다.<br /><br />마지막으로 이름은 나와서 따로 설정해줘야 합니다.<br />방금 만든 보안 그룹에 이름을 설정해줍니다.</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_4.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16"><b><span style="background-color: #ffffff; color: #555555;">? 근거 있는 조언은 언제나 환영합니다</span><span style="background-color: #ffffff; color: #555555;">. 성실한 코딩</span><span style="background-color: #ffffff; color: #555555;"><span>&nbsp;</span>하세요.</span></b></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #aws #AWS 보안그룹 #aws 인바운드 #aws 아웃바운드 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

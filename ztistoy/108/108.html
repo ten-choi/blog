@@ -1,0 +1,117 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Trigger 쉽게 쓰는 법 -YEOL (How to use Trigger easily in MySql)</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Trigger 쉽게 쓰는 법 -YEOL (How to use Trigger easily in MySql)</h2>
+                                <div class="box-info">
+                                    <p class="category">DB/rdb</p>
+                                    <p class="date">2021-10-29 18:10:46</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>plz select language to right side menu.</b></span></p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>Trigger 뜻</b></span><br /><span style="color: #666666;"><b>명사 -&gt; 방아쇠, 계기</b></span><br /><span style="color: #666666;"><b>동사 -&gt; 촉발시키다, <span style="color: #0593d3;">작동시키다</span></b></span></p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>DB에서 Trigger란 query를 등록하고 insert, update, delete 같은 문장이 실행될 때&nbsp;</b></span></p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>등록한 Query를<span style="color: #0593d3;"> 작동시키</span>는 기능입니다.</b></span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>트리거 등록 및 동작 순서</b></span></p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>1. Trigger를 등록할 테이블 선정.</b></span></p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>2. Table에 Trigger와 등록할 Query를 만들어줍니다</b></span></p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>3. Trigger가 등록된 Table에서 insert, update, delete Query를 실행합니다.&nbsp;</b></span></p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>4. 해당 Table에 Query가 실행될 때 Trigger에 등록한 Query를 작동시킵니다.&nbsp;</b></span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>Example 1</b></span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>Table을 만들어줍니다. 학생 정보 Table과 학생의 시험 점수 Table입니다.</b></span></p>
+<pre id="code_1635144746535" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>CREATE TABLE USER_INFO
+(
+	`NO`                     INT           	NOT NULL    AUTO_INCREMENT COMMENT 'auto increase', 
+	`USER_ID`              	 VARCHAR(10)    NOT NULL    COMMENT 'USER ID', 
+	`USER_NAME`              VARCHAR(10)    NOT NULL    COMMENT 'USER NAME', 
+ 	`ALL_SCORE`              INT	        NULL DEFAULT	0   COMMENT 'TOTAL SCORE', 
+	CONSTRAINT PK_ PRIMARY KEY (NO)
+);
+
+CREATE TABLE GRADE_INFO
+(
+	`NO`                    INT       	NOT NULL    AUTO_INCREMENT COMMENT 'auto increase', 
+	`USER_ID`               VARCHAR(10)    	NOT NULL    COMMENT 'USER ID', 
+	`TEST`                  VARCHAR(10)     NOT NULL    COMMENT 'SUBJECT', 
+	`SCORE`              	INT             NOT NULL    COMMENT 'SCORE',
+	CONSTRAINT PK_ PRIMARY KEY (NO)
+);</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>Test를 위해 학생 정보를 넣어줍니다.</b></span></p>
+<pre id="code_1635145236565" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>INSERT INTO USER_INFO(USER_ID, USER_NAME) VALUES('950814', 'YEOL');</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>학생정보가 잘들어갔는지 확인해줍니다.</b></span></p>
+<pre id="code_1635147777815" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>SELECT * FROM USER_INFO;</code></pre>
+<p><figure class="imageblock alignCenter" data-origin-width="318" data-origin-height="156" data-ke-mobilestyle="widthOrigin">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-origin-width="318" data-origin-height="156" data-ke-mobilestyle="widthOrigin" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>이제 Trigger를 등록하겠습니다.&nbsp;</b></span></p>
+<pre id="code_1635144607039" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>DELIMITER $$
+CREATE TRIGGER TRIGGER_USER_INFO
+AFTER INSERT ON GRADE_INFO
+FOR EACH ROW
+BEGIN
+ 		IF NEW.USER_ID = '950814' THEN
+        		UPDATE USER_INFO SET ALL_SCORE = ALL_SCORE + NEW.SCORE WHERE USER_ID = '950814';
+ 		END IF;
+END; $$
+DELIMITER ;</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>DELIMITER : 구분 기호를 뜻하며 Trigger의 시작과 끝을 구분하기 위한 기호입니다. 구분 기호는 $$, // 등이 가능합니다.</b></span></p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>CREATE TRIGGER (NAME) : 선언하는 Trigger의 이름입니다.</b></span></p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>AFTER INSERT ON (Trigger를 등록할 테이블) : 해당 Table에 INSERT 된 후에 Trigger가 동작한다는 의미입니다.</b></span><br /><span style="color: #666666;"><b>만약 BEFORE UPDATE ON&nbsp; MY_TABLE 이렇게 있다면 MY_TABLE에서 UPDATE가 일어난다면 UPDATE 하기 전에</b></span><br /><span style="color: #666666;"><b>Trigger를 동작합니다.&nbsp;</b></span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>FOR EACH ROW&nbsp; 영어 그대로 Table의 각 row에 다 적용된다는 의미입니다.&nbsp;</b></span></p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>UPDATE, DELETE에 해당하는 구문은 기존에도 WHERE 없이 실행하면 모든 row에 적용되기 때문에 FOR EACH ROW는 MySql에서 구문상 필수적으로 넣는다고 개념을 이해하시면 될듯합니다.&nbsp;</b></span><br /><span style="color: #666666;"><b>(stackoverflow 참조입니다)&nbsp;</b></span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<pre id="code_1635147901720" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>INSERT INTO GRADE_INFO(USER_ID, TEST, SCORE ) VALUES('950814', 'ENGLISH', 88);</code></pre>
+<p data-ke-size="size16"><span style="color: #666666;"><b>자 이제 Trigger가 적용되었고 값을 넣어줍니다.</b></span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<pre id="code_1635143819732" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>SELECT * FROM USER_INFO;</code></pre>
+<p data-ke-size="size16"><span style="color: #666666;"><b>INSERT가 GRADE_INFO에 된 후 Trigger로 인해 USER_INFO에 값이 입력되었다면 완성입니다.&nbsp;</b></span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="407" data-origin-height="166" data-ke-mobilestyle="widthOrigin">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" data-origin-width="407" data-origin-height="166" data-ke-mobilestyle="widthOrigin" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;"><b>Trigger 쉽게 쓰는 법을 올려봤습니다. 성실한 코딩 하세요.</b></span></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #trigger #mysql trigger #sql trigger 사용법 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

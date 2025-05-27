@@ -1,0 +1,110 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>간단하게 설명하는 async 와 await 을 쓰는이유 with js -YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">간단하게 설명하는 async 와 await 을 쓰는이유 with js -YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">TS, JS/javascript</p>
+                                    <p class="date">2020-05-21 15:22:37</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-filename="javascript.png" data-origin-width="571" data-origin-height="440" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-filename="javascript.png" data-origin-width="571" data-origin-height="440" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;">&nbsp;</span></p>
+<h2 data-ke-size="size26"><span style="color: #666666;"><b>- 동기 &amp; 비동기란</b></span></h2>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;">먼저 이해를 돕기 위해 아주 쉽게!! 동기와 비동기에 대해 설명드리겠습니다.&nbsp;</span></p>
+<p data-ke-size="size16"><span style="color: #666666;">동기는 동시에 실행된다는 의미입니다. 비동기는 말 그대로 동시에 </span><span style="color: #666666;">실행이 되지 않는다는 말입니다.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<h2 data-ke-size="size26"><span style="color: #666666;"><b>- async &amp; await 사용법</b></span></h2>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #666666;">async는 asynchronous의 약어로 비동기란 뜻이며 await은 (~을) 기다리다 라는 뜻입니다.</span></p>
+<p><span style="color: #666666;">먼저 비동기 처리 함수를 만들어줍니다. 아래처럼 화살표 함수, 일반 함수에 따라서 위치가 변합니다.</span></p>
+<pre id="code_1611038848928" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>async asyncAPI function(){    //일반 함수의 사용법
+
+}
+
+
+asyncAPI = async () =&gt;{       //화살표 함수의 사용법
+
+}</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">async await 도 es6이기 때문에 es6문법인 애로우 함수로 예를 들어보겠습니다.</p>
+<pre id="code_1611038757692" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>let num =1;
+function add(){
+	num+=1;
+    return num;
+}
+
+asyncAPI = async () =&gt;{
+
+	await console.log(num);
+	await console.log(add());
+	await console.log(num+1); 
+}</code></pre>
+<p data-ke-size="size16">제 의도는 1, 2, 3 이 순서대로 호출되길 바라며 만들었습니다. 만약 add 함수가 정말 긴 코드일 때 동기적으로 실행될 <br />경우 3번째 콘솔이 먼저 실행되서 1, 2, 2 가 콘솔에 찍힐 것입니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<pre id="code_1631775571796" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>let num = 1;
+asyncAPI = async () =&gt;{
+
+	console.log(num);
+    let add = await db.getconnect().query(String)[0];//DB값을 호출한다는 예시 코드
+	num += add; //add 값이 1이라면
+    console.log(num);
+	console.log(num+1); 
+}</code></pre>
+<p data-ke-size="size16"><span style="color: #666666;">위의 소스를 통해 왜 동기여야 되는지 간단한 동기와 비동기의 이유가 보일 것입니다. 순서상 꼭 실행 순서가 순서대로 진행되야하는 코드라면&nbsp;</span><span style="color: #666666;">비동기는 필수적으로 적용되어야 합니다. DB를 호출 중에 다음 코드를 실행해버려서 없는 값에 계산을 할 수는 없으니까요.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">다른 발상에서 보시는 분들은&nbsp;setTimeout을 생각해서 이런 식으로 사용하려는 분도 있을 수 있습니다.</p>
+<pre id="code_1631774951367" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>asyncAPI = async () =&gt;{
+
+  await setTimeout( ()=&gt;{ console.log( 1); }  ,  2000 ); 
+
+  console.log( 2) ; 
+
+}</code></pre>
+<p data-ke-size="size16">그럼 1 다음 2가 console.log에 나오길 바랄 텐데 setTimeout은 내부적으로 Promise를 반환하지 않기 때문에 원하는 동작은 하지 않을 것입니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">여기서 promise란 async에서 사용되는 비동기 처리를 위한 javascript 함수를 의미합니다.</p>
+<p data-ke-size="size16"><span style="color: #666666;">async는<span>&nbsp;</span><span style="color: #666666;">promise를 반환합니다. 그래서 promise에서 then을 사용해도 비동기적으로 처리 가능합니다.</span></span></p>
+<p data-ke-size="size16"><span style="color: #666666;">그럼 promise 쓰지 왜 굳이 async await을 쓰는 것이냐 물으실 수 있습니다.<span>&nbsp;</span></span><span style="color: #666666;">promise then 보다 async await이 쓰기 간결합니다.</span></p>
+<p data-ke-size="size16"><span style="color: #666666;">promise와 then에 관해서도 공부해 보시기 바라며 javascript의 async await이었습니다. 성실한 코딩 하세요.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #동기 비동기 #ES6 #async await #javascript 비동기 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

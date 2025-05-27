@@ -1,0 +1,115 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>쉽게 쓰는 Linux tar 명령어 -YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">쉽게 쓰는 Linux tar 명령어 -YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">OS/Linux</p>
+                                    <p class="date">2020-11-24 11:22:25</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-filename="linux.png" data-origin-width="635" data-origin-height="542" width="384" height="NaN" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-filename="linux.png" data-origin-width="635" data-origin-height="542" width="384" height="NaN" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>tar [-option]&nbsp; [filename]</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">tar -cvf aaa.tar.gz abc 압축하기</span></p>
+<p><span style="color: #000000;"><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">tar -xvf aaa.tar.gz&nbsp; &nbsp;압축 풀기</span></span></p>
+<p>&nbsp;</p>
+<p><span style="color: #000000;"><span style="color: #000000;"><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">tar -zcvf aaa.tar.gz abc</span></span></span></p>
+<p><span style="color: #000000;"><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">tar -zxvf aaa.tar.gz&nbsp;&nbsp;</span></span></p>
+<p>&nbsp;</p>
+<p>-f 대상 file을 지정합니다.</p>
+<p>-c 기존의 파일을 tar 압축형태로 만들때 사용합니다.</p>
+<p>-v 명령어 처리과정을 터미널에 출력합니다.</p>
+<p>x- 기존의 tar 파일을 합축해제할때 사용합니다.</p>
+<p>tar 아카이브에서 파일 추출. (파일</p>
+<p><span style="letter-spacing: 0px;"><br />&nbsp;tar [OPTION...] [FILE]...&nbsp;</span></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;대상&nbsp;tar&nbsp;아카이브&nbsp;지정.&nbsp;(기본&nbsp;옵션) <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;tar&nbsp;아카이브&nbsp;생성.&nbsp;기존&nbsp;아카이브&nbsp;덮어&nbsp;쓰기.&nbsp;(파일&nbsp;묶을&nbsp;때&nbsp;사용) <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;tar&nbsp;아카이브에서&nbsp;파일&nbsp;추출.&nbsp;(파일&nbsp;풀&nbsp;때&nbsp;사용) <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;처리되는&nbsp;과정(파일&nbsp;정보)을&nbsp;자세하게&nbsp;나열. <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;gzip&nbsp;압축&nbsp;적용&nbsp;옵션. <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-j&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;bzip2&nbsp;압축&nbsp;적용&nbsp;옵션. <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;tar&nbsp;아카이브에&nbsp;포함된&nbsp;내용&nbsp;확인. <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;대상&nbsp;디렉토리&nbsp;경로&nbsp;지정. <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;지정된&nbsp;파일을&nbsp;tar&nbsp;아카이브에&nbsp;추가. <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;tar&nbsp;아카이브와&nbsp;파일&nbsp;시스템&nbsp;간&nbsp;차이점&nbsp;검색. <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;tar&nbsp;아카이브의&nbsp;마지막에&nbsp;파일들&nbsp;추가. <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;tar&nbsp;아카이브의&nbsp;마지막에&nbsp;파일들&nbsp;추가. <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-k&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;tar&nbsp;아카이브&nbsp;추출&nbsp;시,&nbsp;기존&nbsp;파일&nbsp;유지. <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-U&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;tar&nbsp;아카이브&nbsp;추출&nbsp;전,&nbsp;기존&nbsp;파일&nbsp;삭제. <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-w&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;모든&nbsp;진행&nbsp;과정에&nbsp;대해&nbsp;확인&nbsp;요청.&nbsp;(interactive) <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;첫&nbsp;번째&nbsp;에러&nbsp;발생&nbsp;시&nbsp;중지</p>
+<p>&nbsp;</p>
+<p>tar 사용 예명령어 옵션</p>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+<tbody>
+<tr>
+<td><a href="https://recipes4dev.tistory.com/146#31-%ED%98%84%EC%9E%AC-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%EC%9D%98-%EB%AA%A8%EB%93%A0-%ED%8C%8C%EC%9D%BC%EA%B3%BC-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%EB%A5%BC-tar%EB%A1%9C-%EB%AC%B6%EA%B8%B0">현재 디렉토리의 모든 파일과 디렉토리를 tar로 묶기</a></td>
+<td>tar cvf T.tar *</td>
+</tr>
+<tr>
+<td><a href="https://recipes4dev.tistory.com/146#32-%EB%8C%80%EC%83%81-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%EB%A5%BC-%ED%8F%AC%ED%95%A8%ED%95%9C-%EB%AA%A8%EB%93%A0-%ED%8C%8C%EC%9D%BC%EA%B3%BC-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%EB%A5%BC-tar%EB%A1%9C-%EB%AC%B6%EA%B8%B0">대상 디렉토리를 포함한 모든 파일과 디렉토리를 tar로 묶기</a></td>
+<td>tar cvf T.tar [PATH]</td>
+</tr>
+<tr>
+<td><a href="https://recipes4dev.tistory.com/146#33-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%A7%80%EC%A0%95%ED%95%98%EC%97%AC-tar-%EC%95%84%EC%B9%B4%EC%9D%B4%EB%B8%8C%EB%A1%9C-%EB%AC%B6%EA%B8%B0">파일을 지정하여 tar 아카이브로 묶기</a></td>
+<td>tar cvf T.tar [FILE_1] [FILE_2]</td>
+</tr>
+<tr>
+<td><a href="https://recipes4dev.tistory.com/146#34-tar-%EC%95%84%EC%B9%B4%EC%9D%B4%EB%B8%8C%EB%A5%BC-%ED%98%84%EC%9E%AC-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%EC%97%90-%ED%92%80%EA%B8%B0">tar 아카이브를 현재 디렉토리에 풀기</a></td>
+<td>tar xvf T.tar</td>
+</tr>
+<tr>
+<td><a href="https://recipes4dev.tistory.com/146#35-tar-%EC%95%84%EC%B9%B4%EC%9D%B4%EB%B8%8C%EB%A5%BC-%EC%A7%80%EC%A0%95%EB%90%9C-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%EC%97%90-%ED%92%80%EA%B8%B0">tar 아카이브를 지정된 디렉토리에 풀기</a></td>
+<td>tar xvf T.tar -C [PATH]</td>
+</tr>
+<tr>
+<td><a href="https://recipes4dev.tistory.com/146#36-tar-%EC%95%84%EC%B9%B4%EC%9D%B4%EB%B8%8C%EC%9D%98-%EB%82%B4%EC%9A%A9-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0">tar 아카이브의 내용 확인하기</a></td>
+<td>tar tvf T.tar</td>
+</tr>
+<tr>
+<td><a href="https://recipes4dev.tistory.com/146#37-%ED%98%84%EC%9E%AC-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%EB%A5%BC-tar%EB%A1%9C-%EB%AC%B6%EA%B3%A0-gzip%EC%9C%BC%EB%A1%9C-%EC%95%95%EC%B6%95%ED%95%98%EA%B8%B0">현재 디렉토리를 tar로 묶고 gzip으로 압축하기</a></td>
+<td>tar zcvf T.tar.gz *</td>
+</tr>
+<tr>
+<td><a href="https://recipes4dev.tistory.com/146#38-gzip%EC%9C%BC%EB%A1%9C-%EC%95%95%EC%B6%95%EB%90%9C-tar-%EC%95%84%EC%B9%B4%EC%9D%B4%EB%B8%8C%EB%A5%BC-%ED%98%84%EC%9E%AC-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%EC%97%90-%ED%92%80%EA%B8%B0">gzip으로 압축된 tar 아카이브를 현재 디렉토리에 풀기</a></td>
+<td>tar zxvf T.tar.gz</td>
+</tr>
+<tr>
+<td><a href="https://recipes4dev.tistory.com/146#39-%ED%98%84%EC%9E%AC-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%EB%A5%BC-tar%EB%A1%9C-%EB%AC%B6%EA%B3%A0-bzip2%EC%9C%BC%EB%A1%9C-%EC%95%95%EC%B6%95%ED%95%98%EA%B8%B0">현재 디렉토리를 tar로 묶고 bzip2로 압축하기</a></td>
+<td>tar jcvf T.tar.bz2 *</td>
+</tr>
+<tr>
+<td><a href="https://recipes4dev.tistory.com/146#310-bzip2%EB%A1%9C-%EC%95%95%EC%B6%95%EB%90%9C-tar-%EC%95%84%EC%B9%B4%EC%9D%B4%EB%B8%8C%EB%A5%BC-%ED%98%84%EC%9E%AC-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%EC%97%90-%ED%92%80%EA%B8%B0">bzip2로 압축된 tar 아카이브를 현재 디렉토리에 풀기</a></td>
+<td>tar jxvf T.tar.bz2</td>
+</tr>
+<tr>
+<td><a href="https://recipes4dev.tistory.com/146#311-tar-%EC%95%84%EC%B9%B4%EC%9D%B4%EB%B8%8C-%EB%AC%B6%EA%B1%B0%EB%82%98-%ED%92%80-%EB%95%8C-%ED%8C%8C%EC%9D%BC-%EB%B3%84-%EC%A7%84%ED%96%89-%EC%97%AC%EB%B6%80-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0">tar 아카이브 묶거나 풀 때 파일 별 진행 여부 확인하기</a></td>
+</tr>
+</tbody>
+</table>
+<p>.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #tar #Linux tar #linux tar 명령어 #linux tar 사용법 #tar 사용법 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

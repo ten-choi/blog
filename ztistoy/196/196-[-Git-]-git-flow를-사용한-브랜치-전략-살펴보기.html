@@ -1,0 +1,147 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>[ Git ] git-flow를 사용한 브랜치 전략 살펴보기</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">[ Git ] git-flow를 사용한 브랜치 전략 살펴보기</h2>
+                                <div class="box-info">
+                                    <p class="category">ETC/Git</p>
+                                    <p class="date">2023-12-13 17:39:13</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p><figure class="imageblock alignCenter" width="600" height="795" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" width="600" height="795"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size16">&nbsp;</p>
+<h2 style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size26"><b>git-flow 전략을 사용하게 된 이유</b></h2>
+<p style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size16">지속적인 인원증가로 인해 버전관리 전략을 대비할 필요성을 느꼈다</p>
+<p style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size16">인원이 늘어날수록 병렬적인 업무진행을 위한 대규모에 적합한 git 전략을 준비해야 했다</p>
+<p style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size16">그래서 러닝커브를 앞당겨 이후 자연스럽게 정착하게 하기 위해 미리 익숙해지기로 결정했다</p>
+<p style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size16">&nbsp;</p>
+<h2 style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size26"><b>git-flow 브랜치 구조</b></h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>master<br />실제 제품으로 쓰이며 배포가 가능한 상태만을 관리하는 브랜치다</li>
+<li>develop<br />개발 단계에서 메인으로 관리되는 브랜치이다<br />feature와 release를 만들 때 기반이 된다</li>
+<li>feature<br />추가적인 기능을 개발할 브랜치이며 기능이 완성되면 develop에 merge 하고 불필요하게 되면 폐기한다<br />- base가 되는 브랜치: develop<br />- merge가 될 브랜치: develop</li>
+<li>release<br />다음버전으로 배포를 위해 최종의 테스트 및 버그수정등을 진행하는 개발용 브랜치다<br />- base가 되는 브랜치: develop<br />- merge가 될 브랜치: develop, master</li>
+<li>hotfix<br />배포한 버전에서 긴급하게 수정이 필요할 때 master브랜치를 base로 생성하는 브랜치다<br />- base가 되는 브랜치: master<br />- merge가 될 브랜치: develop, master</li>
+</ol>
+<p style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size16">&nbsp;</p>
+<h2 style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size26">Git-flow 흐름설명</h2>
+<p><figure class="imageblock alignCenter" data-origin-width="1566" data-origin-height="639" data-is-animation="false" style="width: 39.7342%; margin-right: 10px;" data-widthpercent="40.68">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_3.png" data-origin-width="1566" data-origin-height="639" data-is-animation="false" style="width: 39.7342%; margin-right: 10px;" data-widthpercent="40.68" />
+    </span>
+    <figcaption></figcaption>
+</figure><figure class="imageblock alignCenter" data-is-animation="false" data-origin-height="680" data-origin-width="1264" style="width: 30.1378%; margin-right: 10px;" data-widthpercent="30.86">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_4.png" data-is-animation="false" data-origin-height="680" data-origin-width="1264" style="width: 30.1378%; margin-right: 10px;" data-widthpercent="30.86" />
+    </span>
+    <figcaption></figcaption>
+</figure><figure class="imageblock alignCenter" data-origin-width="1996" data-origin-height="1164" data-is-animation="false" data-widthpercent="28.46" style="width: 27.8023%;">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_5.png" data-origin-width="1996" data-origin-height="1164" data-is-animation="false" data-widthpercent="28.46" style="width: 27.8023%;" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<h4 data-ke-size="size20">새로운 작업을 시작할 때</h4>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="text-align: left;">GitHub 사이트의 해당 프로젝트에서 Issue를 생성한다</span></li>
+<li><span style="text-align: left;">Title과 Content에 해야 할 작업내용을 기입한다</span></li>
+<li><span style="text-align: left;">우측 사이드바에 태그를 설정한다<br />- Assignees에 본인을 태그 한다<br /></span><span style="text-align: left;">- Labels에 Feature를 태그 한다<br />- Project에 어느 프로젝트에서 작업하는지 태그 한다<br />- Milestone에 PR인지 일반 Issue인지 구분하여 태그 한다</span></li>
+<li><span style="text-align: left;">생성이 완료된 경우 Issue 번호가 자동으로 생성되는데 이 번호를 feature 브랜치의 네이밍에 사용한다</span></li>
+<li><span style="text-align: left;">develop 브랜치에서 newBranch를 하고 <span style="text-align: left;">feature와 Issue 나온 번호를 혼합해 </span><span style="text-align: left;"><span style="text-align: left;">e.g) </span><span style="text-align: left;"><span style="text-align: left;">feature-issue#3303<br />형식의 이름을 만들어주고 작업을 진행한다</span></span></span></span></li>
+</ol>
+<p data-ke-size="size16">&nbsp;</p>
+<p style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size16"><span style="font-size: 1.25em; letter-spacing: -1px; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Apple SD Gothic Neo', Arial, sans-serif;">하던 작업이 완료될 때</span></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="text-align: left;">GitHub 사이트의 해당 프로젝트에서 PR을 생성한다</span></li>
+<li><span style="text-align: left;">merge 될 base 브랜치에 develop을 설정하고 feature-issue#xxxx를 compare에 설정한다</span></li>
+<li><span style="text-align: left;">Title과 Content에 해야 할 작업내용을 기입한다</span></li>
+<li><span style="text-align: left;"><span style="text-align: left;">우측 사이드바에 태그를 설정한다</span><br />- Reviewers에 리뷰해 줄 사람들을 태그 한다<br /></span><span style="text-align: left;"><span style="text-align: left;">- Assignees에 본인을 태그 한다</span><br /><span style="text-align: left;">- Labels에 Feature와 기간 내에 코드리뷰 해달라는 D-n을 태그 한다</span><span style="text-align: left;"><br />- Project에 어느 프로젝트에서 작업하는지 태그 한다<br />- Milestone에 PR인지 일반 Issue인지 구분하여 태그 한다<br />- Development에 본인의 Issue를 찾아 설정한다</span></span></li>
+<li><span style="text-align: left;">PR에 대한 코드리뷰가 진행되며 merge는 리뷰어가 진행한다</span></li>
+</ol>
+<p><figure class="imageblock alignCenter" width="652" height="379" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" width="652" height="379"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<h4 style="color: #000000; text-align: start;" data-ke-size="size20">배포해야 할 때</h4>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="text-align: left;">local에서 develop의 newBranch로 release-v [현재버전번호+<span style="text-align: left;">]를 생성한다</span></span></li>
+<li><span style="text-align: left;">GitHub 사이트의 해당 프로젝트에서 PR을 생성한다</span></li>
+<li><span style="text-align: left;">merge 될&nbsp;base 브랜치에 <span style="text-align: left;">master를</span> 설정하고 release를 compare에 설정한다<br />(GitHub 사이트의 해당 프로젝트 현재버전을 확인하고 브랜치의 버저닝을 진행한다)</span></li>
+<li><span style="text-align: left;">Title과 Content에&nbsp;해야 할&nbsp;작업내용을 기입한다</span></li>
+<li><span style="text-align: left;">우측 사이드바 태그설정</span><span style="text-align: left;"><span style="text-align: left;"><br /></span><span style="text-align: left;"><span style="text-align: left;">- Assignees에 본인을 태그 한다</span><br /><span style="text-align: left;">- Labels에 Release를 태그 한다</span><span style="text-align: left;"><br />- Project에 어느 프로젝트에서 작업하는지 태그 한다<br />- Milestone에 PR인지 일반 Issue인지 구분하여 태그 한다</span></span><br /></span></li>
+<li><span style="text-align: left;">release브랜치가 최종으로 확인이 끝나면 GitHub 사이트에서 merge를 한다<br />GitAction을 통해 자동으로 배포된다</span></li>
+<li><span style="text-align: left;"><span style="text-align: left;">release브랜치에 변경사항이 있다면 develop브랜치에도 merge 하고 release브랜치를 삭제한다</span></span></li>
+</ol>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">release version 표기 설명</p>
+<ul style="list-style-type: disc; background-color: #ffffff; color: #222222; text-align: start;" data-ke-list-type="disc">
+<li>Release Number: 1로 시작하며 해당 프로젝트에 극심한 변화가 생길 경우 숫자를 1 올린다</li>
+<li>Major Number: 0으로 시작하며 주요 기능이 추가되거나 변경되었을 때 숫자를 1 올린다</li>
+<li>Minor Number: 0으로 시작해며 버그 수정 등 미미한 변화가 발생하면 숫자를 1 올린다</li>
+</ul>
+<p data-ke-size="size16">&nbsp;</p>
+<p><figure class="imageblock alignCenter" width="612" height="350" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png" width="612" height="350"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size16">&nbsp;</p>
+<h4 style="color: #000000; text-align: start;" data-ke-size="size20">핫픽스를 해야 할 때</h4>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="text-align: left;">local에서 develop의 newBranch로 hotfix-[<span style="text-align: left;">현재버전번호</span><span style="text-align: left;">]를 생성한다</span></span></li>
+<li><span style="text-align: left;">수정해야 할 부분을 수정한다</span></li>
+<li><span style="text-align: left;">git 사이트에서 pr을 생성</span></li>
+<li><span style="text-align: left;">머지될 base 브랜치에 master을 설정하고 hotfix-v1.23.4를 compare에 설정</span></li>
+<li><span style="text-align: left;">title에 어떤 작업이 pr 되는지 기입</span></li>
+<li><span style="text-align: left;">content에 내용설명</span></li>
+<li><span style="text-align: left;">우측 사이드바 태그설정<br /><span style="text-align: left;">Assignees에 본인 태그</span><br /></span><span style="text-align: left;">Labels에 branch의 속성 태그 e.g) Hotfix<br />Project에 어느 프로젝트인지 태그<br />milestone에 pr인지 issue인지 구분하여 태그</span></li>
+<li><span style="text-align: left;">최종테스트가 끝나면 github 사이트를 통해 머지</span></li>
+<li><span style="text-align: left;"><span style="text-align: left;">수정사항이 있었다면 develop에도 머지하고 해당 브랜치 delete</span></span></li>
+<li><span style="text-align: left;">GitAction을 통해 prod로 배포가 진행됨</span></li>
+</ol>
+<p style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size16">&nbsp;</p>
+<h2 style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size26">배포이후 할 일</h2>
+<p style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size16"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Apple SD Gothic Neo', Arial, sans-serif; letter-spacing: 0px;">릴리즈 노트에 작업시간, 작업목록, 버전등 수정해서 슬랙등의 공유메신저에 팀원이 볼 수 있게 글을 올립니다</span></p>
+<p style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size16">&nbsp;</p>
+<p style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size16">전략에 대해서는 이후 다시 한번 수정하여 글을 작성해보려 한다</p>
+<p style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size16">&nbsp;&nbsp;</p>
+<p style="background-color: #ffffff; color: #353638; text-align: left;" data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #Strategy #KR #GitHub #git-flow 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

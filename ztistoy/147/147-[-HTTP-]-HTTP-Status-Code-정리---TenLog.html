@@ -1,0 +1,186 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>[ HTTP ] HTTP Status Code 정리 - TenLog</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">[ HTTP ] HTTP Status Code 정리 - TenLog</h2>
+                                <div class="box-info">
+                                    <p class="category">ETC/데이터 통신</p>
+                                    <p class="date">2022-09-02 15:10:11</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h2 data-ke-size="size26"><b>- HTTP Status Code&nbsp;</b></h2>
+<p data-ke-size="size16">기본적인 status의 구조를 알아두면 도움이 됩니다. <br /><br /></p>
+<p data-ke-size="size16"><b>1xx (정보)</b>: 요청을 받았으며 프로세스를 계속한다</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>100: 보낸 요청이 진행 중임을 의미</li>
+</ol>
+<p data-ke-size="size16"><b>2xx (성공)</b>: 요청을 성공적으로 받았으며 인식했고 수용하였다</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>200: 보낸 요청이 성공적으로 수행됨</li>
+<li>201: 보낸 요청이 성공적이고 새로운 리소스 생성</li>
+<li>202: 요청을 수신하였지만 따로 리턴 안 한 듯</li>
+</ol>
+<p data-ke-size="size16"><b>3xx (리다이렉션)</b>: 요청 완료를 위해 추가 작업 조치가 필요하다</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>302: 요청한 리소스의 uri가 일시적으로 변경됨을 의미</li>
+</ol>
+<p data-ke-size="size16"><b>4xx (클라이언트 오류)</b>: 요청의 문법이 잘못되었거나 요청을 처리할 수 없다&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>400: 잘못된 문법으로 서버가 요청을 이해 못 함</li>
+<li>401: 접근하기 위한 권한 자체가 존재하지 않음</li>
+<li>403: 접근 권한이 낮거나 없음</li>
+<li>404: 서버가 요청한 페이지를 찾을 수 없음</li>
+</ol>
+<p data-ke-size="size16"><b>5xx (서버 오류)</b>: 서버가 명백히 유효한 요청에 대해 충족을 실패했다</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>500: 서버에 오류 발생하여 처리 불가</li>
+<li>502: 서버가 요청을 처리하다 게이트웨이 때문에 일어난 에러</li>
+</ol>
+<p data-ke-size="size16">&nbsp;</p>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span><span style="color: #ff0000;"><b>200, 201, 301, 303, 400, 401, 404, 500, 503</b></span></span></div>
+<p data-ke-size="size16"><b><span>--------------------------------------------------------------------------------</span></b><span style="background-color: #ffffff; color: #555555; text-align: justify;">1xx :<span>&nbsp;</span></span><b><span>Information</span></b></p>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>2xx :<span>&nbsp;</span><b><span>Successful</span></b></span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>3xx :<span>&nbsp;</span><b><span>Redirection</span></b></span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>4xx :<span>&nbsp;</span><b><span>Client Error</span></b></span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>5xx :<span>&nbsp;</span><b><span>Server Error</span></b></span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span><span><span><b><span style="color: #ff0000;"><span><b><span style="color: #ff0000;">--------------------------------------------------------------------------------</span></b></span></span></b></span></span></span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>100 : Continue.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>101 : Switching Protocols.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">
+<div><span><b><span style="color: #ff0000;">--------------------------------------------------------------------------------</span></b></span></div>
+<span>200 : OK, 에러없이 전송 성공.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>202 : Accepted, 서버가 클라이언트의 명령을 받음.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>203 : Non-authoritavive Information, 서버가 클라이언트 요구 중 일부만 전송.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>204 : Non Content, 클라이언트 요구를 처리했으나<span>&nbsp;</span>전송할 데이터가 없음.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>205 : Reset Content.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>206 : Partial Content.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">
+<div><span><b><span style="color: #ff0000;">--------------------------------------------------------------------------------</span></b></span></div>
+<span>300 : Multiple Choisces, 최근에 옮겨진 데이터를 요청.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>301: Moved Permanently, 요구한 데이터를 변경된 임시 URL에서 찾았음.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>302: Moved Permanently, 요구한 데이터가 변경된 URL에 있음을 명시.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>303: See Other, 요구한 데이터를 변경하지 않았기 때문에 문제가 있음.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>304: Not modified.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>305: Use Proxy.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">
+<div><span><b><span style="color: #ff0000;">--------------------------------------------------------------------------------</span></b></span></div>
+<span>400 : Bad Request, 요청 실패.</span><br /><span>문법상 오류가 있어, 서버가 요청 사항을 이해하지 못함, 클라이언트는 수정없이 요청 사항을 반복하지 않을 것이다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>401.1: Unauthorized, 권한 없음 (접속실패).</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>이 에러는 서버에 로그온 하려는 요청사항이 서버에 들어있는 권한과 비교했을 때 맞지 않을 경우 발생한다. 이 경우, 여러분이 요청한 자원에 접근할 수 있는 권한을 부여받기 위해 서버 운영자에게 요청해야 할 것이다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>401.2: Unauthorized, 권한 없음(서버설정으로 인한 접속 실패).</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>이 에러는 서버에 로그온 하려는 요청사항이 서버에 들어있는 권한과 비교했을 때 맞지않을 경우 발생한다. 이것은 일반적을 으로 적절한 www-authenticate head field를 전송하지 않아서 발생한다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>401.3: Unauthorized, 권한 없음(자원에 대한 ACL에 기인한 권한 없음).</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>이 에러는 클라이언트가 특정 자원에 접근할 수 없을 때 발생한다. 이 자원은 페이지가 될 수도 있고 , 클라이언트의 주소 입력란에 명기된 파일일 수도 있다. 아니면 클라이언트가 행당 주소로 들어갈 때 이용되는 또 다른 파일일 수도 있다. 여러분이 접근할 전체 주소를 다시 확인해 보고 웹 서버 운영자에게 여러분이 자원에 접근할 권한이 있는지를 확인해 본다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>401.4: Unauthorized, 권한 없음(필터에 의한 권한 부여 실패).</span><br /><span>이 에러는 웹 서버가 서버에 접속하는 사용자들을 확인하기 위해 설치한 필터 프로그램이 있음을 의미한다. 서버에 접속한는 데 이용되는 인증 과정이 이런 필터 프로그램에 의해 거부되었다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>401.5: Unauthorized, 권한 없음(ISA PI/CGI 애플리케이션에 의한 권한부여 실패).</span><br /><span>이 에러는 여러분이 이용하려는 웹 서버의 어드레스에 ISA PI나 CGI프로그램이 설치되어 있어 사용자의 권한을 검증하고 있음을 의미한다. 서버에 접속하는 데 이용되는 인증 과정이 이 프로그램에 의해 거부되었다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>402: Payment Required, 예약됨.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>403.1: Forbidden, 금지(수행 접근 금지).</span><br /><span>이 오류는 CGI나 ISAPI, 혹은 수행시키지 못하도록 되어있는 디렉토리 내의 실행 파일을 수행시키려고 했을 때 발생한다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>403.2: Forbidden, 금지(읽기 접근 금지).</span><br /><span>이 에러는 브라우저가 접근한 디렉토리에 가용한 디폴트 페이지가 없을 경우에 발생한다. 아니면 Eecute나 Script로 분한이 부여된 디렉토리에 들어있는 HTML페이지를 보려했을 때 발생한다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>403.4: Forbidden, 금지(SSL 필요함).</span><br /><span>이 에러는 여러분이 접근하려는 페이지가 SSL로 보안 유지 되고 있는 것일 때 발생한다. 이것을 보기 위해서 여러분은 주소를 입력하기 전에 먼저 SSL을 이용할 수 있어야 한다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><br /><span>403.5: Forbidden, 금지 (SSL 128필요함).</span><br /><span>이 에러는 접근하려는 페이지가 SSL로 보안유지 되고 있는 것일 때 발생한다. 이 자원을 보기 위해서는 여러분의 브라우저가 SSL의 해당 레벨을 지원해야 한다. 여러분의 브라우저가 128비트의 SSL을 지원하는 지를 확인해 본다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>403.6: Forbidden, 금지(IP 주소 거부됨).</span><br /><span>이 에러는 서버가 사이트에 접근이 허용되지 않은 IP주소를 갖고 있는데, 사용자가 이 주소로 접근하려 했을 때 발생한다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>403.7: Forbidden, 금지(클라이언트 확인 필요).</span><br /><span>이 에러는 여러분이 접근하려는 자원이 서버가 인식하기 위해 여러분의 브라우저에게 클라이언트 SSL을 요청하는 경우 발생한다. 이것은 여러분이 자원을 이용할 수 있는 상용자임을 입증하는데 사용된다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>403.8: Forbidden, 금지 (사이트 접근 거부됨).</span><br /><span>이 에러는 웹 서버가 요청사항을 수행하고 있지 않거나, 해당 사이트에 접근하는 것이 허락되지 않았을 경우 발생한다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>403.9: Forbidden, 접근 금지(연결된 사용자수 과다).</span><br /><span>이 에러는 웹서버 BUSY 상태에 있어서 여러분의 요청을 수행할수 없을 경우에 발생한다. 잠시 후에 다시 접근해 보도록 한다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>403.10: Forbidden, 접근 금지(설정이 확실 하지 않음).</span><br /><span>이 순간 웹 서버의 설정쪽에 문제가 있다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>403.11: Forbidden, 접근금지(패스워드 변경됨).</span><br /><span>이 에러는 사용자 확인단계에서 잘못된 패스워드를 입력했을 경우 발생한다. 페이지를 갱신한 후 다시 시도해 본다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>403.12: Forbidden, 접근금지(Mapper 접근 금지됨).</span><br /><span>여러분의 클이언트 인증용 맵이 해당 웹 사이트에 접근하는 것이 거부되었다. 사이트 운영자에게 클라이언트 인증 허가를 요청한다. 또한 여러분은 여러분의 클라이언트 인증을 바꿀 수도 있다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>404: Not Found, 문서를 찾을 수 없음.</span><br /><span>웹 서버가 요청한 파일이나 스크립트를 찾지 못했다. URL을 다시 잘 보고 주소가 올바로 입력되었는지 확인해본다.</span><br /><span>- 해결방법 : a.도구 ▶ 인터넷옵션 ▶ 일반 ▶ 쿠키삭제, 파일삭제, 목록지우기</span><br /><span>b.도구 ▶ 인터넷옵션 ▶ 고급 ▶ [URL을 항상 UTF-8FH로 보냄] 체크 해제.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>405: Method not allowed, 메쏘드 허용 안됨.</span><br /><span>Request 라인에 명시된 메쏘드를 수행하기 위해 해당 자원의 이용이 허용되지 않았다. 여러분이 요청한 자원에 적절한 MIME 타입을 갖고 있는지 확인해 본다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>406: Not Acceptable, 받아들일 수 없음.</span><br /><span>요청 사항에 필요한 자원은 요청 사항으로 전달된 Acceptheader에 따라 "Not Acceptable"인 내용을 가진 Response 개체만을 만들 수 있다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>407: Proxy Authentication Required, 대리(Proxy) 인증이 필요함.</span><br /><span>해당 요청이 수행되도록 proxy 서버에게 인증을 받아야 한다. proxy서버로 로그온 한 후에 다기 시도해 본다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>408: Request timeout, 요청 시간이 지남.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>409: Conflict.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>410: Gone, 영구적으로 사용할 수 없음.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>411: Length Required.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>412: Precondition Failed, 선결 조건 실패.</span><br /><span>Request-header field에 하나 이상에 선결조건에 대한 값이 서버에서 테스트 결과 FALSE로 나왔을 경우에 발생한다. 현재 자원의 메타-정보가 하나 이상의 자원에 적용되는 것을 막기 위한 클라이언트 선결조건이 의도되어졌다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>413: Request entity too large.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>414: Request-URI too long, 요청한 URI가 너무 길다.</span><br /><span>요청한 URI가 너무 길어서 서버가 요청 사항의 이행을 거부했다. 이렇게 희귀한 상황은 아래와 같은 경우에만 발생한다. 클라이언트가 긴 탐색용 정보를 가지고 POST 요청을 GET으로 부적절하게 전환했다. 클라이언트가 Redirection문제를 접하게 되었다. 서버가, 몇몇 서버가 사용하고 있는 요청한 URI 를 읽고 처리하는 고정된 길이의 메로리 버퍼를 이용해 보안체계에 들어가려는 , 클라이언트에 의한 공격을 받고 있다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>415: Unsupported media type.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">
+<div><span><b><span style="color: #ff0000;">--------------------------------------------------------------------------------</span></b></span></div>
+<span>500 : Internal Server Error, 서버 내부 오류.</span><br /><span>웹 서버가 요청사항을 수행할 수 없다. 다시 한 번 요청해 본다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>501: Not Implemented, 적용 안됨.</span><br /><span>웹 서버가 요청사항을 수행하는 데 필요한 기능을 지원하지 않는다. 에러가 발생한 URL을 확인한 후에, 문제가 지속될 경우에는 웹 서버 운영자에게 연락한다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>502: Bad gateway, 게이트웨이 상태 나쁨/서버의 과부하 상태.</span><br /><span>Gateway나 proxy로 활동하고 있는 서버가 요구 사항을 접수한 upstream 서버로부터 불명확한 답변을 접수 했을 때 발생한다. 만약 문제가 지속된다면 웹 서버 운영자와 상의해 본다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>503: Service Unavailable, 외부 서비스가 죽었거나 현재 멈춘 상태 또는 이용할 수 없는 서비스.</span><br /><span>서버는 현재 일시적인 과부하 또는 관리(유지,보수) 때문에 요청을 처리할 수 없다. 이것은 약간의 지연후 덜게될 일시적인 상태를 말한다. Retry-After 헤더에 지연의 길이가 표시하게 될지도 모른다. 만약 Retry-After를 받지 못했다면 클라이언트는 500 응답을 위해 하고자 했는것처럼 응답을 처리해야 한다. 상태코드의 존재는 서버가 과부하가 걸릴때 그것을 사용해야한다는 것을 말하는 것이 아니다. 몇몇 서버는 접속을 거부하는 것을 바랄지도 모른다.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>504: Gateway timeout.</span></div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #555555; text-align: justify;"><span>505: HTTP Version Not Supported.</span></div>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #http status code 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

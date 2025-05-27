@@ -1,0 +1,80 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Node.js Web Socket 사용법 - YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Node.js Web Socket 사용법 - YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">TS, JS/nodejs</p>
+                                    <p class="date">2021-10-18 18:03:11</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h2 data-ke-size="size26">&nbsp;</h2>
+<h2 data-ke-size="size26">-WebSocket 이란</h2>
+<p data-ke-size="size16">node.js 에서 websocket 사용하는법</p>
+<p data-ke-size="size16">wss는 web socket server 를 뜻하며 ws는 web socket을 뜻함.</p>
+<p data-ke-size="size16">형식은 wss는 rest API 가 상시 유지되는 상태의 url 서버로 보시면됩니다.</p>
+<pre id="code_1631782486448" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>var WebSocketServer = require('ws').Server;
+
+var wss = new WebSocketServer({port: 3100});
+
+
+wss.on('connection', (ws) =&gt; {
+  ws.on('message', (message) =&gt; {
+      let sendData = {event: 'res', data: null};
+      message = JSON.parse(message);
+      switch (message.event) {
+          case 'open':
+              console.log("Received: %s", message.event);
+              break;
+          case 'close':
+              console.log("Received: %s", message.event);
+              break;
+          case "req":
+              sendData.data = message.data;
+              ws.send(JSON.stringify(sendData));
+              break;
+          default:
+      }
+  });
+
+  ws.on("close", async (message) =&gt; {
+
+   console.log("close")
+   console.log(message);
+
+  });
+
+});</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<pre id="code_1631782487771" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>asfsadf</code></pre>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #WebSocket 사용법 #node WebSocket #node.js WebSocket 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

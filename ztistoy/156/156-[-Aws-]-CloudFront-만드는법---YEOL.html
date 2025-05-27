@@ -1,0 +1,121 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>[ Aws ] CloudFront 만드는법 - YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">[ Aws ] CloudFront 만드는법 - YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">Cloud</p>
+                                    <p class="date">2023-01-02 17:38:22</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h4 data-ke-size="size20">?<span>&nbsp;</span><b>환경&nbsp;</b></h4>
+<p data-ke-size="size16">Aws platform</p>
+<h4 data-ke-size="size20">? <b>개요</b></h4>
+<p data-ke-size="size16">Aws에서 CloudFront를 사용해 FrontEnd 배포를 진행합니다</p>
+<h4 data-ke-size="size20">?<span>&nbsp;</span><b>목차</b></h4>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>What is the CloudFront</li>
+<li>How to create CloudFront</li>
+<li>Err Response Page</li>
+</ul>
+<h2 data-ke-size="size26">&nbsp;</h2>
+<h2 data-ke-size="size26"><b>- What is the CloudFront&nbsp;</b></h2>
+<p data-ke-size="size16">Aws의 정적, 동적 웹 콘텐츠를 빨리 배포하도록 지원하는 웹 서비스입니다<br />에지 로케이션이라 불리는 데이터 센터가 전 세계 네트워크를 통해 콘텐츠를 제공합니다<br />지연시간이 가장 낮은 로케이션으로 라우팅 되는 기능이 있습니다</p>
+<p data-ke-size="size16"><br /><br /></p>
+<h2 data-ke-size="size26"><b>- How to create CloudFront</b></h2>
+<p data-ke-size="size16"><br />Aws 검색창에서 클라우드 프런트를 검색합니다</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span><a href="https://yeolceo.tistory.com/155">S3 만드는 법</a><br />Front의 빌드파일이 업로드된 S3의 도메인을 원본 도메인에 설정합니다&nbsp;<br />S3 버킷 액세스는 공개로 진행합니다</span></p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16"><br />뷰어 프로토콜 정책은 https접속을 위해 Redirect Http to Https로 설정합니다<br />CloudFront를 향한 접근은 보안을 위해 GET, HEAD만 허용합니다<br />캐시 정책은 default로 진행합니다</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><br /><br /><br /><a href="https://yeolceo.tistory.com/154">SSL인증 Https도메인 만드는 법</a><br />Https 도메인이 따로 없을 경우 위의 방법을 따라가며 리전은 버지니아로 설정하여 진행합니다</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_3.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16"><br /><br />대체 도메인 이름(CNAME)에 항목 추가 버튼을 클릭합니다<br />CloudFront에 적용할 https 도메인과 동일하게 기입합니다 e.g) test.test.com<br />별도의 대체도메인을 가지고 있다면 해당 도메인을 기입합니다<br />그리고 작성된 SSL 인증서를 도메인을 적용합니다</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_4.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">기본값 루트객체는 index.html로 설정합니다<br />S3에 존재하는 FrontEnd 빌드파일의 index.html의 경로를 의미합니다&nbsp;<br />배포 생성해 줍니다</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_5.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<h2 data-ke-size="size26">&nbsp;</h2>
+<h2 data-ke-size="size26"><b>- Err Response page</b></h2>
+<p data-ke-size="size16">만들어진 CloudFront 배포파일을 클릭합니다<br />오류페이지에서 오른쪽의 버튼을 클릭합니다</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/스크린샷 2023-01-02 오전 11.48.38.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16"><br />403, 404 에러는 아래의 이미지처럼 처리합니다<br />문제가 생겼을 경우 응답페이지 경로 설정입니다&nbsp;</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_6.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">접속하면 이상 없이 접속이 완료됩니다</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><b><span style="background-color: #ffffff; color: #555555;">? 근거 있는 조언은 언제나 환영합니다</span><span style="background-color: #ffffff; color: #555555;">. 성실한 코딩</span><span style="background-color: #ffffff; color: #555555;"><span>&nbsp;</span>하세요.</span></b></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #Cloudfront #cloudfront 만들기 #cloudfront 구축 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

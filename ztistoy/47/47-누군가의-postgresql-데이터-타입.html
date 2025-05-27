@@ -1,0 +1,225 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>누군가의 postgresql 데이터 타입</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">누군가의 postgresql 데이터 타입</h2>
+                                <div class="box-info">
+                                    <p class="category">DB/rdb</p>
+                                    <p class="date">2020-09-16 14:45:15</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>NameAliasesDescription</p>
+<p><a href="http://www.gurubee.net/lecture/2947" target="_blank" rel="noopener">www.gurubee.net/lecture/2947</a></p>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+<tbody>
+<tr>
+<td>Bigint</td>
+<td>int8</td>
+<td>signed 8byte 정수형</td>
+</tr>
+<tr>
+<td>Bigserial</td>
+<td>serial8</td>
+<td>자동증가 8byte 정수형</td>
+</tr>
+<tr>
+<td>bit [ (n) ]</td>
+<td>고정길이 bit string</td>
+</tr>
+<tr>
+<td>bit varying [ (n) ]</td>
+<td>Varbit</td>
+<td>가변길이 bit string</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>Bool</td>
+<td>Boolean연산 (true/false)</td>
+</tr>
+<tr>
+<td>Box</td>
+<td>평면 위의 직사각형 상자</td>
+</tr>
+<tr>
+<td>Bytea</td>
+<td>이진 data ("byte array")</td>
+</tr>
+<tr>
+<td>character [ (n) ]</td>
+<td>char [ (n) ]</td>
+<td>고정길이 character string</td>
+</tr>
+<tr>
+<td>character varying [ (n) ]</td>
+<td>varchar [ (n) ]</td>
+<td>가변길이 character string</td>
+</tr>
+<tr>
+<td>Cidr</td>
+<td>IPv4 or IPv6 network address</td>
+</tr>
+<tr>
+<td>Circle</td>
+<td>평면 위의 면</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>달력 날짜 (year, month, day)</td>
+</tr>
+<tr>
+<td>double precision</td>
+<td>float8</td>
+<td>double precision floating-point number (8 bytes)</td>
+</tr>
+<tr>
+<td>Inet</td>
+<td>IPv4, IPv6 host address</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td>int, int4</td>
+<td>signed four-byte 정수형</td>
+</tr>
+<tr>
+<td>interval [ fields ] [ (p) ]</td>
+<td>time 구간</td>
+</tr>
+<tr>
+<td>Json</td>
+<td>문자 JSON data</td>
+</tr>
+<tr>
+<td>Jsonb</td>
+<td>이진 JSON data, decomposed</td>
+</tr>
+<tr>
+<td>Line</td>
+<td>평면 위의 직선</td>
+</tr>
+<tr>
+<td>Lseg</td>
+<td>평면의 선분</td>
+</tr>
+<tr>
+<td>Macaddr</td>
+<td>MAC (Media Access Control) address</td>
+</tr>
+<tr>
+<td>Money</td>
+<td>현금 총액</td>
+</tr>
+<tr>
+<td>numeric [ (p, s) ]</td>
+<td>decimal [ (p, s) ]</td>
+<td>exact numeric of selectable precision</td>
+</tr>
+<tr>
+<td>Path</td>
+<td>평면의 geometric path</td>
+</tr>
+<tr>
+<td>pg_lsn</td>
+<td>PostgreSQL Log 번호</td>
+</tr>
+<tr>
+<td>Point</td>
+<td>평면의 geometric point</td>
+</tr>
+<tr>
+<td>Polygon</td>
+<td>평면의 closed geometric path</td>
+</tr>
+<tr>
+<td>Real</td>
+<td>float4</td>
+<td>single precision floating-point number (4 bytes)</td>
+</tr>
+<tr>
+<td>Smallint</td>
+<td>int2</td>
+<td>signed 2bytes 정수형</td>
+</tr>
+<tr>
+<td>Smallserial</td>
+<td>serial2</td>
+<td>자동증가 2bytes 정수형</td>
+</tr>
+<tr>
+<td>Serial</td>
+<td>serial4</td>
+<td>자동증가 4bytes 정수형</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>가변길이 character string</td>
+</tr>
+<tr>
+<td>time [ (p) ] [ without time zone ]</td>
+<td>time of day (no time zone)</td>
+</tr>
+<tr>
+<td>time [ (p) ] with time zone</td>
+<td>timetz</td>
+<td>time of day, including time zone</td>
+</tr>
+<tr>
+<td>timestamp [ (p) ] [ without time zone ]</td>
+<td>날짜와 시간 (no time zone)</td>
+</tr>
+<tr>
+<td>timestamp [ (p) ] with time zone</td>
+<td>timestamptz</td>
+<td>날짜와 시간, including time zone</td>
+</tr>
+<tr>
+<td>Tsquery</td>
+<td>text 검색 쿼리</td>
+</tr>
+<tr>
+<td>Tsvector</td>
+<td>text 검색 문서</td>
+</tr>
+<tr>
+<td>txid_snapshot</td>
+<td>user수준 transaction ID snapshot</td>
+</tr>
+<tr>
+<td>Uuid</td>
+<td>universally unique identifier</td>
+</tr>
+<tr>
+<td>Xml</td>
+<td>XML data</td>
+</tr>
+</tbody>
+</table>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

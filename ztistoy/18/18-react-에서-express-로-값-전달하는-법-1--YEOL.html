@@ -1,0 +1,229 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>react 에서 express 로 값 전달하는 법 1 -YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">react 에서 express 로 값 전달하는 법 1 -YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">TS, JS/react</p>
+                                    <p class="date">2020-06-05 17:01:03</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-filename="react.png" data-origin-width="632" data-origin-height="602" style="width: 50.4476%; margin-right: 10px;">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_5.png" data-filename="react.png" data-origin-width="632" data-origin-height="602" style="width: 50.4476%; margin-right: 10px;" />
+    </span>
+    <figcaption></figcaption>
+</figure><figure class="imageblock alignCenter" data-filename="express.png" data-origin-width="575" data-origin-height="571" style="width: 48.3896%;">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_6.png" data-filename="express.png" data-origin-width="575" data-origin-height="571" style="width: 48.3896%;" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><b>이 글이 필요하신 분은 이미 react.js 와 node.js의 차이에 대해 아실 거라 믿고 진행하겠습니다.</b></p>
+<p><b>1, 2 탄으로 정리해서 수정하였고 이전의 글에서 보완 완료했습니다! 3탄은 예정!</b></p>
+<p><b>1은 node.js 2는 react 파트로 나뉩니다. node.js를 아신다면 아래 링크로 넘어가 주세요.</b></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="https://www.yeolceo.com/57" target="_blank" rel="noopener">www.yeolceo.com/57</a></p>
+<figure id="og_1604998136130" contenteditable="false" data-ke-type="opengraph" data-og-type="article" data-og-title="react 에서 express 로 값 전달하는 법 2 -YEOL" data-og-description="이설명만 하고 바로 리액트 설치하겠습니다! react에서 express로 값을 넘겨주려면 2가지 라이브러리를 react에 설치해야 합니다. 바로 axios와 http-proxy-middleware입니다. -axios react에서 express로 get이.." data-og-host="www.yeolceo.com" data-og-source-url="https://www.yeolceo.com/57" data-og-url="https://www.yeolceo.com/57" data-og-image="https://scrap.kakaocdn.net/dn/j1A3z/hyIb2AjhaT/uAmxt3ppQmhfEEO0byb490/img.png?width=267&amp;height=189&amp;face=0_0_267_189,https://scrap.kakaocdn.net/dn/V5Cln/hyIb2NPcn0/09aCSdwyXQKh4SK5cMBGzK/img.png?width=267&amp;height=189&amp;face=0_0_267_189,https://scrap.kakaocdn.net/dn/dIoGDv/hyIbVVs5xi/yZCHuBwc9dkhG3i7yS4G2K/img.png?width=1919&amp;height=1006&amp;face=0_0_1919_1006"><a href="https://www.yeolceo.com/57" target="_blank" rel="noopener" data-source-url="https://www.yeolceo.com/57">
+<div class="og-image" style="background-image: url('https://scrap.kakaocdn.net/dn/j1A3z/hyIb2AjhaT/uAmxt3ppQmhfEEO0byb490/img.png?width=267&amp;height=189&amp;face=0_0_267_189,https://scrap.kakaocdn.net/dn/V5Cln/hyIb2NPcn0/09aCSdwyXQKh4SK5cMBGzK/img.png?width=267&amp;height=189&amp;face=0_0_267_189,https://scrap.kakaocdn.net/dn/dIoGDv/hyIbVVs5xi/yZCHuBwc9dkhG3i7yS4G2K/img.png?width=1919&amp;height=1006&amp;face=0_0_1919_1006');">&nbsp;</div>
+<div class="og-text">
+<p class="og-title">react 에서 express 로 값 전달하는 법 2 -YEOL</p>
+<p class="og-desc">이설명만 하고 바로 리액트 설치하겠습니다! react에서 express로 값을 넘겨주려면 2가지 라이브러리를 react에 설치해야 합니다. 바로 axios와 http-proxy-middleware입니다. -axios react에서 express로 get이..</p>
+<p class="og-host">www.yeolceo.com</p>
+</div>
+</a></figure>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><b><span style="color: #333333;">자 원하시는 부분 바로 들어가겠습니다! 먼저 node.js부터 시작하겠습니다.</span></b></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>원하는 위치에 node.js 파일을 만들어줍니다.</p>
+<p>저는 바탕화면에 폴더를 만들었습니다. <span style="background-color: #f6e199;">바탕화면-&gt; server-&gt; express&nbsp;</span> 이경로에 말이죠</p>
+<p>index.js라는 파일을 만들어주었습니다. (에디터는 아톰 사용 중입니다. <s>VSCode가 더 유명합니다 유명한 거 쓰세요)</s></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>해당 경로에 index.js 파일을 만들어주셨다면 아래와 같은 코드를 입력해줍니다.</p>
+<p>node.js 에서 서버를 실행하기 위해 express를 사용한 간결한 코드 구문입니다.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<pre id="code_1604991481252" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>const express = require('express');  // express 라는 서버를 사용하기위한 프레임워크 받아오기
+const app = express();        //express 사용
+const port = 5050;            // 포트넘버 설정
+
+app.get('/', (req, res)=&gt;{                 //get 방식으로  '/' 경로를 사용할경우 send 표출
+    res.send('안뇽 핼로우 월드 캬하하');
+});
+
+app.listen(port, ()=&gt;{         // 서버 시작하는 부분
+  console.log(`http://localhost:${port}  경로는 이거입니다.`);
+})
+</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>자 이제 입력을 완료했다면 명령 프롬프트를 실행해주세요. 윈도에서 cmd를 검색하시면</p>
+<p>명령 프롬프트가 실행됩니다. 그다음 본인이 설정한 경로로 이동해주세요. 아래는 예시입니다.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4 data-ke-size="size20">그리고 서버 사용을 도와주는 프레임워크 <span style="background-color: #f6e199;">express를</span> 설치해줍니다.&nbsp;</h4>
+<p>&nbsp; ( --save는 내가 express를 설치했다고 json이 존재할 때 저장하는 부분인데 생략하셔도 무방합니다!!)</p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="color: #333333;">설치가 완료가 잘 되셨나요?&nbsp; 되었다면&nbsp; <span style="background-color: #f6e199;">node index.js를</span> 명령 프롬프트에 입력하고 엔터 해줍니다.</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="color: #333333;">실행이 됐나요~?</span></p>
+<p>그렇다면!! 인터넷 화면에서 로컬 호스트를 통해 5050 포트-&gt;&nbsp; <span style="color: #333333;">http://localhost:5050/&nbsp; 로 </span>접속해줍시다.&nbsp;</p>
+<p>접속하면 아래와 같이 잘 뜨셨다면 잘 따라와 주신 겁니다.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_3.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>고롷다면 이제 node.js 는 기본 세팅이 완료되었습니다. 아주 잘하셨습니다!</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>이제 일부 기능을 조금 더 추가해주겠습니다.&nbsp;</p>
+<p><span>npm i<span>&nbsp;</span></span><span>body-parser를 진행해주세요.&nbsp; post 형태로 값을 넘겨받을 때 parser가 있어야 온전히 값을 받을 수 있습니다.</span></p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_4.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>npm을 보면 더 자세한 설명이 영어로.. 적혀있어요.</p>
+<p>&nbsp;</p>
+<p><a href="http://www.npmjs.com/package/body-parser">www.npmjs.com/package/body-parser</a></p>
+<figure id="og_1604996707786" contenteditable="false" data-ke-type="opengraph" data-og-type="website" data-og-title="body-parser" data-og-description="Node.js body parsing middleware" data-og-host="www.npmjs.com" data-og-source-url="https://www.npmjs.com/package/body-parser" data-og-url="https://www.npmjs.com/package/body-parser" data-og-image="https://scrap.kakaocdn.net/dn/bp4pMy/hyIbZXPlk6/6mzcoIuzKE0LHLMu8ETHm1/img.png?width=1200&amp;height=630&amp;face=0_0_1200_630"><a href="https://www.npmjs.com/package/body-parser" target="_blank" rel="noopener" data-source-url="https://www.npmjs.com/package/body-parser">
+<div class="og-image" style="background-image: url('https://scrap.kakaocdn.net/dn/bp4pMy/hyIbZXPlk6/6mzcoIuzKE0LHLMu8ETHm1/img.png?width=1200&amp;height=630&amp;face=0_0_1200_630');">&nbsp;</div>
+<div class="og-text">
+<p class="og-title">body-parser</p>
+<p class="og-desc">Node.js body parsing middleware</p>
+<p class="og-host">www.npmjs.com</p>
+</div>
+</a></figure>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>아주 잘 따라와 주신 여러분 모두 잘하셨습니다.&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4 data-ke-size="size20"><b>body-parser를 추가하여 저희의 코드를 완성해볼까요?</b></h4>
+<p>&nbsp;</p>
+<pre id="code_1604996826222" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const port = 5050;
+
+app.use(bodyParser.json());
+
+app.post('/api', (req, res)=&gt;{
+  let name = req.body.name;
+    console.log(name);
+    console.log('탐정이죠 ');
+});
+
+
+
+
+app.listen(port, ()=&gt;{
+  console.log(`http://localhost:${port}  경로는 이거입니다.`);
+})
+</code></pre>
+<p>&nbsp;</p>
+<p>name으로 어떤 값을 받아올지는 예측 가능하다고 생각합니다!! ㅋㅋ</p>
+<p>&nbsp;</p>
+<p>node.js 부분은 이렇게 아주 간단히 마무리가 되었습니다.&nbsp; react를 수정을 바로 가시기 전에 위의 코드가</p>
+<p>잘 이해가 되는지 확인하고 넘어가면 더 좋습니다!!</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>완료되셨다면 아래의 링크로 넘어가 주세요!</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="https://www.yeolceo.com/57" target="_blank" rel="noopener">www.yeolceo.com/57</a></p>
+<figure id="og_1604998142614" contenteditable="false" data-ke-type="opengraph" data-og-type="article" data-og-title="react 에서 express 로 값 전달하는 법 2 -YEOL" data-og-description="이설명만 하고 바로 리액트 설치하겠습니다! react에서 express로 값을 넘겨주려면 2가지 라이브러리를 react에 설치해야 합니다. 바로 axios와 http-proxy-middleware입니다. -axios react에서 express로 get이.." data-og-host="www.yeolceo.com" data-og-source-url="https://www.yeolceo.com/57" data-og-url="https://www.yeolceo.com/57" data-og-image="https://scrap.kakaocdn.net/dn/j1A3z/hyIb2AjhaT/uAmxt3ppQmhfEEO0byb490/img.png?width=267&amp;height=189&amp;face=0_0_267_189,https://scrap.kakaocdn.net/dn/V5Cln/hyIb2NPcn0/09aCSdwyXQKh4SK5cMBGzK/img.png?width=267&amp;height=189&amp;face=0_0_267_189,https://scrap.kakaocdn.net/dn/dIoGDv/hyIbVVs5xi/yZCHuBwc9dkhG3i7yS4G2K/img.png?width=1919&amp;height=1006&amp;face=0_0_1919_1006"><a href="https://www.yeolceo.com/57" target="_blank" rel="noopener" data-source-url="https://www.yeolceo.com/57">
+<div class="og-image" style="background-image: url('https://scrap.kakaocdn.net/dn/j1A3z/hyIb2AjhaT/uAmxt3ppQmhfEEO0byb490/img.png?width=267&amp;height=189&amp;face=0_0_267_189,https://scrap.kakaocdn.net/dn/V5Cln/hyIb2NPcn0/09aCSdwyXQKh4SK5cMBGzK/img.png?width=267&amp;height=189&amp;face=0_0_267_189,https://scrap.kakaocdn.net/dn/dIoGDv/hyIbVVs5xi/yZCHuBwc9dkhG3i7yS4G2K/img.png?width=1919&amp;height=1006&amp;face=0_0_1919_1006');">&nbsp;</div>
+<div class="og-text">
+<p class="og-title">react 에서 express 로 값 전달하는 법 2 -YEOL</p>
+<p class="og-desc">이설명만 하고 바로 리액트 설치하겠습니다! react에서 express로 값을 넘겨주려면 2가지 라이브러리를 react에 설치해야 합니다. 바로 axios와 http-proxy-middleware입니다. -axios react에서 express로 get이..</p>
+<p class="og-host">www.yeolceo.com</p>
+</div>
+</a></figure>
+<p>&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #react express 연동 #react post #express post 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

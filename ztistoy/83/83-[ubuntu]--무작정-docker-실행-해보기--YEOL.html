@@ -1,0 +1,146 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>[ubuntu]  무작정 docker 실행 해보기 -YEOL</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">[ubuntu]  무작정 docker 실행 해보기 -YEOL</h2>
+                                <div class="box-info">
+                                    <p class="category">ETC/Docker</p>
+                                    <p class="date">2021-02-05 17:05:04</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>&nbsp;</p>
+<p><figure class="imageblock alignCenter" data-origin-width="417" data-origin-height="322" data-filename="docker.png" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-origin-width="417" data-origin-height="322" data-filename="docker.png" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4 data-ke-size="size20"><span style="color: #666666;"><b>-Docker 란</b></span></h4>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">애플리케이션을 구축, 테스트, 배포가 용이한<b> 컨테이너 기반</b>의 오픈소스 가상화 플랫폼입니다.</span></p>
+<ul style="list-style-type: circle;" data-ke-list-type="circle">
+<li><span style="color: #666666;"><b>컨테이너</b> : 실행 프로세스가 담겨있으며 컨테이너 자체가 실행 프로세스다 보니 환경에 구애받지 않고<br />수정 배포, 확장이 용이합니다.<br /></span></li>
+<li><span style="color: #666666;"><b>이미지</b> : 컨테이너를 실행하기 위해 필요한 실행파일, 설정값을 저장한 것입니다.</span></li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 data-ke-size="size23"><span style="color: #666666;"><b>-<b>Docker&nbsp;</b>실습</b></span></h3>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">우분투를 <b>Root</b> 계정으로 접속해줍니다. (linux의 리소스에 간섭해야 하기 때문에 권한이 필요합니다)</span></p>
+<p><span style="color: #666666;">명령어를 통해 <b>docker</b>를 다운로드해줍니다.</span></p>
+<p>&nbsp;</p>
+<pre id="code_1612500673842" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>apt install docker.io</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li data-ke-size="size18"><span style="color: #666666;"><b>도커 작동 방식</b></span></li>
+</ul>
+<p><span style="color: #666666;"><b>docker hub</b>를 통해 image를 사용자의 docker의 <b>registry</b>에 다운로드하여 아래 이미지와 같은 프로세스로 동작합니다.&nbsp;</span></p>
+<p data-ke-size="size14"><span style="color: #666666;"><b>-git</b>을 사용한 경험이 있다면 유사한 점이 많아 이해하기 수월합니다</span></p>
+<p><figure class="imageblock alignCenter" data-filename="Untitled.png" data-origin-width="900" data-origin-height="483" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" data-filename="Untitled.png" data-origin-width="900" data-origin-height="483" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption>https://www.notion.so/b67ed727aea4467cbc3226bb0c8e8336&nbsp; 출처-재즐보프님의 왕초보 도커 강의</figcaption>
+</figure></p>
+<p data-ke-size="size14"><span style="color: #666666;">* <b>run 명령어</b>는 pull,, create, start를 한 번에 실행합니다.</span></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;"><b>컨테이너</b>를 실행하기 위한 방법은 <b>pull, create, start</b>를 이용해 단계적으로 실행하는 법도 있고</span></p>
+<p><span style="color: #666666;"><b>run</b> 명령어 하나만으로 실행까지 해 버릴 수도 있습니다. </span></p>
+<p><span style="color: #666666;"><b><span style="color: #666666;">docker </span>hub</b> 에 있는 <b>nginx</b>를 이용하여 <b>다운로드, 실행, 정지, 삭제</b>까지 해보겠습니다.</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4 data-ke-size="size20"><span style="color: #666666;">-다운로드 및 실행</span></h4>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">먼저 <b>pull, create, start</b>를 이용하는 단계적 실행법입니다. pull 명령어를 통해 <b>nginx</b>를 다운로드합니다.</span></p>
+<pre id="code_1612500737324" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>docker pull nginx</code></pre>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">다운로드가 완료됐다면 <b>nginx</b> <b>컨테이너</b>를 만들어줍니다.&nbsp;</span></p>
+<p><span style="color: #666666;">--name 은 이름을 nx로 설정한다는 의미이고 -p는 port 설정을 하는데 왼쪽의 8080 이 저희가 브라우저에 입력할 포트입니다.</span></p>
+<pre id="code_1612505795776" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>docker create --name nx -p 8080:80 nginx</code></pre>
+<p><span style="color: #666666;"><span style="color: #666666;">&nbsp;</span><span style="color: #666666;"></span></span></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;"><span style="color: #666666;">이름 및 포트까지 설정을 완료한 컨테이너를 <b>start</b> 명령어를 통해 실행해줍니다.</span></span></p>
+<pre id="code_1612506072519" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>docker start nx</code></pre>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">localhost:8080을 웹브라우저의 url로 사용해주세요. 아래와 같이 잘 실행이 되셨나요?</span></p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">다음은 <b>run</b> 명령어를 이용한 방법입니다. 기존의 <b>nginx</b>를 컨테이너와 이미지 모두 삭제한 후&nbsp;</span></p>
+<p><span style="color: #666666;">명령어를 입력해보세요!</span></p>
+<pre id="code_1612503954376" class="html xml" style="display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" data-ke-language="html" data-ke-type="codeblock"><code>docker run -d --name nx -p 8080:80 nginx
+</code></pre>
+<p>&nbsp;</p>
+<p><span style="color: #666666;"><b>run</b>을 통해 한번에 실행이 가능합니다. <b>localhost:8080</b>으로 접속해보면 <b>nginx</b> 가 실행된 것을 알 수 있습니다.</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4 data-ke-size="size20"><span style="color: #666666;">-정지 및 삭제</span></h4>
+<p>&nbsp;</p>
+<p><span style="color: #666666;"><b>docker</b>의 <b>ps</b> 명령어(process status)를 통해 실행 중인 컨테이너가 있다면 표시해줍니다. <b>-a</b> 옵션(all)을 사용하면 정지 상태인 컨테이너도 터미널에 출력됩니다.</span><span style="color: #666666;"></span></p>
+<pre id="code_1612505275560" class="html xml" style="display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" data-ke-language="html" data-ke-type="codeblock"><code>docker ps</code></pre>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_3.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">저희는 name 설정을 해줬기 때문에 이름을 사용해줍시다. stop 명령어와 rm 명령어를 통해 </span></p>
+<p><span style="color: #666666;">정지 및 및 컨테이너를 삭제해줍니다.</span></p>
+<pre id="code_1612505363839" class="html xml" style="display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" data-ke-language="html" data-ke-type="codeblock"><code>docker stop nx</code></pre>
+<pre id="code_1612505377438" class="html xml" style="display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" data-ke-language="html" data-ke-type="codeblock"><code>docker rm nx</code></pre>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">docker ps -a 명령어를 통해 잘 지워졌는지 확인해줍니다.</span></p>
+<p><span style="color: #666666;">그리고 pull 명령어를 통해 다운로드하였던 이미지를 확인해줍니다.&nbsp;</span></p>
+<pre id="code_1612505616423" class="html xml" style="display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" data-ke-language="html" data-ke-type="codeblock"><code>docker images</code></pre>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">이미지가 확인이 됐다면 그 이미지의 id를 아래의 명령어에 넣어주고 실행해줍니다.&nbsp;</span></p>
+<pre id="code_1612505666270" class="html xml" style="display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" data-ke-language="html" data-ke-type="codeblock"><code>docker rmi &lt;IMAGE ID&gt;</code></pre>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_4.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>&nbsp;</p>
+<p><span style="color: #666666;">apt를 통한<b> docker.io install</b> 부터 컨테이너의 <b>다운로드, 실행, 정지, 삭제</b>까지 한 바퀴의 과정을 무작정 돌아보았습니다.</span></p>
+<p><span style="color: #666666;">여러분도 한번 실행해보시고 디테일한 부분을 채워나가시기 바랍니다.&nbsp;</span></p>
+<p><span style="color: #666666;">고생하셨습니다 성실한 코딩 하세요.</span></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #docker 설치 #docker 사용법 #docker ubuntu #Docker 실행 #docker 란 #docker 시작 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

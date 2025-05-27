@@ -1,0 +1,48 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>api gateway pattern를 분석하자</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">api gateway pattern를 분석하자</h2>
+                                <div class="box-info">
+                                    <p class="category"></p>
+                                    <p class="date">2023-05-05 14:53:27</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">api gateway pattern를 분석하자</p>
+<p style="color: #333333; text-align: left;" data-ke-size="size16">client와 microService 사이에서 매개체 역할을 하는 server다<br />server가 4대인 하나의 service일 경우 각 server별 domain이&nbsp;다를 것이다<br />예를 들면 customer, order, delivery, review 이렇게 4대가 하나의&nbsp;service를 위한&nbsp;server들이라고&nbsp;가정하자<br />접속 가능한 client는 web과 mobile 2개라고 가정하자</p>
+<p style="color: #333333; text-align: left;" data-ke-size="size16">4가지 분석 유형</p>
+<p style="color: #333333; text-align: left;" data-ke-size="size16">1. domain을 분리한 4개의 server가 있다. 하지만 client에서는 한 번에 2종류 이상의 데이터를 받아야 한다.<br />client에서 2개 이상의 api를 호출하여 결합해야 한다. 그러면 복잡성이 증가한다<br />-&gt; gateway에서 필요한 데이터를 각 domainServer에 요청하고 client에 데이터를 반환하자<br />delivery server에서&nbsp;배달을 위해&nbsp;주문한 상품을&nbsp;알고 싶은 경우가 있다<br />어떤 주문인지&nbsp;delivery server에서 order server에&nbsp;직접 요청한다면&nbsp;coupling이 생긴다<br />order server가&nbsp;죽었을 때&nbsp;delivery server에도 직접적으로 영향이 간다는 의미이다</p>
+<p style="color: #333333; text-align: left;" data-ke-size="size16">2. domain server의 endPoint를&nbsp;노출하고 직접 호출하는 경우에는&nbsp;security에&nbsp;좋지 않다<br />-&gt; gateway가 존재한다면 dataSource를 호출하는 domainServer의 endPoint를&nbsp;숨길 수&nbsp;있다</p>
+<p style="color: #333333; text-align: left;" data-ke-size="size16">3. logging은 각 domain에서 따로 관리한다고 가정하자<br />issue가 발생할 경우 이를&nbsp;확인하기 위해&nbsp;4개의 domainServer의 logFile을 다 찾아야&nbsp;할 수도 있다<br />-&gt; gateway에서 log를 관리하면 gateway의 logFile만으로 어떤 issue가 있는지&nbsp;알 수 있다</p>
+<p style="color: #333333; text-align: left;" data-ke-size="size16">4. routing policy를&nbsp;적용할 때&nbsp;global service의 region이 한국 1개, 미국 1개라고 가정하자<br />미국에서 사용할 경우에는 접속자의 dns를 통해 위치를 확인하여 미국 server에 routing을&nbsp;해야 한다<br />그래야 성능이나 비용면에서 좋을 것이다<br />하지만 gateway가 없다면 4개의 domainServer 전부 routing policy를&nbsp;설정해야 할 것이다<br />-&gt; gateway가 있다면 gateway server의 endPoint만으로 관리가 가능하다.</p>
+<p style="color: #333333; text-align: left;" data-ke-size="size16">5. cache가 각 domainServer별로 4개가 다 만들어지면 resource 낭비라고 생각한다<br />-&gt; gateway를 사용하여 하나의 server에 chache를 사용하자<br />부하 감소 및 성능 향상이 될 것이고&nbsp;좀 더&nbsp;일관적인 데이터를 반환할 것이다</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>
