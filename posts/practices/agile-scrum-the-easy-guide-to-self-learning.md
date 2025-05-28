@@ -1,5 +1,5 @@
 ---
-title: Agile Scrum - A Simple Guide for Easy Learning
+title: Agile Scrum - The Easy Guide to Self-Learning
 published: false
 description:
 tags: agile, scrum, workflow, beginners
@@ -7,7 +7,7 @@ cover_image: https://qlqjs674.notion.site/image/attachment%3A3f05ec6a-06b4-4d4e-
 series:
 ---
 
-# 🛠️ Agile Scrum - A Simple Guide for Easy Learning
+# 🛠️ Agile Scrum - The Easy Guide to Self-Learning
 
 ## This guide has been prepared to support junior and mid-level developers in gaining a clear understanding of the Agile Scrum process, particularly in the context of collaborative team environments.
 

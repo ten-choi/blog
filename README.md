@@ -1,3 +1,9 @@
+# 게시글 바로 올리는법
+
+```bash
+npm run publish:single posts/database/mysql-performance-optimization.md
+```
+
 # DEV.to 블로그 배포 도구
 
 TypeScript로 개발된 이 도구는 마크다운 파일을 DEV.to에 손쉽게 게시하고 관리할 수 있도록 도와줍니다.
@@ -78,7 +84,7 @@ npm run publish
 npm run publish:single posts/my-post.md
 
 e.g npm run publish:single posts/category1/test-post.md
-e.g npm run publish:single posts/practices/agile-scrum-a-simple-guide-for-easy-learning.md
+e.g npm run publish:single posts/practices/agile-scrum-the-easy-guide-to-self-learning.md
 ```
 
 게시 결과로 DEV.to 게시물 URL이 표시됩니다.

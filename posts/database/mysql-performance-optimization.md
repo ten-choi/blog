@@ -1,10 +1,10 @@
 ---
 title: MySQL Performance Optimization
-published: false
+published: true
 description: Testing a post in a category subfolder
 tags: database, rdb, mysql, optimization
-cover_image: https://example.com/your-cover-image.jpg
-series: Testing Series
+cover_image: https://qlqjs674.notion.site/image/attachment%3A73b801d4-2294-4501-a8aa-59c797937531%3Amysql.png?table=block&id=201930ff-582f-8015-afe9-d5d04daae281&spaceId=6ab3efe6-44b5-4e5c-9d86-56543fb7f59d&width=1420&userId=&cache=v2
+series:
 ---
 
 # Complete Guide to MySQL Performance Optimization
