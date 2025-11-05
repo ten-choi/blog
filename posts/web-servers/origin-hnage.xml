@@ -1,0 +1,83 @@
+pipeline {
+    agent any
+
+    environment {
+        JUMP_HOST = "www@hange-manage.coconefk.jp"
+        TARGET_HOST = "hange-channel-alpha-0.coconefk"
+        TOMCAT_HOME = "/usr/local/tomcat"
+        SSH_KEY = credentials('hange_buildmachine')
+        SSH_COMMON_OPTS = "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+        ALICE_XML = "/home/www/projects/hange-alice/hange-alice-server.xml"
+        TOMCAT_SERVER_XML = "/usr/local/tomcat/conf/server.xml"
+    }
+
+    stages {
+
+        stage('Shutdown and Kill Tomcat (Port 7008)') {
+            steps {
+                echo "[Jenkins] Attempting to gracefully shut down Tomcat on target host (${env.TARGET_HOST})..."
+
+                // 1️⃣ Attempt shutdown.sh first (no failure if already stopped)
+                sh """
+                    ssh ${SSH_COMMON_OPTS} -i \$SSH_KEY ${JUMP_HOST} "ssh ${TARGET_HOST} '${TOMCAT_HOME}/bin/shutdown.sh || true'"
+                    sleep 5
+                """
+
+                // 2️⃣ Kill any process using port 7008 (using lsof)
+                sh """
+                    ssh ${SSH_COMMON_OPTS} -i \$SSH_KEY ${JUMP_HOST} "ssh ${TARGET_HOST} '
+                        PIDS=\\\$(lsof -t -i:7008)
+                        if [ ! -z \"\\\$PIDS\" ]; then
+                            for PID in \\\$PIDS; do
+                                echo Killing process on port 7008: \\\$PID
+                                kill -9 \\\$PID
+                                sleep 2
+                            done
+                        else
+                            echo No process found using port 7008.
+                        fi
+                        echo Final java process list:
+                        ps -ef | grep java | grep -v grep || true
+                    '"
+                """
+
+                echo "[Jenkins] Tomcat shutdown and port 7008 process termination step finished."
+            }
+        }
+
+        stage('Update server.xml Symbolic Link') {
+            steps {
+                echo "[Jenkins] Creating symbolic link for server.xml on target host (${env.TARGET_HOST})..."
+
+                // ✅ Use sudo for ln command
+                sh """
+                    ssh ${SSH_COMMON_OPTS} -i \$SSH_KEY ${JUMP_HOST} "ssh ${TARGET_HOST} 'sudo ln -sf ${ALICE_XML} ${TOMCAT_SERVER_XML}'"
+                """
+
+                echo "[Jenkins] Symbolic link has been set: ${TOMCAT_SERVER_XML} -> ${ALICE_XML}"
+            }
+        }
+
+        stage('Start Tomcat') {
+            steps {
+                echo "[Jenkins] Starting Tomcat on target host (${env.TARGET_HOST})..."
+
+                sh """
+                    ssh ${SSH_COMMON_OPTS} -i \$SSH_KEY ${JUMP_HOST} "ssh ${TARGET_HOST} '${TOMCAT_HOME}/bin/startup.sh || true'"
+                """
+
+                echo "[Jenkins] Tomcat start step finished."
+            }
+        }
+
+    }
+
+    post {
+        success {
+            echo "[Jenkins] Tomcat restart and server.xml linking completed successfully on ${env.TARGET_HOST}."
+        }
+        failure {
+            echo "[Jenkins] Tomcat restart pipeline failed. Please review the logs for troubleshooting."
+        }
+    }
+}

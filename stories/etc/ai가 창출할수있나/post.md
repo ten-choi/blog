@@ -27,7 +27,7 @@ Repetitive and routine tasks can be performed faster and more accurately by AI o
 - Simple manufacturing and logistics operations
 
 These positions are targeted primarily for cost reduction and efficiency.
-
+what is that thing
 ## Jobs Likely to Increase
 
 - **AI-related professions**: Machine learning engineers, data scientists, prompt engineers
@@ -37,3 +37,4 @@ These positions are targeted primarily for cost reduction and efficiency.
 ## Personal Reflection
 
 I find some of these predictions hard to believe. I'm currently studying new technologies and AI, including MCP and Agent systems. People say Google is living 10 years in the future - I wonder what that future life at Google actually looks like.
+

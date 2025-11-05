@@ -9,7 +9,7 @@ series:
 
 # 🛠️ Agile Scrum - The Easy Guide to Self-Learning
 
-## This guide has been prepared to support junior and mid-level developers in gaining a clear understanding of the Agile Scrum process, particularly in the context of collaborative team environments.
+This guide has been prepared to support junior and mid-level developers in gaining a clear understanding of the Agile Scrum process, particularly in the context of collaborative team environments.
 
 ## 📋 What is Scrum?
 
