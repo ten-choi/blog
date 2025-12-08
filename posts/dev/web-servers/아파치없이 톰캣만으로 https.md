@@ -51,9 +51,9 @@ JVM Version:    17.0.15+6-LTS
   </SSLHostConfig>
 </Connector>
 ```
+
+
 LOG를 보면서 나머지는 그냥 진행하면된다 TOMCAT버전을 기준으로 잘 진행하면 문제없다
-
-
 도커에서 network띄우고 아파치와 tomcat둘다 적용하는게 좋을듯하다
 
 
@@ -79,3 +79,16 @@ apache.conf( common conf file for include)
   　　　  ↳　apache
     　　　  ↳　conf
       　　　  ↳　httd.conf
+
+
+
+
+tomcat 에서 apache의 redirect설정을 추가하는법 
+이걸 server.xml 에적용해야함
+<Valve className="org.apache.catalina.valves.rewrite.RewriteValve" />
+
+이렇게 적용했을때는 성공했다
+     -v '/home/www/yeoltest/rewrite.config:/usr/local/tomcat/conf/Catalina/localhost/rewrite.config:ro' \
+
+하지만 그리고 아래의 rewrite설정을 적용한다
+src/main/webapp/WEB-INF/rewrite.config 로 옮기세요.

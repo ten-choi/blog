@@ -1,59 +1,38 @@
-Listen 443
+ルーシー撤去・Kotlin化
 
-SSLCipherSuite HIGH:MEDIUM:!MD5:!RC4:!3DES
-SSLProxyCipherSuite HIGH:MEDIUM:!MD5:!RC4:!3DES
-SSLHonorCipherOrder on
-SSLProtocol all -SSLv3
-SSLProxyProtocol all -SSLv3
-SSLPassPhraseDialog builtin
-SSLSessionCache "shmcb:/usr/local/apache/logs/ssl_scache(512000)"
-SSLSessionCacheTimeout 300
+* `hange-alice`、`hange-shop`、`hangelib-shopcommon`、`aqua-web`、`aqua-db` などの既存コードを、**既存の動作と構造をできるだけ維持**しながらKotlinへ移行・改修しています。
+* 特に `hange-shop` と `hangelib-shopcommon` を中心にKotlin化を進め、**未使用のレガシー削除**も並行して対応しました。あわせて、**MR作成〜レビュー反映までの一連のサイクル**を継続的に回しています。
 
-<VirtualHost _:443>
-DocumentRoot "/usr/local/apache/htdocs"
-ServerName alpha.hange.jp
-ServerAlias alpha-_.hange.jp
+ECS / Docker
 
-# DocumentRoot /home/www/projects/your-test/html/hangame-alice/web
+* 既存環境の **Apache＋Tomcat 構成をDocker向けに調整**したうえで、最終的には **Apacheを廃止してTomcat単体で動作**する構成へ再適用し、構成の簡素化と運用性の改善を行いました。
+* ECS Fargate / ECR を用いたデプロイを進め、**alpha/beta 環境の設定をインフラチームと協業して整備**し、リリースに必要な運用設定を幅広く対応しました。
+* Docker適用時は、インフラチームとの **複数回のミーティング／コミュニケーション**を通じて課題を整理し、解決方針をすり合わせました。
+* **AWS ParameterStore 設定、readiness のHealth Check設定、Java profileに合わせたECS task definition調整**を実施しました。
 
-# <Location />
+Jenkins作成
 
-# Require ip 183.91.2.211
+* `hange-alice` の **alpha/beta など環境別CI/CD pipeline**をJenkinsで構築しました。
+* デプロイに必要な **authentication / authorization** は、セキュリティ方針を遵守する形で設定しています。
+* 成果物が **Apache/Tomcat 環境へdeploy**できるように **job/script** を作成し、既存のLinux配布と同等の動作・設定を再現しました。
+* さらに、最新バージョン環境でも既存と同様の設定を維持できるよう、構成要素を整理しました。
+* その後 **Dockerベースのdeploy** が必要になったため、container環境に合わせて **pipeline と deploy手順を修正・拡張**しました。
 
-# </Location>
+Linux環境整備／Apache・Tomcat最新化＋TLS適用
 
-    <Directory "/home/www/projects/hange-alice/hange-alice">
-        Options -Indexes +FollowSymLinks +Multiviews
-        AllowOverride None
-        Require all granted
-    </Directory>
+* `hange-alice` を初めてKotlin化したことに伴い、変更された構造・ビルド方式に合わせて **サーバ設定全体を再整備**しました。
+* **Apache最新バージョンを導入**し、既存の運用設定を最新仕様に合わせて移行。必要な **lib を手動で導入**し互換性を確保しました。
+* **Tomcat最新バージョンも導入**し、既存設定を同様に移行。必要な **lib の手動導入**により正常起動を担保しました。
+* 新規 **alphaサーバ** 上で最新Apache/Tomcat構成で起動できるように環境を構築し、運用安定化のため **graceful設定**を適用しました。
+* あわせて **keytool / SSL(TLS) / エラーページ / リダイレクト**などの運用課題を整理し、原因ベースで対応しました。
+* さらに、従来同様に **cron でログを3ヶ月保管**するログ保存・整理の仕組みを構築しました。
 
-     DirectoryIndex index.html index.htm
+ハンゲ Customerサーバ撤去
 
-     SSLEngine on
+* 過去に一定進んでいた作業や、QA進行中の問い合わせが発生した際に、状況確認のうえ **修正／確認／共有などのフォロー対応**を行いました。
+* customer関連のレガシーデータが残存して問題となるケースは、**Redmineチケットで登録・追跡**し、原因整理〜解決まで対応しました。
 
-     SSLCertificateFile /home/www/hange-ssl/hange-jp/hange.jp.crt
-     SSLCertificateKeyFile /home/www/hange-ssl/hange-jp/hange.jp.key
+協業プロセス改善
 
-    RequestHeader set X-Forwarded-Proto "https"
-    RequestHeader set X-Forwarded-For "%{REMOTE_ADDR}s"
-
-
-    RewriteCond %{REQUEST_URI} ^(.*)\.nhn$ [NC]
-    RewriteRule ^(.*)\.nhn$ $1 [R=301,L]
-
-    # alpha-XXX → /XXX/index
-    RewriteEngine On
-    RewriteCond %{HTTP_HOST} ^alpha-([^.]+)\.hange\.jp$ [NC]
-    RewriteRule ^/$ ajp://127.0.0.1:6008/%1/index [P,L]
-
-    # alpha-XXX → /XXX/요청경로
-    RewriteCond %{HTTP_HOST} ^alpha-([^.]+)\.hange\.jp$ [NC]
-    RewriteCond %{REQUEST_URI} !^/$
-    RewriteRule ^/(.*)$ ajp://127.0.0.1:6008/%1/$1 [P,L]
-
-    ErrorLog "/usr/local/apache/logs/error_log"
-    TransferLog "/usr/local/apache/logs/access_log"
-    CustomLog "/usr/local/apache/logs/ssl_request_log" "%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \"%r\" %b"
-
-</VirtualHost>
+* インフラチームとの協業において、**ビルド情報やビルド成果物を先回りして共有**し、レビューコメントも迅速に反映することで、コミュニケーションコストと待ち時間を削減しました。
+* 進め方を **「まず起動・安定化 → その後改善」**の順で段階化し、サービス影響の最小化とスケジュールリスク管理の両立を意識して推進しました。
