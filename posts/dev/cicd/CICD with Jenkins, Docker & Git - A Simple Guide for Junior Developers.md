@@ -3,7 +3,7 @@ title: CI/CD with Jenkins, Docker & Git - A Simple Guide for Junior Developers
 published: false
 description: Learn how to set up a complete CI/CD pipeline using Jenkins, Docker, and GitHub
 tags: jenkins, docker, cicd, devops
-cover_image: https://img.notionusercontent.com/s3/prod-files-secure%2F6ab3efe6-44b5-4e5c-9d86-56543fb7f59d%2F452901b3-0f1b-40ca-92c6-a79b6c640686%2FChatGPT_Image_Jan_21_2026_11_36_45_AM.png/size/w=1420?exp=1769049462&sig=C7NJxcraISDtsjWxDx7gvToYSdgCkh_mTCWvPj46FZ4&id=2ef930ff-582f-80b6-b7ff-cc49ec3a3764&table=block
+cover_image: https://qlqjs674.notion.site/image/attachment%3A0000d27f-c321-495d-903a-06efe8c95c5f%3Aimage.png?table=block&id=2ef930ff-582f-8066-8d52-d81f1593168a&spaceId=6ab3efe6-44b5-4e5c-9d86-56543fb7f59d&width=1420&userId=&cache=v2
 series: cicd 
 ---
 
