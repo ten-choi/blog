@@ -7,9 +7,6 @@ cover_image: https://example.com/your-cover-image.jpg
 series:
 ---
 
-
-
-
 spec
 we plafform DAU is estamte 1mlion
 we plaltform we have alot of project 70 
@@ -34,7 +31,7 @@ is it batter to money before
 we pieked most big project among 70 project for first project 
 i create draw.io for comunicate. 
 
-
+she blow up
 
 
 aws ecs fageate and ecs exist 
@@ -51,3 +48,4 @@ so we wrote env profile on task definition
 
 ucrain 
 that is bargen
+
