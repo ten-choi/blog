@@ -1,8 +1,9 @@
 ---
-title: Why Writing Still Matters
+title: 
 published: false
-description: On curiosity, platform migration, and why I keep documenting my developer journey in English—even though I'm Korean living in Japan
-tags: career, blogging, devjournal, beginners
+description: 
+
+tags:
 cover_image: https://qlqjs674.notion.site/image/attachment%3A8b4c6120-b508-44a6-a2fb-7aaf7150b249%3Aimage.png?table=block&id=2f0930ff-582f-80ef-8444-d54a8ce9ac35&spaceId=6ab3efe6-44b5-4e5c-9d86-56543fb7f59d&width=1420&userId=&cache=v2
 ---
 
@@ -14,9 +15,7 @@ Whether it’s trying a new restaurant or exploring unfamiliar neighborhoods, I�
 
 That same curiosity carries over into my professional life. When a new technology emerges, I explore it—especially those developed by reputable institutions or adopted by industry leaders. If it proves valuable, I integrate it into my workflow and document the entire experience. I'm curious by nature, but I also don't want to forget what works.
 
-## My Journey
 
-I started my career as a developer in 2020 and have been consistently documenting my journey ever since. I chose this platform primarily because it streamlines markdown-based deployment through token authentication.
 
 ## Platform Migration: From Tistory to GitHub
 
@@ -61,6 +60,10 @@ That's why, although I'm Korean and currently living and working in Japan, I mak
 
 The tech industry will continue evolving rapidly, so thinking long-term is essential.
 
+
+
+정말 중요한건 끊임없이 무언갈 공부하고있는것이다 
+무언가를 동기부여 영상을 보면 가끔 도움이 된다
 
 
 image reference https://www.youtube.com/watch?v=AuZoDsNmG_s
