@@ -1,7 +1,7 @@
 # 게시글 바로 올리는법
 
 ```bash
-npm run publish:single posts/database/mysql-performance-optimization.md
+npm run publish:single -- "published/vision/Why Writing Still Matters.md"
 ```
 
 # DEV.to 블로그 배포 도구

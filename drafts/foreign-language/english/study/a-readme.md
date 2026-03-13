@@ -15,3 +15,11 @@ When I study new sentences today, they go into Day 1.
 Tomorrow, those sentences move to Day 2, and the day after that, they move to Day 3.
 
 Day 3 is the final day. Whether I remember the sentences well or not, they get removed the next day to make room for new ones.
+
+
+-------------
+
+# Added rule
+
+1. It wasn't a good way to leave a link
+2. 
