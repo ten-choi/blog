@@ -116,7 +116,7 @@ function validateFrontMatter(filePath: string): ValidationResult {
  * posts 디렉토리의 모든 마크다운 파일을 검증합니다.
  */
 function validateAllPosts(): void {
-  const postsDir = path.join(__dirname, "..", "posts");
+  const postsDir = path.join(__dirname, "..", "published");
   let allValid = true;
 
   try {
@@ -215,7 +215,7 @@ function createNewPost(title: string): void {
     process.exit(1);
   }
 
-  const postsDir = path.join(__dirname, "..", "posts");
+  const postsDir = path.join(__dirname, "..", "drafts");
 
   // 디렉토리가 없으면 생성
   if (!fs.existsSync(postsDir)) {

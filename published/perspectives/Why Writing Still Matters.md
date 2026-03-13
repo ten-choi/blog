@@ -1,6 +1,6 @@
 ﻿---
-title: "Why Writing Still Matters — A Developer's Case for Thinking Out Loud"
-published: false
+title: "Why Writing Still Matters — A Developer's Case for Thinking Out Loud11"
+published: true
 description: "Why I still write in a world full of AI — and why I do it in English."
 tags: writing, career, english, motivation
 cover_image: https://qlqjs674.notion.site/image/attachment%3Ad4a1ec33-6b90-436b-800e-92f10e4b4b1e%3Aimage.png?table=block&id=322930ff-582f-805a-8294-d3b145dbd4cc&spaceId=6ab3efe6-44b5-4e5c-9d86-56543fb7f59d&width=1420&userId=&cache=v2
@@ -8,8 +8,8 @@ cover_image: https://qlqjs674.notion.site/image/attachment%3Ad4a1ec33-6b90-436b-
 
 ## It Starts with Curiosity
 
-I'm the kind of person who, when something sparks my curiosity, just goes for it.
-
+I'm the kind of person who makes a plan whenever something sparks my curiosity.
+    
 Whether it's hunting down a new restaurant or exploring a neighborhood I've never been to — I'm drawn to discovering new things. I usually start by looking for places with high ratings and strong reviews. When I find a gem, I post it on Instagram and revisit it whenever the craving hits.
 
 That same curiosity carries over into my work. When a new technology comes out, I check it out — especially if it's from a reputable institution or already being adopted by the industry. If it seems useful, I work it into my workflow and document the entire process.
