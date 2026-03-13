@@ -54,10 +54,12 @@ async function publishArticle(filePath: string): Promise<DevToResponse> {
       article: {
         title: attributes.title,
         published: attributes.published || false,
-        body_markdown: fileContent,
+        body_markdown: body,
         description: attributes.description,
         tags: attributes.tags
-          ? attributes.tags.split(",").map((tag: string) => tag.trim())
+          ? (Array.isArray(attributes.tags)
+              ? attributes.tags
+              : String(attributes.tags).split(",").map((tag: string) => tag.trim()))
           : [],
         series: attributes.series || null,
       } as DevToArticle,
@@ -86,7 +88,7 @@ async function publishArticle(filePath: string): Promise<DevToResponse> {
 
     const data = (await response.json()) as DevToResponse;
     console.log(
-      `Successfully published! Article URL: https://dev.to/article/${data.id}`
+      `Successfully published! Article URL: ${data.url}`
     );
     return data;
   } catch (error) {
@@ -96,7 +98,7 @@ async function publishArticle(filePath: string): Promise<DevToResponse> {
 }
 
 async function main(): Promise<void> {
-  const postsDir = path.join(__dirname, "..", "posts");
+  const postsDir = path.join(__dirname, "..", "published");
 
   // Check if specific file is provided as command line argument
   const specificFile = process.argv[2];
