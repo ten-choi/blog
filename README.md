@@ -1,7 +1,7 @@
 # 게시글 바로 올리는법
 
 ```bash
-npm run publish:single -- "published/perspectives/Why Writing Still Matters.md"
+npm run publish:single -- "published/perspectives/Rising Productivity, Vanishing Jobs.md"
 ```
 
 # DEV.to 블로그 배포 도구
