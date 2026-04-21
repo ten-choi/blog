@@ -1,7 +1,7 @@
 # 게시글 바로 올리는법
 
 ```bash
-npm run publish:single -- "published/perspectives/Rising Productivity, Vanishing Jobs.md"
+npm run publish:single -- "published/dev/database/DBMS Made Ridiculously Easy - SQL Parsing and the Plan Cache.md"
 ```
 
 # DEV.to 블로그 배포 도구
