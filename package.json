@@ -10,14 +10,19 @@
     "publish": "ts-node src/publish.ts",
     "publish:single": "ts-node src/publish.ts",
     "validate": "ts-node src/validate.ts",
-    "create": "ts-node src/validate.ts create"
+    "create": "ts-node src/validate.ts create",
+    "publish:blogger": "ts-node platforms/blogger/publish.ts",
+    "blogger:auth": "ts-node platforms/blogger/auth.ts",
+    "blogger:blogs": "ts-node platforms/blogger/publish.ts --list-blogs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.5.0",
-    "front-matter": "^4.0.2"
+    "front-matter": "^4.0.2",
+    "googleapis": "^144.0.0",
+    "marked": "^14.1.3"
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
