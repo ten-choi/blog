@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(mv \"C:/workSpace/projects/personal/blog/drafts/dev/network/Chapter_1/1.1 인터넷이란 무엇인가_/README.md\" \"C:/workSpace/projects/personal/blog/drafts/dev/network/Chapter_1/1.1 인터넷이란 무엇인가_.md\")",
-      "Bash(rmdir \"C:/workSpace/projects/personal/blog/drafts/dev/network/Chapter_1/1.1 인터넷이란 무엇인가_\")"
+      "Bash(rmdir \"C:/workSpace/projects/personal/blog/drafts/dev/network/Chapter_1/1.1 인터넷이란 무엇인가_\")",
+      "Bash(python -c ' *)"
     ]
   }
 }
