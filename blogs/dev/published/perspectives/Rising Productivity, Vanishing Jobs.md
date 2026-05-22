@@ -1,6 +1,6 @@
 ---
 title: "Rising Productivity, Vanishing Jobs: A Developer's Take on the AI Era"
-published: false
+published: true
 description: "AI is making everything faster and easier — but what does that mean for developers, workers, and the future of work itself?"
 tags: ai, productivity, career, developer
 cover_image: https://qlqjs674.notion.site/image/attachment%3Adaf25f49-a487-46a2-af5e-6223c9be4a85%3Aimage.png?table=block&id=321930ff-582f-8087-8164-fec48311bee4&spaceId=6ab3efe6-44b5-4e5c-9d86-56543fb7f59d&width=1410&userId=&cache=v2
