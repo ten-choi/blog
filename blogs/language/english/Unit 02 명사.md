@@ -1,7 +1,7 @@
 ---
 title: "Unit 02 명사"
 labels: ["English", "TOEIC", "토익 문법", "명사", "가산명사"]
-published: true
+published: false
 date: 
 readerComments: "ALLOW"
 bloggerPostId: "7510165054661586805"

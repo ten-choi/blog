@@ -1,7 +1,7 @@
 ---
 title: "Unit 14 명사절 접속사"
 labels: ["English", "TOEIC", "토익 문법", "명사절"]
-published: true
+published: false
 date: 
 readerComments: "ALLOW"
 bloggerPostId: "7250116854027567624"

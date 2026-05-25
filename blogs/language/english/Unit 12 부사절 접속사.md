@@ -1,7 +1,7 @@
 ---
 title: "Unit 12 부사절 접속사"
 labels: ["English", "TOEIC", "토익 문법", "부사절"]
-published: true
+published: false
 date: 
 readerComments: "ALLOW"
 bloggerPostId: "2503931738434553737"
