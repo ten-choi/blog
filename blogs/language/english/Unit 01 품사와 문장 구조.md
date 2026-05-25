@@ -1,10 +1,10 @@
 ---
 title: "Unit 01 품사와 문장 구조"
-labels: ["English", "TOEIC", "grammar"]
-published: false
+labels: ["English", "TOEIC", "토익 문법", "품사", "문장 구조"]
+published: true
 date: 
-readerComments: 
-bloggerPostId: 
+readerComments: "ALLOW"
+bloggerPostId: "4460988934862001831"
 ---
 
 ## 개요

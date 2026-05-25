@@ -1,10 +1,10 @@
 ---
 title: "Unit 06 동사의 형태와 종류"
-labels: ["English", "TOEIC", "grammar"]
-published: false
+labels: ["English", "TOEIC", "토익 문법", "자동사 타동사", "동사 형태"]
+published: true
 date: 
-readerComments: 
-bloggerPostId: 
+readerComments: "ALLOW"
+bloggerPostId: "5356959118438526807"
 ---
 
 ## 개요

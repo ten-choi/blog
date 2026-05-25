@@ -1,10 +1,10 @@
 ---
 title: "Unit 05 부사"
-labels: ["English", "TOEIC", "grammar"]
-published: false
+labels: ["English", "TOEIC", "토익 문법", "부사"]
+published: true
 date: 
-readerComments: 
-bloggerPostId: 
+readerComments: "ALLOW"
+bloggerPostId: "7632484903593462338"
 ---
 
 ## 개요

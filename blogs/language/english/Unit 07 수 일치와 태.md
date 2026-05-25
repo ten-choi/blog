@@ -1,10 +1,10 @@
 ---
 title: "Unit 07 수 일치와 태"
-labels: ["English", "TOEIC", "grammar"]
-published: false
+labels: ["English", "TOEIC", "토익 문법", "수일치", "수동태"]
+published: true
 date: 
-readerComments: 
-bloggerPostId: 
+readerComments: "ALLOW"
+bloggerPostId: "8804569589412178890"
 ---
 
 ## 개요

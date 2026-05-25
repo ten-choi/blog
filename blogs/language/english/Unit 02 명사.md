@@ -1,10 +1,10 @@
 ---
 title: "Unit 02 명사"
-labels: ["English", "TOEIC", "grammar"]
-published: false
+labels: ["English", "TOEIC", "토익 문법", "명사", "가산명사"]
+published: true
 date: 
-readerComments: 
-bloggerPostId: 
+readerComments: "ALLOW"
+bloggerPostId: "7510165054661586805"
 ---
 
 ## 개요

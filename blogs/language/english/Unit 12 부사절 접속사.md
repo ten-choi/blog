@@ -1,10 +1,10 @@
 ---
 title: "Unit 12 부사절 접속사"
-labels: ["English", "TOEIC", "grammar"]
-published: false
+labels: ["English", "TOEIC", "토익 문법", "부사절"]
+published: true
 date: 
-readerComments: 
-bloggerPostId: 
+readerComments: "ALLOW"
+bloggerPostId: "2503931738434553737"
 ---
 
 ## 개요

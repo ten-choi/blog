@@ -1,10 +1,10 @@
 ---
 title: "Unit 09 to부정사와 동명사"
-labels: ["English", "TOEIC", "grammar"]
-published: false
+labels: ["English", "TOEIC", "토익 문법", "to부정사", "동명사"]
+published: true
 date: 
-readerComments: 
-bloggerPostId: 
+readerComments: "ALLOW"
+bloggerPostId: "5706904691592306431"
 ---
 
 ## 개요
