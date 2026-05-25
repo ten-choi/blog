@@ -1,10 +1,10 @@
 ---
 title: "Unit 15 비교와 도치 구문"
-labels: ["English", "TOEIC", "grammar"]
-published: false
+labels: ["English", "TOEIC", "토익 문법", "비교 구문", "도치"]
+published: true
 date: 
-readerComments: 
-bloggerPostId: 
+readerComments: "ALLOW"
+bloggerPostId: "4703070164959423917"
 ---
 
 ## 개요

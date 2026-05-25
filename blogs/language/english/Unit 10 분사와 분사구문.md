@@ -1,10 +1,10 @@
 ---
 title: "Unit 10 분사와 분사구문"
-labels: ["English", "TOEIC", "grammar"]
-published: false
+labels: ["English", "TOEIC", "토익 문법", "분사", "분사구문"]
+published: true
 date: 
-readerComments: 
-bloggerPostId: 
+readerComments: "ALLOW"
+bloggerPostId: "5192540221226049155"
 ---
 
 ## 개요

@@ -1,10 +1,10 @@
 ---
 title: "Unit 04 형용사"
-labels: ["English", "TOEIC", "grammar"]
-published: false
+labels: ["English", "TOEIC", "토익 문법", "형용사"]
+published: true
 date: 
-readerComments: 
-bloggerPostId: 
+readerComments: "ALLOW"
+bloggerPostId: "8703358700865874470"
 ---
 
 ## 개요

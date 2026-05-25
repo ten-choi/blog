@@ -1,10 +1,10 @@
 ---
 title: "Unit 03 대명사"
-labels: ["English", "TOEIC", "grammar"]
-published: false
+labels: ["English", "TOEIC", "토익 문법", "대명사"]
+published: true
 date: 
-readerComments: 
-bloggerPostId: 
+readerComments: "ALLOW"
+bloggerPostId: "6532945631423026772"
 ---
 
 ## 개요

@@ -1,10 +1,10 @@
 ---
 title: "Unit 08 시제"
-labels: ["English", "TOEIC", "grammar"]
-published: false
+labels: ["English", "TOEIC", "토익 문법", "영어 시제", "현재완료"]
+published: true
 date: 
-readerComments: 
-bloggerPostId: 
+readerComments: "ALLOW"
+bloggerPostId: "5775058857876207851"
 ---
 
 ## 개요
