@@ -9,7 +9,8 @@ import type { OAuth2Client, Credentials } from "google-auth-library";
 dotenv.config();
 
 const SCOPES = ["https://www.googleapis.com/auth/blogger"];
-const TOKEN_PATH = path.join(__dirname, "token.json");
+const ENV_PATH = path.join(__dirname, "..", "..", ".env");
+const ENV_KEY = "BLOGGER_REFRESH_TOKEN";
 
 function loadClientCreds(): { client_id: string; client_secret: string } {
   const client_id = process.env.BLOGGER_CLIENT_ID;
@@ -27,18 +28,27 @@ function loadClientCreds(): { client_id: string; client_secret: string } {
   return { client_id, client_secret };
 }
 
-function loadCachedToken(): Credentials | null {
-  if (!fs.existsSync(TOKEN_PATH)) return null;
-  try {
-    return JSON.parse(fs.readFileSync(TOKEN_PATH, "utf8")) as Credentials;
-  } catch {
-    return null;
-  }
+function loadRefreshTokenFromEnv(): string | null {
+  const t = process.env[ENV_KEY];
+  return t && t.length > 0 ? t : null;
 }
 
-function saveToken(token: Credentials): void {
-  fs.writeFileSync(TOKEN_PATH, JSON.stringify(token, null, 2), "utf8");
-  console.log(`Token saved to ${TOKEN_PATH}`);
+function saveRefreshTokenToEnv(refresh_token: string): void {
+  let envContent = "";
+  if (fs.existsSync(ENV_PATH)) {
+    envContent = fs.readFileSync(ENV_PATH, "utf8");
+  }
+  const line = `${ENV_KEY}=${refresh_token}`;
+  const pattern = new RegExp(`^${ENV_KEY}=.*$`, "m");
+  if (pattern.test(envContent)) {
+    envContent = envContent.replace(pattern, line);
+  } else {
+    const prefix = envContent.length > 0 && !envContent.endsWith("\n") ? "\n" : "";
+    envContent += prefix + line + "\n";
+  }
+  fs.writeFileSync(ENV_PATH, envContent, "utf8");
+  process.env[ENV_KEY] = refresh_token;
+  console.log(`${ENV_KEY} saved to ${ENV_PATH}`);
 }
 
 function runLoopbackAuth(
@@ -116,27 +126,26 @@ function runLoopbackAuth(
 export async function getAuthClient(): Promise<OAuth2Client> {
   const { client_id, client_secret } = loadClientCreds();
 
-  const cached = loadCachedToken();
-  if (cached) {
+  const refreshToken = loadRefreshTokenFromEnv();
+  if (refreshToken) {
     const oAuth2Client = new google.auth.OAuth2(client_id, client_secret);
-    oAuth2Client.setCredentials(cached);
-    if (cached.refresh_token) {
-      oAuth2Client.on("tokens", (tokens) => {
-        const merged: Credentials = { ...cached, ...tokens };
-        saveToken(merged);
-      });
-    }
+    oAuth2Client.setCredentials({ refresh_token: refreshToken });
+    oAuth2Client.on("tokens", (tokens) => {
+      if (tokens.refresh_token && tokens.refresh_token !== refreshToken) {
+        saveRefreshTokenToEnv(tokens.refresh_token);
+      }
+    });
     return oAuth2Client;
   }
 
   const { tokens, client } = await runLoopbackAuth(client_id, client_secret);
   if (!tokens.refresh_token) {
-    console.warn(
-      "Warning: no refresh_token received. You may need to revoke access at https://myaccount.google.com/permissions and re-authorize."
+    throw new Error(
+      "Authorization did not return a refresh_token. Revoke access at https://myaccount.google.com/permissions and re-authorize."
     );
   }
+  saveRefreshTokenToEnv(tokens.refresh_token);
   client.setCredentials(tokens);
-  saveToken(tokens);
   return client;
 }
 

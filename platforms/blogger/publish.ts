@@ -11,12 +11,21 @@ dotenv.config();
 interface PostAttributes {
   title?: string;
   published?: boolean;
-  description?: string;
   tags?: string | string[];
+  labels?: string | string[];
+  date?: string;
+  readerComments?: string;
+  bloggerPostId?: string | number;
   cover_image?: string;
   series?: string;
   [key: string]: any;
 }
+
+const VALID_READER_COMMENTS = new Set([
+  "ALLOW",
+  "DONT_ALLOW",
+  "DONT_ALLOW_HIDE_EXISTING",
+]);
 
 interface PublishOptions {
   blogId: string;
@@ -36,6 +45,22 @@ function parseTags(tags?: string | string[]): string[] {
 function markdownToHtml(md: string): string {
   marked.setOptions({ gfm: true, breaks: false });
   return marked.parse(md, { async: false }) as string;
+}
+
+function persistPostIdToFile(filePath: string, postId: string): void {
+  const original = fs.readFileSync(filePath, "utf8");
+  const match = original.match(/^(---\r?\n)([\s\S]*?)(\r?\n---\r?\n)/);
+  if (!match) {
+    console.warn(`  warning: no front matter block found in ${filePath}, cannot persist bloggerPostId`);
+    return;
+  }
+  const [whole, opening, body, closing] = match;
+  const newLine = `bloggerPostId: "${postId}"`;
+  const newBody = /^bloggerPostId:.*$/m.test(body)
+    ? body.replace(/^bloggerPostId:.*$/m, newLine)
+    : `${body}\n${newLine}`;
+  const updated = opening + newBody + closing + original.slice(whole.length);
+  fs.writeFileSync(filePath, updated, "utf8");
 }
 
 async function resolveBlogId(blogger: blogger_v3.Blogger): Promise<string> {
@@ -67,9 +92,9 @@ async function publishOne(opts: PublishOptions): Promise<void> {
     throw new Error(`Missing 'title' in front matter: ${filePath}`);
   }
 
-  const isDraft = attributes.published === false || attributes.published === undefined;
   const html = markdownToHtml(body);
-  const labels = parseTags(attributes.tags);
+  const labels = parseTags(attributes.labels ?? attributes.tags);
+  const wantsPublished = attributes.published === true;
 
   const requestBody: blogger_v3.Schema$Post = {
     kind: "blogger#post",
@@ -78,14 +103,53 @@ async function publishOne(opts: PublishOptions): Promise<void> {
   };
   if (labels.length > 0) requestBody.labels = labels;
 
+  if (attributes.date) {
+    const ts = Date.parse(attributes.date);
+    if (Number.isNaN(ts)) {
+      throw new Error(
+        `Invalid 'date' in front matter (must be RFC3339, e.g. 2026-05-22T14:55:00+09:00): ${attributes.date}`
+      );
+    }
+    requestBody.published = new Date(ts).toISOString();
+  }
+
+  if (attributes.readerComments) {
+    if (!VALID_READER_COMMENTS.has(attributes.readerComments)) {
+      throw new Error(
+        `Invalid 'readerComments' value: ${attributes.readerComments}. Allowed: ${[...VALID_READER_COMMENTS].join(", ")}`
+      );
+    }
+    requestBody.readerComments = attributes.readerComments;
+  }
+
+  const existingPostId = attributes.bloggerPostId
+    ? String(attributes.bloggerPostId)
+    : null;
+
+  if (existingPostId) {
+    const res = await blogger.posts.update({
+      blogId,
+      postId: existingPostId,
+      publish: wantsPublished,
+      requestBody,
+    });
+    console.log(`  UPDATED -> ${res.data.url || "(no url)"} (id: ${res.data.id})`);
+    return;
+  }
+
   const res = await blogger.posts.insert({
     blogId,
-    isDraft,
+    isDraft: !wantsPublished,
     requestBody,
   });
 
-  const status = isDraft ? "DRAFT" : "PUBLISHED";
+  const status = wantsPublished ? "PUBLISHED" : "DRAFT";
   console.log(`  ${status} -> ${res.data.url || "(no url)"} (id: ${res.data.id})`);
+
+  if (res.data.id) {
+    persistPostIdToFile(filePath, res.data.id);
+    console.log(`  bloggerPostId saved to front matter`);
+  }
 }
 
 function findMarkdownFiles(dir: string): string[] {
