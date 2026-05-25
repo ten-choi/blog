@@ -134,6 +134,11 @@ async function publishOne(opts: PublishOptions): Promise<void> {
       requestBody,
     });
     console.log(`  UPDATED -> ${res.data.url || "(no url)"} (id: ${res.data.id})`);
+
+    if (!wantsPublished && res.data.status === "LIVE") {
+      await blogger.posts.revert({ blogId, postId: existingPostId });
+      console.log(`  REVERTED to draft (published: false in front matter)`);
+    }
     return;
   }
 
