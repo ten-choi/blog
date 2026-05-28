@@ -1,9 +1,10 @@
 ---
-title: DBMS Made Ridiculously Easy - SQL Parsing and the Plan Cache
-published: false
-tags: database, dbms, sqltuning, parsing
-cover_image: 
-series: database
+title: "DBMS Made Ridiculously Easy - SQL Parsing and the Plan Cache"
+labels: ["Database", "DBMS", "SQL Tuning", "Plan Cache", "SQL Parsing", "Bind Variables"]
+published: true
+date:
+readerComments: "ALLOW"
+bloggerPostId: "4737764923710778610"
 ---
 
 > Explaining DBMS for junior developers
