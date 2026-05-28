@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId: "8703358700865874470"
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/english_banner.webp)
+
 ## 개요
 
 형용사는 **명사 수식** 또는 **보어** 자리에 들어간다. 토익에서는 비슷하게 생긴 단어(형용사/명사/부사)를 보기에 섞어 놓고 자리만으로 답을 가르는 문제가 흔하다.

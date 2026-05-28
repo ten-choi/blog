@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId: "5192540221226049155"
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/english_banner.webp)
+
 ## 개요
 
 분사는 **현재분사(-ing) = 능동·진행**, **과거분사(p.p.) = 수동·완료**. 토익에서는 명사 수식 분사의 능동/수동 판별, 그리고 분사구문 만들기가 단골.

@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId: "4703070164959423917"
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/english_banner.webp)
+
 ## 개요
 
 비교 구문은 **형태 매칭 (as ~ as, more ~ than, the ~est)**과 **관용 표현**이 핵심. 도치는 부정어·only가 문장 앞에 나올 때의 **조동사 + 주어** 어순이 가장 자주 출제된다.

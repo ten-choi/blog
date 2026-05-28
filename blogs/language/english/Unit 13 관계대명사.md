@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId: "7697640943135879216"
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/english_banner.webp)
+
 ## 개요
 
 관계대명사는 **선행사(사람/사물)**와 **관계절 안에서의 역할(주어/목적어/소유격)**에 따라 결정된다. 자리만 잡으면 답은 한 가지로 정해진다.

@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId: "7250116854027567624"
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/english_banner.webp)
+
 ## 개요
 
 명사절은 **주어 / 목적어 / 보어 / 전치사의 목적어** 자리에 들어가는 절. that, whether/if, 의문사로 시작한다. 형태와 어순(특히 간접의문문)이 토익 단골.

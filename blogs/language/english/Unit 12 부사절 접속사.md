@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId: "2503931738434553737"
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/english_banner.webp)
+
 ## 개요
 
 부사절 접속사는 의미별로 묶어 외우는 게 효율적. 토익에서는 **의미가 비슷한 접속사 간 구분**(although vs because), 그리고 **전치사구와의 구분**이 핵심.

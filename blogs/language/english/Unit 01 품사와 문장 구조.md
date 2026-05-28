@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId: "4460988934862001831"
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/english_banner.webp)
+
 ## 개요
 
 토익 Part 5·6 문법 문제의 출발점. 빈칸에 들어갈 단어의 **품사**를 먼저 판단하는 것이 모든 문법 문제의 기초다. 자리를 파악할 줄 알면 보기에서 절반은 바로 걸러낼 수 있다.

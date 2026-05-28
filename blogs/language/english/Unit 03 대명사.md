@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId: "6532945631423026772"
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/english_banner.webp)
+
 ## 개요
 
 대명사는 **격(case)**과 **수 일치**가 핵심. 인칭 대명사 격 변화표만 정확히 외우면 토익 대명사 문제의 절반은 풀린다.

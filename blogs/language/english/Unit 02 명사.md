@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId: "7510165054661586805"
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/english_banner.webp)
+
 ## 개요
 
 토익에서 명사 문제는 **자리 식별**과 **가산/불가산 구분**이 핵심. 명사 자리 후보가 여러 보기에 나오면 의미·문맥이 아니라 가산 여부와 단복수로 답을 가른다.
