@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId: "4737764923710778610"
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/dev/database_banner.webp)
+
 > Explaining DBMS for junior developers
 
 
