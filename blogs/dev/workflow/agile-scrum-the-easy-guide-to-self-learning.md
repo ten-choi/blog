@@ -1,6 +1,6 @@
 ---
 title: Agile Scrum - The Easy Guide to Self-Learning
-published: false
+published: true
 tags: agile, scrum, workflow, beginners
 cover_image: https://qlqjs674.notion.site/image/attachment%3A3f05ec6a-06b4-4d4e-a50f-f1d52616ef00%3AChatGPT_Image_May_22_2025_06_14_51_PM.png?table=block&id=1fb930ff-582f-80ff-804b-e5a18f2d3eb4&spaceId=6ab3efe6-44b5-4e5c-9d86-56543fb7f59d&width=1420&userId=&cache=v2
 series:
