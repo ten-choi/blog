@@ -2180,6 +2180,20 @@ color:#fff;
  .item-post .post-body img{
     max-width:100%
 }
+/* Hero banner: post 첫 이미지를 자동으로 배너 스타일로 (rounded + shadow + height cap). */
+.item-post .post-body > p:first-child:has(> img:only-child){
+    margin:0
+}
+.item-post .post-body > p:first-child > img:only-child,
+.item-post .post-body > img:first-child{
+    display:block;
+    width:100%;
+    max-height:400px;
+    object-fit:cover;
+    border-radius:12px;
+    margin:0 0 30px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.08)
+}
  .main .widget{
     margin:0
 }
