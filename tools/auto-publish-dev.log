@@ -1,0 +1,33 @@
+﻿[2026-05-26 12:50:09][dev] Selected: C:\workSpace\projects\personal\blog\blogs\dev\workflow\agile-scrum-the-easy-guide-to-self-learning.md (title: Agile Scrum - The Easy Guide to Self-Learning)
+[2026-05-26 12:50:18][dev] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\dev\workflow\agile-scrum-the-easy-guide-to-self-learning.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\dev\workflow\agile-scrum-the-easy-guide-to-self-learning.md ...
+  UPDATED -> https://ten-dev-notes.blogspot.com/2026/05/agile-scrum-easy-guide-to-self-learning.html (id: 5820737755285952440)
+
+[2026-05-26 12:50:18][dev] FAILED: warning: in the working copy of 'blogs/dev/workflow/agile-scrum-the-easy-guide-to-self-learning.md', LF will be replaced by CRLF the next time Git touches it; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\dev\workflow\agile-scrum-the-easy-guide-to-self-learning.md
+[2026-05-27 12:10:30][dev] Selected: C:\workSpace\projects\personal\blog\blogs\dev\workflow\agile-scrum-the-easy-guide-to-self-learning.md (title: Agile Scrum - The Easy Guide to Self-Learning)
+[2026-05-27 12:10:50][dev] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\dev\workflow\agile-scrum-the-easy-guide-to-self-learning.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\dev\workflow\agile-scrum-the-easy-guide-to-self-learning.md ...
+  UPDATED -> https://ten-dev-notes.blogspot.com/2026/05/agile-scrum-easy-guide-to-self-learning.html (id: 5820737755285952440)
+
+[2026-05-27 12:10:50][dev] FAILED: warning: in the working copy of 'blogs/dev/workflow/agile-scrum-the-easy-guide-to-self-learning.md', LF will be replaced by CRLF the next time Git touches it; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\dev\workflow\agile-scrum-the-easy-guide-to-self-learning.md
+[2026-05-28 11:53:56][dev] Selected: C:\workSpace\projects\personal\blog\blogs\dev\workflow\gitflow.md (title: GitFlow Workflow - A Practical Branching Strategy Guide)
+[2026-05-28 11:54:17][dev] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\dev\workflow\gitflow.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\dev\workflow\gitflow.md ...
+  UPDATED -> https://ten-dev-notes.blogspot.com/2026/05/gitflow-workflow-practical-branching.html (id: 7712560405097850619)
+
+[2026-05-28 11:54:18][dev] SUCCESS: GitFlow Workflow - A Practical Branching Strategy Guide (committed locally; push manually when ready)

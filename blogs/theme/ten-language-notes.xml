@@ -2,16 +2,20 @@
 <!DOCTYPE html>
 <html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateVersion='1.0.0' expr:class='data:blog.languageDirection' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
   <head>
-    <meta content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1' name='viewport'/>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
     <title><data:view.title.escaped/></title>
     <b:include data='blog' name='all-head-content'/>
     <meta content='f8f8ab61def8c5af7fdf544d3ffff893bac70b62' name='naver-site-verification'/>
+    <link href='https://fonts.googleapis.com' rel='preconnect'/>
+    <link href='https://fonts.gstatic.com' rel='preconnect' crossorigin='anonymous'/>
+    <link href='https://cdnjs.cloudflare.com' rel='preconnect' crossorigin='anonymous'/>
 <b:if cond='data:view.isHomepage'>
- <script type='application/ld+json'>{&quot;@context&quot;:&quot;http://schema.org&quot;,&quot;@type&quot;:&quot;WebSite&quot;,&quot;name&quot;:&quot;<data:view.title.escaped/>&quot;,&quot;url&quot;:&quot;<data:view.url.canonical/>&quot;,&quot;potentialAction&quot;:{&quot;@type&quot;:&quot;SearchAction&quot;,&quot;target&quot;:&quot;<data:view.url.canonical/>search?q={search_term_string}&quot;,&quot;query-input&quot;:&quot;required name=search_term_string&quot;}}</script>
+ <script type='application/ld+json'>{&quot;@context&quot;:&quot;https://schema.org&quot;,&quot;@type&quot;:&quot;WebSite&quot;,&quot;name&quot;:&quot;<data:view.title.escaped/>&quot;,&quot;url&quot;:&quot;<data:view.url.canonical/>&quot;,&quot;potentialAction&quot;:{&quot;@type&quot;:&quot;SearchAction&quot;,&quot;target&quot;:&quot;<data:view.url.canonical/>search?q={search_term_string}&quot;,&quot;query-input&quot;:&quot;required name=search_term_string&quot;}}</script>
     </b:if>
     <!-- Google Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i|Poppins:400,600,700' rel='stylesheet'/>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' rel='stylesheet'/>
+    <link href='https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;family=Poppins:wght@400;600;700&amp;display=swap' rel='stylesheet'/>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css' rel='stylesheet'/>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/v4-shims.min.css' rel='stylesheet'/>
 <b:if cond='!data:view.isLayoutMode'>
 <!-- Template Style CSS -->
 <b:skin version='1.0.0'><![CDATA[/* 
@@ -4444,13 +4448,9 @@ body#layout .footer-about-area, body#layout .foot-bar-social, body#layout #intro
 <!-- Global Variables -->
 <script type='text/javascript'>
 //<![CDATA[
-// Global variables with content. "Available for Edit"
-var monthFormat = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-    noThumbnail = "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E",
-    postPerPage = 7,
-    fixedSidebar = true,
-    commentsSystem = "blogger",
-    disqusShortname = "ten-language-notes";
+const noThumbnail = "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E";
+const postPerPage = 7;
+const fixedSidebar = true;
 //]]>
 </script>
 
@@ -4509,9 +4509,9 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
         <div class='post-content'>
           <a class='post-image-link' expr:href='data:post.url'>
             <b:if cond='data:post.featuredImage'>
-              <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
               <b:else/>
-              <img class='post-thumb' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
             </b:if>
           </a>
           <div class='post-info'>
@@ -4539,9 +4539,9 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
                               
           <a class='post-image-link' expr:href='data:post.url'>
             <b:if cond='data:post.featuredImage'>
-              <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
               <b:else/>
-              <img class='post-thumb' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
             </b:if>
           </a>
           <div class='post-info'>
@@ -4620,9 +4620,9 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
         <div class='post-content'>
           <a class='post-image-link' expr:href='data:post.url'>
             <b:if cond='data:post.featuredImage'>
-              <img class='post-thumb' expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
               <b:else/>
-              <img class='post-thumb' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
             </b:if>
           </a>
           <div class='post-info'>
@@ -4949,9 +4949,9 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
               <div class='about-author'>
                 <div class='avatar-container'>
                   <b:if cond='data:post.author.authorPhoto.image'>
-                    <img class='author-avatar' expr:alt='data:post.author.name' expr:src='data:post.author.authorPhoto.image resizeImage 100'/>                
+                    <img class='author-avatar' loading='lazy' expr:alt='data:post.author.name' expr:src='data:post.author.authorPhoto.image resizeImage 100'/>                
                     <b:else/>
-                    <img class='author-avatar' expr:alt='data:post.author.name' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22%23d1d5db%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2090c0-17%2013-30%2030-30s30%2013%2030%2030z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+                    <img class='author-avatar' loading='lazy' expr:alt='data:post.author.name' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22%23d1d5db%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2090c0-17%2013-30%2030-30s30%2013%2030%2030z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
                   </b:if>
                 </div>
                 <h3 class='author-name'>
@@ -4998,7 +4998,7 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
 </b:includable>
             <b:includable id='commentAuthorAvatar'>
               <div class='avatar-image-container'>
-                <img class='author-avatar' expr:src='data:comment.authorAvatarSrc' height='45' width='45'/>
+                <img class='author-avatar' loading='lazy' expr:src='data:comment.authorAvatarSrc' height='45' width='45'/>
               </div>
             </b:includable>
             <b:includable id='commentDeleteIcon' var='comment'>
@@ -5315,7 +5315,7 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
               <nav id='breadcrumb'><a expr:href='data:blog.homepageUrl'><data:messages.home/></a><b:if cond='data:post.labels'><em class='delimiter'/><a class='b-label' expr:href='data:post.labels.first.url'><data:post.labels.first.name/></a></b:if><em class='delimiter'/><span class='current'><data:post.title/></span></nav>
               <script type='application/ld+json'>
               {
-                &quot;@context&quot;: &quot;http://schema.org&quot;,
+                &quot;@context&quot;: &quot;https://schema.org&quot;,
                 &quot;@type&quot;: &quot;BreadcrumbList&quot;,
                 &quot;@id&quot;: &quot;#Breadcrumb&quot;,
                 &quot;itemListElement&quot;: [{
@@ -5380,9 +5380,9 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
               <div class='post-image-wrap'>
                 <a class='post-image-link' expr:href='data:post.url'>
                   <b:if cond='data:post.featuredImage'> 
-                    <img class='post-thumb' expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
+                    <img class='post-thumb' loading='lazy' expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
                     <b:else/>
-                    <img class='post-thumb' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+                    <img class='post-thumb' loading='lazy' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
                   </b:if>
                 </a>
               </div>
@@ -5783,9 +5783,9 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
         <div class='post-content'>
           <a class='post-image-link' expr:href='data:post.url'>
             <b:if cond='data:post.featuredImage'>
-              <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
               <b:else/>
-              <img class='post-thumb' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
             </b:if>
           </a>
           <div class='post-info'>
@@ -5853,9 +5853,9 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
             </b:if>
           <a class='post-image-link' expr:href='data:post.url'>
             <b:if cond='data:post.featuredImage'>
-              <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
               <b:else/>
-              <img class='post-thumb' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
             </b:if>
           </a>
           <div class='post-info'>
@@ -5924,9 +5924,9 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
         <div class='post-content'>
           <a class='post-image-link' expr:href='data:post.url'>
             <b:if cond='data:post.featuredImage'>
-              <img class='post-thumb' expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
               <b:else/>
-              <img class='post-thumb' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
             </b:if>
           </a>
           <div class='post-info'>
@@ -6197,262 +6197,376 @@ height: 100%;
   </b:section>
 </div>
 </b:if>
-<!-- Main Scripts -->
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js' type='text/javascript'/>
-
 <!-- Theme Functions JS -->
 <script type='text/javascript'>
 //<![CDATA[
-jQuery(function ($) {
+(function () {
 
-  // ----- Main menu: Blogger's LinkList widget renders a flat <ul>. Walk the
-  //       siblings and re-parent items whose label starts with '_' (level 2)
-  //       or '__' (level 3) so the CSS dropdown rules have a nested tree to
-  //       hang off. The prefix underscores are stripped from the visible text.
-  $('#main-menu').each(function () {
-    var $menu = $(this);
-    var $nav = $menu.find('ul#main-menu-nav');
-    var lastTop = null;
-    var lastSub = null;
-    $nav.children('li').each(function () {
-      var $li = $(this);
-      var $a = $li.children('a').first();
-      var label = $a.text();
-      var depth = 0;
-      while (label.charAt(0) === '_') { depth++; label = label.substring(1); }
-      if (depth === 0) {
-        lastTop = $li;
-        lastSub = null;
-        return;
-      }
-      $a.text(label);
-      var $parent = depth === 1 ? lastTop : lastSub;
-      if (!$parent || !$parent.length) { return; }
-      var $subUl = $parent.children('ul.sub-menu');
-      if (!$subUl.length) {
-        $subUl = $('<ul class="sub-menu"/>').appendTo($parent);
-        $parent.addClass('has-sub');
-      }
-      $li.appendTo($subUl);
-      if (depth === 1) { lastSub = $li; }
+  // ----- Animation helpers (replace jQuery fade/slide) -----
+  function fadeIn(el, ms) {
+    ms = ms || 250;
+    if (el._anim) clearTimeout(el._anim);
+    el.style.display = '';
+    el.style.opacity = '0';
+    el.style.transition = 'opacity ' + ms + 'ms';
+    void el.offsetWidth;  // force reflow so transition kicks in
+    el.style.opacity = '1';
+    el._anim = setTimeout(function () { el.style.transition = ''; }, ms);
+  }
+  function fadeOut(el, ms) {
+    ms = ms || 250;
+    if (el._anim) clearTimeout(el._anim);
+    el.style.transition = 'opacity ' + ms + 'ms';
+    el.style.opacity = '0';
+    el._anim = setTimeout(function () {
+      el.style.display = 'none';
+      el.style.opacity = '';
+      el.style.transition = '';
+    }, ms);
+  }
+  function fadeToggle(el, ms) {
+    if (getComputedStyle(el).display === 'none') fadeIn(el, ms);
+    else fadeOut(el, ms);
+  }
+  function slideDown(el, ms) {
+    ms = ms || 170;
+    if (el._anim) clearTimeout(el._anim);
+    el.style.display = '';
+    var h = el.scrollHeight;
+    el.style.overflow = 'hidden';
+    el.style.height = '0px';
+    el.style.transition = 'height ' + ms + 'ms';
+    void el.offsetWidth;
+    el.style.height = h + 'px';
+    el._anim = setTimeout(function () {
+      el.style.height = '';
+      el.style.overflow = '';
+      el.style.transition = '';
+    }, ms);
+  }
+  function slideUp(el, ms) {
+    ms = ms || 170;
+    if (el._anim) clearTimeout(el._anim);
+    el.style.overflow = 'hidden';
+    el.style.height = el.scrollHeight + 'px';
+    el.style.transition = 'height ' + ms + 'ms';
+    void el.offsetWidth;
+    el.style.height = '0px';
+    el._anim = setTimeout(function () {
+      el.style.display = 'none';
+      el.style.height = '';
+      el.style.overflow = '';
+      el.style.transition = '';
+    }, ms);
+  }
+  function slideToggle(el, ms) {
+    if (getComputedStyle(el).display === 'none') slideDown(el, ms);
+    else slideUp(el, ms);
+  }
+
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  ready(function () {
+
+    // ----- Main menu: Blogger's LinkList widget renders a flat <ul>. Walk the
+    //       siblings and re-parent items whose label starts with '_' (level 2)
+    //       or '__' (level 3) so the CSS dropdown rules have a nested tree to
+    //       hang off. The prefix underscores are stripped from the visible text.
+    document.querySelectorAll('#main-menu').forEach(function (menu) {
+      var nav = menu.querySelector('ul#main-menu-nav');
+      if (!nav) return;
+      var lastTop = null, lastSub = null;
+      Array.from(nav.children).forEach(function (li) {
+        if (li.tagName !== 'LI') return;
+        var a = li.querySelector(':scope > a');
+        if (!a) return;
+        var label = a.textContent;
+        var depth = 0;
+        while (label.charAt(0) === '_') { depth++; label = label.substring(1); }
+        if (depth === 0) { lastTop = li; lastSub = null; return; }
+        a.textContent = label;
+        var parent = depth === 1 ? lastTop : lastSub;
+        if (!parent) return;
+        var subUl = parent.querySelector(':scope > ul.sub-menu');
+        if (!subUl) {
+          subUl = document.createElement('ul');
+          subUl.className = 'sub-menu';
+          parent.appendChild(subUl);
+          parent.classList.add('has-sub');
+        }
+        subUl.appendChild(li);
+        if (depth === 1) lastSub = li;
+      });
+      menu.querySelectorAll('.widget').forEach(function (w) { w.classList.add('show-menu'); });
     });
-    $menu.find('.widget').addClass('show-menu');
-  });
 
-  // Clone desktop nav into mobile menu container and add submenu toggles.
-  $('#main-menu-nav').clone().appendTo('.mobile-menu');
-  $('.mobile-menu .has-sub').append('<div class="submenu-toggle"/>');
-
-  // Rewrite mega-menu top-level items to category search URLs.
-  $('.mobile-menu ul > li a').each(function () {
-    var classes = $(this).attr('class') || '';
-    if (classes.match(/mega-menu/)) {
-      var label = $(this).text();
-      $(this).attr('href', '/search/label/' + label + '?&max-results=' + postPerPage);
+    // Clone desktop nav into mobile menu container and add submenu toggles.
+    var srcNav = document.getElementById('main-menu-nav');
+    if (srcNav) {
+      document.querySelectorAll('.mobile-menu').forEach(function (mob) {
+        mob.appendChild(srcNav.cloneNode(true));
+      });
     }
-  });
+    document.querySelectorAll('.mobile-menu .has-sub').forEach(function (p) {
+      var t = document.createElement('div');
+      t.className = 'submenu-toggle';
+      p.appendChild(t);
+    });
 
-  // ----- UI toggles -----
-  $('.mobile-menu-toggle').on('click', function () {
-    $('body').toggleClass('nav-active');
-  });
+    // Rewrite mega-menu top-level items to category search URLs.
+    document.querySelectorAll('.mobile-menu ul > li a').forEach(function (a) {
+      var classes = a.getAttribute('class') || '';
+      if (/mega-menu/.test(classes)) {
+        a.setAttribute('href', '/search/label/' + encodeURIComponent(a.textContent) + '?&max-results=' + postPerPage);
+      }
+    });
 
-  $('.mobile-menu ul li .submenu-toggle').on('click', function (e) {
-    e.preventDefault();
-    var $parent = $(this).parent();
-    if (!$parent.hasClass('show')) {
-      $parent.addClass('show').children('.sub-menu').slideToggle(170);
-    } else {
-      $parent.removeClass('show').find('> .sub-menu').slideToggle(170);
-    }
-  });
+    // ----- UI toggles -----
+    document.querySelectorAll('.mobile-menu-toggle').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.body.classList.toggle('nav-active');
+      });
+    });
 
-  $('.social-toggle').on('click', function () {
-    $('body').toggleClass('social-active');
-    $('#social-menu').fadeToggle(170);
-  });
+    document.querySelectorAll('.mobile-menu ul li .submenu-toggle').forEach(function (toggle) {
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        var parent = toggle.parentElement;
+        var sub = parent.querySelector(':scope > .sub-menu');
+        parent.classList.toggle('show');
+        if (sub) slideToggle(sub, 170);
+      });
+    });
 
-  $('.show-search').on('click', function () {
-    $('#nav-search, .mobile-search-form').fadeIn(250).find('input').focus();
-  });
-  $('.hide-search').on('click', function () {
-    $('#nav-search, .mobile-search-form').fadeOut(250).find('input').blur();
-  });
+    document.querySelectorAll('.social-toggle').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.body.classList.toggle('social-active');
+        var menu = document.getElementById('social-menu');
+        if (menu) fadeToggle(menu, 170);
+      });
+    });
 
-  // ----- Label/tag links: append max-results so paginated label pages work.
-  $('.Label a, a.b-label, a.post-tag').attr('href', function (_, href) {
-    return href.replace(href, href + '?&max-results=' + postPerPage);
-  });
-
-  // ----- Author description links open in new tab.
-  $('.author-description a').each(function () {
-    $(this).attr('target', '_blank');
-  });
-
-  // ----- Counter widget animation: count from 0 up to the rendered number
-  //       when the element scrolls into view. Replaces the counterUp +
-  //       Waypoints plugins (both abandoned/niche) with platform APIs.
-  document.querySelectorAll('.counter-info .counter-title').forEach(function (el) {
-    var raw = el.textContent.trim();
-    var target = parseFloat(raw.replace(/[^0-9.\-]/g, ''));
-    if (!isFinite(target)) return;
-    var hasComma = /,/.test(raw);
-    var format = function (n) {
-      var s = String(Math.round(n));
-      return hasComma ? s.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : s;
-    };
-    el.textContent = format(0);
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        observer.disconnect();
-        var duration = 3000, started = null;
-        requestAnimationFrame(function tick(now) {
-          if (started === null) started = now;
-          var p = Math.min((now - started) / duration, 1);
-          var eased = 1 - Math.pow(1 - p, 3);  // ease-out cubic
-          el.textContent = format(eased * target);
-          if (p < 1) requestAnimationFrame(tick);
+    document.querySelectorAll('.show-search').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('#nav-search, .mobile-search-form').forEach(function (el) {
+          fadeIn(el, 250);
+          var inp = el.querySelector('input');
+          if (inp) inp.focus();
         });
       });
-    }, { threshold: 0.5 });
-    observer.observe(el);
-  });
-
-  // ----- Per-post sidebar position markers: a <strike>left-sidebar</strike>,
-  //       <strike>right-sidebar</strike>, or <strike>full-width</strike> inside
-  //       a post body swaps the wrapper layout for that post.
-  $('.post-body strike').each(function () {
-    var $el = $(this);
-    var marker = $el.text();
-    if (marker.match('left-sidebar')) {
-      $el.replaceWith('<style>.item #main-wrapper{float:right}.item #sidebar-wrapper{float:left}</style>');
-    } else if (marker.match('right-sidebar')) {
-      $el.replaceWith('<style>.item #main-wrapper{float:left}.item #sidebar-wrapper{float:right}</style>');
-    } else if (marker.match('full-width')) {
-      $el.replaceWith('<style>.item #main-wrapper{width:100%}.item #sidebar-wrapper{display:none}</style>');
-    }
-  });
-
-  // ----- Sticky sidebar: posts follow as you scroll. Gated on `fixedSidebar`
-  //       (defined in the Global Variables script above). Hand-rolled
-  //       replacement for theiaStickySidebar — keeps the existing float
-  //       layout and just shifts the sidebar with `top:` during scroll, so it
-  //       stays in its column without needing a flex/grid container.
-  if (typeof fixedSidebar !== 'undefined' && fixedSidebar === true) {
-    var sidebar = document.getElementById('sidebar-wrapper');
-    var main = document.getElementById('main-wrapper');
-    if (sidebar && main) {
-      var marginTop = 30, marginBottom = 30;
-      sidebar.style.position = 'relative';
-      var rafPending = false;
-      var update = function () {
-        rafPending = false;
-        // Only stick when the sidebar is shorter than the main column —
-        // otherwise there's nothing to gain from following the scroll.
-        if (sidebar.offsetHeight >= main.offsetHeight) {
-          sidebar.style.top = '';
-          return;
-        }
-        var mainTop = main.getBoundingClientRect().top + window.scrollY;
-        var maxOffset = main.offsetHeight - sidebar.offsetHeight - marginBottom;
-        var scrolled = window.scrollY + marginTop - mainTop;
-        sidebar.style.top = Math.max(0, Math.min(scrolled, maxOffset)) + 'px';
-      };
-      var schedule = function () {
-        if (rafPending) return;
-        rafPending = true;
-        requestAnimationFrame(update);
-      };
-      window.addEventListener('scroll', schedule, { passive: true });
-      window.addEventListener('resize', schedule);
-      update();
-    }
-  }
-
-  // ----- Back to top: show after scrolling 100px, click to animate to top.
-  $('.back-top').each(function () {
-    var $btn = $(this);
-    $(window).on('scroll', function () {
-      if ($(this).scrollTop() >= 100) $btn.fadeIn(250);
-      else $btn.fadeOut(250);
     });
-    $btn.on('click', function () {
-      $('html, body').animate({ scrollTop: 0 }, 500);
-    });
-  });
-
-  // ----- Helper: HTML-escape strings inserted into generated markup.
-  function esc(s) {
-    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-    });
-  }
-
-  // ----- Related posts: fetch a few posts sharing the post's first label via
-  //       Blogger's JSON feed and render them under .related-ready. Uses
-  //       fetch() instead of JSONP so there's no global callback pollution.
-  $('.related-ready').each(function () {
-    var $container = $(this);
-    var label = $container.find('.related-tag').data('label');
-    var count = 3;
-    var feedUrl = (label && label !== 'random')
-      ? '/feeds/posts/default/-/' + encodeURIComponent(label) + '?alt=json&max-results=' + (count + 1)
-      : '/feeds/posts/default?alt=json&max-results=' + count + '&orderby=published';
-    fetch(feedUrl).then(function (r) { return r.json(); }).then(function (data) {
-      var entries = (data.feed && data.feed.entry) || [];
-      var currentPath = location.pathname;
-      var items = [];
-      for (var i = 0; i < entries.length && items.length < count; i++) {
-        var entry = entries[i];
-        var alt = (entry.link || []).filter(function (l) { return l.rel === 'alternate'; })[0];
-        if (!alt) continue;
-        if (alt.href.indexOf(currentPath) !== -1) continue;
-        var thumb = (entry['media$thumbnail'] && entry['media$thumbnail'].url) || (typeof noThumbnail !== 'undefined' ? noThumbnail : '');
-        // Bump default 72px thumbnail up to a usable size for the 120px block.
-        thumb = thumb.replace(/\/s72-c\//, '/w320-h180-p-k-no-nu/');
-        items.push({
-          url: alt.href,
-          title: (entry.title && entry.title.$t) || '',
-          thumb: thumb,
+    document.querySelectorAll('.hide-search').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('#nav-search, .mobile-search-form').forEach(function (el) {
+          fadeOut(el, 250);
+          var inp = el.querySelector('input');
+          if (inp) inp.blur();
         });
-      }
-      if (!items.length) { $container.html(''); return; }
-      $container.html(
-        '<ul class="related-posts">' +
-        items.map(function (it) {
-          return '<li class="related-item">' +
-                   '<a class="post-image-link" href="' + esc(it.url) + '">' +
-                     '<img class="post-thumb" src="' + esc(it.thumb) + '" alt="' + esc(it.title) + '"/>' +
-                   '</a>' +
-                   '<h4 class="post-title"><a href="' + esc(it.url) + '">' + esc(it.title) + '</a></h4>' +
-                 '</li>';
-        }).join('') +
-        '</ul>'
-      );
-    }).catch(function () { $container.html(''); });
-  });
-
-  // ----- Post navigation: fetch the prev/next post pages and extract their
-  //       titles so the nav links can show what's coming/going. Uses
-  //       DOMParser (no script execution) and only sets .text() — no HTML
-  //       injection — so the fetched HTML can't introduce DOM nodes.
-  $('.post-nav').each(function () {
-    [
-      { linkSel: '.prev-post-link', target: '.post-prev a .post-nav-inner p' },
-      { linkSel: '.next-post-link', target: '.post-next a .post-nav-inner p' },
-    ].forEach(function (cfg) {
-      var href = $(cfg.linkSel).attr('href');
-      if (!href) return;
-      fetch(href).then(function (r) { return r.text(); }).then(function (html) {
-        var doc = new DOMParser().parseFromString(html, 'text/html');
-        var titleEl = doc.querySelector('.blog-post h1.post-title');
-        if (titleEl) $(cfg.target).text(titleEl.textContent.trim());
-      }).catch(function () { /* leave placeholder text as-is */ });
+      });
     });
-  });
 
-});
+    // ----- Label/tag links: append max-results so paginated label pages work.
+    //       Idempotent — skip if already appended (handles script re-execution).
+    document.querySelectorAll('.Label a, a.b-label, a.post-tag').forEach(function (a) {
+      var href = a.getAttribute('href');
+      if (href && href.indexOf('max-results=') === -1) {
+        a.setAttribute('href', href + '?&max-results=' + postPerPage);
+      }
+    });
+
+    // ----- Author description links open in new tab.
+    document.querySelectorAll('.author-description a').forEach(function (a) {
+      a.setAttribute('target', '_blank');
+    });
+
+    // ----- Counter widget animation: count from 0 up to the rendered number
+    //       when the element scrolls into view.
+    document.querySelectorAll('.counter-info .counter-title').forEach(function (el) {
+      var raw = el.textContent.trim();
+      var target = parseFloat(raw.replace(/[^0-9.\-]/g, ''));
+      if (!isFinite(target)) return;
+      var hasComma = /,/.test(raw);
+      var format = function (n) {
+        var s = String(Math.round(n));
+        return hasComma ? s.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : s;
+      };
+      el.textContent = format(0);
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          observer.disconnect();
+          var duration = 3000, started = null;
+          requestAnimationFrame(function tick(now) {
+            if (started === null) started = now;
+            var p = Math.min((now - started) / duration, 1);
+            var eased = 1 - Math.pow(1 - p, 3);  // ease-out cubic
+            el.textContent = format(eased * target);
+            if (p < 1) requestAnimationFrame(tick);
+          });
+        });
+      }, { threshold: 0.5 });
+      observer.observe(el);
+    });
+
+    // ----- Per-post sidebar position markers: a <strike>left-sidebar</strike>,
+    //       <strike>right-sidebar</strike>, or <strike>full-width</strike> inside
+    //       a post body swaps the wrapper layout for that post.
+    document.querySelectorAll('.post-body strike').forEach(function (el) {
+      var marker = el.textContent;
+      var rule = null;
+      if (marker.indexOf('left-sidebar') !== -1) {
+        rule = '.item #main-wrapper{float:right}.item #sidebar-wrapper{float:left}';
+      } else if (marker.indexOf('right-sidebar') !== -1) {
+        rule = '.item #main-wrapper{float:left}.item #sidebar-wrapper{float:right}';
+      } else if (marker.indexOf('full-width') !== -1) {
+        rule = '.item #main-wrapper{width:100%}.item #sidebar-wrapper{display:none}';
+      }
+      if (rule !== null) {
+        var s = document.createElement('style');
+        s.textContent = rule;
+        el.parentNode.replaceChild(s, el);
+      }
+    });
+
+    // ----- Sticky sidebar: posts follow as you scroll. Gated on `fixedSidebar`
+    //       (defined in the Global Variables script above). Shifts the sidebar
+    //       with `top:` during scroll so it stays in its column without needing
+    //       a flex/grid container.
+    if (typeof fixedSidebar !== 'undefined' && fixedSidebar === true) {
+      var sidebar = document.getElementById('sidebar-wrapper');
+      var main = document.getElementById('main-wrapper');
+      if (sidebar && main) {
+        var marginTop = 30, marginBottom = 30;
+        sidebar.style.position = 'relative';
+        var rafPending = false;
+        var update = function () {
+          rafPending = false;
+          if (sidebar.offsetHeight >= main.offsetHeight) {
+            sidebar.style.top = '';
+            return;
+          }
+          var mainTop = main.getBoundingClientRect().top + window.scrollY;
+          var maxOffset = main.offsetHeight - sidebar.offsetHeight - marginBottom;
+          var scrolled = window.scrollY + marginTop - mainTop;
+          sidebar.style.top = Math.max(0, Math.min(scrolled, maxOffset)) + 'px';
+        };
+        var schedule = function () {
+          if (rafPending) return;
+          rafPending = true;
+          requestAnimationFrame(update);
+        };
+        window.addEventListener('scroll', schedule, { passive: true });
+        window.addEventListener('resize', schedule);
+        // Recalc on element-size change so late-loading images don't leave the
+        // sticky position stale; ResizeObserver fires after layout settles.
+        if (typeof ResizeObserver !== 'undefined') {
+          var ro = new ResizeObserver(schedule);
+          ro.observe(main);
+          ro.observe(sidebar);
+        } else {
+          // Fallback: re-run after window load (covers most image-loading cases).
+          window.addEventListener('load', schedule);
+        }
+        update();
+      }
+    }
+
+    // ----- Back to top: show after scrolling 100px, smooth-scroll to top on click.
+    //       Single scroll handler updates all .back-top buttons.
+    var backTopBtns = document.querySelectorAll('.back-top');
+    if (backTopBtns.length) {
+      var btnVisible = false;  // .back-top starts as display:none via CSS
+      window.addEventListener('scroll', function () {
+        var shouldShow = window.scrollY >= 100;
+        if (shouldShow === btnVisible) return;
+        btnVisible = shouldShow;
+        backTopBtns.forEach(function (btn) {
+          if (shouldShow) fadeIn(btn, 250); else fadeOut(btn, 250);
+        });
+      }, { passive: true });
+      backTopBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+    }
+
+    // ----- Helper: HTML-escape strings inserted into generated markup.
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+
+    // ----- Related posts: fetch a few posts sharing the post's first label via
+    //       Blogger's JSON feed and render them under .related-ready.
+    document.querySelectorAll('.related-ready').forEach(function (container) {
+      var tag = container.querySelector('.related-tag');
+      var label = tag ? tag.getAttribute('data-label') : null;
+      var count = 3;
+      var feedUrl = (label && label !== 'random')
+        ? '/feeds/posts/default/-/' + encodeURIComponent(label) + '?alt=json&max-results=' + (count + 1)
+        : '/feeds/posts/default?alt=json&max-results=' + count + '&orderby=published';
+      fetch(feedUrl).then(function (r) { return r.json(); }).then(function (data) {
+        var entries = (data.feed && data.feed.entry) || [];
+        var currentPath = location.pathname;
+        var items = [];
+        for (var i = 0; i < entries.length && items.length < count; i++) {
+          var entry = entries[i];
+          var alt = (entry.link || []).filter(function (l) { return l.rel === 'alternate'; })[0];
+          if (!alt) continue;
+          if (alt.href.indexOf(currentPath) !== -1) continue;
+          var thumb = (entry['media$thumbnail'] && entry['media$thumbnail'].url) || (typeof noThumbnail !== 'undefined' ? noThumbnail : '');
+          // Bump default 72px thumbnail up to a usable size for the 120px block.
+          thumb = thumb.replace(/\/s72-c\//, '/w320-h180-p-k-no-nu/');
+          items.push({
+            url: alt.href,
+            title: (entry.title && entry.title.$t) || '',
+            thumb: thumb,
+          });
+        }
+        if (!items.length) { container.innerHTML = ''; return; }
+        container.innerHTML =
+          '<ul class="related-posts">' +
+          items.map(function (it) {
+            return '<li class="related-item">' +
+                     '<a class="post-image-link" href="' + esc(it.url) + '">' +
+                       '<img class="post-thumb" loading="lazy" src="' + esc(it.thumb) + '" alt="' + esc(it.title) + '"/>' +
+                     '</a>' +
+                     '<h4 class="post-title"><a href="' + esc(it.url) + '">' + esc(it.title) + '</a></h4>' +
+                   '</li>';
+          }).join('') +
+          '</ul>';
+      }).catch(function () { container.innerHTML = ''; });
+    });
+
+    // ----- Post navigation: fetch the prev/next post pages and extract their
+    //       titles so the nav links can show what's coming/going. Uses
+    //       DOMParser (no script execution) and only sets .textContent — no
+    //       HTML injection — so the fetched HTML can't introduce DOM nodes.
+    document.querySelectorAll('.post-nav').forEach(function (nav) {
+      [
+        { linkSel: '.prev-post-link', target: '.post-prev a .post-nav-inner p' },
+        { linkSel: '.next-post-link', target: '.post-next a .post-nav-inner p' },
+      ].forEach(function (cfg) {
+        var link = nav.querySelector(cfg.linkSel) || document.querySelector(cfg.linkSel);
+        var href = link ? link.getAttribute('href') : null;
+        if (!href) return;
+        fetch(href).then(function (r) { return r.text(); }).then(function (html) {
+          var doc = new DOMParser().parseFromString(html, 'text/html');
+          var titleEl = doc.querySelector('.blog-post h1.post-title');
+          if (!titleEl) return;
+          var targetEl = nav.querySelector(cfg.target) || document.querySelector(cfg.target);
+          if (targetEl) targetEl.textContent = titleEl.textContent.trim();
+        }).catch(function () { /* leave placeholder text as-is */ });
+      });
+    });
+
+  });
+})();
 //]]>
 </script>
 
@@ -6460,6 +6574,8 @@ jQuery(function ($) {
 <b:if cond='data:view.isMultipleItems'>
 <script type='text/javascript'>
 //<![CDATA[
+// Pagination state. Globals are intentional — inline onclick handlers in the
+// rendered pager need to call getPage/getLabelPage.
 let postResults = postPerPage;
 let numOfPages = 2;
 const pageOf = ["Page", "of"];
@@ -6467,160 +6583,126 @@ let noPage;
 let currentPage;
 let currentPageNo;
 let postLabel;
-const locationUrl = location.href;
-const home_page = "/";
+const HOME = "/";
 
-pageCurrentBlogger();
+function buildLabelHref(page) {
+  return `/search/label/${postLabel}?&max-results=${postResults}` + (page ? `#PageNo=${page}` : '');
+}
 
-function startPagination(a) {
-  let b = '';
-  let pageNumber = parseInt(numOfPages / 2);
-  if (pageNumber == numOfPages - pageNumber) { numOfPages = pageNumber * 2 + 1 }
-  let pageStart = currentPageNo - pageNumber;
+function startPagination(totalResults) {
+  const half = Math.floor(numOfPages / 2);
+  if (half === numOfPages - half) numOfPages = half * 2 + 1;
+  let pageStart = currentPageNo - half;
   if (pageStart < 1) pageStart = 1;
-  let lastPageNo = parseInt(a / postResults) + 1;
-  if (lastPageNo - 1 == a / postResults) lastPageNo = lastPageNo - 1;
+  let lastPageNo = Math.floor(totalResults / postResults) + 1;
+  if (lastPageNo - 1 === totalResults / postResults) lastPageNo -= 1;
   let pageEnd = pageStart + numOfPages - 1;
   if (pageEnd > lastPageNo) pageEnd = lastPageNo;
 
-  b += '<span class="page-of">' + pageOf[0] + ' ' + currentPageNo + ' ' + pageOf[1] + ' ' + lastPageNo + '</span>';
+  const parts = [];
+  parts.push(`<span class="page-of">${pageOf[0]} ${currentPageNo} ${pageOf[1]} ${lastPageNo}</span>`);
 
-  const c = parseInt(currentPageNo) - 1;
+  const prev = Number(currentPageNo) - 1;
   if (currentPageNo > 1) {
-    if (currentPageNo == 2) {
-      if (currentPage == 'page') {
-        b += '<a class="page-num page-prev" href="' + home_page + '"></a>';
-      } else {
-        b += '<a class="page-num page-prev" href="/search/label/' + postLabel + '?&max-results=' + postResults + '"></a>';
-      }
+    if (Number(currentPageNo) === 2) {
+      const href = currentPage === 'page' ? HOME : `/search/label/${postLabel}?&max-results=${postResults}`;
+      parts.push(`<a class="page-num page-prev" href="${href}"></a>`);
     } else {
-      if (currentPage == 'page') {
-        b += '<a class="page-num page-prev" href="#" onclick="getPage(' + c + ');return false"></a>';
-      } else {
-        b += '<a class="page-num page-prev" href="#" onclick="getLabelPage(' + c + ');return false"></a>';
-      }
+      const fn = currentPage === 'page' ? 'getPage' : 'getLabelPage';
+      parts.push(`<a class="page-num page-prev" href="#" onclick="${fn}(${prev});return false"></a>`);
     }
   }
 
   if (pageStart > 1) {
-    if (currentPage == "page") {
-      b += '<a class="page-num" href="' + home_page + '">1</a>';
-    } else {
-      b += '<a class="page-num" href="/search/label/' + postLabel + '?&max-results=' + postResults + '">1</a>';
-    }
+    const href = currentPage === 'page' ? HOME : `/search/label/${postLabel}?&max-results=${postResults}`;
+    parts.push(`<a class="page-num" href="${href}">1</a>`);
   }
-  if (pageStart > 2) { b += '<span class="page-num page-dots">...</span>' }
+  if (pageStart > 2) parts.push('<span class="page-num page-dots">...</span>');
 
   for (let d = pageStart; d <= pageEnd; d++) {
-    if (currentPageNo == d) {
-      b += '<span class="page-num page-active">' + d + '</span>';
-    } else if (d == 1) {
-      if (currentPage == 'page') {
-        b += '<a class="page-num" href="' + home_page + '">1</a>';
-      } else {
-        b += '<a class="page-num" href="/search/label/' + postLabel + '?&max-results=' + postResults + '">1</a>';
-      }
+    if (Number(currentPageNo) === d) {
+      parts.push(`<span class="page-num page-active">${d}</span>`);
+    } else if (d === 1) {
+      const href = currentPage === 'page' ? HOME : `/search/label/${postLabel}?&max-results=${postResults}`;
+      parts.push(`<a class="page-num" href="${href}">1</a>`);
     } else {
-      if (currentPage == 'page') {
-        b += '<a class="page-num" href="#" onclick="getPage(' + d + ');return false">' + d + '</a>';
-      } else {
-        b += '<a class="page-num" href="#" onclick="getLabelPage(' + d + ');return false">' + d + '</a>';
-      }
+      const fn = currentPage === 'page' ? 'getPage' : 'getLabelPage';
+      parts.push(`<a class="page-num" href="#" onclick="${fn}(${d});return false">${d}</a>`);
     }
   }
 
-  if (pageEnd < lastPageNo - 1) { b += '<span class="page-num page-dots">...</span>' }
+  if (pageEnd < lastPageNo - 1) parts.push('<span class="page-num page-dots">...</span>');
   if (pageEnd < lastPageNo) {
-    if (currentPage == "page") {
-      b += '<a class="page-num" href="#" onclick="getPage(' + lastPageNo + ');return false">' + lastPageNo + '</a>';
-    } else {
-      b += '<a class="page-num" href="#" onclick="getLabelPage(' + lastPageNo + ');return false">' + lastPageNo + '</a>';
-    }
+    const fn = currentPage === 'page' ? 'getPage' : 'getLabelPage';
+    parts.push(`<a class="page-num" href="#" onclick="${fn}(${lastPageNo});return false">${lastPageNo}</a>`);
   }
 
-  const e = parseInt(currentPageNo) + 1;
+  const next = Number(currentPageNo) + 1;
   if (currentPageNo < lastPageNo) {
-    if (currentPage == 'page') {
-      b += '<a class="page-num page-next" href="#" onclick="getPage(' + e + ');return false"></a>';
-    } else {
-      b += '<a class="page-num page-next" href="#" onclick="getLabelPage(' + e + ');return false"></a>';
-    }
+    const fn = currentPage === 'page' ? 'getPage' : 'getLabelPage';
+    parts.push(`<a class="page-num page-next" href="#" onclick="${fn}(${next});return false"></a>`);
   }
 
-  const f = document.getElementsByName('pageArea');
-  const g = document.getElementById('blog-pager');
-  for (let p = 0; p < f.length; p++) { f[p].innerHTML = b }
-  if (f && f.length > 0) { b = '' }
-  if (g) { g.innerHTML = b }
+  const html = parts.join('');
+  const areas = document.querySelectorAll('[name="pageArea"]');
+  const pager = document.getElementById('blog-pager');
+  areas.forEach(area => { area.innerHTML = html; });
+  if (pager && areas.length === 0) pager.innerHTML = html;
 }
 
-function dataFeed(a) {
-  const b = a.feed;
-  const c = parseInt(b.openSearch$totalResults.$t, 10);
-  startPagination(c);
+function dataFeed(data) {
+  const total = parseInt(data.feed.openSearch$totalResults.$t, 10);
+  startPagination(total);
 }
 
 function pageCurrentBlogger() {
-  const a = locationUrl;
-  if (a.indexOf('/search/label/') != -1) {
-    if (a.indexOf('?updated-max') != -1) {
-      postLabel = a.substring(a.indexOf('/search/label/') + 14, a.indexOf('?updated-max'));
-    } else {
-      postLabel = a.substring(a.indexOf('/search/label/') + 14, a.indexOf('?&max'));
-    }
+  const url = location.href;
+  if (url.indexOf('/search/label/') !== -1) {
+    const labelStart = url.indexOf('/search/label/') + 14;
+    const labelEnd = url.indexOf('?updated-max') !== -1 ? url.indexOf('?updated-max') : url.indexOf('?&max');
+    postLabel = url.substring(labelStart, labelEnd);
   }
-  if (a.indexOf('?q=') == -1 && a.indexOf('.html') == -1) {
-    if (a.indexOf('/search/label/') == -1) {
-      currentPage = 'page';
-      if (locationUrl.indexOf('#PageNo=') != -1) {
-        currentPageNo = locationUrl.substring(locationUrl.indexOf('#PageNo=') + 8, locationUrl.length);
-      } else {
-        currentPageNo = 1;
-      }
-      loadFeedScript(home_page + 'feeds/posts/summary?max-results=1&alt=json-in-script&callback=dataFeed');
-    } else {
-      currentPage = 'label';
-      if (a.indexOf('&max-results=') == -1) { postResults = 20 }
-      if (locationUrl.indexOf('#PageNo=') != -1) {
-        currentPageNo = locationUrl.substring(locationUrl.indexOf('#PageNo=') + 8, locationUrl.length);
-      } else {
-        currentPageNo = 1;
-      }
-      loadFeedScript(home_page + 'feeds/posts/summary/-/' + postLabel + '?alt=json-in-script&callback=dataFeed&max-results=1');
-    }
-  }
-}
+  if (url.indexOf('?q=') !== -1 || url.indexOf('.html') !== -1) return;
 
-function loadFeedScript(src) {
-  const s = document.createElement('script');
-  s.src = src;
-  document.getElementsByTagName('head')[0].appendChild(s);
-}
+  const pageNoIdx = url.indexOf('#PageNo=');
+  currentPageNo = pageNoIdx !== -1 ? url.substring(pageNoIdx + 8) : 1;
 
-function getPage(a) {
-  const jsonstart = (a - 1) * postResults;
-  noPage = a;
-  loadFeedScript(home_page + 'feeds/posts/summary?start-index=' + jsonstart + '&max-results=1&alt=json-in-script&callback=findPostDate');
-}
-
-function getLabelPage(a) {
-  const jsonstart = (a - 1) * postResults;
-  noPage = a;
-  loadFeedScript(home_page + 'feeds/posts/summary/-/' + postLabel + '?start-index=' + jsonstart + '&max-results=1&alt=json-in-script&callback=findPostDate');
-}
-
-function findPostDate(a) {
-  const post = a.feed.entry[0];
-  const b = post.published.$t.substring(0, 19) + post.published.$t.substring(23, 29);
-  const c = encodeURIComponent(b);
-  let d;
-  if (currentPage == 'page') {
-    d = '/search?updated-max=' + c + '&max-results=' + postResults + '#PageNo=' + noPage;
+  if (url.indexOf('/search/label/') === -1) {
+    currentPage = 'page';
+    fetchFeed(`${HOME}feeds/posts/summary?max-results=1&alt=json`).then(dataFeed);
   } else {
-    d = '/search/label/' + postLabel + '?updated-max=' + c + '&max-results=' + postResults + '#PageNo=' + noPage;
+    currentPage = 'label';
+    if (url.indexOf('&max-results=') === -1) postResults = 20;
+    fetchFeed(`${HOME}feeds/posts/summary/-/${postLabel}?alt=json&max-results=1`).then(dataFeed);
   }
-  location.href = d;
 }
+
+function fetchFeed(url) {
+  return fetch(url).then(r => r.json());
+}
+
+function getPage(page) {
+  const jsonstart = (page - 1) * postResults;
+  noPage = page;
+  fetchFeed(`${HOME}feeds/posts/summary?start-index=${jsonstart}&max-results=1&alt=json`).then(findPostDate);
+}
+
+function getLabelPage(page) {
+  const jsonstart = (page - 1) * postResults;
+  noPage = page;
+  fetchFeed(`${HOME}feeds/posts/summary/-/${postLabel}?start-index=${jsonstart}&max-results=1&alt=json`).then(findPostDate);
+}
+
+function findPostDate(data) {
+  const post = data.feed.entry[0];
+  const ts = encodeURIComponent(post.published.$t.substring(0, 19) + post.published.$t.substring(23, 29));
+  const url = currentPage === 'page'
+    ? `/search?updated-max=${ts}&max-results=${postResults}#PageNo=${noPage}`
+    : `/search/label/${postLabel}?updated-max=${ts}&max-results=${postResults}#PageNo=${noPage}`;
+  location.href = url;
+}
+
+pageCurrentBlogger();
 //]]>
 </script>
 </b:if>
