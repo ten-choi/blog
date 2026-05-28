@@ -1,9 +1,10 @@
-﻿---
-title: "Why Writing Still Matters — A Developer's Case for Thinking Out Loud11"
+---
+title: "Why Writing Still Matters — A Developer's Case for Thinking Out Loud"
+labels: ["technical writing", "developer career", "English learning", "learning habits", "AI"]
 published: true
-description: "Why I still write in a world full of AI — and why I do it in English."
-tags: writing, career, english, motivation
-cover_image: https://qlqjs674.notion.site/image/attachment%3Ad4a1ec33-6b90-436b-800e-92f10e4b4b1e%3Aimage.png?table=block&id=322930ff-582f-805a-8294-d3b145dbd4cc&spaceId=6ab3efe6-44b5-4e5c-9d86-56543fb7f59d&width=1420&userId=&cache=v2
+date:
+readerComments: "ALLOW"
+bloggerPostId:
 ---
 
 ## It Starts with Curiosity

@@ -2,14 +2,17 @@
 <!DOCTYPE html>
 <html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateVersion='1.0.0' expr:class='data:blog.languageDirection' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
   <head>
-    <meta content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1' name='viewport'/>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
     <title><data:view.title.escaped/></title>
     <b:include data='blog' name='all-head-content'/>
     <meta name='naver-site-verification' content='e09ea465af6cc9686121cfce3d812385702f8f95'/>
+    <link href='https://fonts.gstatic.com' rel='preconnect' crossorigin='anonymous'/>
+    <link href='https://cdnjs.cloudflare.com' rel='preconnect' crossorigin='anonymous'/>
 <b:if cond='data:view.isHomepage'>
  <script type='application/ld+json'>{&quot;@context&quot;:&quot;https://schema.org&quot;,&quot;@type&quot;:&quot;WebSite&quot;,&quot;name&quot;:&quot;<data:view.title.escaped/>&quot;,&quot;url&quot;:&quot;<data:view.url.canonical/>&quot;,&quot;potentialAction&quot;:{&quot;@type&quot;:&quot;SearchAction&quot;,&quot;target&quot;:&quot;<data:view.url.canonical/>search?q={search_term_string}&quot;,&quot;query-input&quot;:&quot;required name=search_term_string&quot;}}</script>
     </b:if>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'/>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css' rel='stylesheet'/>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/v4-shims.min.css' rel='stylesheet'/>
 
 <b:if cond='!data:view.isLayoutMode'>  
 <!-- Template Style CSS -->
@@ -595,7 +598,7 @@ h1, h2, h3, h4, h5, h6 {
 .post-thumb.lazy-yard {
     opacity: 1;
 }
- .post-image-link:hover .post-thumb,.post-image-wrap:hover .post-image-link .post-thumb,.hot-item-inner:hover .post-image-link .post-thumb{
+ .post-image-link:hover .post-thumb,.post-image-wrap:hover .post-image-link .post-thumb{
     opacity:.9
 }
  .post-title{
@@ -1625,382 +1628,6 @@ box-sizing:border-box;
  .intro-action a:hover{
     background-color:$(main.dark.color)
 }
-#slider-wrapper .PopularPosts .main-slider, #slider-wrapper .PopularPosts .main-slider .slider-item  {
-    height: 395px;
-    overflow: hidden;
-}
-#slider-wrapper .PopularPosts .main-slider.owl-carousel.owl-loaded, #slider-wrapper .PopularPosts .main-slider.owl-carousel.owl-loaded .slider-item  {
-    height: auto;
-}
- .owl-carousel.owl-loaded{
-    display:block
-}
- .owl-carousel.owl-loading{
-    opacity:0;
-    display:block
-}
- .owl-carousel.owl-hidden{
-    opacity:0
-}
- .owl-carousel .owl-refresh .owl-item{
-    display:none
-}
- .owl-carousel .owl-item{
-    position:relative;
-    min-height:1px;
-    float:left;
-    -webkit-backface-visibility:visible;
-    -webkit-tap-highlight-color:transparent;
-    -webkit-touch-callout:none;
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    user-select:none
-}
- .owl-carousel .owl-item img{
-    display:block;
-    width:100%;
-    -webkit-transform-style:preserve-3d;
-    transform-style:preserve-3d
-}
- .owl-carousel.owl-text-select-on .owl-item{
-    -webkit-user-select:auto;
-    -moz-user-select:auto;
-    -ms-user-select:auto;
-    user-select:auto
-}
- .owl-carousel .owl-grab{
-    cursor:move;
-    cursor:-webkit-grab;
-    cursor:-o-grab;
-    cursor:-ms-grab;
-    cursor:grab
-}
- .owl-carousel.owl-rtl{
-    direction:rtl
-}
- .owl-carousel.owl-rtl .owl-item{
-    float:right
-}
- .no-js .owl-carousel{
-    display:block
-}
- .owl-carousel .animated{
-    -webkit-animation-duration:1000ms;
-    animation-duration:1000ms;
-    -webkit-animation-fill-mode:both;
-    animation-fill-mode:both
-}
- .owl-carousel .owl-animated-in{
-    z-index:1
-}
- .owl-carousel .owl-animated-out{
-    z-index:0
-}
- .owl-height{
-    -webkit-transition:height 500ms ease-in-out;
-    -moz-transition:height 500ms ease-in-out;
-    -ms-transition:height 500ms ease-in-out;
-    -o-transition:height 500ms ease-in-out;
-    transition:height 500ms ease-in-out
-}
- .owl-prev,.owl-next{
-    position:relative;
-    float:left;
-    width:25px;
-    height:30px;
-    background-color:#fff;
-   font-family: FontAwesome;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size:11px;
-    line-height:30px;
-    font-weight:900;
-    color:$(main.dark.color);
-    text-align:center;
-    cursor:pointer;
-    border:1px solid rgba(0,0,0,0.08);
-    box-sizing:border-box;
-    transition:all .25s ease
-}
- .owl-prev:before{
-    content:"\f053"
-}
- .owl-next:before{
-    content:"\f054"
-}
- .owl-prev:hover,.owl-next:hover{
-    background-color:$(main.color);
-    color:#fff;
-    border-color:$(main.color)
-}
- @keyframes fadeInLeft {
-     from{
-        opacity:0;
-        transform:translate3d(-30px,0,0)
-    }
-     to{
-        opacity:1;
-        transform:none
-    }
-}
- @keyframes fadeOutLeft {
-     from{
-        opacity:1
-    }
-     to{
-        opacity:0;
-        transform:translate3d(-30px,0,0)
-    }
-}
- @keyframes fadeInRight {
-     from{
-        opacity:0;
-        transform:translate3d(30px,0,0)
-    }
-     to{
-        opacity:1;
-        transform:none
-    }
-}
- .fadeInRight{
-    animation-name:fadeInRight
-}
- @keyframes fadeOutRight {
-     from{
-        opacity:1
-    }
-     to{
-        opacity:0;
-        transform:translate3d(30px,0,0)
-    }
-}
- .fadeOutRight{
-    animation-name:fadeOutRight
-}
-.loader{
-    position:relative;
-    height:280px;
-    overflow:hidden;
-    display:block;
-    margin:0
-}
- .loader:after{
-    content:'';
-    position:absolute;
-    top:50%;
-    left:50%;
-    width:28px;
-    height:28px;
-    margin:-16px 0 0 -16px;
-    border:2px solid $(main.color);
-    border-right-color:rgba(155,155,155,0.2);
-    border-radius:100%;
-    animation:spinner 1.1s infinite linear;
-    transform-origin:center
-}
- @-webkit-keyframes spinner {
-     0%{
-        -webkit-transform:rotate(0deg);
-        transform:rotate(0deg)
-    }
-     to{
-        -webkit-transform:rotate(1turn);
-        transform:rotate(1turn)
-    }
-}
- @keyframes spinner {
-     0%{
-        -webkit-transform:rotate(0deg);
-        transform:rotate(0deg)
-    }
-     to{
-        -webkit-transform:rotate(1turn);
-        transform:rotate(1turn)
-    }
-}
-#slider-wrapper .show-slider, #slider-wrapper .PopularPosts{
-    display:block!important
-}
-#slider-wrapper .show-slider .widget-content, #slider-wrapper .PopularPosts .widget-content{
-    position:relative;
-    height:auto;
-    overflow:hidden;
-margin:30px 0 0;
-}
-#slider-wrapper {
-    margin: 0 auto;
-}
-#slider-section .widget, #slider-section .widget > .widget-title {
-    display: none;
-}
-#slider-wrapper .PopularPosts .main-slider {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-gap: 10px;
-}
-#slider-wrapper .PopularPosts ul.main-slider.owl-carousel.owl-loaded {
-    display: block;
-}
- .main-slider{
-    position:relative;
-    overflow:hidden;
-    height:auto
-}
- .main-slider .slider-item{
-    position:relative;
-    float:left;
-    width:100%;
-    height:auto;
-    overflow:hidden;
-    box-sizing:border-box
-}
-#slider-wrapper .PopularPosts .main-slider .slider-item {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-#slider-wrapper .PopularPosts ul.main-slider.owl-carousel.owl-loaded .slider-item {
-    display: block;
-}
- .slider-item-inner{
-    position:relative;
-    float:left;
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    display:block;
-}
- .main-slider .post-image-link{
-    width:100%;
-    height:280px;
-    position:relative;
-    overflow:hidden;
-    display:block;
-    margin:0;
-    background-image:linear-gradient(-45deg,rgba(0,0,0,0.1),#ededed,rgba(0,0,0,0.1));background-size:150% 150%;animation:gradient 1s ease infinite
-}
-@keyframes gradient {
-0%{background-position:100% 50%}
-50%{background-position:50% 0}
-100%{background-position:100% 50%}
-}
- .main-slider .post-info-wrap {
-    width: 100%;
-    height:100%;
-    background:$(slider.body);
-    overflow: hidden;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 30px 0;
-    flex: 1;
-    z-index: 5;
-    border:1px solid rgb(133 137 160 / 22%);
-    border-width:0 1px 1px 1px;
-    box-sizing: border-box;
-    transition: transform .5s ease;
-}
-.main-slider .owl-item.active .post-info-wrap {
-   
-}
-
- .main-slider .post-info{
-  position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 15px;
-    z-index: 10;
-}
-
- .main-slider .post-title{
-    font-size:21px;
-    font-weight:500;
-    display:block;
-    line-height:1.5;
-    margin:12px 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
- .main-slider .post-title a{
-    color:$(title.color);
-    display:block
-}
- .main-slider .post-title a:hover{
-    text-decoration:underline
-}
-.main-slider .post-snippet {
-    color:$(posts.text.color);
-} 
- .show-slider .no-posts{
-    position:absolute;
-    top:calc(50% - 50px);
-    left:0;
-    width:100%;
-text-align:center;
-}
-.main-slider .post-info .post-tag{
-   display: flex;
-   color: $(main.dark.color);
-    font-size: 9px;
-    letter-spacing: 2px;
-    font-weight: 600;
-    text-transform:uppercase;
-    margin: 0;
-}
- .main-slider .post-info .post-tag:hover{
-  color:$(main.color);
-}
-.main-slider .post-meta {
-    color: #aaaaaa;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 18px;
-    padding: 0 1px;
-}
-.main-slider .post-date {
-    font-size: 11px;
-    color: $(main.dark.color);
-    margin: 0;
-display: inline-block;
-float:none;
-}
-.main-slider .owl-nav{
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    height:0
-}
- .main-slider .owl-prev,.main-slider .owl-next{
-    height:40px;
-    line-height:40px;
-    z-index:10;
-    border:0
-}
- .main-slider .owl-prev{
-    float:left;
-    left:-25px;
-}
- .main-slider:hover .owl-prev{
-    left:0
-}
- .main-slider .owl-next{
-    float:right;
-    right:-25px;
-}
- .main-slider:hover .owl-next{
-    right:0
-}
 #main-feat-wrapper{
  margin:0
 }
@@ -2264,59 +1891,6 @@ text-align:center;
     fill: $(main.color);
     width: 90%;
     margin: 0 auto;
-}
- .testi-avatar{
-  display:block;
-    width:100%;
-    height:195px;
-    overflow:hidden;
-    margin:0;
-    position:relative;
-}
-.testi-avatar:before {
-    content: '';
-    background: rgb(0 0 0 / 18%);
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 15;
-}
- .testi-avatar img{
-    display:block;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    color:transparent;
-    margin:0
-}
- .testi-info{
- color: #ffffff;
-    background: $(main.color);
-    display: inline-block;
-    letter-spacing: 0.8px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    -o-transform: translate(-50%,-50%);
-    -moz-transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    padding: 5px 15px;
-    border-radius: 3px;
-    text-transform: uppercase;
-    z-index: 1515;
-}
- .testi-title{
-    font-size:16px;
-    color:#fff;
-    font-weight:500;
-    margin:0
-}
-.testi-title a{ 
- color:#fff;
 }
  .custom-widget li{
     overflow:hidden;
@@ -4412,52 +3986,6 @@ display:none;
     content:&#39;\f0e0&#39;;
     font-weight:400
 }
- .alert-message{
-    position:relative;
-    display:block;
-    padding:15px;
-    border:1px solid rgba(155,155,155,0.1);
-    border-radius:3px
-}
- .alert-message.alert-success{
-    background-color:rgba(34,245,121,0.03);
-    border:1px solid rgba(34,245,121,0.5)
-}
- .alert-message.alert-info{
-    background-color:rgba(55,153,220,0.03);
-    border:1px solid rgba(55,153,220,0.5)
-}
- .alert-message.alert-warning{
-    background-color:rgba(185,139,61,0.03);
-    border:1px solid rgba(185,139,61,0.5)
-}
- .alert-message.alert-error{
-    background-color:rgba(231,76,60,0.03);
-    border:1px solid rgba(231,76,60,0.5)
-}
- .alert-message:before{
-    font-family:FontAwesome;
-    font-size:16px;
-    font-weight:900;
-    display:inline-block;
-    margin:0 5px 0 0
-}
- .alert-message.alert-success:before{
-    content:&#39;\f058&#39;;
-    color:rgba(34,245,121,1)
-}
- .alert-message.alert-info:before{
-    content:&#39;\f05a&#39;;
-    color:rgba(55,153,220,1)
-}
- .alert-message.alert-warning:before{
-    content:&#39;\f06a&#39;;
-    color:rgba(185,139,61,1)
-}
- .alert-message.alert-error:before{
-    content:&#39;\f057&#39;;
-    color:rgba(231,76,60,1)
-}
  .post-body table{
     width:100%;
     overflow-x:auto;
@@ -4578,13 +4106,7 @@ body#layout #hidden-widgets{
 <!-- Global Variables -->
 <script type='text/javascript'>
 //<![CDATA[
-// Global variables with content. "Available for Edit"
-const monthFormat = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const noThumbnail = "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E";
 const postPerPage = 7;
-const fixedSidebar = true;
-const commentsSystem = "blogger";
-const disqusShortname = "ten-dev-notes";
 //]]>
 </script>
 
@@ -4639,9 +4161,9 @@ const disqusShortname = "ten-dev-notes";
               <b:class expr:name='&quot;item-&quot;+data:i'/>
                <a class='post-image-link' expr:href='data:post.url'>
             <b:if cond='data:post.featuredImage'>
-              <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
               <b:else/>
-              <img class='post-thumb' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
             </b:if>
           </a>
               <div class='post-info-wrap'><div class='post-info'>
@@ -4662,9 +4184,9 @@ const disqusShortname = "ten-dev-notes";
         <div class='post-content'>
           <a class='post-image-link' expr:href='data:post.url'>
             <b:if cond='data:post.featuredImage'>
-              <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
               <b:else/>
-              <img class='post-thumb' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
             </b:if>
           </a>
           <div class='post-info'>
@@ -4712,9 +4234,9 @@ const disqusShortname = "ten-dev-notes";
         <div class='post-content'>
           <a class='post-image-link' expr:href='data:post.url'>
             <b:if cond='data:post.featuredImage'>
-              <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
               <b:else/>
-              <img class='post-thumb' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
             </b:if>
             <span class='post-tag'><data:post.labels.last.name/></span>
           </a>
@@ -4740,9 +4262,9 @@ const disqusShortname = "ten-dev-notes";
         <div class='post-content'>
           <a class='post-image-link' expr:href='data:post.url'>
             <b:if cond='data:post.featuredImage'>
-              <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
               <b:else/>
-              <img class='post-thumb' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
             </b:if>
             <span class='post-tag'><data:post.labels.last.name/></span>
           </a>
@@ -5154,9 +4676,9 @@ const disqusShortname = "ten-dev-notes";
               <div class='about-author'>
                 <div class='avatar-container'>
                   <b:if cond='data:post.author.authorPhoto.image'>
-                    <img class='author-avatar' expr:alt='data:post.author.name' expr:src='data:post.author.authorPhoto.image resizeImage 100'/>                
+                    <img class='author-avatar' loading='lazy' expr:alt='data:post.author.name' expr:src='data:post.author.authorPhoto.image resizeImage 100'/>                
                     <b:else/>
-                    <img class='author-avatar' expr:alt='data:post.author.name' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22%23d1d5db%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2090c0-17%2013-30%2030-30s30%2013%2030%2030z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+                    <img class='author-avatar' loading='lazy' expr:alt='data:post.author.name' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22%23d1d5db%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2090c0-17%2013-30%2030-30s30%2013%2030%2030z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
                   </b:if>
                 </div>
                 <h3 class='author-name'>
@@ -5205,7 +4727,7 @@ const disqusShortname = "ten-dev-notes";
 </b:includable>
             <b:includable id='commentAuthorAvatar'>
               <div class='avatar-image-container'>
-                <img class='author-avatar' expr:src='data:comment.authorAvatarSrc' height='45' width='45'/>
+                <img class='author-avatar' loading='lazy' expr:src='data:comment.authorAvatarSrc' height='45' width='45'/>
               </div>
             </b:includable>
             <b:includable id='commentDeleteIcon' var='comment'>
@@ -5583,9 +5105,9 @@ const disqusShortname = "ten-dev-notes";
               <div class='post-image-wrap'>
                 <a class='post-image-link' expr:href='data:post.url'>
                   <b:if cond='data:post.featuredImage'> 
-                    <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
+                    <img class='post-thumb' loading='lazy' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
                     <b:else/>
-                    <img class='post-thumb' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+                    <img class='post-thumb' loading='lazy' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
                   </b:if>
                 </a>
               </div>         
@@ -6008,9 +5530,9 @@ const disqusShortname = "ten-dev-notes";
         <div class='post-content'>
           <a class='post-image-link' expr:href='data:post.url'>
             <b:if cond='data:post.featuredImage'>
-              <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
               <b:else/>
-              <img class='post-thumb' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
             </b:if>
           </a>
           <div class='post-info'>
@@ -6206,9 +5728,9 @@ const disqusShortname = "ten-dev-notes";
               <b:class expr:name='&quot;item-&quot;+data:i'/>
                <a class='post-image-link' expr:href='data:post.url'>
             <b:if cond='data:post.featuredImage'>
-              <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
               <b:else/>
-              <img class='post-thumb' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
             </b:if>
           </a>
               <div class='post-info-wrap'><div class='post-info'>
@@ -6506,6 +6028,8 @@ document.addEventListener(&quot;DOMContentLoaded&quot;, initYouTubeVideos);
 <b:if cond='data:view.isMultipleItems'>
 <script type='text/javascript'>
 //<![CDATA[
+// Pagination state. Globals are intentional — inline onclick handlers in the
+// rendered pager need to call getPage/getLabelPage.
 let postResults = postPerPage;
 let numOfPages = 2;
 const pageOf = ["Page", "of"];
@@ -6513,160 +6037,122 @@ let noPage;
 let currentPage;
 let currentPageNo;
 let postLabel;
-const locationUrl = location.href;
-const home_page = "/";
+const HOME = "/";
 
-pageCurrentBlogger();
-
-function startPagination(a) {
-  let b = '';
-  let pageNumber = parseInt(numOfPages / 2);
-  if (pageNumber == numOfPages - pageNumber) { numOfPages = pageNumber * 2 + 1 }
-  let pageStart = currentPageNo - pageNumber;
+function startPagination(totalResults) {
+  const half = Math.floor(numOfPages / 2);
+  if (half === numOfPages - half) numOfPages = half * 2 + 1;
+  let pageStart = currentPageNo - half;
   if (pageStart < 1) pageStart = 1;
-  let lastPageNo = parseInt(a / postResults) + 1;
-  if (lastPageNo - 1 == a / postResults) lastPageNo = lastPageNo - 1;
+  let lastPageNo = Math.floor(totalResults / postResults) + 1;
+  if (lastPageNo - 1 === totalResults / postResults) lastPageNo -= 1;
   let pageEnd = pageStart + numOfPages - 1;
   if (pageEnd > lastPageNo) pageEnd = lastPageNo;
 
-  b += '<span class="page-of">' + pageOf[0] + ' ' + currentPageNo + ' ' + pageOf[1] + ' ' + lastPageNo + '</span>';
+  const parts = [];
+  parts.push(`<span class="page-of">${pageOf[0]} ${currentPageNo} ${pageOf[1]} ${lastPageNo}</span>`);
 
-  const c = parseInt(currentPageNo) - 1;
+  const prev = Number(currentPageNo) - 1;
   if (currentPageNo > 1) {
-    if (currentPageNo == 2) {
-      if (currentPage == 'page') {
-        b += '<a class="page-num page-prev" href="' + home_page + '"></a>';
-      } else {
-        b += '<a class="page-num page-prev" href="/search/label/' + postLabel + '?&max-results=' + postResults + '"></a>';
-      }
+    if (Number(currentPageNo) === 2) {
+      const href = currentPage === 'page' ? HOME : `/search/label/${postLabel}?&max-results=${postResults}`;
+      parts.push(`<a class="page-num page-prev" href="${href}"></a>`);
     } else {
-      if (currentPage == 'page') {
-        b += '<a class="page-num page-prev" href="#" onclick="getPage(' + c + ');return false"></a>';
-      } else {
-        b += '<a class="page-num page-prev" href="#" onclick="getLabelPage(' + c + ');return false"></a>';
-      }
+      const fn = currentPage === 'page' ? 'getPage' : 'getLabelPage';
+      parts.push(`<a class="page-num page-prev" href="#" onclick="${fn}(${prev});return false"></a>`);
     }
   }
 
   if (pageStart > 1) {
-    if (currentPage == "page") {
-      b += '<a class="page-num" href="' + home_page + '">1</a>';
-    } else {
-      b += '<a class="page-num" href="/search/label/' + postLabel + '?&max-results=' + postResults + '">1</a>';
-    }
+    const href = currentPage === 'page' ? HOME : `/search/label/${postLabel}?&max-results=${postResults}`;
+    parts.push(`<a class="page-num" href="${href}">1</a>`);
   }
-  if (pageStart > 2) { b += '<span class="page-num page-dots">...</span>' }
+  if (pageStart > 2) parts.push('<span class="page-num page-dots">...</span>');
 
   for (let d = pageStart; d <= pageEnd; d++) {
-    if (currentPageNo == d) {
-      b += '<span class="page-num page-active">' + d + '</span>';
-    } else if (d == 1) {
-      if (currentPage == 'page') {
-        b += '<a class="page-num" href="' + home_page + '">1</a>';
-      } else {
-        b += '<a class="page-num" href="/search/label/' + postLabel + '?&max-results=' + postResults + '">1</a>';
-      }
+    if (Number(currentPageNo) === d) {
+      parts.push(`<span class="page-num page-active">${d}</span>`);
+    } else if (d === 1) {
+      const href = currentPage === 'page' ? HOME : `/search/label/${postLabel}?&max-results=${postResults}`;
+      parts.push(`<a class="page-num" href="${href}">1</a>`);
     } else {
-      if (currentPage == 'page') {
-        b += '<a class="page-num" href="#" onclick="getPage(' + d + ');return false">' + d + '</a>';
-      } else {
-        b += '<a class="page-num" href="#" onclick="getLabelPage(' + d + ');return false">' + d + '</a>';
-      }
+      const fn = currentPage === 'page' ? 'getPage' : 'getLabelPage';
+      parts.push(`<a class="page-num" href="#" onclick="${fn}(${d});return false">${d}</a>`);
     }
   }
 
-  if (pageEnd < lastPageNo - 1) { b += '<span class="page-num page-dots">...</span>' }
+  if (pageEnd < lastPageNo - 1) parts.push('<span class="page-num page-dots">...</span>');
   if (pageEnd < lastPageNo) {
-    if (currentPage == "page") {
-      b += '<a class="page-num" href="#" onclick="getPage(' + lastPageNo + ');return false">' + lastPageNo + '</a>';
-    } else {
-      b += '<a class="page-num" href="#" onclick="getLabelPage(' + lastPageNo + ');return false">' + lastPageNo + '</a>';
-    }
+    const fn = currentPage === 'page' ? 'getPage' : 'getLabelPage';
+    parts.push(`<a class="page-num" href="#" onclick="${fn}(${lastPageNo});return false">${lastPageNo}</a>`);
   }
 
-  const e = parseInt(currentPageNo) + 1;
+  const next = Number(currentPageNo) + 1;
   if (currentPageNo < lastPageNo) {
-    if (currentPage == 'page') {
-      b += '<a class="page-num page-next" href="#" onclick="getPage(' + e + ');return false"></a>';
-    } else {
-      b += '<a class="page-num page-next" href="#" onclick="getLabelPage(' + e + ');return false"></a>';
-    }
+    const fn = currentPage === 'page' ? 'getPage' : 'getLabelPage';
+    parts.push(`<a class="page-num page-next" href="#" onclick="${fn}(${next});return false"></a>`);
   }
 
-  const f = document.getElementsByName('pageArea');
-  const g = document.getElementById('blog-pager');
-  for (let p = 0; p < f.length; p++) { f[p].innerHTML = b }
-  if (f && f.length > 0) { b = '' }
-  if (g) { g.innerHTML = b }
+  const html = parts.join('');
+  const areas = document.querySelectorAll('[name="pageArea"]');
+  const pager = document.getElementById('blog-pager');
+  areas.forEach(area => { area.innerHTML = html; });
+  if (pager && areas.length === 0) pager.innerHTML = html;
 }
 
-function dataFeed(a) {
-  const b = a.feed;
-  const c = parseInt(b.openSearch$totalResults.$t, 10);
-  startPagination(c);
+function dataFeed(data) {
+  const total = parseInt(data.feed.openSearch$totalResults.$t, 10);
+  startPagination(total);
 }
 
 function pageCurrentBlogger() {
-  const a = locationUrl;
-  if (a.indexOf('/search/label/') != -1) {
-    if (a.indexOf('?updated-max') != -1) {
-      postLabel = a.substring(a.indexOf('/search/label/') + 14, a.indexOf('?updated-max'));
-    } else {
-      postLabel = a.substring(a.indexOf('/search/label/') + 14, a.indexOf('?&max'));
-    }
+  const url = location.href;
+  if (url.indexOf('/search/label/') !== -1) {
+    const labelStart = url.indexOf('/search/label/') + 14;
+    const labelEnd = url.indexOf('?updated-max') !== -1 ? url.indexOf('?updated-max') : url.indexOf('?&max');
+    postLabel = url.substring(labelStart, labelEnd);
   }
-  if (a.indexOf('?q=') == -1 && a.indexOf('.html') == -1) {
-    if (a.indexOf('/search/label/') == -1) {
-      currentPage = 'page';
-      if (locationUrl.indexOf('#PageNo=') != -1) {
-        currentPageNo = locationUrl.substring(locationUrl.indexOf('#PageNo=') + 8, locationUrl.length);
-      } else {
-        currentPageNo = 1;
-      }
-      loadFeedScript(home_page + 'feeds/posts/summary?max-results=1&alt=json-in-script&callback=dataFeed');
-    } else {
-      currentPage = 'label';
-      if (a.indexOf('&max-results=') == -1) { postResults = 20 }
-      if (locationUrl.indexOf('#PageNo=') != -1) {
-        currentPageNo = locationUrl.substring(locationUrl.indexOf('#PageNo=') + 8, locationUrl.length);
-      } else {
-        currentPageNo = 1;
-      }
-      loadFeedScript(home_page + 'feeds/posts/summary/-/' + postLabel + '?alt=json-in-script&callback=dataFeed&max-results=1');
-    }
-  }
-}
+  if (url.indexOf('?q=') !== -1 || url.indexOf('.html') !== -1) return;
 
-function loadFeedScript(src) {
-  const s = document.createElement('script');
-  s.src = src;
-  document.getElementsByTagName('head')[0].appendChild(s);
-}
+  const pageNoIdx = url.indexOf('#PageNo=');
+  currentPageNo = pageNoIdx !== -1 ? url.substring(pageNoIdx + 8) : 1;
 
-function getPage(a) {
-  const jsonstart = (a - 1) * postResults;
-  noPage = a;
-  loadFeedScript(home_page + 'feeds/posts/summary?start-index=' + jsonstart + '&max-results=1&alt=json-in-script&callback=findPostDate');
-}
-
-function getLabelPage(a) {
-  const jsonstart = (a - 1) * postResults;
-  noPage = a;
-  loadFeedScript(home_page + 'feeds/posts/summary/-/' + postLabel + '?start-index=' + jsonstart + '&max-results=1&alt=json-in-script&callback=findPostDate');
-}
-
-function findPostDate(a) {
-  const post = a.feed.entry[0];
-  const b = post.published.$t.substring(0, 19) + post.published.$t.substring(23, 29);
-  const c = encodeURIComponent(b);
-  let d;
-  if (currentPage == 'page') {
-    d = '/search?updated-max=' + c + '&max-results=' + postResults + '#PageNo=' + noPage;
+  if (url.indexOf('/search/label/') === -1) {
+    currentPage = 'page';
+    fetchFeed(`${HOME}feeds/posts/summary?max-results=1&alt=json`).then(dataFeed);
   } else {
-    d = '/search/label/' + postLabel + '?updated-max=' + c + '&max-results=' + postResults + '#PageNo=' + noPage;
+    currentPage = 'label';
+    if (url.indexOf('&max-results=') === -1) postResults = 20;
+    fetchFeed(`${HOME}feeds/posts/summary/-/${postLabel}?alt=json&max-results=1`).then(dataFeed);
   }
-  location.href = d;
 }
+
+function fetchFeed(url) {
+  return fetch(url).then(r => r.json());
+}
+
+function getPage(page) {
+  const jsonstart = (page - 1) * postResults;
+  noPage = page;
+  fetchFeed(`${HOME}feeds/posts/summary?start-index=${jsonstart}&max-results=1&alt=json`).then(findPostDate);
+}
+
+function getLabelPage(page) {
+  const jsonstart = (page - 1) * postResults;
+  noPage = page;
+  fetchFeed(`${HOME}feeds/posts/summary/-/${postLabel}?start-index=${jsonstart}&max-results=1&alt=json`).then(findPostDate);
+}
+
+function findPostDate(data) {
+  const post = data.feed.entry[0];
+  const ts = encodeURIComponent(post.published.$t.substring(0, 19) + post.published.$t.substring(23, 29));
+  const url = currentPage === 'page'
+    ? `/search?updated-max=${ts}&max-results=${postResults}#PageNo=${noPage}`
+    : `/search/label/${postLabel}?updated-max=${ts}&max-results=${postResults}#PageNo=${noPage}`;
+  location.href = url;
+}
+
+pageCurrentBlogger();
 //]]>
 </script>
 </b:if>

@@ -1,9 +1,9 @@
 ---
 title: "How to Estimate a Project Schedule - A Logical Approach"
+labels: ["project estimation", "project management", "software planning", "PERT", "CPM"]
 published: false
-tags: scheduling, estimation, projectmanagement, teamwork
-cover_image:
-series:
+date:
+readerComments: "ALLOW"
 bloggerPostId: "323490085119896229"
 ---
 

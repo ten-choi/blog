@@ -1,8 +1,10 @@
 ---
 title: "Rising Productivity, Vanishing Jobs: A Developer's Take on the AI Era"
+labels: ["AI", "developer career", "software engineering", "productivity", "future of work"]
 published: true
-tags: ai, productivity, career, developer
-cover_image: https://qlqjs674.notion.site/image/attachment%3Adaf25f49-a487-46a2-af5e-6223c9be4a85%3Aimage.png?table=block&id=321930ff-582f-8087-8164-fec48311bee4&spaceId=6ab3efe6-44b5-4e5c-9d86-56543fb7f59d&width=1410&userId=&cache=v2
+date:
+readerComments: "ALLOW"
+bloggerPostId:
 ---
 
 # Rising Productivity and the End of Workers As We Know Them

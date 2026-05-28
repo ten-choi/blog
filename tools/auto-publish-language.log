@@ -1,0 +1,24 @@
+﻿[2026-05-26 12:37:06][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 01 품사와 문장 구조.md (title: Unit 01 품사와 문장 구조)
+[2026-05-26 12:37:30][language] FAILED: npm notice; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\language\english\Unit 01 품사와 문장 구조.md
+[2026-05-27 12:54:34][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 01 품사와 문장 구조.md (title: Unit 01 품사와 문장 구조)
+[2026-05-27 12:54:43][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 01 峵溢ぎ・ ・ｸ・･ ・ｬ・ｰ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 01 峵溢ぎ・ ・ｸ・･ ・ｬ・ｰ.md ...
+  UPDATED -> https://ten-language-notes.blogspot.com/2026/05/unit-01.html (id: 4460988934862001831)
+
+[2026-05-27 12:54:44][language] FAILED: warning: in the working copy of 'blogs/language/english/Unit 01 峵溢ぎ・ ・ｸ・･ ・ｬ・ｰ.md', LF will be replaced by CRLF the next time Git touches it; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\language\english\Unit 01 품사와 문장 구조.md
+[2026-05-28 12:45:37][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 02 명사.md (title: Unit 02 명사)
+[2026-05-28 12:45:55][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 02 ・・ぎ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 02 ・・ぎ.md ...
+  UPDATED -> https://ten-language-notes.blogspot.com/2026/05/unit-02.html (id: 7510165054661586805)
+
+[2026-05-28 12:45:55][language] SUCCESS: Unit 02 명사 (committed locally; push manually when ready)
