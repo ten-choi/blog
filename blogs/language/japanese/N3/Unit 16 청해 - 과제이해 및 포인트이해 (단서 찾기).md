@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N3 聴解(청해)의 1·2부 — **과제이해(課題理解)**와 **포인트이해(ポイント理解)**. 둘 다 「**누가 / 무엇을 / 언제 / 어디서 / 왜**」를 묻는다. 차이는 ① 과제이해 = **다음에 할 행동**, ② 포인트이해 = **이유·세부정보**.

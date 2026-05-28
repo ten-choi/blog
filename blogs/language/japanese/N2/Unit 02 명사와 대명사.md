@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N2 명사 학습의 핵심은 ① **추상명사·동작성 명사** 식별, ② **명사화 접미사**(さ·み·け·性·化)로 만들어진 파생어, ③ こそあど 대명사의 문맥 지시 응용. 단순 단어 암기 대신 **동사·형용사가 명사로 굳어지는 패턴**을 잡아야 작문·독해 점수가 오른다.

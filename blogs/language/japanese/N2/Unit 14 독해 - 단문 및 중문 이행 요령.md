@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N2 読解(독해) 1부, **단문(약 200자)**과 **중문(약 500자)**. N3와 비교해 문장 길이·어휘 난도·필자 의견의 함축도가 한 단계 올라간다. 단문은 1문제, 중문은 글당 3문제. 문제 유형은 ① 내용 일치, ② 필자의 의견·주장, ③ 밑줄의 의미·이유.

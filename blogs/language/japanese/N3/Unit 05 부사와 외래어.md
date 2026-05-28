@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N3 부사는 **호응 관계**(공기·共起)와 함께 외운다. 「決して~ない」, 「たぶん~だろう」처럼 짝이 있는 부사가 빈출. 외래어(カタカナ)는 의미·표기를 함께 점검해야 한다.

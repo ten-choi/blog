@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N2 読解(독해) 후반의 두 영역. ① **장문(약 900자)** — 필자의 주장·논리 전개를 따라가는 글, ② **정보검색** — 안내문·광고·표·공고를 보고 조건에 맞는 답을 찾는 글. 장문은 시간이 가장 많이 걸리고, 정보검색은 빠른 조건 매칭이 관건.

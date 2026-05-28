@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N2의 敬語(경어)는 단순 변환에 그치지 않고, ① **특수형 동사 암기**, ② **존경·겸양·정중**(尊敬·謙譲·丁寧) 의 구분, ③ **이중경어 금지**, ④ **비즈니스 표준 표현**까지 묶어 출제된다. 문법 문제뿐 아니라 청해·독해에서 인물 관계 파악의 단서로 쓰인다.

@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N2 조사·접속의 핵심은 **복합조사**(~について·~に対して·~に関して·~をめぐって 등) 사용. 의미가 비슷한 표현이 줄지어 있어 시험에서 자주 충돌한다. 각 표현의 ① **접속**(N·V형), ② **시점**(대상·관점·계기), ③ **자연스러운 호응**까지 묶어 외운다.

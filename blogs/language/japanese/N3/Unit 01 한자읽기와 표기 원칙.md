@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 JLPT N3 文字·語彙(문자·어휘) 파트의 출발점. N3 한자는 약 650자 수준이며, 1문제는 한자→히라가나 읽기, 다른 1문제는 히라가나→한자 표기 식별이다. 핵심은 音読み(음독)과 訓読み(훈독)의 구분, 그리고 **장음·촉음·탁음**의 정확한 표기다.

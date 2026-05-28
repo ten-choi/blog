@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N2 조건 표현은 と·ば·たら·なら의 기본 4종에 더해 ① **~ものなら** (실현 가능성 낮음), ② **~ては** (반복적 부정 평가), ③ **~ようでは** (이런 식으로는), ④ **~ない限り** (~지 않는 한) 같은 고급 패턴이 추가된다. 핵심은 **각 표현이 후행절에서 어떤 의미를 만들 수 있는지(명령·의지·과거 일회)** 의 제약을 외우는 것.

@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N2의 동사는 ① 자·타동사 짝(対応動詞), ② 의지·무의지 동사, ③ **복합동사**(~始める·~続ける·~切る…)가 핵심. 문법 문제뿐 아니라 어휘·독해 정답률을 좌우한다. 자·타동사 짝은 「의지·결과」 인지 「자연·상태」 인지의 의미 차이가 가장 중요하다.

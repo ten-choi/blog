@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N2 단계의 형용사는 활용·접속 자체는 N3와 같지만, ① **~がる·~がっている**(3인칭 감정), ② **~げ**(~한 듯), ③ **~み·~さ**(명사화), ④ **な형용사 어간의 부사형 응용**이 추가된다. 어휘 또한 추상도가 높아져 작문·독해에서 까다롭게 출제된다.

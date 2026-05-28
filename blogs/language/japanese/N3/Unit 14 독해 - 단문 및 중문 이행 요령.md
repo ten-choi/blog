@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N3 読解(독해)의 첫 관문, **단문(150~200자)**과 **중문(약 350자)**. 문제 유형은 ① 내용 일치, ② 필자의 의견·이유, ③ 밑줄 부분의 의미. 짧은 글일수록 **접속사·지시어·문말 표현**이 정답 단서다.

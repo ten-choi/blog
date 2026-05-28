@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N3 聴解(청해) 후반 3영역. ① **概要理解(개요이해)**: 글의 「전체 취지」를 파악, ② **発話表現(발화표현)**: 그림 상황에 맞는 한마디 고르기, ③ **即時応答(즉시응답)**: 짧은 한마디 들려주고 적절한 대답 즉시 고르기. 짧고 빠른 영역들이라 「**평소 회화 패턴 암기**」가 곧 점수.

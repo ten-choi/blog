@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N3 文法(문법) 영역의 출발점. 조사(助詞)는 의미를 결정짓는 「방향타」, 접속표현(接続表現)은 문장 흐름의 「길잡이」. 단편적 외움이 아니라 **호응 동사**·**전후 문맥**과 묶어 익혀야 한다.

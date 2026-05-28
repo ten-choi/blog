@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 敬語(경어)는 비즈니스 일본어의 척추. 일본어 경어는 ① **尊敬語(존경어)**: 상대 행위 ↑ 올림, ② **謙譲語(겸양어)**: 내 행위를 ↓ 낮춤, ③ **丁寧語(정중어)**: ます·です 정중체 — 3종으로 나뉜다. N3는 ①②를 본격 다룬다.

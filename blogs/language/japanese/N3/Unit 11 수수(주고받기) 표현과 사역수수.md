@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 授受(수수)·やりもらい(주고받기) 표현은 일본어 사회성·인간관계 묘사의 뼈대. 「누가 누구에게」 + 「상하·내외 관계」를 정확히 파악해야 한다. N3에서는 단순 물건 주고받기 + **て形 + あげる/くれる/もらう** + **사역수수**까지 묶어 출제.
