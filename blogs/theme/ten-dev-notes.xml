@@ -6,6 +6,25 @@
     <title><data:view.title.escaped/></title>
     <b:include data='blog' name='all-head-content'/>
     <meta name='naver-site-verification' content='e09ea465af6cc9686121cfce3d812385702f8f95'/>
+    <!-- Explicit Open Graph / Twitter meta tags. Blogger's all-head-content
+         leaves these blank when the post's first image is hosted off-site
+         (e.g. our jsdelivr CDN), so we populate them by hand on item pages. -->
+    <b:if cond='data:blog.pageType == &quot;item&quot;'>
+      <b:if cond='data:blog.postImageUrl'>
+        <meta expr:content='data:blog.postImageUrl' property='og:image'/>
+        <meta expr:content='data:blog.postImageUrl' name='twitter:image'/>
+        <meta content='summary_large_image' name='twitter:card'/>
+        <b:else/>
+        <meta content='summary' name='twitter:card'/>
+      </b:if>
+      <meta content='article' property='og:type'/>
+      <meta expr:content='data:blog.pageName' property='og:title'/>
+      <meta expr:content='data:blog.canonicalUrl' property='og:url'/>
+      <b:if cond='data:blog.metaDescription'>
+        <meta expr:content='data:blog.metaDescription' property='og:description'/>
+        <meta expr:content='data:blog.metaDescription' name='twitter:description'/>
+      </b:if>
+    </b:if>
     <link href='https://fonts.gstatic.com' rel='preconnect' crossorigin='anonymous'/>
     <link href='https://cdnjs.cloudflare.com' rel='preconnect' crossorigin='anonymous'/>
 <b:if cond='data:view.isHomepage'>
@@ -5163,12 +5182,16 @@ const postPerPage = 7;
               <b:include data='post' name='postMetadataJSON'/>
             </b:includable>
             <b:includable id='postMetadataJSONImage'>
-  <b:if cond='data:post.featuredImage.isResizable'>
+  <b:if cond='data:post.featuredImage'>
   &quot;image&quot;: {
     &quot;@type&quot;: &quot;ImageObject&quot;,
+    <b:if cond='data:post.featuredImage.isResizable'>
     &quot;url&quot;: &quot;<b:eval expr='resizeImage(data:post.featuredImage, 1200, &quot;1200:630&quot;)'/>&quot;,
     &quot;height&quot;: 630,
     &quot;width&quot;: 1200
+    <b:else/>
+    &quot;url&quot;: &quot;<data:post.featuredImage/>&quot;
+    </b:if>
   },
   </b:if>
 </b:includable>
