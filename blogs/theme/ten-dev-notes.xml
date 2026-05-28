@@ -4075,7 +4075,7 @@ body#layout .header-header .flex-left, body#layout .header-header .flex-right, b
     width: 100%;
 }
 
-body#layout #intro-wrap,body#layout #intro-author-wrap,body#layout #intro-services-wrap{display:block;padding:0;margin:0}
+body#layout #intro-wrap{display:block;padding:0;margin:0}
 body#layout #intro-wrap,body#layout #main-intro{float:none;width:auto;height:auto}
 body#layout #main-intro .widget{height:auto;overflow:visible}
 body#layout #header-wrap{height:auto}
@@ -4608,7 +4608,7 @@ const postPerPage = 7;
 
   <!-- Wave shape -->
   <div class='hero-header-bg-shape-bottom'>
-    <svg data-name='Layer 1' preserveAspectRatio='none' viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg'>
+    <svg preserveAspectRatio='none' viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg'>
       <path class='hero-header-bg-shape-fill' d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z'/>
     </svg>
   </div>
@@ -5163,29 +5163,19 @@ const postPerPage = 7;
               <b:include data='post' name='postMetadataJSON'/>
             </b:includable>
             <b:includable id='postMetadataJSONImage'>
+  <b:if cond='data:post.featuredImage.isResizable'>
   &quot;image&quot;: {
     &quot;@type&quot;: &quot;ImageObject&quot;,
-    <b:if cond='data:post.featuredImage.isResizable'>
     &quot;url&quot;: &quot;<b:eval expr='resizeImage(data:post.featuredImage, 1200, &quot;1200:630&quot;)'/>&quot;,
     &quot;height&quot;: 630,
     &quot;width&quot;: 1200
-    <b:else/>
-    &quot;url&quot;: &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200&quot;,
-    &quot;height&quot;: 348,
-    &quot;width&quot;: 1200
-    </b:if>
   },
+  </b:if>
 </b:includable>
             <b:includable id='postMetadataJSONPublisher'>
  &quot;publisher&quot;: {
     &quot;@type&quot;: &quot;Organization&quot;,
-    &quot;name&quot;: &quot;Blogger&quot;,
-    &quot;logo&quot;: {
-      &quot;@type&quot;: &quot;ImageObject&quot;,
-      &quot;url&quot;: &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60&quot;,
-      &quot;width&quot;: 206,
-      &quot;height&quot;: 60
-    }
+    &quot;name&quot;: &quot;<data:blog.title.escaped/>&quot;
   },
 </b:includable>
             <b:includable id='postNavigation' var='post'>
@@ -5796,111 +5786,9 @@ const postPerPage = 7;
   </div>
 </b:includable>
           </b:widget>
-          <b:widget id='HTML2' locked='false' title='Subscribe Us' type='HTML' visible='true'>
+          <b:widget id='HTML2' locked='false' title='' type='HTML' visible='false'>
             <b:widget-settings>
-              <b:widget-setting name='content'>&lt;div class=&quot;youtube-player&quot; data-id=&quot;0LNIfdrmNo4&quot; /&gt;
-&lt;style&gt;
-.youtube-player {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  max-width: 100%;
-  background: #000;
-  margin: 5px;
-}
-
-.youtube-player iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-  background: transparent;
-}
-
-.youtube-player img {
-  object-fit: cover;
-  display: block;
-  left: 0;
-  bottom: 0;
-  margin: auto;
-  max-width: 100%;
-  width: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  border: none;
-  height: auto;
-  cursor: pointer;
-  -webkit-transition: 0.4s all;
-  -moz-transition: 0.4s all;
-  transition: 0.4s all;
-}
-
-.youtube-player img:hover {
-  -webkit-filter: brightness(75%);
-  -moz-filter: brightness(75%);
-  filter: brightness(75%);
-}
-
-.youtube-player .play {
-  height: 72px;
-  width: 72px;
-  left: 50%;
-  top: 50%;
-  margin-left: -36px;
-  margin-top: -36px;
-  position: absolute;
-   background: url(&quot;data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22%23cc181e%22%2F%3E%3Cpath%20d%3D%22M40%2030l30%2020-30%2020z%22%20fill%3D%22%23ffffff%22%2F%3E%3C%2Fsvg%3E&quot;) no-repeat;
-  cursor: pointer;
-}
-
-&lt;/style&gt;
-&lt;script type=&#39;text/javascript&#39;&gt;
-//&lt;![CDATA[
-function embedYouTubeIframe(div) {
-  const iframe = document.createElement(&quot;iframe&quot;);
-  iframe.setAttribute(
-    &quot;src&quot;,
-    &quot;https://www.youtube.com/embed/&quot; + div.dataset.id + &quot;?autoplay=1&amp;rel=0&quot;
-  );
-  iframe.setAttribute(&quot;frameborder&quot;, &quot;0&quot;);
-  iframe.setAttribute(&quot;allowfullscreen&quot;, &quot;1&quot;);
-  iframe.setAttribute(
-    &quot;allow&quot;,
-    &quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot;
-  );
-  div.parentNode.replaceChild(iframe, div);
-}
-
-function initYouTubeVideos() {
-  const playerElements = document.getElementsByClassName(&quot;youtube-player&quot;);
-  for (let n = 0; n &lt; playerElements.length; n++) {
-    const videoId = playerElements[n].dataset.id;
-    const div = document.createElement(&quot;div&quot;);
-    div.setAttribute(&quot;data-id&quot;, videoId);
-    const thumbNode = document.createElement(&quot;img&quot;);
-    thumbNode.src = &quot;https://i.ytimg.com/vi/ID/hqdefault.jpg&quot;.replace(
-      &quot;ID&quot;,
-      videoId
-    );
-    div.appendChild(thumbNode);
-    const playButton = document.createElement(&quot;div&quot;);
-    playButton.setAttribute(&quot;class&quot;, &quot;play&quot;);
-    div.appendChild(playButton);
-    div.onclick = function () {
-      embedYouTubeIframe(this);
-    };
-    playerElements[n].appendChild(div);
-  }
-}
-
-document.addEventListener(&quot;DOMContentLoaded&quot;, initYouTubeVideos);
-
-//]]&gt;
-&lt;/script&gt;&lt;/div&gt;</b:widget-setting>
+              <b:widget-setting name='content'/>
             </b:widget-settings>
             <b:includable id='main'>
   <b:include name='widget-title'/>
@@ -5913,8 +5801,8 @@ document.addEventListener(&quot;DOMContentLoaded&quot;, initYouTubeVideos);
             <b:widget-settings>
               <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
               <b:widget-setting name='display'>CLOUD</b:widget-setting>
-              <b:widget-setting name='selectedLabelsList'>Beauty,Business,Fashion,Learn,Nature</b:widget-setting>
-              <b:widget-setting name='showType'>USER_SELECTED</b:widget-setting>
+              <b:widget-setting name='selectedLabelsList'/>
+              <b:widget-setting name='showType'>ALL</b:widget-setting>
               <b:widget-setting name='showFreqNumbers'>false</b:widget-setting>
             </b:widget-settings>
             <b:includable id='main' var='this'>

@@ -1009,86 +1009,6 @@ color:#777
     line-height:1;
     margin:0 0 30px
 }
-#serv-tile-wrap{
-    background-color: #ffffff;
-    display:none;
-    float:left;
-    width:100%;
-    margin:30px 0 0;
-    padding: 0;
-}
- #serv-tile-wrap .container{
-    position:relative;
-    margin:0 auto
-}
- #serv-tile{
-   display: grid;
-    grid-template-columns: repeat(6,1fr);
-    grid-gap: 15px;
-    margin:0
-}
- #serv-tile .widget{
-   display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 30px 15px;
-    box-sizing: border-box;
-    text-align:center;
-    background-color: #FFFFFF;
-    border:1px solid #ECEDF2;
-    border-radius: 8px;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -o-border-radius: 8px;
-    -webkit-transition: all 0.3s ease-in-out 0s;
-    -o-transition: all 0.3s ease-in-out 0s;
-    transition: all 0.3s ease-in-out 0s;
-}
-#serv-tile .widget:hover{
-    background-color: #F4F6FA;
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
-}
-.serv-tile-box-avatar {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px; 
-    border-radius: 16px;
-    color: $(main.color);
-    text-align: center;
-    line-height: 80px;
-    margin: 0 auto 25px;
-}
-.serv-tile-box-avatar i {
-    display: block;
-    line-height: 80px;
-    font-size: 30px;
-    font-weight: 400;
-    font-style: normal;
-    margin: 0;
-    color: $(main.color);
-}
- .serv-tile-box-avatar img{
-   width: 80px;
-    height: 80px;
-}
- .serv-tile-box-info{
-margin: 0;
-    overflow:hidden
-}
- .serv-tile-box-title{
-    font-size: 19px;
-    color:$(title.color);
-    font-weight:400;
-    margin:0 0 7px
-}
- .serv-tile-box-meta{
-    font-size:13px;
-line-height: 1.75;
-    margin-top:8px;
-    color:$(body.text.color)
-}
 #intro-author-heading {
     width: 100%;
     float: left;
@@ -1344,103 +1264,6 @@ font-weight: 700;
 .author-intro-widgets .service-content:hover .service-title, .author-intro-widgets .service-content:hover .service-content-details .service-snippet {
 color:#ffffff;
     transition: all 0.3s ease-in-out;
-}
-#testimonial-wrap {
-    display:flex;
-    flex-direction: column;
-    overflow:hidden;
-}
-.testi-slider {
-    width: 100%;
-    display: block;
-    overflow: hidden;
-}
- #testimonial{
-    float:left;
-    width:100%;
-    margin:0
-}
- #testimonial .widget{
-  position: relative;
-    float: left;
-    width: 100%;
-    overflow: hidden;
-    border-radius: 10px;
-    background: #ffffff;
-    box-sizing: border-box;
-    padding: 15px;
-}
- #testimonial .widget:nth-child(2), #testimonial .widget:nth-child(4){
-}
- .testi-avatar{
-    float:left;
-    width:45px;
-    height:45px;
-    overflow:hidden;
-border-radius:50%;
-    margin:0 15px 0 0
-}
- .testi-avatar img{
-    display:block;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    color:transparent;
-    margin:0
-}
- .testi-info{
-    overflow:hidden
-}
- .testi-title{
-    font-size:20px;
-    color:$(title.color);
-    font-weight:700;
-    margin:0 0 3px
-}
- .testi-meta{
-    font-size:12px;
-    color:$(main.color)
-}
-.testi-info-quotes {
-    margin-bottom: 26px;
-}
- .testi-snippet{
-       font-size: 15px;
-    line-height: 1.5625;
-    color: $(body.text.color);
-    padding: 15px 0;
-    margin:0;
-    font-style: italic;
-    font-family: cursive;
-    letter-spacing: 0.5px;
-}
-.testi-snippet:before {
-    content: '\f10d';
-    display: inline-block;
-    font-family: FontAwesome;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    margin-right: 10px;
-    color:$(main.color);
-} 
-.testi-snippet:after {
-    content: '\f10e';
-    display: inline-block;
-    font-family: FontAwesome;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    margin-left: 10px;
-   color:$(main.color);
-}
-#testimonial .widget:nth-child(2) .testi-snippet, #testimonial .widget:nth-child(4) .testi-snippet {
-    background-color: #e22310;
-    border-color: #d41f0d;
 }
 .head-text {
     float: left;
@@ -3558,7 +3381,7 @@ position: relative;
         box-sizing:border-box;
         padding:0 20px
     }
-#hot-wrapper, .author-intro-widgets .container, #serv-tile-wrap .container, #brand-services-wrap .container, .author-intro-widgets-duo .container, .author-intro-widgets-duo .container {
+#hot-wrapper, .author-intro-widgets .container, .author-intro-widgets-duo .container {
         box-sizing:border-box;
         padding:0 20px
     }
@@ -3611,9 +3434,6 @@ position: relative;
         width:100%;
         padding:0
     }
-    #serv-tile {
-    grid-template-columns: repeat(3, 1fr);
-}
 .counter-box-item {
     width: 50%;
 }
@@ -3629,9 +3449,6 @@ margin-bottom:20px;
 }
 .counter-image-wrap, .counter-image-wrap .widget, .counter-image-wrap .widget-content, .counter-image-wrap .counter-content {
         height: 100%;
-}
-#serv-tile .widget {
-    padding: 30px 0 0;
 }
 #intro-author-heading {
     padding: 20px;
@@ -3740,10 +3557,7 @@ ul.hot-posts, .PopularPosts ul.hot-posts {
 .author-intro-widgets .author-list, .author-intro-widgets .author-list .widget {
     width: 100%;
 }
-#brand-services-wrap {
-    padding: 20px 0;
-}
-.author-intro-widgets, #serv-tile {
+.author-intro-widgets {
     grid-template-columns: 1fr;
 }
 #intro-author-heading, .author-intro-widgets {
@@ -3925,10 +3739,6 @@ ul.hot-posts {
         width:100%;
         margin:10px 0 0
     }
-#serv-tile .widget {
-    width: 100%;
-    margin-bottom: 10px;
-}
 .counter-box-item {
     width: 100%;
 }
@@ -4113,52 +3923,6 @@ ul.hot-posts {
  .button.contact:before{
     content:&#39;\f0e0&#39;;
     font-weight:400
-}
- .alert-message{
-    position:relative;
-    display:block;
-    padding:15px;
-    border:1px solid rgba(155,155,155,0.1);
-    border-radius:3px
-}
- .alert-message.alert-success{
-    background-color:rgba(34,245,121,0.03);
-    border:1px solid rgba(34,245,121,0.5)
-}
- .alert-message.alert-info{
-    background-color:rgba(55,153,220,0.03);
-    border:1px solid rgba(55,153,220,0.5)
-}
- .alert-message.alert-warning{
-    background-color:rgba(185,139,61,0.03);
-    border:1px solid rgba(185,139,61,0.5)
-}
- .alert-message.alert-error{
-    background-color:rgba(231,76,60,0.03);
-    border:1px solid rgba(231,76,60,0.5)
-}
- .alert-message:before{
-    font-family:FontAwesome;
-    font-size:16px;
-    font-weight:900;
-    display:inline-block;
-    margin:0 5px 0 0
-}
- .alert-message.alert-success:before{
-    content:&#39;\f058&#39;;
-    color:rgba(34,245,121,1)
-}
- .alert-message.alert-info:before{
-    content:&#39;\f05a&#39;;
-    color:rgba(55,153,220,1)
-}
- .alert-message.alert-warning:before{
-    content:&#39;\f06a&#39;;
-    color:rgba(185,139,61,1)
-}
- .alert-message.alert-error:before{
-    content:&#39;\f057&#39;;
-    color:rgba(231,76,60,1)
 }
  .post-body table{
     width:100%;
@@ -4383,20 +4147,6 @@ body#layout #outer-wrapper,body#layout .row{
     display:block;
     padding:0;
     margin:0
-}
- body#layout #intro-wrap,body#layout #main-intro, body#layout #intro-services-left, body#layout #serv-tile{
-    float:none;
-    overflow:hidden!important;
-    width:auto;
-    height:auto
-}
- body#layout #main-intro .widget, body#layout #intro-services-left .widget, body#layout #serv-tile-wrap .widget {
-     float:left;
-    width:49%;
-    margin-right:2%
-}
-body#layout #main-intro #LinkList1, body#layout #intro-services-left #Image22, body#layout #intro-services-left #Image32, body#layout #intro-services-left #Image42, body#layout #intro-services-left #Image52, body#layout #intro-services-left #Image62, body#layout #serv-tile-wrap #Image7, body#layout #serv-tile-wrap #Image60, body#layout #serv-tile-wrap #Image80{
-    margin-right:0
 }
  body#layout #content-wrapper{
     margin:0;
@@ -5432,29 +5182,19 @@ const fixedSidebar = true;
               <b:include data='post' name='postMetadataJSON'/>
             </b:includable>
             <b:includable id='postMetadataJSONImage'>
+  <b:if cond='data:post.featuredImage.isResizable'>
   &quot;image&quot;: {
     &quot;@type&quot;: &quot;ImageObject&quot;,
-    <b:if cond='data:post.featuredImage.isResizable'>
     &quot;url&quot;: &quot;<b:eval expr='resizeImage(data:post.featuredImage, 1200, &quot;1200:630&quot;)'/>&quot;,
     &quot;height&quot;: 630,
     &quot;width&quot;: 1200
-    <b:else/>
-    &quot;url&quot;: &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200&quot;,
-    &quot;height&quot;: 348,
-    &quot;width&quot;: 1200
-    </b:if>
   },
+  </b:if>
 </b:includable>
             <b:includable id='postMetadataJSONPublisher'>
  &quot;publisher&quot;: {
     &quot;@type&quot;: &quot;Organization&quot;,
-    &quot;name&quot;: &quot;Blogger&quot;,
-    &quot;logo&quot;: {
-      &quot;@type&quot;: &quot;ImageObject&quot;,
-      &quot;url&quot;: &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60&quot;,
-      &quot;width&quot;: 206,
-      &quot;height&quot;: 60
-    }
+    &quot;name&quot;: &quot;<data:blog.title.escaped/>&quot;
   },
 </b:includable>
             <b:includable id='postNavigation' var='post'>
@@ -6063,27 +5803,9 @@ const fixedSidebar = true;
   </div>
 </b:includable>
           </b:widget>
-          <b:widget id='HTML1' locked='false' title='Subscribe Us' type='HTML' visible='true'>
+          <b:widget id='HTML1' locked='false' title='' type='HTML' visible='false'>
             <b:widget-settings>
-              <b:widget-setting name='content'><![CDATA[<div class="videoWrapper">
-    <!-- Copy & Pasted from YouTube -->
-    <iframe width="560" height="349" src="https://www.youtube.com/embed/gmhw5XzNOuo" frameborder="0" allowfullscreen></iframe>
-</div>
-<style>
-.videoWrapper {
-position: relative;
-padding-bottom: 56.25%; /* 16:9 */
-padding-top: 25px;
-height: 0;
-}
-.videoWrapper iframe {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-}
-</style>]]></b:widget-setting>
+              <b:widget-setting name='content'/>
             </b:widget-settings>
             <b:includable id='main'>
   <b:include name='widget-title'/>
@@ -6096,8 +5818,8 @@ height: 100%;
             <b:widget-settings>
               <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
               <b:widget-setting name='display'>LIST</b:widget-setting>
-              <b:widget-setting name='selectedLabelsList'>Business,Photography,Sports,Technology</b:widget-setting>
-              <b:widget-setting name='showType'>USER_SELECTED</b:widget-setting>
+              <b:widget-setting name='selectedLabelsList'/>
+              <b:widget-setting name='showType'>ALL</b:widget-setting>
               <b:widget-setting name='showFreqNumbers'>true</b:widget-setting>
             </b:widget-settings>
             <b:includable id='main' var='this'>
