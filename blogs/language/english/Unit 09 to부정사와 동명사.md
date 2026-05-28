@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId: "5706904691592306431"
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/english_banner.webp)
+
 ## 개요
 
 `to + 동사원형`은 **명사/형용사/부사** 역할을 다 하고, `동사-ing(동명사)`는 **명사 역할**만. 토익에서는 **어떤 동사가 to V를 받고 어떤 동사가 -ing을 받는지** 외워두면 절반은 끝난다.

@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId: "5356959118438526807"
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/english_banner.webp)
+
 ## 개요
 
 동사는 **자동사/타동사** 구분과 **5형식별 동사**가 핵심. 자동사인데 목적어를 받으려고 전치사를 빠뜨리거나, 타동사에 불필요한 전치사를 붙이는 실수가 토익 단골이다.

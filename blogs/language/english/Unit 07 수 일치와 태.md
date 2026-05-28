@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId: "8804569589412178890"
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/english_banner.webp)
+
 ## 개요
 
 수 일치는 **주어를 정확히 찾는 것**이 절반. 주어와 동사 사이에 긴 수식어가 끼어 있으면 진짜 주어가 무엇인지부터 확인한다. 태는 **목적어 유무**로 능동/수동을 판단.

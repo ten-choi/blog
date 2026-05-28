@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId: "7632484903593462338"
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/english_banner.webp)
+
 ## 개요
 
 부사는 **명사 외 모든 것**을 수식한다 — 동사, 형용사, 다른 부사, 문장 전체. 토익에서는 동사 앞뒤·형용사 앞·be동사와 분사 사이 빈칸이 부사 단골 자리.

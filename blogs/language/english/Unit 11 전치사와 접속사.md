@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId: "4567223859174177906"
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/english_banner.webp)
+
 ## 개요
 
 전치사는 **명사구**를 받고, 접속사는 **절(주어+동사)**을 받는다. 의미가 비슷해도 뒤에 무엇이 오느냐로 답이 갈린다 (because vs because of, although vs despite 등).

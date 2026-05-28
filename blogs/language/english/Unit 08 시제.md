@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId: "5775058857876207851"
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/english_banner.webp)
+
 ## 개요
 
 시제는 **시간 단서 부사**가 답을 알려주는 경우가 많다. *currently*, *recently*, *next week*, *since 2020* 같은 표현이 보이면 일치하는 시제를 고른다.
