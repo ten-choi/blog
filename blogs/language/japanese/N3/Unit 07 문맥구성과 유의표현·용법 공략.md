@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N3 文字·語彙(문자·어휘) 후반부의 **文脈規定(문맥규정)**, **言い換え類義(유의표현)**, **用法(용법)** 세 영역은 어휘량 + 콜로케이션(共起·연어) 감각으로 승부한다. 단어를 외울 때 **함께 쓰이는 동사·조사·문형**까지 함께 외우는 것이 정답.

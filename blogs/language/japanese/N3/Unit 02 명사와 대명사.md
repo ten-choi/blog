@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N3 명사·대명사 영역은 어휘량과 함께 **연결 조사**, **수식 관계**를 함께 묻는다. の·に·を 같은 조사와 결합하는 형태, 명사 + 명사의 복합 명사 패턴이 빈출이다.

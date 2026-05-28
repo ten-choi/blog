@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 일본어 형용사는 い형용사(イ形容詞)와 な형용사(ナ形容詞) 두 종류. N3에서는 단순 활용을 넘어 て形 접속, 부사화(-く / -に), 명사화(-さ / -み)까지 확장된다.

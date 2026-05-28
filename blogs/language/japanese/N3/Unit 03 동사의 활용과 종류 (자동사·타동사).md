@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 동사 활용은 N3 문법의 척추(背骨). 1·2·3그룹 분류, ます形·て形·ない形·辞書形·た形·命令形·意向形을 자유롭게 오갈 수 있어야 한다. 추가로 N3에서 본격 등장하는 自動詞(자동사)·他動詞(타동사) 짝짓기가 핵심.

@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N2 聴解(청해)의 후반 — ① **개요이해(概要理解)** = 글 전체의 주제·요지 파악, ② **즉시응답(即時応答)** = 짧은 발화에 즉답, ③ **통합이해(統合理解)** = 긴 대화·정보를 들으면서 선택지를 비교해 종합 판단. 셋 다 **선지(選択肢)를 미리 안 본 채로** 풀어야 하는 특성 때문에 사전 청취 훈련이 필수.

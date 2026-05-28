@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N2 어휘 파트에서 가장 효율 높은 정복 대상이 **접두어(접두사)·접미어(접미사)**. 외워두면 모르는 단어도 의미 추정이 가능하다. 자주 출제되는 영역은 ① 부정·강조 접두어, ② 「~的·~性·~化·~風」 같은 추상화 접미어, ③ 인물·직업 접미어다.

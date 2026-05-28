@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 JLPT N2 文字·語彙(문자·어휘) 파트의 출발점. N2 한자는 약 1,000자 수준이며, 단순 음·훈독 식별을 넘어 **복합어 안에서의 읽기 변화**, **熟字訓(숙자훈)**, 동음이의자(同音異義字) 구분을 묻는다. 문제 유형은 ① 한자→히라가나, ② 히라가나→한자, ③ 문맥상 가장 자연스러운 한자 선택.

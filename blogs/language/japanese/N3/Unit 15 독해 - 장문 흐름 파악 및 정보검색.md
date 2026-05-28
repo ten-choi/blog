@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N3 독해 후반의 두 영역. **장문(長文, 약 550자)**은 글 전체 흐름과 필자 주장을, **정보검색(情報検索, 안내문·전단지)**은 조건 매칭 능력을 요구. 두 영역은 풀이 방식이 완전히 다르다 — 장문은 「위→아래」 흐름, 정보검색은 「질문→자료」 역방향.

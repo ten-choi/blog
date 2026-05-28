@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 일본어의 4가지 조건 표현 と·ば·たら·なら는 N3의 「영원한 단골」. 단순 「~하면」으로 외우면 헷갈린다. **자연·필연**, **가정·일반**, **개별 상황**, **화제 받기**로 역할을 구분해야 한다.

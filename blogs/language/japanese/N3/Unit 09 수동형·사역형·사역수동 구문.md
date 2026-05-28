@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 受身(수동)·使役(사역)·使役受身(사역수동)는 N3 문법의 「3대 변환」. 동사 활용 + 조사(に·を) 변화 + 의미 뉘앙스(피해 수동 등)를 한 묶음으로 익혀야 한다.

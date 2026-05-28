@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N2 단계의 授受(주고받기) 표현은 ① **3대 동사**(あげる·くれる·もらう)와 ② **て형 결합**(~てあげる·~てくれる·~てもらう), ③ **사역수수**(~させてもらう·~ていただく)까지 확장. 비즈니스 일본어와도 직결되며, 화자·상대·제3자의 시점을 정확히 파악해야 한다.

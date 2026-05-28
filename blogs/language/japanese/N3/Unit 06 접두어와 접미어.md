@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 접두어(接頭語)·접미어(接尾語)는 N3 어휘 영역의 단골. 의미 패턴을 알면 모르는 단어도 추론 가능하다. 「不~」, 「~的」, 「~中」 같은 빈출 패턴을 패키지로 익힌다.

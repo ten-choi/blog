@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N2 聴解(청해)의 1·2부 — **과제이해(課題理解)**와 **포인트이해(ポイント理解)**. N3와 구조는 같지만, ① 대화 길이가 1.5~2배, ② 어휘·표현이 격식·비즈니스 톤, ③ **번복·조건·예외**가 더 복잡하게 얽힌다. 「**누가 / 무엇을 / 언제 / 어디서 / 왜**」가 핵심.

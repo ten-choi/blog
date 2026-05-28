@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N2의 수동·사역은 단순 형태 변환에서 끝나지 않고, ① **간접 수동(피해 수동)**, ② **사역의 두 가지 의미**(허가·강요), ③ **사역수동의 정중 표현**(~させていただく) 까지 확장된다. 비즈니스 일본어와도 직결된다.

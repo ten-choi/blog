@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N2 文字·語彙(문자·어휘) 후반부의 문제는 ① **문맥규정**(괄호에 들어갈 단어 선택), ② **유의표현**(밑줄 친 단어를 같은 의미로 바꾸기), ③ **용법**(주어진 단어를 자연스럽게 사용한 문장 고르기). 단어 의미를 외우는 것에서 멈추지 않고 **호응 동사·문맥**까지 외워야 정답률이 오른다.

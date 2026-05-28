@@ -7,6 +7,8 @@ readerComments: "ALLOW"
 bloggerPostId:
 ---
 
+![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
+
 ## 개요
 
 N2 부사는 단순 빈도부사를 넘어 **정도·시간·서법(서술 태도)·의태어·의성어** 까지 영역이 확장된다. 외래어 또한 비즈니스·경제·IT 어휘가 다수 출제되며, 의미·발음 두 가지를 모두 묻는다.
