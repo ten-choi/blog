@@ -80,14 +80,7 @@ try {
   & git commit -m "publish($Target): $title" 2>&1 | Out-Null
   if ($LASTEXITCODE -ne 0) { throw "git commit failed" }
 
-  & git push origin main 2>&1 | Out-Null
-  if ($LASTEXITCODE -ne 0) {
-    Log "WARN: git push failed (commit retained locally). Push manually."
-  } else {
-    Log "git push origin main: ok"
-  }
-
-  Log "SUCCESS: $title"
+  Log "SUCCESS: $title (committed locally; push manually when ready)"
 } catch {
   # Revert frontmatter so file state stays consistent with Blogger state.
   [System.IO.File]::WriteAllText($next.FullName, $original, $utf8NoBom)
