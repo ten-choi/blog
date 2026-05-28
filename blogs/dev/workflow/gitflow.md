@@ -1,9 +1,9 @@
 ---
 title: "GitFlow Workflow - A Practical Branching Strategy Guide"
-published: false
-tags: git, gitflow, workflow, branching
-cover_image:
-series:
+labels: ["Git", "GitFlow", "branching strategy", "version control", "software development"]
+published: true
+date:
+readerComments: "ALLOW"
 bloggerPostId: "7712560405097850619"
 ---
 
