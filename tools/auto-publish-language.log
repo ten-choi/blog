@@ -22,3 +22,14 @@ Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 02 �
   UPDATED -> https://ten-language-notes.blogspot.com/2026/05/unit-02.html (id: 7510165054661586805)
 
 [2026-05-28 12:45:55][language] SUCCESS: Unit 02 명사 (committed locally; push manually when ready)
+[2026-05-29 11:10:01][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 03 대명사.md (title: Unit 03 대명사)
+[2026-05-29 11:10:49][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 03 ・・・ぎ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 03 ・・・ぎ.md ...
+  UPDATED -> https://ten-language-notes.blogspot.com/2026/05/unit-03.html (id: 6532945631423026772)
+
+[2026-05-29 11:10:49][language] SUCCESS: Unit 03 대명사 (committed locally; push manually when ready)

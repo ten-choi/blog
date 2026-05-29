@@ -129,9 +129,6 @@ a,a:visited{
 a{
     color:$(body.link.color)
 }
-a:visited {
-color:blue;
-}
 a img{
     border:0
 }
@@ -178,11 +175,12 @@ abbr{
 }
  #outer-wrapper{
     margin:0 auto;
+    max-width:1430px;
     background-color:#ffffff;
     box-shadow:0 0 5px rgba(0,0,0,.1)
 }
  .row{
-    width:1430px
+    width:100%
 }
  #content-wrapper{
     margin:40px auto 0;
@@ -248,7 +246,7 @@ width:100%;
  .social .twitter a:before{
     content:"\f099"
 }
-.social .x-twitter a:before{ content:"\e61b" }
+.social .x-twitter a:before{ font-family:"Font Awesome 6 Brands"; content:"\e61b" }
 .social-color .x-twitter a{ background-color:#14171A }
 .social-text .x-twitter a:after{ content:"Twitter" }
  .social .gplus a:before{
@@ -274,12 +272,6 @@ width:100%;
 }
  .social .stack-overflow a:before{
     content:"\f16c"
-}
- .social .github a:before{
-    content:"\f09b"
-}
- .social .linkedin a:before{
-    content:"\f0e1"
 }
  .social .dribbble a:before{
     content:"\f17d"
@@ -344,9 +336,6 @@ width:100%;
  .social-color .dribbble a{
     background-color:#ea4c89
 }
- .social-color .linkedin a{
-    background-color:#0077b5
-}
  .social-color .tumblr a{
     background-color:#365069
 }
@@ -367,9 +356,6 @@ width:100%;
 }
  .social-color .stack-overflow a{
     background-color:#f48024
-}
- .social-color .github a{
-    background-color:#24292e
 }
  .social-color .soundcloud a{
     background:linear-gradient(#ff7400,#ff3400)
@@ -430,12 +416,6 @@ width:100%;
 }
  .social-text .stack-overflow a:after{
     content:"Stack Overflow"
-}
- .social-text .github a:after{
-    content:"Github"
-}
- .social-text .linkedin a:after{
-    content:"LinkedIn"
 }
  .social-text .dribbble a:after{
     content:"Dribbble"
@@ -637,119 +617,6 @@ display:none;
 }
  #main-menu ul ul{
     transition:all .17s ease
-}
-.social-toggle{
-    font-family:FontAwesome;
-}
- .social-toggle:before{
-    content:"\f1e0"
-}
- .social-active .social-toggle:before{
-    content:"\f00d"
-}
- #social-menu{
-    display:none;
-    position:absolute;
-    width:100%;
-    height:70px;
-    top:0;
-    left:0;
-    background-color:$(header.bg);
-    text-align:center;
-    z-index:15;
-    margin:0
-}
- .social-menu .social li{
-    display:inline-block;
-    padding:0;
-    margin:0
-}
- .social-menu .social li a{
-    display:block;
-    height:70px;
-    font-size:14px;
-    color:$(menu.color);
-    line-height:70px;
-    padding:0 10px;
-    margin:0 5px;
-    transition:color .17s ease
-}
- .social-toggle,.show-search,.hide-search{
-    position:absolute;
-    top:0;
-    right:0;
-    display:block;
-    width:58px;
-    height:70px;
-    background-color:rgba(255,255,255,0.05);
-    line-height:70px;
-    z-index:20;
-    color:$(menu.color);
-    font-size:16px;
-    font-weight:400;
-    text-align:center;
-    cursor:pointer;
-    transition:color .17s ease
-}
-.social-toggle {
-    right: 58px;
-}
-.home .social-toggle {
-    right: 0;
-}
-.hide-search{ 
-    color:$(main.dark.color)
-}
-.home #nav-search, .home .show-search, .home .hide-search {
-    display:none;
-}
- .show-search:hover,.hide-search:hover{
-    color:$(main.color)
-}
- .show-search:before{
-    content:"\f002";
-    font-family:FontAwesome
-}
- .hide-search:before{
-    content:"\f00d";
-    font-family:FontAwesome
-}
- #nav-search{
-    display:none;
-    position:absolute;
-    left:0;
-    top:0;
-    width:100%;
-    height:70px;
-    z-index:99;
-    background-color:$(header.bg);
-    box-sizing:border-box;
-    padding:0
-}
- #nav-search .search-form{
-    width:100%;
-    height:70px;
-    background-color:rgba(0,0,0,0);
-    line-height:70px;
-    overflow:hidden;
-    padding:0
-}
- #nav-search .search-input{
-    width:100%;
-    height:70px;
-    font-family:inherit;
-    color:$(main.dark.color);
-    margin:0;
-    padding:0 58px 0 12px;
-    background-color:rgba(0,0,0,0);
-    font-size:13px;
-    font-weight:400;
-    box-sizing:border-box;
-    border:0
-}
- #nav-search .search-input:focus{
-    color:$(menu.color);
-    outline:none
 }
  .mobile-menu-toggle{
     display:none;
@@ -1855,8 +1722,9 @@ display:inline-block;
 .item-post .post-body > img:first-child{
     display:block;
     width:100%;
-    max-height:400px;
-    object-fit:cover;
+    height:auto;
+    max-height:600px;
+    object-fit:contain;
     border-radius:12px;
     margin:0 0 30px;
     box-shadow:0 8px 24px rgba(0,0,0,0.08)
@@ -2265,30 +2133,8 @@ display:inline-block;
  .blog-post-comments .comments-title{
     margin:0 0 20px
 }
- .comments-system-disqus .comments-title,.comments-system-facebook .comments-title{
-    margin:0
-}
- #disqus_thread{
-    float:left;
-    width:100%;
-    padding:10px 15px;
-    box-sizing:border-box
-}
- .blog-post-comments .fb_iframe_widget{
-    box-sizing:border-box;
-    padding:0 5px
-}
  #comments{
     margin:0
-}
- #gpluscomments{
-    float:left!important;
-    width:100%!important;
-    margin:0 0 25px!important
-}
- #gpluscomments iframe{
-    float:left!important;
-    width:100%
 }
  .comments{
     display:block;
@@ -2313,9 +2159,6 @@ display:inline-block;
 }
  .comments .comments-content .comment:first-child{
     padding-top:0
-}
- .facebook-tab,.fb_iframe_widget_fluid span,.fb_iframe_widget iframe{
-    width:100%!important
 }
  .comments .item-control{
     position:static
@@ -4626,9 +4469,6 @@ const fixedSidebar = true;
       <div class='container row'>
         <div class='bg-overlay'/>
 <div class='author-content'>
-&lt;style type=&#39;text/css&#39;&gt;
-                #intro-author-wrap{display:block}
-                &lt;/style&gt;
                   <h3 class='author-title'><data:title/></h3>
                   <b:if cond='data:content'>
                     <p class='author-snippet'><data:content/></p>
@@ -5108,7 +4948,6 @@ const fixedSidebar = true;
               <!-- Comments -->
               <b:if cond='data:view.isSingleItem and data:post.allowComments'>
                 <div class='blog-post-comments'>
-                  <b:include data='post' name='threadedCommentsDisqus'/>
                   <b:include data='post' name='commentPicker'/>
                 </div>
               </b:if>
@@ -5255,7 +5094,6 @@ const fixedSidebar = true;
                 <div class='post-share'>
                   <ul class='share-links social social-color'>
                     <li class='x-twitter'><a class='x-twitter' expr:href='&quot;https://twitter.com/share?url=&quot; + data:post.url + &quot;&amp;text=&quot; + data:post.title' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=550, height=450, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
-                    <li class='linkedin'><a class='linkedin' expr:href='&quot;https://www.linkedin.com/shareArticle?url=&quot; + data:post.url' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=550, height=650, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
                     <li class='reddit'><a class='reddit' expr:href='&quot;https://www.reddit.com/submit?url=&quot; + data:post.url + &quot;&amp;title=&quot; + data:post.title' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=550, height=650, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
                   </ul>
                 </div>
@@ -5420,46 +5258,12 @@ const fixedSidebar = true;
                 </b:if>
               </section>
             </b:includable>
-            <b:includable id='threadedCommentsDisqus' var='post'>
-              <script type='text/javascript'>
-                var disqus_blogger_current_url = &quot;<data:blog.canonicalUrl/>&quot;;
-                if (!disqus_blogger_current_url.length) {
-                  disqus_blogger_current_url = &quot;<data:blog.url/>&quot;;
-                }
-                var disqus_blogger_homepage_url = &quot;<data:blog.homepageUrl/>&quot;;
-                var disqus_blogger_canonical_homepage_url = &quot;<data:blog.canonicalHomepageUrl/>&quot;;
-              </script>
-            </b:includable>
           </b:widget>
         </b:section>
       </div>
 
       <!-- Sidebar Wrapper -->
       <div id='sidebar-wrapper'>
-        <b:section class='sidebar' id='social-widget' maxwidgets='1' name='Social Widget' showaddelement='yes'>
-          <b:widget id='LinkList75' locked='true' title='Social Plugin' type='LinkList' version='2' visible='true'>
-            <b:widget-settings>
-              <b:widget-setting name='sorting'>NONE</b:widget-setting>
-              <b:widget-setting name='text-0'>linkedin</b:widget-setting>
-              <b:widget-setting name='link-0'>#</b:widget-setting>
-              <b:widget-setting name='text-1'>github</b:widget-setting>
-              <b:widget-setting name='link-1'>https://github.com/ten-choi</b:widget-setting>
-            </b:widget-settings>
-            <b:includable id='main'>
-              <b:include name='widget-title'/>
-              <b:include name='content'/>
-            </b:includable>
-            <b:includable id='content'>
-              <div class='widget-content'>
-                <ul class='social-counter social social-color'>
-                  <b:loop values='data:links' var='link'>
-                    <li expr:class='data:link.name'><a expr:href='data:link.target' expr:title='data:link.name' target='_blank'/></li>
-                  </b:loop>
-                </ul>
-              </div>
-            </b:includable>
-          </b:widget>
-        </b:section>
         <b:section class='sidebar common-widget' id='sidebar1' name='Sidebar Right' showaddelement='yes'>
           <b:widget id='PopularPosts1' locked='false' title='Popular Posts' type='PopularPosts' version='2' visible='true'>
             <b:widget-settings>
@@ -6063,32 +5867,6 @@ const fixedSidebar = true;
       });
     });
 
-    document.querySelectorAll('.social-toggle').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        document.body.classList.toggle('social-active');
-        var menu = document.getElementById('social-menu');
-        if (menu) fadeToggle(menu, 170);
-      });
-    });
-
-    document.querySelectorAll('.show-search').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        document.querySelectorAll('#nav-search, .mobile-search-form').forEach(function (el) {
-          fadeIn(el, 250);
-          var inp = el.querySelector('input');
-          if (inp) inp.focus();
-        });
-      });
-    });
-    document.querySelectorAll('.hide-search').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        document.querySelectorAll('#nav-search, .mobile-search-form').forEach(function (el) {
-          fadeOut(el, 250);
-          var inp = el.querySelector('input');
-          if (inp) inp.blur();
-        });
-      });
-    });
 
     // ----- Label/tag links: append max-results so paginated label pages work.
     //       Idempotent — skip if already appended (handles script re-execution).
