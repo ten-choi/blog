@@ -2255,7 +2255,7 @@ display:inline-block;
     display:none
 }
  .blog-post-comments{
-    display:none;
+    display:block;
     overflow:hidden;
     background-color:#fff;
     margin:0 0 35px;
