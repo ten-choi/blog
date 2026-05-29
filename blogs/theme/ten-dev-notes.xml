@@ -32,6 +32,8 @@
     </b:if>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css' rel='stylesheet'/>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/v4-shims.min.css' rel='stylesheet'/>
+    <!-- Match language-blog header typography on post/static pages -->
+    <link href='https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;family=Poppins:wght@400;600;700&amp;display=swap' rel='stylesheet'/>
 
 <b:if cond='!data:view.isLayoutMode'>  
 <!-- Template Style CSS -->
@@ -892,6 +894,153 @@ h1, h2, h3, h4, h5, h6 {
     fill: #fff;
     transform-origin: center;
     transform: rotateY(0deg);
+}
+/* Compact hero header on item/static pages: drop the top-bar wings, shrink padding. */
+.item .header-header, .static_page .header-header {
+    padding: 15px 0;
+}
+.item .header-header .flex-left, .item .header-header .flex-right,
+.static_page .header-header .flex-left, .static_page .header-header .flex-right {
+    display: none;
+}
+/* ════ Post / static pages: language-style flat header (logo-left + inline menu + search/social icons). Home is untouched. ════ */
+/* Flatten the blue hero banner into a clean white bar */
+.item .hero-header-bg, .static_page .hero-header-bg {
+    background-image: none;
+    background-color: #fff;
+}
+.item .hero-header-bg:before, .static_page .hero-header-bg:before {
+    display: none;
+}
+/* Nothing between the flat header and the post body (home-only hero extras) */
+.item #intro-wrap, .item #slider-wrapper, .item #featured-section,
+.static_page #intro-wrap, .static_page #slider-wrapper, .static_page #featured-section {
+    display: none;
+}
+.item #header-wrap, .static_page #header-wrap {
+    height: 70px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.1);
+}
+.item #header-wrap .container, .static_page #header-wrap .container {
+    position: relative;
+}
+.item #header-wrap .container.row:after, .static_page #header-wrap .container.row:after {
+    content: ''; display: block; clear: both;
+}
+/* Logo / title (left) */
+.item .header-logo, .static_page .header-logo {
+    float: left; width: auto; max-height: none;
+    margin: 0 20px 0 0; padding: 0; display: block; text-align: left;
+}
+.item .main-logo, .static_page .main-logo {
+    position: relative; float: left; width: auto;
+    max-width: 250px; max-height: 52px;
+    margin: 0; padding: 9px 5px; box-sizing: border-box;
+}
+.item .main-logo .header-image-wrapper, .static_page .main-logo .header-image-wrapper {
+    display: block;
+}
+.item .main-logo h1, .item .main-logo h1 a,
+.static_page .main-logo h1, .static_page .main-logo h1 a {
+    font-family: 'Poppins', sans-serif;
+    color: #1f2024; font-size: 20px; line-height: 52px; font-weight: 700; margin: 0;
+}
+/* Menu (inline, not a full-width bar) */
+.item .header-menu, .static_page .header-menu {
+    float: left; width: auto; height: auto; background: transparent;
+}
+.item .header-menu .container, .static_page .header-menu .container {
+    background: transparent; border: 0; padding: 0;
+}
+.item .header-menu .container:after, .static_page .header-menu .container:after {
+    display: none;
+}
+.item #main-menu, .static_page #main-menu {
+    position: relative; width: auto; height: 70px; z-index: 15; background: transparent;
+}
+.item #main-menu ul#main-menu-nav > li, .static_page #main-menu ul#main-menu-nav > li {
+    float: left; position: relative; margin: 0; padding: 0;
+}
+.item #main-menu ul#main-menu-nav > li > a, .static_page #main-menu ul#main-menu-nav > li > a {
+    position: relative; color: #202124; font-family: 'Open Sans', sans-serif;
+    font-size: 14px; font-weight: 600; text-transform: none; letter-spacing: normal;
+    line-height: 70px; display: inline-block; text-decoration: none; padding: 0 15px;
+}
+.item #main-menu ul#main-menu-nav > li:hover > a, .static_page #main-menu ul#main-menu-nav > li:hover > a {
+    color: #1967D2;
+}
+.item #main-menu ul#main-menu-nav > li > ul.sub-menu, .static_page #main-menu ul#main-menu-nav > li > ul.sub-menu {
+    top: 70px;
+}
+/* Right-side icons: search + social */
+.item .social-toggle, .item .show-search, .item .hide-search,
+.static_page .social-toggle, .static_page .show-search, .static_page .hide-search {
+    position: absolute; top: 0; right: 0; display: block;
+    width: 58px; height: 70px; line-height: 70px; z-index: 20;
+    color: #202124; font-size: 16px; text-align: center; cursor: pointer;
+    background-color: rgba(0,0,0,0.04);
+}
+.item .social-toggle, .static_page .social-toggle { right: 58px; }
+.item .social-toggle:before, .static_page .social-toggle:before {
+    content: "\f1e0"; font-family: FontAwesome;
+}
+.item .social-active .social-toggle:before, .static_page .social-active .social-toggle:before {
+    content: "\f00d";
+}
+/* Search panel (override dev base height/colour) */
+.item #nav-search, .static_page #nav-search {
+    height: 70px; background-color: #fff;
+}
+.item #nav-search .search-form, .static_page #nav-search .search-form {
+    height: 70px; line-height: 70px;
+}
+.item #nav-search .search-input, .static_page #nav-search .search-input {
+    height: 70px; color: #1f2024; padding: 0 58px 0 12px;
+}
+/* Social panel */
+.item #social-menu, .static_page #social-menu {
+    display: none; position: absolute; width: 100%; height: 70px; top: 0; left: 0;
+    background-color: #fff; text-align: center; z-index: 15; margin: 0;
+}
+.item .social-menu .social li, .static_page .social-menu .social li {
+    display: inline-block; padding: 0; margin: 0;
+}
+.item .social-menu .social li a, .static_page .social-menu .social li a {
+    display: block; height: 70px; font-size: 16px; color: #202124;
+    line-height: 70px; padding: 0 10px; margin: 0 5px;
+}
+.item .social-menu .social li a:before, .static_page .social-menu .social li a:before {
+    font-family: FontAwesome;
+}
+.item .social-menu .social li.linkedin a:before, .static_page .social-menu .social li.linkedin a:before {
+    content: "\f0e1";
+}
+.item .social-menu .social li.github a:before, .static_page .social-menu .social li.github a:before {
+    content: "\f09b";
+}
+/* Mobile menu toggle (hidden on desktop) */
+.item .mobile-menu-toggle, .static_page .mobile-menu-toggle {
+    display: none; position: absolute; top: 0; left: 0;
+    width: 58px; height: 70px; line-height: 70px; z-index: 20;
+    background-color: rgba(0,0,0,0.04); color: #202124; font-size: 17px;
+    text-align: center; cursor: pointer;
+}
+.item .mobile-menu-toggle:before, .static_page .mobile-menu-toggle:before {
+    content: "\f0c9"; font-family: FontAwesome;
+}
+.item .nav-active .mobile-menu-toggle:before, .static_page .nav-active .mobile-menu-toggle:before {
+    content: "\f00d";
+}
+/* Mobile: collapse inline menu into the hamburger drawer (matches dev's home breakpoint) */
+@media screen and (max-width: 880px) {
+    .item .header-menu, .static_page .header-menu { display: none; }
+    .item .show-search, .item .social-toggle,
+    .static_page .show-search, .static_page .social-toggle { display: none; }
+    .item .mobile-menu-toggle, .static_page .mobile-menu-toggle {
+        display: inline-block; right: 0; left: auto;
+    }
 }
  #header-wrap{
     position:relative;
@@ -4467,6 +4616,7 @@ const postPerPage = 7;
   <div class='hero-header-bg'>
   <!-- Header Wrapper -->
   <div id='header-wrap'>
+    <b:if cond='not data:view.isSingleItem'>
     <div class='header-header flex-content'>    
       <div class='container row'>
     <div class='flex-left flex-content'>       
@@ -4603,15 +4753,31 @@ const postPerPage = 7;
             </b:includable>
            </b:widget>
          </b:section>
-        <div id='nav-search'>
-          <form class='search-form' expr:action='data:blog.searchUrl' role='search'>
-            <input autocomplete='off' class='search-input' expr:placeholder='data:messages.searchThisBlog' name='q' type='search' value=''/>
-            <span class='hide-search'/>
-          </form>
-        </div>
-        <span class='show-search'/>
       </div>
     </div>
+    <b:else/>
+    <!-- Post / static page header (language-style): logo + inline menu + search/social icons -->
+    <div class='container row'>
+      <div class='header-logo'>
+        <div class='main-logo'>
+          <a class='header-image-wrapper' expr:href='data:blog.homepageUrl'>
+            <h1><data:blog.title/></h1>
+          </a>
+        </div>
+      </div>
+      <div class='header-menu'>
+        <div id='main-menu'>
+          <ul id='main-menu-nav' role='menubar'>
+            <li><a href='/' role='menuitem'>Home</a></li>
+            <li><a href='#' role='menuitem'>Languages</a></li>
+            <li><a href='/search/label/English' role='menuitem'>_English</a></li>
+            <li><a href='/search/label/日本語' role='menuitem'>_日本語</a></li>
+          </ul>
+        </div>
+      </div>
+      <span class='mobile-menu-toggle'/>
+    </div>
+    </b:if>
   </div>
 
   <div class='clearfix'/>
@@ -6080,5 +6246,110 @@ pageCurrentBlogger();
 
 <!-- Overlay and Back To Top -->
   <div class='back-top' title='Back to Top'/>
+
+<!-- Post-page (language-style) header: build dropdowns from flat menu, wire search/social toggles -->
+<b:if cond='data:view.isSingleItem'>
+<script type='text/javascript'>
+//<![CDATA[
+(function () {
+  var body = document.body;
+  // Re-parent '_'-prefixed menu items into a nested dropdown (and strip the underscore).
+  document.querySelectorAll('#main-menu').forEach(function (menu) {
+    var nav = menu.querySelector('ul#main-menu-nav');
+    if (!nav) return;
+    var lastTop = null;
+    Array.from(nav.children).forEach(function (li) {
+      if (li.tagName !== 'LI') return;
+      var a = li.querySelector(':scope > a');
+      if (!a) return;
+      var label = a.textContent, depth = 0;
+      while (label.charAt(0) === '_') { depth++; label = label.substring(1); }
+      if (depth === 0) { lastTop = li; return; }
+      a.textContent = label;
+      if (!lastTop) return;
+      var subUl = lastTop.querySelector(':scope > ul.sub-menu');
+      if (!subUl) {
+        subUl = document.createElement('ul');
+        subUl.className = 'sub-menu';
+        lastTop.appendChild(subUl);
+        lastTop.classList.add('has-sub');
+      }
+      subUl.appendChild(li);
+    });
+  });
+  // Search panel toggle
+  var navSearch = document.getElementById('nav-search');
+  document.querySelectorAll('.show-search').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (!navSearch) return;
+      navSearch.style.display = 'block';
+      var i = navSearch.querySelector('input');
+      if (i) i.focus();
+    });
+  });
+  document.querySelectorAll('.hide-search').forEach(function (b) {
+    b.addEventListener('click', function () { if (navSearch) navSearch.style.display = 'none'; });
+  });
+  // Social panel toggle
+  var socialMenu = document.getElementById('social-menu');
+  document.querySelectorAll('.social-toggle').forEach(function (b) {
+    b.addEventListener('click', function () {
+      body.classList.toggle('social-active');
+      if (socialMenu) socialMenu.style.display = body.classList.contains('social-active') ? 'block' : 'none';
+    });
+  });
+})();
+//]]>
+</script>
+</b:if>
+
+<!-- UI handlers: mobile drawer, search panel, sticky header, back-to-top -->
+<script type='text/javascript'>
+//<![CDATA[
+(function () {
+  var body = document.body;
+  var q = function (s, r) { return (r || document).querySelector(s); };
+
+  // Mobile drawer
+  var toggle = q('.mobile-menu-toggle');
+  var hideMenu = q('.hide-mobile-menu');
+  var overlay = q('.overlay');
+  var close = function () { body.classList.remove('nav-active'); };
+  if (toggle) toggle.addEventListener('click', function () { body.classList.toggle('nav-active'); });
+  if (hideMenu) hideMenu.addEventListener('click', close);
+  if (overlay) overlay.addEventListener('click', close);
+
+  // Clone main menu into drawer (once)
+  var src = q('#main-menu-nav');
+  var dst = q('.mobile-menu');
+  if (src && dst && !dst.children.length) {
+    var clone = src.cloneNode(true);
+    clone.removeAttribute('id');
+    dst.appendChild(clone);
+  }
+
+  // Sticky header + back-to-top on scroll
+  var headerMenu = q('.header-menu');
+  var backTop = q('.back-top');
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      var y = window.pageYOffset || window.scrollY || 0;
+      if (headerMenu) headerMenu.classList.toggle('scrolled-header', y > 100);
+      if (backTop) backTop.style.display = (y > 400) ? 'block' : 'none';
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  if (backTop) backTop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+//]]>
+</script>
 </body>
 </html>
