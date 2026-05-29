@@ -4608,40 +4608,7 @@ const fixedSidebar = true;
         </b:section>
       </div>
    
-        <div class='social-layout-wrap'>
-      
-        <b:section class='social-menu' id='social-menu' maxwidgets='1' name='Social Menu' showaddelement='yes'>
-          <b:widget id='LinkList73' locked='true' title='Link List' type='LinkList' version='2' visible='true'>
-            <b:widget-settings>
-              <b:widget-setting name='sorting'>NONE</b:widget-setting>
-              <b:widget-setting name='text-0'>linkedin</b:widget-setting>
-              <b:widget-setting name='link-0'>#</b:widget-setting>
-              <b:widget-setting name='text-1'>github</b:widget-setting>
-              <b:widget-setting name='link-1'>https://github.com/ten-choi</b:widget-setting>
-            </b:widget-settings>
-            <b:includable id='main'>
-              <b:include name='content'/>
-            </b:includable>
-            <b:includable id='content'>
-              <ul class='social'>
-                <b:loop values='data:links' var='link'>
-                  <li expr:class='data:link.name'><a expr:href='data:link.target' target='_blank'/></li>
-                </b:loop>
-              </ul>
-            </b:includable>
-          </b:widget>
-        </b:section>
-      
-        </div>
-      <div id='nav-search'>
-        <form class='search-form' expr:action='data:blog.searchUrl' role='search'>
-          <input autocomplete='off' class='search-input' expr:placeholder='data:messages.searchThisBlog' name='q' type='search' value=''/>
-          <span class='hide-search'/>
-        </form>
-      </div>
-        <span class='social-toggle'/>
-      <span class='show-search'/>
-      <span class='mobile-menu-toggle'/> 
+      <span class='mobile-menu-toggle'/>
     </div>
   </div>
 
