@@ -32,7 +32,7 @@
  <script type='application/ld+json'>{&quot;@context&quot;:&quot;https://schema.org&quot;,&quot;@type&quot;:&quot;WebSite&quot;,&quot;name&quot;:&quot;<data:view.title.escaped/>&quot;,&quot;url&quot;:&quot;<data:view.url.canonical/>&quot;,&quot;potentialAction&quot;:{&quot;@type&quot;:&quot;SearchAction&quot;,&quot;target&quot;:&quot;<data:view.url.canonical/>search?q={search_term_string}&quot;,&quot;query-input&quot;:&quot;required name=search_term_string&quot;}}</script>
     </b:if>
     <!-- Google Fonts -->
-    <link href='https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;family=Poppins:wght@400;600;700&amp;display=swap' rel='stylesheet'/>
+    <!-- System font stack used in CSS; Google Fonts (Open Sans/Poppins) removed for speed and a cleaner, modern look -->
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css' rel='stylesheet'/>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/v4-shims.min.css' rel='stylesheet'/>
 <b:if cond='!data:view.isLayoutMode'>
@@ -49,11 +49,11 @@ Author Url:  https://ten-language-notes.blogspot.com/
 
 /*
 <!-- Variable definitions -->
-<Variable name="keycolor" description="Main Color" type="color" default="$(main.color)" value="#1967D2"/>
-<Variable name="followByEmail" description="Follow By Email Text" type="string" default="Get all latest content delivered straight to your inbox." value="Get all latest content delivered straight to your inbox."/>
+<Variable name="keycolor" description="Main Color" type="color" default="$(main.color)" value="#0f1419"/>
+<Variable name="followByEmail" description="Follow By Email Text" type="string" default="Subscribe to get new notes in your inbox." value="Subscribe to get new notes in your inbox."/>
 
 <Group description="Theme Colors" selector="body">
- <Variable name="main.color" description="Theme Color" type="color" default="#1967D2" value="#1967D2"/>
+ <Variable name="main.color" description="Theme Color" type="color" default="#0f1419" value="#0f1419"/>
   <Variable name="main.dark.color" description="Dark Color" type="color" default="#1f2024" value="#1f2024"/>
   <Variable name="header.bg" description="Header Background" type="color" default="#ffffff" value="#ffffff"/>
   <Variable name="menu.color" description="Menu Color" type="color" default="#202124" value="#202124"/>
@@ -64,14 +64,14 @@ Author Url:  https://ten-language-notes.blogspot.com/
 </Group>
 
 <Group description="Theme Body" selector="body">
-  <Variable name="body.background.color" description="Body Background Color" type="color" default="#f7f7ff"  value="#f7f7ff"/>
+  <Variable name="body.background.color" description="Body Background Color" type="color" default="#ffffff"  value="#ffffff"/>
   <Variable name="body.background" description="Background" type="background" color="$(body.background.color)" default="$(color) url() repeat fixed top left" value="$(color) url() repeat fixed top left"/>
-  <Variable name="body.text.color" description="Text Color" type="color" default="#656565"  value="#656565"/>
-  <Variable name="body.link.color" description="Link Color" type="color" default="$(main.color)"  value="#1967D2"/>
+  <Variable name="body.text.color" description="Text Color" type="color" default="#0f1419"  value="#0f1419"/>
+  <Variable name="body.link.color" description="Link Color" type="color" default="$(main.color)"  value="#0f1419"/>
 </Group>
  <Group description="Intro Section" selector="#main-intro">
   <Variable name="intro.title" description="Intro Title Color" type="color" default="#202124" value="#202124"/>
-  <Variable name="intro.hg" description="Intro Title Highlight" type="color" default="#1967D2" value="#1967D2"/>
+  <Variable name="intro.hg" description="Intro Title Highlight" type="color" default="#0f1419" value="#0f1419"/>
   <Variable name="intro.text" description="Intro Text Color" type="color" default="#2B3154" value="#2B3154"/>
 </Group>
 
@@ -80,9 +80,9 @@ Author Url:  https://ten-language-notes.blogspot.com/
 <Variable name="posts.background.color" description="Post background color" hideEditor="true" type="color" default="#ffffff"  value="#ffffff"/>
 <Variable name="tabs.font" description="Font 2" hideEditor="true" type="font" default="13px Open Sans, sans-serif"  value="13px Open Sans, sans-serif"/>
 <Variable name="posts.title.color" description="Post title color" hideEditor="true" type="color" default="#000000"  value="#000000"/>
-<Variable name="posts.text.color" description="Post text color" hideEditor="true" type="color" default="#656565"  value="#656565"/>
-<Variable name="posts.icons.color" description="Post icons color" hideEditor="true" type="color" default="$(main.color)"  value="#3c5a98"/>
-<Variable name="labels.background.color" description="Label background color" hideEditor="true" type="color" default="$(main.color)"  value="#3c5a98"/>
+<Variable name="posts.text.color" description="Post text color" hideEditor="true" type="color" default="#0f1419"  value="#0f1419"/>
+<Variable name="posts.icons.color" description="Post icons color" hideEditor="true" type="color" default="$(main.color)"  value="#0f1419"/>
+<Variable name="labels.background.color" description="Label background color" hideEditor="true" type="color" default="$(main.color)"  value="#0f1419"/>
 */
 
 /*-- Reset CSS --*/
@@ -162,22 +162,24 @@ abbr{
  body{
     background:$(body.background);
     background-color:$(body.background.color);
-    font-family:'Open Sans',sans-serif;
-    font-size:14px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;
+    font-size:15px;
     font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
     color:$(body.text.color);
     word-wrap:break-word;
     margin:0;
     padding:0
 }
  h1,h2,h3,h4,h5,h6{
-    font-family: 'Poppins', sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    letter-spacing:-0.02em;
 }
  #outer-wrapper{
     margin:0 auto;
     max-width:1430px;
-    background-color:#ffffff;
-    box-shadow:0 0 5px rgba(0,0,0,.1)
+    background-color:#ffffff
 }
  .row{
     width:100%
@@ -466,12 +468,15 @@ width:100%;
     content:"WebSite"
 }
  #header-wrap{
-    position:relative;
+    position:sticky;
+    top:0;
     width:100%;
     height:70px;
-    background-color:$(header.bg);
+    background-color:rgba(255,255,255,0.8);
+    -webkit-backdrop-filter:saturate(180%) blur(12px);
+    backdrop-filter:saturate(180%) blur(12px);
     z-index:1010;
-    box-shadow:0 1px 4px 0 rgba(0,0,0,0.1);
+    box-shadow:0 1px 4px 0 rgba(0,0,0,0.06);
 border-bottom: 1px solid #eee;
 }
  #header-wrap .container{
@@ -902,23 +907,16 @@ color:#777
 }
 #intro-author-heading .container {
     margin: 0 auto;
-    background:$(main.color);
-    border-radius: 15px;
+    background:transparent;
+    border-radius: 0;
     position:relative;
+    border-bottom:1px solid #eff3f4;
 }
 #intro-author-heading .bg-overlay {
-    background: linear-gradient(135deg, #1967D2 0%, #134a99 100%);
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+    display: none;
 }
 #intro-author-heading .author-content {
-    padding: 40px 30px;
+    padding: 24px 20px 32px;
     box-sizing:border-box;
     position: relative;
     z-index: 9;
@@ -932,20 +930,21 @@ display: inline-block;
     float: none;
 }
 #intro-author-heading .button:hover {
-   background: #17d1c6;
+   background: #000000;
 }
 #intro-author-heading .author-title {
    display: block;
-    font-size: 40px;
-    color: #ffffff;
-    font-weight: 700;
-    margin: 15px 0 20px;
+    font-size: 34px;
+    color: #0f1419;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0 0 10px;
     position: relative;
 }
 #intro-author-heading .author-snippet {
-   font-size: 14px;
-    color: #fefefe;
-    line-height: 24px;
+   font-size: 16px;
+    color: #536471;
+    line-height: 1.6;
     margin: 0;
 }
 #brand-services-wrap .widget-title {
@@ -1366,7 +1365,7 @@ margin:0 auto;
     font-weight:400;
     padding:8px 10px;
     margin:0 0 25px;
-    border:1px solid #ebebf3;
+    border:1px solid #eff3f4;
     border-radius:3px
 }
  .queryMessage .query-info{
@@ -1407,7 +1406,7 @@ margin:0 auto;
  .title-wrap > h3{
     position:relative;
     display:block;
-    background-color:#fdfdff;
+    background-color:#f7f9f9;
     height:34px;
     font-size:17px;
     color:$(widget.title);
@@ -1415,13 +1414,13 @@ margin:0 auto;
     line-height:34px;
     padding:0 15px;
     margin:0;
-    border-bottom:2px solid #ebebf3
+    border-bottom:2px solid #eff3f4
 }
  .custom-widget li{
     overflow:hidden;
     padding:15px 0 0;
     margin:15px 0 0;
-    border-top:1px dotted #ebebf3
+    border-top:1px dotted #eff3f4
 }
  .custom-widget li:first-child{
     padding:0;
@@ -1478,12 +1477,17 @@ display: grid;
     display: flex;
     flex-direction: column;
     overflow: visible;
-   border:1px solid #e5e5e5;
+   border:1px solid #eff3f4;
    padding:10px;
    box-sizing:border-box;
-    -webkit-border-radius: 1px;
-    -moz-border-radius: 1px;
-    border-radius: 1px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+    transition:box-shadow .2s ease, transform .2s ease;
+}
+.index-post:hover{
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+    transform:translateY(-2px);
 }
 .index-post .post-thumb {
     
@@ -1515,6 +1519,7 @@ box-sizing: border-box;
     display:block;
     z-index:1;
     overflow:hidden;
+    border-radius:12px;
 }
  .index-post .post-info{
     float:left;
@@ -1532,7 +1537,11 @@ color:$(main.dark.color);
     font-weight:600;
     line-height:1.4em;
     text-decoration:none;
-    margin:0
+    margin:0;
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden
 }
  .index-post .post-info > h2 > a{
     display:block;
@@ -1547,7 +1556,7 @@ color:$(main.dark.color);
 }
  .post-meta{
     overflow:hidden;
-    color:#aaa;
+    color:#536471;
     font-size:13px;
     font-weight:400;
     padding:0 1px
@@ -1560,19 +1569,13 @@ color:$(main.dark.color);
 .index-post-footer .post-meta .post-author, .index-post-footer .post-meta .post-date{
 float:none;
 }
- .post-meta .post-author:before,.post-meta .post-date:before{
-    font-family:FontAwesome;
-    font-weight:400;
-    margin:0 3px 0 0
-}
- .post-meta .post-author:before{
-    content:'\f007'
-}
  .post-meta .post-date:before{
-    content:'\f017'
+    content:'\00b7';
+    font-weight:400;
+    margin:0 7px 0 0
 }
  .post-meta a{
-    color:#aaa;
+    color:#536471;
     transition:color .17s
 }
  .post-meta a:hover{
@@ -1598,7 +1601,9 @@ float:none;
 }
  .post-snippet{
     position:relative;
-    display:block;
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
     overflow:hidden;
     font-size:16px;
     line-height:1.7em;
@@ -1611,33 +1616,30 @@ float:none;
     width:100%;
        padding: 7px 0 0;
     margin: 7px 0 0;
-    border-top:1px solid #e5e5e5
+    border-top:1px solid #eff3f4
 }
  a.read-more{
     height:28px;
-    font-size:12px;
+    font-size:13px;
     font-weight:600;
-    text-transform:uppercase;
+    text-transform:none;
     line-height:28px;
     padding:0 13px;
     margin:0;
 background-color:$(main.color);
     color:#fff;
  border:1px solid $(main.color);
-    border-radius:3px;
+    border-radius:9999px;
 display:inline-block;
     transition:all .17s ease
 }
  a.read-more:hover{
     background-color:$(main.dark.color);
     color:#fff;
-    border:1px solid #f2f2f6; 
+    border:1px solid $(main.dark.color);
 }
  .read-more::before{
-    content:'\f064';
-    font-family:FontAwesome;
-    font-weight:400;
-    margin:0 5px 0 0
+    content:none
 }
  a.post-tag{
     position:relative;
@@ -1656,18 +1658,18 @@ display:inline-block;
     color:#fff;
 }
  #breadcrumb{
-    font-size:12px;
+    font-size:13px;
     font-weight:400;
-    height:34px;
-    background-color:#fdfdff;
-    color:#aaa;
-    line-height:34px;
-    padding:0 15px;
-    margin:0 0 15px;
-    border-bottom:2px solid #f2f2f6
+    height:auto;
+    background-color:transparent;
+    color:#536471;
+    line-height:1.5;
+    padding:0;
+    margin:0 0 16px;
+    border-bottom:0
 }
  #breadcrumb a{
-    color:#aaa;
+    color:#536471;
     transition:color .17s
 }
  #breadcrumb a:hover{
@@ -1677,13 +1679,10 @@ display:inline-block;
     display:inline-block
 }
  #breadcrumb .delimiter:after{
-    content:'\f054';
-    font-family:FontAwesome;
-    font-size:7px;
-    font-weight:400;
+    content:'/';
     font-style:normal;
-    vertical-align:middle;
-    margin:0 3px
+    color:#8b98a5;
+    margin:0 8px
 }
  .item-post h1.post-title{
     color:$(title.color);
@@ -1700,13 +1699,13 @@ display:inline-block;
 }
  .item-post .post-body{
     width:100%;
-    font-size:15px;
-    line-height:1.6em;
+    font-size:16px;
+    line-height:1.75em;
     overflow:hidden;
     box-sizing:border-box;
     padding:20px 15px 0;
     margin:15px 0 20px;
-    border-top:1px solid #f2f2f6
+    border-top:1px solid #eff3f4
 }
  .item-post .post-outer{
     padding:0
@@ -1743,7 +1742,7 @@ display:inline-block;
     overflow:hidden;
     box-sizing:border-box;
     margin:0 0 35px;
-    border:1px solid #ebebf3;
+    border:1px solid #eff3f4;
     border-radius:3px
 }
  .post-item-inner .post-meta{
@@ -1783,15 +1782,15 @@ display:inline-block;
  .post-labels a{
     float:left;
     height:22px;
-    background-color:#fdfdff;
+    background-color:#f7f9f9;
     color:$(title.color);
     font-size:12px;
     line-height:22px;
     font-weight:400;
     margin:0;
-    padding:0 10px;
-    border:1px solid #f2f2f6;
-    border-radius:3px;
+    padding:0 12px;
+    border:1px solid #eff3f4;
+    border-radius:9999px;
     margin:0 5px 0 0;
     transition:all .17s ease
 }
@@ -1799,6 +1798,11 @@ display:inline-block;
     background-color:$(main.color);
     color:#fff;
     border-color:$(main.color)
+}
+ .post-labels a .label-count{
+    margin-left:5px;
+    font-weight:400;
+    opacity:.6
 }
  .post-reactions{
     height:28px;
@@ -1824,11 +1828,11 @@ display:inline-block;
     float:left;
     width:100%;
     overflow:hidden;
-    background-color:#fdfdff;
+    background-color:#f7f9f9;
     box-sizing:border-box;
     padding:15px;
     margin:0;
-    border-top:2px solid #f2f2f6
+    border-top:2px solid #eff3f4
 }
  ul.share-links{
     position:relative;
@@ -1896,7 +1900,7 @@ display:inline-block;
  .post-nav li span{
     display:block;
     font-size:11px;
-    color:#aaa;
+    color:#536471;
     font-weight:600;
     text-transform:uppercase;
     padding:0 0 3px
@@ -1920,14 +1924,14 @@ display:inline-block;
     margin:0 0 0 2px
 }
  .post-nav p{
-    font-family: 'Poppins',Open Sans,sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     font-size:12px;
     font-weight:400;
     line-height:1.5em;
     margin:0
 }
  .post-nav .post-nav-active p{
-    color:#aaa
+    color:#536471
 }
  .about-author{
     position:relative;
@@ -1936,7 +1940,7 @@ display:inline-block;
     background-color:#fff;
     padding:20px;
     margin:0 0 35px;
-    border:1px solid #ebebf3;
+    border:1px solid #eff3f4;
     border-radius:3px
 }
  .about-author .avatar-container{
@@ -1985,7 +1989,7 @@ display:inline-block;
     overflow:hidden;
     background-color:#fff;
     margin:0 0 35px;
-    border:1px solid #ebebf3;
+    border:1px solid #eff3f4;
     border-radius:3px
 }
  #related-wrap .related-tag{
@@ -2127,7 +2131,7 @@ display:inline-block;
     overflow:hidden;
     background-color:#fff;
     margin:0 0 35px;
-    border:1px solid #ebebf3;
+    border:1px solid #eff3f4;
     border-radius:3px
 }
  .blog-post-comments .comments-title{
@@ -2198,7 +2202,7 @@ display:inline-block;
     clear:both;
     margin:0 0 3px;
     padding:0 0 5px;
-    border-bottom:1px dotted #ebebf3
+    border-bottom:1px dotted #eff3f4
 }
  .comments .comments-content .comment-header a{
     color:$(title.color);
@@ -2208,7 +2212,7 @@ display:inline-block;
     color:$(main.color)
 }
  .comments .comments-content .user{
-    font-family: 'Poppins',Open Sans,sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     font-style:normal;
     font-weight:400;
     display:block
@@ -2228,11 +2232,11 @@ display:inline-block;
  .comments .comment .comment-actions a{
     margin-right:5px;
     padding:2px 5px;
-    background-color:#fdfdff;
+    background-color:#f7f9f9;
     color:$(title.color);
     font-weight:400;
     font-size:10px;
-    border:1px solid #f2f2f6;
+    border:1px solid #eff3f4;
     border-radius:3px;
     transition:all .17s ease
 }
@@ -2246,14 +2250,14 @@ display:inline-block;
     float:left;
     font-size:11px;
     font-weight:400;
-    color:#aaa;
+    color:#536471;
     position:relative;
     padding:0 1px;
     margin:5px 0 0;
     display:block
 }
  .comments .comments-content .datetime a,.comments .comments-content .datetime a:hover{
-    color:#aaa
+    color:#536471
 }
  .comments .thread-toggle{
     margin-bottom:4px
@@ -2310,6 +2314,15 @@ display:inline-block;
  #comment-editor{
     margin:0 0 20px
 }
+ .item-post .post-body a{
+    color:$(body.link.color);
+    text-decoration:underline;
+    text-underline-offset:2px;
+    text-decoration-thickness:1px
+}
+ .item-post .post-body a:hover{
+    text-decoration:none
+}
  .post-body h1,.post-body h2,.post-body h3,.post-body h4,.post-body h5,.post-body h6{
     color:$(title.color);
     font-weight:600;
@@ -2341,7 +2354,7 @@ display:inline-block;
     font-family:FontAwesome;
     font-style:normal;
     font-weight:400;
-    color:#aaa;
+    color:#536471;
     line-height:1
 }
  blockquote:before{
@@ -2423,7 +2436,7 @@ display:inline-block;
     line-height:34px;
     padding:0;
     margin:0;
-    border-bottom:2px solid #f2f2f6
+    border-bottom:2px solid #eff3f4
 }
  .sidebar .widget-content{
     float:left;
@@ -2462,7 +2475,7 @@ display:inline-block;
     position:relative;
     display:block;
     padding:7px 0;
-    border-top:1px dotted #ebebf3
+    border-top:1px dotted #eff3f4
 }
  .list-label li:first-child{
     padding-top:0;
@@ -2509,14 +2522,14 @@ display:inline-block;
  .cloud-label li a{
     display:block;
     height:26px;
-    background-color:#fdfdff;
+    background-color:#f7f9f9;
     color:$(title.color);
     font-size:12px;
     line-height:26px;
     font-weight:400;
-    padding:0 10px;
-    border:1px solid #f2f2f6;
-    border-radius:3px;
+    padding:0 12px;
+    border:1px solid #eff3f4;
+    border-radius:9999px;
     transition:all .17s ease
 }
  .cloud-label li a:hover{
@@ -2525,7 +2538,9 @@ display:inline-block;
     border-color:$(main.color)
 }
  .cloud-label .label-count{
-    display:none
+    margin-left:4px;
+    font-weight:400;
+    opacity:.6
 }
  .sidebar .FollowByEmail > .widget-title > h3{
     margin:0
@@ -2636,7 +2651,7 @@ display:inline-block;
     overflow:hidden;
     padding:15px 0 0;
     margin:15px 0 0;
-    border-top:1px dotted #ebebf3
+    border-top:1px dotted #eff3f4
 }
  .common-widget .PopularPosts .post:first-child{
     padding:0;
@@ -2702,7 +2717,7 @@ display:inline-block;
     box-sizing:border-box;
     padding:5px 10px;
     margin:0 0 10px;
-    border:1px solid #ebebf3;
+    border:1px solid #eff3f4;
     border-radius:3px
 }
  .contact-form-email{
@@ -2715,7 +2730,7 @@ display:inline-block;
     box-sizing:border-box;
     padding:5px 10px;
     margin:0 0 10px;
-    border:1px solid #ebebf3;
+    border:1px solid #eff3f4;
     border-radius:3px
 }
  .contact-form-email-message{
@@ -2726,7 +2741,7 @@ display:inline-block;
     box-sizing:border-box;
     padding:5px 10px;
     margin:0 0 10px;
-    border:1px solid #ebebf3;
+    border:1px solid #eff3f4;
     border-radius:3px
 }
  .contact-form-button-submit{
@@ -2790,7 +2805,7 @@ display:inline-block;
     line-height:30px;
     box-sizing:border-box;
     padding:5px 10px;
-    border:1px solid #ebebf3;
+    border:1px solid #eff3f4;
     border-right-width:0;
     border-radius:3px 0 0 3px
 }
@@ -3031,14 +3046,15 @@ color: #fefefe;
     display:block;
     width:100%;
     overflow:hidden;
-    background-color:#0C071B;
+    background-color:#ffffff;
     padding:0;
-    border-top:2px solid #ebebf3
+    border-top:1px solid #eff3f4
 }
  #footer-wrapper .container{
     overflow:hidden;
     margin:0 auto;
-    padding:15px 0
+    padding:36px 20px;
+    text-align:center
 }
 #footer-wrapper .primary-footer{
 background:#0C071B;
@@ -3091,7 +3107,7 @@ background:#0C071B;
     color:$(main.color)
 }
  #footer-about-area .Image .image-caption a:hover{
-    color:#aaa
+    color:#536471
 }
  .foot-bar-social{
     float:right;
@@ -3118,48 +3134,51 @@ position: relative;
     border-radius: 2px;
 }
  #footer-wrapper .copyright-area{
-    float:left;
+    float:none;
     font-size:13px;
     display:block;
-    height:34px;
-    color:#fff;
-    font-weight:600;
-    line-height:34px
+    height:auto;
+    color:#536471;
+    font-weight:400;
+    line-height:1.6;
+    text-align:center
 }
  #footer-wrapper .copyright-area a{
-    color:#fff;
+    color:#0f1419;
     transition:color .17s
 }
  #menu-footer{
-    float:right;
+    float:none;
     position:relative;
-    display:block
+    display:block;
+    text-align:center;
+    margin:0 0 14px
 }
  #menu-footer .widget > .widget-title{
     display:none
 }
  #menu-footer ul li{
     display:inline-block;
-    height:34px;
+    height:auto;
     padding:0;
     margin:0
 }
  #menu-footer ul li a{
-    font-size:11px;
-    font-weight:600;
+    font-size:14px;
+    font-weight:500;
     display:block;
-    color:#fff;
-    text-transform:uppercase;
-    line-height:34px;
-    padding:0 10px;
-    margin:0 0 0 5px;
+    color:#536471;
+    text-transform:none;
+    line-height:1.6;
+    padding:0 12px;
+    margin:0;
     transition:color .17s ease
 }
  #menu-footer ul li:last-child a{
     padding-right:0;
 }
  #menu-footer ul li a:hover{
-    color:#efefef
+    color:#0f1419
 }
  .hidden-widgets{
     display:none;
@@ -3648,7 +3667,7 @@ ul.hot-posts {
 <style>
   .firstcharacter{
     float:left;
-    color:#27ae60;
+    color:#0f1419;
     font-size:75px;
     line-height:60px;
     padding-right:8px;
@@ -4274,9 +4293,7 @@ const fixedSidebar = true;
           <li>
             <a class='label-name' expr:href='data:label.url'>
               <data:label.name/>
-              <b:if cond='data:this.showFreqNumbers'>
-                <span class='label-count'>(<data:label.count/>)</span>
-              </b:if>
+              <span class='label-count'>(<data:label.count/>)</span>
             </a>
           </li>
         </b:loop>
@@ -4441,10 +4458,14 @@ const fixedSidebar = true;
               <b:include name='content'/>
             </b:includable>
             <b:includable id='content'>
+              <!-- Menu hardcoded in theme (XML-controlled) so leftover template demo items
+                   stored in the live LinkList widget no longer appear. A leading '_' marks a
+                   dropdown child (handled by the menu JS), '__' a third level. -->
               <ul id='main-menu-nav' role='menubar'>
-                <b:loop values='data:links' var='link'>
-                  <li><a expr:href='data:link.target' role='menuitem'><data:link.name/></a></li>
-                </b:loop>
+                <li><a href='/' role='menuitem'>Home</a></li>
+                <li><a href='#' role='menuitem'>Languages</a></li>
+                <li><a href='/search/label/English' role='menuitem'>_English</a></li>
+                <li><a href='/search/label/日本語' role='menuitem'>_日本語</a></li>
               </ul>
             </b:includable>
           </b:widget>
@@ -4532,19 +4553,7 @@ const fixedSidebar = true;
               <b:include name='feedLinks'/>
             </b:includable>
             <b:includable id='aboutPostAuthor'>
-              <div class='about-author'>
-                <div class='avatar-container'>
-                  <b:if cond='data:post.author.authorPhoto.image'>
-                    <img class='author-avatar' loading='lazy' expr:alt='data:post.author.name' expr:src='data:post.author.authorPhoto.image resizeImage 100'/>                
-                    <b:else/>
-                    <img class='author-avatar' loading='lazy' expr:alt='data:post.author.name' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22%23d1d5db%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2090c0-17%2013-30%2030-30s30%2013%2030%2030z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
-                  </b:if>
-                </div>
-                <h3 class='author-name'>
-                  <span><data:messages.postedBy/></span><a expr:alt='data:post.author.name' expr:href='data:post.author.profileUrl' target='_blank'> <data:post.author.name/></a>
-                </h3>
-                <span class='author-description'><data:post.author.aboutMe/></span>
-              </div>
+              <b:comment>Disabled - author bio box ("Posted by") removed</b:comment>
             </b:includable>
             <b:includable id='addComments'>
               <a expr:href='data:post.commentsUrl' expr:onclick='data:post.commentsUrlOnclick'>
@@ -4975,10 +4984,7 @@ const fixedSidebar = true;
             <b:includable id='postFooter' var='post'>
               <!-- Post Footer Itens -->
               <div class='post-footer'>
-                <!-- Navigation, About Author an Related Posts -->
-                <b:include data='post' name='postNavigation'/>
-                <b:include data='post' name='aboutPostAuthor'/>
-                <b:include data='post' name='postRelated'/>
+                <!-- Older/Newer navigation, author box, and related posts removed by request -->
               </div>
             </b:includable>
             <b:includable id='postFooterAuthorProfile' var='post'>
@@ -5089,15 +5095,7 @@ const fixedSidebar = true;
                 </div>  
             </b:includable>
             <b:includable id='postShareButtons' var='post'>
-              <!-- Post ShareButtons -->
-              <b:if cond='data:allBylineItems.share'>
-                <div class='post-share'>
-                  <ul class='share-links social social-color'>
-                    <li class='x-twitter'><a class='x-twitter' expr:href='&quot;https://twitter.com/share?url=&quot; + data:post.url + &quot;&amp;text=&quot; + data:post.title' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=550, height=450, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
-                    <li class='reddit'><a class='reddit' expr:href='&quot;https://www.reddit.com/submit?url=&quot; + data:post.url + &quot;&amp;title=&quot; + data:post.title' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=550, height=650, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
-                  </ul>
-                </div>
-              </b:if>
+              <b:comment>Disabled - social share (X / Reddit) removed by request</b:comment>
             </b:includable>
             <b:includable id='postShortMeta'>
               <b:comment>Disabled</b:comment> 
@@ -5607,21 +5605,10 @@ const fixedSidebar = true;
   </div>
 </b:includable>
           </b:widget>
-          <b:widget id='HTML1' locked='false' title='' type='HTML' visible='false'>
-            <b:widget-settings>
-              <b:widget-setting name='content'/>
-            </b:widget-settings>
-            <b:includable id='main'>
-  <b:include name='widget-title'/>
-  <div class='widget-content'>
-    <data:content/>
-  </div>
-</b:includable>
-          </b:widget>
-          <b:widget id='Label3' locked='false' title='Categories' type='Label' version='2' visible='true'>
+          <b:widget id='Label3' locked='false' title='Tags' type='Label' version='2' visible='true'>
             <b:widget-settings>
               <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
-              <b:widget-setting name='display'>LIST</b:widget-setting>
+              <b:widget-setting name='display'>CLOUD</b:widget-setting>
               <b:widget-setting name='selectedLabelsList'/>
               <b:widget-setting name='showType'>ALL</b:widget-setting>
               <b:widget-setting name='showFreqNumbers'>true</b:widget-setting>
@@ -5644,10 +5631,8 @@ const fixedSidebar = true;
   </b:loop>
 </b:includable>
             <b:includable id='content'>
-      <div class='widget-content'>
-        <b:class expr:name='data:this.display + &quot;-label&quot;'/>
-        <b:include cond='data:this.display == &quot;list&quot;' name='list'/>
-        <b:include cond='data:this.display == &quot;cloud&quot;' name='list'/>
+      <div class='widget-content cloud-label'>
+        <b:include name='list'/>
       </div>
     </b:includable>
             <b:includable id='list'>
@@ -5656,13 +5641,27 @@ const fixedSidebar = true;
           <li>
             <a class='label-name' expr:href='data:label.url'>
               <data:label.name/>
-              <b:if cond='data:this.showFreqNumbers'>
-                <span class='label-count'>(<data:label.count/>)</span>
-              </b:if>
+              <span class='label-count'>(<data:label.count/>)</span>
             </a>
           </li>
         </b:loop>
       </ul>
+    </b:includable>
+          </b:widget>
+          <b:widget id='BlogSearch1' locked='false' title='Search This Blog' type='BlogSearch' version='2' visible='true'>
+            <b:includable id='main' var='this'>
+      <b:include name='widget-title'/>
+      <b:include name='content'/>
+    </b:includable>
+            <b:includable id='content'>
+      <div class='widget-content' role='search'>
+        <form class='search-form' expr:action='data:blog.searchUrl'>
+          <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
+          <b:include name='urlParamsAsFormInput'/>
+          <input autocomplete='off' class='search-input' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
+          <input class='search-action' expr:value='data:messages.search.escaped' type='submit'/>
+        </form>
+      </div>
     </b:includable>
           </b:widget>
         </b:section>
@@ -5702,7 +5701,7 @@ const fixedSidebar = true;
         </b:includable>
       </b:widget>
     </b:section>
-    <div class='copyright-area'/>
+    <div class='copyright-area'>&#169; <span id='copy-year'>2026</span> <data:blog.title/></div>
   </div>
 </div>
 
@@ -5710,7 +5709,7 @@ const fixedSidebar = true;
 <b:if cond='data:view.isSingleItem'>
 <!-- Hidden Widgets -->
 <div id='hidden-widgets-wrap' style='display:none'>
-  <b:section class='hidden-widgets' deleted='true' id='hidden-widgets' maxwidgets='1' showaddelement='no'>
+  <b:section class='hidden-widgets' deleted='true' id='hidden-widgets' maxwidgets='2' showaddelement='no'>
     <b:widget id='ContactForm1' locked='false' title='Contact form' type='ContactForm' version='2' visible='true'>
       <b:includable id='main' var='this'>
       <b:include name='widget-title'/>
@@ -5719,6 +5718,11 @@ const fixedSidebar = true;
       <b:includable id='content'>
       <b:include name='contact-form-content'/>
     </b:includable>
+    </b:widget>
+    <!-- Orphan sidebar "Tags" widget (live-only duplicate). Placed in this deleted
+         section so a theme upload removes it, leaving only Label3 as the single Tags. -->
+    <b:widget id='Label4' locked='false' title='Tags' type='Label' version='2' visible='true'>
+      <b:includable id='main'/>
     </b:widget>
   </b:section>
 </div>
@@ -6064,6 +6068,62 @@ const fixedSidebar = true;
         }).catch(function () { /* leave placeholder text as-is */ });
       });
     });
+
+    // ----- Post label counts: data:post.labels carries no global post count,
+    //       so fetch each distinct label's totalResults from the summary feed
+    //       (max-results=0 downloads no entries) and append it to the tag.
+    //       Distinct labels are fetched once and shared across duplicate links.
+    (function () {
+      var links = document.querySelectorAll('.post-labels a[rel="tag"]');
+      if (!links.length) return;
+      var pending = {};
+      links.forEach(function (a) {
+        var name = a.textContent.trim();
+        if (!name) return;
+        if (!pending[name]) {
+          pending[name] = fetch('/feeds/posts/summary/-/' + encodeURIComponent(name) + '?alt=json&max-results=0')
+            .then(function (r) { return r.json(); })
+            .then(function (d) {
+              var t = d.feed && d.feed.openSearch$totalResults && d.feed.openSearch$totalResults.$t;
+              return t == null ? null : parseInt(t, 10);
+            }).catch(function () { return null; });
+        }
+        pending[name].then(function (n) {
+          if (n == null || isNaN(n)) return;
+          var c = document.createElement('span');
+          c.className = 'label-count';
+          c.textContent = '(' + n + ')';
+          a.appendChild(c);
+        });
+      });
+    })();
+
+    // ----- Comment form host fix: Blogger sometimes points the embedded comment
+    //       editor iframe at draft.blogger.com, which won't load for visitors and
+    //       leaves the comment box blank. Rewrite it (and the src anchor) to www.
+    (function () {
+      function toWww(u) { return u ? u.replace('://draft.blogger.com', '://www.blogger.com') : u; }
+      var src = document.getElementById('comment-editor-src');
+      if (src) src.href = toWww(src.getAttribute('href') || '');
+      var ifr = document.getElementById('comment-editor');
+      if (!ifr) return;
+      function fix() {
+        var s = ifr.getAttribute('src') || '';
+        if (s.indexOf('draft.blogger.com') !== -1) ifr.src = toWww(s);
+      }
+      fix();
+      try {
+        var mo = new MutationObserver(fix);
+        mo.observe(ifr, { attributes: true, attributeFilter: ['src'] });
+        setTimeout(function () { mo.disconnect(); }, 8000);
+      } catch (e) {
+        var n = 0, iv = setInterval(function () { fix(); if (++n > 40) clearInterval(iv); }, 200);
+      }
+    })();
+
+    // ----- Footer copyright year -----
+    var __cy = document.getElementById('copy-year');
+    if (__cy) __cy.textContent = new Date().getFullYear();
 
   });
 })();
