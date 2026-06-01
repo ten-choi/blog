@@ -1173,11 +1173,11 @@ a.read-more {
 }
 /* Home: light FB-grey canvas so the white cards pop (FB feed feel) */
 .home {
-    background: #ebedf0;
+    background: #f4f6f9;
     overflow-x: hidden;
 }
 .home #outer-wrapper {
-    background-color: #ebedf0;
+    background-color: #f4f6f9;
 }
 /* Blue hero inset 15px each side → its left/right edges line up exactly with the
    content cards (which sit at 15px). Floating, fully-rounded banner (12px top gap)
@@ -1234,9 +1234,14 @@ a.read-more {
 .home .hero-header-bg-shape-bottom {
     display: none;
 }
-/* Tighten the vertical gap between the hero banner and the first post row */
+/* Tighten the vertical gap between the hero banner and the first post row.
+   Home has no slider/featured, so collapse those empty wrappers — they were
+   silently adding ~80px of dead space (slider padding 30 + featured margin 50). */
+.home #slider-wrapper, .home #featured-section {
+    display: none;
+}
 .home #content-wrapper {
-    margin-top: 5px;
+    margin-top: 26px;
 }
 @media screen and (max-width: 680px) {
     .home .hero-tagline h2 { font-size: 23px; }

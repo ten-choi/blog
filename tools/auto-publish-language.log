@@ -33,3 +33,37 @@ Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 03 �
   UPDATED -> https://ten-language-notes.blogspot.com/2026/05/unit-03.html (id: 6532945631423026772)
 
 [2026-05-29 11:10:49][language] SUCCESS: Unit 03 대명사 (committed locally; push manually when ready)
+[2026-06-01 10:01:38][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md (title: Unit 04 형용사)
+[2026-06-01 10:02:25][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md ...
+node.exe : Fatal: invalid_grant
+発生場所 行:1 文字:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Fatal: invalid_grant:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[2026-06-01 10:02:25][language] FAILED before Blogger update: publish.ts exited with code 1; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md
+[2026-06-01 11:03:13][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md (title: Unit 04 형용사)
+[2026-06-01 11:03:21][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md ...
+node.exe : Fatal: invalid_grant
+発生場所 行:1 文字:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Fatal: invalid_grant:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[2026-06-01 11:03:21][language] FAILED before Blogger update: publish.ts exited with code 1; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md
