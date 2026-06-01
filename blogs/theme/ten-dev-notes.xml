@@ -50,27 +50,27 @@ Author Url:  https://ten-dev-notes.blogspot.com/
 
 /*
 <!-- Variable definitions -->
-<Variable name="keycolor" description="Main Color" type="color" default="$(main.color)" value="#4776e6"/>
-<Variable name="followByEmail" description="Follow By Email Text" type="string" default="Get all latest content delivered straight to your inbox." value="Get all latest content delivered straight to your inbox."/>
+<Variable name="keycolor" description="Main Color" type="color" default="$(main.color)" value="#1877f2"/>
+<Variable name="followByEmail" description="Follow By Email Text" type="string" default="Subscribe to get new posts in your inbox." value="Subscribe to get new posts in your inbox."/>
 
 <Group description="Theme Colors" selector="body">
- <Variable name="main.color" description="Theme Color" type="color" default="#4776e6" value="#4776e6"/>
+ <Variable name="main.color" description="Theme Color" type="color" default="#1877f2" value="#1877f2"/>
   <Variable name="main.dark.color" description="Dark Color" type="color" default="#000000" value="#000000"/>
   <Variable name="title.color" description="Title Color" type="color" default="#000000" value="#000000"/>
-  <Variable name="title.hover" description="Title Color on Hover" type="color" default="$(main.color)" value="#4776e6"/>
+  <Variable name="title.hover" description="Title Color on Hover" type="color" default="$(main.color)" value="#1877f2"/>
 </Group>
 
 <Group description="Theme Body" selector="body">
-  <Variable name="body.background.color" description="Body Background Color" type="color" default="#dee3ff"  value="#dee3ff"/>
+  <Variable name="body.background.color" description="Body Background Color" type="color" default="#f0f2f5"  value="#f0f2f5"/>
   <Variable name="body.background" description="Background" type="background" color="$(body.background.color)" default="$(color) url() repeat fixed top left" value="$(color) url() repeat fixed top left"/>
   <Variable name="body.text.color" description="Text Color" type="color" default="#444444"  value="#444444"/>
-  <Variable name="body.link.color" description="Link Color" type="color" default="$(main.color)"  value="#4776e6"/>
+  <Variable name="body.link.color" description="Link Color" type="color" default="$(main.color)"  value="#1877f2"/>
 </Group>
 
 <Group description="Main Menu" selector="body">
   <Variable name="menu.bg" description="Menu Background Color" type="color" default="transparent"  value="transparent"/>
   <Variable name="menu.color" description="Menu Text Color" type="color" default="#ffffff"  value="#ffffff"/>
-  <Variable name="menu.hover" description="Menu Hover Color" type="color" default="$(main.color)"  value="#4776e6"/>
+  <Variable name="menu.hover" description="Menu Hover Color" type="color" default="$(main.color)"  value="#1877f2"/>
 </Group>
 
 <Group description="Sub Menu Colors" selector="body">
@@ -86,12 +86,12 @@ Author Url:  https://ten-dev-notes.blogspot.com/
 </Group>
 <Group description="Top Menu" selector="body">
   <Variable name="top.menu.color" description="Top Menu Color" type="color" default="#ffffff"  value="#ffffff"/>
-  <Variable name="top.menu.hover" description="Top Menu Hover" type="color" default="$(main.color)"  value="#4776e6"/>
+  <Variable name="top.menu.hover" description="Top Menu Hover" type="color" default="$(main.color)"  value="#1877f2"/>
 </Group>
 
 <Group description="Top Social" selector="body">
   <Variable name="top.social.color" description="Top Social Color" type="color" default="#ffffff"  value="#ffffff"/>
-  <Variable name="top.social.hover" description="Top Social Hover" type="color" default="$(main.color)"  value="#4776e6"/>
+  <Variable name="top.social.hover" description="Top Social Hover" type="color" default="$(main.color)"  value="#1877f2"/>
 </Group>
 <Group description="Slider Widget" selector="body">
   <Variable name="slider.body" description="Slider Background" type="color" default="#ffffff"  value="#ffffff"/>
@@ -107,12 +107,12 @@ Author Url:  https://ten-dev-notes.blogspot.com/
 <Group description="Grid Wrapper" selector="body">
   <Variable name="grid.bg" description="Footer Background Color" type="color" default="#ffffff"  value="#ffffff"/>
   <Variable name="grid.color" description="Footer Text Color" type="color" default="$(main.dark.color)" value="#203656"/>
-  <Variable name="grid.hover" description="Footer Hover Color" type="color" default="$(main.color)"  value="#4776e6"/>
+  <Variable name="grid.hover" description="Footer Hover Color" type="color" default="$(main.color)"  value="#1877f2"/>
 </Group>
 <Group description="Footer" selector="body">
-  <Variable name="footer.bg" description="Footer Background Color" type="color" default="$(main.dark.color)"  value="#26292c"/>
-  <Variable name="footer.color" description="Footer Text Color" type="color" default="#ffffff"  value="#ffffff"/>
-  <Variable name="footer.hover" description="Footer Hover Color" type="color" default="$(main.color)"  value="#4776e6"/>
+  <Variable name="footer.bg" description="Footer Background Color" type="color" default="$(main.dark.color)"  value="#f0f2f5"/>
+  <Variable name="footer.color" description="Footer Text Color" type="color" default="#ffffff"  value="#65676b"/>
+  <Variable name="footer.hover" description="Footer Hover Color" type="color" default="$(main.color)"  value="#1877f2"/>
 </Group>
  
 <!-- Extra Variables -->
@@ -121,8 +121,8 @@ Author Url:  https://ten-dev-notes.blogspot.com/
 <Variable name="tabs.font" description="Font 2" hideEditor="true" type="font" default="14px Merriweather"  value="14px Merriweather"/>
 <Variable name="posts.title.color" description="Post title color" hideEditor="true" type="color" default="#000000"  value="#000000"/>
 <Variable name="posts.text.color" description="Post text color" hideEditor="true" type="color" default="#656565"  value="#656565"/>
-<Variable name="posts.icons.color" description="Post icons color" hideEditor="true" type="color" default="$(main.color)"  value="#EAB543"/>
-<Variable name="labels.background.color" description="Label background color" hideEditor="true" type="color" default="$(main.color)"  value="#EAB543"/>
+<Variable name="posts.icons.color" description="Post icons color" hideEditor="true" type="color" default="$(main.color)"  value="#1877f2"/>
+<Variable name="labels.background.color" description="Label background color" hideEditor="true" type="color" default="$(main.color)"  value="#1877f2"/>
 */
 
 /*-- Google Fonts CSS --*/
@@ -542,8 +542,8 @@ h1, h2, h3, h4, h5, h6 {
  body{
     background:$(body.background);
     background-color:$(body.background.color);
-    font-family:'Barlow', sans-serif;;
-    font-size:14px;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,'Barlow',sans-serif;
+    font-size:16px;
     font-weight:400;
     color:$(body.text.color);
     word-wrap:break-word;
@@ -855,7 +855,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color:$(main.dark.color)
 }
 .hero-header-bg {
-    background-image: linear-gradient(135deg, #4776e6 0%, #2c5fc0 100%);
+    background-image: linear-gradient(135deg, #1877f2 0%, #2c5fc0 100%);
     background-repeat: no-repeat;
     background-size: cover;
     position:relative;
@@ -961,7 +961,7 @@ h1, h2, h3, h4, h5, h6 {
 .item #main-menu, .static_page #main-menu {
     position: relative; width: auto; height: 70px; z-index: 15; background: transparent;
 }
-/* The raw <ul> here isn't inside a .widget, so the global ".widget ul{margin:0}"
+/* The raw ul here isn't inside a .widget, so the global ".widget ul{margin:0}"
    reset never reaches it — zero its default margin so the menu doesn't sit low. */
 .item #main-menu ul#main-menu-nav, .static_page #main-menu ul#main-menu-nav {
     margin: 0; padding: 0; height: 70px;
@@ -999,6 +999,285 @@ h1, h2, h3, h4, h5, h6 {
     .item .mobile-menu-toggle, .static_page .mobile-menu-toggle {
         display: inline-block; right: 0; left: auto;
     }
+}
+/* Post / static header: social icons (LinkedIn + GitHub) on the right, like home top-right.
+   Dark glyphs to read on the white bar; blue hover to match the menu links. */
+.item .header-social, .static_page .header-social {
+    float: right;
+    height: 70px;
+}
+.item .header-social ul, .static_page .header-social ul {
+    margin: 0; padding: 0; list-style: none; height: 70px;
+}
+.item .header-social li, .static_page .header-social li {
+    float: left; display: inline-block; margin: 0;
+}
+.item .header-social li > a, .static_page .header-social li > a {
+    display: block; width: 30px; height: 70px; line-height: 70px;
+    text-align: center; color: #202124; font-size: 16px; text-decoration: none;
+    transition: color .15s ease;
+}
+.item .header-social li > a:hover, .static_page .header-social li > a:hover {
+    color: #1967D2;
+}
+@media screen and (max-width: 880px) {
+    .item .header-social, .static_page .header-social { display: none; }
+}
+/* ════ HOME hero — Facebook-flavored (bright blue, rounded, soft). Home only; wave kept. ════ */
+/* Brighter, friendlier FB-blue gradient instead of the muddy navy look */
+.home .hero-header-bg {
+    background-image: linear-gradient(180deg, #1877f2 0%, #0a66d6 100%);
+}
+/* Drop the heavy 71% dark overlay → keep only a faint depth wash so text stays crisp */
+.home .hero-header-bg:before {
+    background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(10,60,140,0.18) 100%);
+    border-radius: inherit;
+}
+/* System font stack across the home header for the clean FB feel */
+.home #header-wrap,
+.home #header-wrap h1,
+.home #header-wrap a {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+/* Top-bar nav links → rounded pill hover (FB tab style) */
+.home .top-bar-nav ul li > a {
+    border-radius: 8px;
+    padding: 0 12px;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0.2px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+.home .top-bar-nav ul > li:hover > a {
+    background: rgba(255,255,255,0.16);
+    color: #fff;
+}
+/* Social icons → soft round buttons */
+.home .top-bar-social ul > li > a {
+    width: 34px; height: 34px; line-height: 34px;
+    border-radius: 50%;
+    padding: 0; margin: 0 0 0 8px;
+    background: rgba(255,255,255,0.12);
+    transition: background 0.15s ease, color 0.15s ease;
+}
+.home .top-bar-social ul > li:last-child > a {
+    padding: 0;
+}
+.home .top-bar-social ul > li:hover > a {
+    background: rgba(255,255,255,0.24);
+    color: #fff;
+}
+/* Logo title → clean white, slightly bolder */
+.home .header-logo h1,
+.home .header-logo h1 a {
+    color: #fff;
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 0.2px;
+}
+/* Menu bar is empty on home (the LinkList menu is hidden) → drop the divider line
+   and collapse the vestigial bar so the logo sits closer to the hero tagline */
+.home .header-menu {
+    height: 18px;
+}
+.home .header-menu .container {
+    border-top: 0;
+}
+.home .header-menu .container:after {
+    display: none;
+}
+/* Menu links → floating translucent pills (FB nav feel) */
+.home #main-menu #main-menu-nav > li > a {
+    text-transform: none;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    border-radius: 8px;
+    margin: 7px 3px;
+    padding: 0 14px;
+    line-height: 34px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+.home #main-menu ul > li:hover > a {
+    background: rgba(255,255,255,0.16);
+    color: #fff;
+}
+/* Current page highlight: subtle pill, not a solid block */
+.home #main-menu #main-menu-nav > li.li-home {
+    background-color: transparent;
+}
+.home #main-menu #main-menu-nav > li.li-home > a {
+    background: rgba(255,255,255,0.22);
+    color: #fff;
+}
+/* Sticky menu when scrolled → solid FB-blue bar with a soft shadow */
+.home .header-menu.scrolled-header,
+.home .header-menu.scrolled-header .container {
+    background: #1877f2;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+/* ════ POST / static pages — light Facebook flavor (grey canvas + white cards). ════ */
+/* FB-like light grey canvas behind the content — on BOTH the body (big-monitor
+   side gutters) and the 1320px outer-wrapper, so the look is identical at any width. */
+/* Post pages: plain white, full width — header white (100%) and content white (100%)
+   line up; no grey canvas or card insets. */
+/* Header bar: white, with FB blue accents + system font + pill nav */
+.item #header-wrap, .static_page #header-wrap {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.item .main-logo h1, .item .main-logo h1 a,
+.static_page .main-logo h1, .static_page .main-logo h1 a {
+    color: #1877f2;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.item #main-menu ul#main-menu-nav > li > a,
+.static_page #main-menu ul#main-menu-nav > li > a {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    border-radius: 8px;
+    margin: 18px 2px;
+    padding: 0 14px;
+    line-height: 34px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+.item #main-menu ul#main-menu-nav > li:hover > a,
+.static_page #main-menu ul#main-menu-nav > li:hover > a {
+    color: #1877f2;
+    background: rgba(24,119,242,0.10);
+}
+/* ════ Site-wide Facebook polish — buttons, home grid cards, pill tags ════ */
+/* Buttons → FB blue, rounded, sentence-case (read-more / pager / show-more / contact) */
+a.read-more,
+.contact-form-button-submit,
+.blog-pager .blog-pager-newer-link, .blog-pager .blog-pager-older-link,
+.queryMessage a.show-more {
+    background-color: #1877f2;
+    color: #fff;
+    border-radius: 8px;
+    text-transform: none;
+    font-weight: 600;
+    box-shadow: none;
+    transition: background 0.15s ease;
+}
+a.read-more:hover,
+.contact-form-button-submit:hover,
+.blog-pager .blog-pager-newer-link:hover, .blog-pager .blog-pager-older-link:hover,
+.queryMessage a.show-more:hover {
+    background-color: #0a66d6;
+    color: #fff;
+}
+/* read-more: a touch taller so the rounded corners read well */
+a.read-more {
+    height: 36px;
+    line-height: 36px;
+    padding: 0 18px;
+}
+/* Home: light FB-grey canvas so the white cards pop (FB feed feel) */
+.home {
+    background: #ebedf0;
+    overflow-x: hidden;
+}
+.home #outer-wrapper {
+    background-color: #ebedf0;
+}
+/* Blue hero inset 15px each side → its left/right edges line up exactly with the
+   content cards (which sit at 15px). Floating, fully-rounded banner (12px top gap)
+   so all four corners are soft — not a boxy bar. */
+.home .hero-header-bg {
+    margin: 12px 15px 0;
+    box-sizing: border-box;
+    border-radius: 14px;
+}
+/* Hero is already inset 15px, so its inner content sits flush (0) to align with cards */
+.home .hero-header-bg .container {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+.home .header-header .flex-left { left: 0; }
+.home .header-header .flex-right { right: 0; }
+/* Tags & labels → rounded pills */
+.post-meta-top .post-tag {
+    border-radius: 100px;
+    text-transform: none;
+}
+.post-labels span, .post-labels a {
+    height: 24px;
+    line-height: 24px;
+    border-radius: 100px;
+    padding: 0 12px;
+}
+/* TEMP hero tagline (homepage) — sits above the hero overlay (z-index:2) */
+.home .hero-tagline {
+    position: relative;
+    z-index: 3;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 6px 20px 8px;
+    text-align: center;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.home .hero-tagline h2 {
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 14px;
+    color: #fff;
+}
+.home .hero-tagline p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 0;
+    color: rgba(255,255,255,0.92);
+}
+/* Wave removed for a cleaner, flat modern hero edge */
+.home .hero-header-bg-shape-bottom {
+    display: none;
+}
+/* Tighten the vertical gap between the hero banner and the first post row */
+.home #content-wrapper {
+    margin-top: 5px;
+}
+@media screen and (max-width: 680px) {
+    .home .hero-tagline h2 { font-size: 23px; }
+    .home .hero-tagline p { font-size: 15px; }
+}
+/* ════ Modern polish — sticky post header, author chip, reading progress ════ */
+/* Sticky header on post/static pages — stick the hero-header-bg (the white bar's
+   parent); #header-wrap itself can't stick because its parent is only bar-height. */
+.item .hero-header-bg, .static_page .hero-header-bg {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+/* Breadcrumb: keep the current (long) title from repeating the H1 — truncate it */
+#breadcrumb .current {
+    display: inline-block;
+    max-width: 320px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+}
+/* Reading progress bar (post pages only) */
+.read-progress {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 3px;
+    background: transparent;
+    z-index: 10000;
+    pointer-events: none;
+}
+.read-progress > span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: #1877f2;
+}
+/* Hide the auto-injected "Powered by Blogger" attribution */
+#attribution, .attribution-wrap, .Attribution {
+    display: none !important;
 }
  #header-wrap{
     position:relative;
@@ -2039,14 +2318,17 @@ display:none;
  .index-post{
   display: block;
     margin:0;
-    border: 1px solid rgb(133 137 160 / 22%);
-    border-radius: 15px;
+    border: 0;
+    border-radius: 14px;
     padding: 20px;
-    transition: 0.3s ease;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
     box-sizing:border-box;
 }
-.index-post:hover{ 
-    box-shadow: 0 20px 35px rgb(112 121 139 / 22%);
+.index-post:hover{
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
 }
  .index-post .post-image-wrap-outer {
     float: left;
@@ -2063,6 +2345,14 @@ display:block;
     width: 100%;
     height: 250px;
     overflow: hidden;
+    border-radius: 10px;
+}
+/* FB feel: subtle zoom on the card thumbnail on hover */
+.index-post .post-thumb{
+    transition: transform 0.3s ease;
+}
+.index-post:hover .post-thumb{
+    transform: scale(1.04);
 }
  .index-post .post-image-wrap .post-image-link{
     width:100%;
@@ -2131,7 +2421,7 @@ text-align:left;
     position:relative;
     display:block;
     overflow:hidden;
-    font-size:15px;
+    font-size:16px;
     color:#918f94;
     line-height:1.8em;
     font-weight:400;
@@ -2205,8 +2495,8 @@ color:#fff;
 }
  .item-post .post-body{
     width:100%;
-    font-size:15px;
-    line-height:1.5em;
+    font-size:17px;
+    line-height:1.7em;
     overflow:hidden;
     padding:20px 0 0;
     margin:10px 0 0;
@@ -2219,7 +2509,8 @@ color:#fff;
     padding:0
 }
  .item-post .post-body img{
-    max-width:100%
+    max-width:100%;
+    border-radius: 10px;
 }
 /* Hero banner: post 첫 이미지를 자동으로 배너 스타일로 (rounded + shadow + height cap). */
 .item-post .post-body > p:first-child:has(> img:only-child){
@@ -2586,10 +2877,12 @@ color:#fff;
     padding:0
 }
  .comments > h3{
-    font-size:13px;
-    font-weight:400;
-    font-style:italic;
-    padding-top:1px
+    font-size:18px;
+    font-weight:700;
+    font-style:normal;
+    color:$(title.color);
+    margin:0 0 16px;
+    padding:0
 }
  .comments .comments-content .comment{
     list-style:none;
@@ -2832,45 +3125,40 @@ color:#fff;
  .sidebar .widget{
     position:relative;
     overflow:hidden;
-    background: #F3F4F7;
-    box-sizing:border-box;
     padding:20px;
-    margin:0 0 30px
+    background: #fff;
+    webkit-box-shadow: 0px 1px 4px 0px rgb(0 0 0 / 15%);
+    -moz-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 4px 0px rgb(0 0 0 / 15%);
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+    box-sizing:border-box;
+    margin:0 0 35px;
 }
  .sidebar .widget-title{
-position: relative;
-    float: left;
-    width: 100%;
-    line-height: 1;
-    padding: 0;
-    margin: 0 0 25px;
-    text-align: center;
-}
-.sidebar .widget-title > h3:after {
-   content:'';
-   width: 100%;
-    display: block;
-    margin-left: 0;
-    margin-top: 8px;
-    height: 1px;
-    opacity: .25;
-    background: #000;
-    background: radial-gradient(circle,#000,transparent);
+    position:relative;
+    float:left;
+    width:100%;
+    margin:0
 }
  .sidebar .widget-title > h3{
- position: relative;
-    display: block;
-    font-size: 20px;
-    color: $(title.color);
-    text-transform: capitalize;
-    letter-spacing: 1.5px;
-    font-weight: 600;
+    position:relative;
+    display:block;
+    height:34px;
+    font-size:17px;
+    color:$(title.color);
+    font-weight:600;
+    line-height:34px;
     padding:0;
-    margin: 0;
+    margin:0;
+    border-bottom:2px solid #eff3f4
 }
  .sidebar .widget-content{
     float:left;
     width:100%;
+    box-sizing:border-box;
+    padding:15px 0;
     margin:0
 }
  ul.social-counter{
@@ -2878,12 +3166,12 @@ position: relative;
 }
  .social-counter li{
     float:left;
-    width:25%;
+    width:20%;
     box-sizing:border-box;
     padding:0 5px;
     margin:10px 0 0
 }
- .social-counter li:nth-child(1),.social-counter li:nth-child(2),.social-counter li:nth-child(3),.social-counter li:nth-child(4){
+ .social-counter li:nth-child(1),.social-counter li:nth-child(2),.social-counter li:nth-child(3),.social-counter li:nth-child(4),.social-counter li:nth-child(5){
     margin-top:0
 }
  .social-counter li a{
@@ -2903,7 +3191,7 @@ position: relative;
     position:relative;
     display:block;
     padding:7px 0;
-    border-top:1px dotted #ebebeb
+    border-top:1px dotted #eff3f4
 }
  .list-label li:first-child{
     padding-top:0;
@@ -2916,7 +3204,7 @@ position: relative;
  .list-label li a{
     display:block;
     color:$(title.color);
-    font-size:12px;
+    font-size:13px;
     font-weight:400;
     text-transform:capitalize;
     transition:color .17s
@@ -2928,24 +3216,19 @@ position: relative;
     font-weight:400;
     font-family:FontAwesome;
     font-size:6px;
-    margin:5px 3px 0 0;
+    margin:6px 3px 0 0;
     transition:color .17s
 }
  .list-label li a:hover{
-    color:$(title.hover)
+    color:$(main.color)
 }
  .list-label .label-count{
     position:relative;
     float:right;
-    width:16px;
-    height:16px;
-    background-color:$(main.color);
-    color:#fff;
     font-size:11px;
     font-weight:400;
     text-align:center;
-    line-height:16px;
-    border-radius:2px
+    line-height:16px
 }
  .cloud-label li{
     position:relative;
@@ -2955,21 +3238,25 @@ position: relative;
  .cloud-label li a{
     display:block;
     height:26px;
-    background-color:#f2f2f2;
+    background-color:#f7f9f9;
     color:$(title.color);
     font-size:12px;
     line-height:26px;
     font-weight:400;
-    padding:0 10px;
-    border-radius:2px;
+    padding:0 12px;
+    border:1px solid #eff3f4;
+    border-radius:9999px;
     transition:all .17s ease
 }
  .cloud-label li a:hover{
     color:#fff;
-    background-color:$(main.color)
+    background-color:$(main.color);
+    border-color:$(main.color)
 }
  .cloud-label .label-count{
-    display:none
+    margin-left:4px;
+    font-weight:400;
+    opacity:.6
 }
  .sidebar .FollowByEmail > .widget-title > h3{
     margin:0
@@ -2977,19 +3264,15 @@ position: relative;
  .FollowByEmail .widget-content{
     position:relative;
     overflow:hidden;
-    background-color:#f9f9f9;
     text-align:center;
     font-weight:400;
     box-sizing:border-box;
-    padding:20px;
-    border-radius:2px;
-    border:1px solid #f0f0f0
+    padding:20px
 }
  .FollowByEmail .widget-content > h3{
-    font-size:18px;
+    font-size:17px;
     color:$(title.color);
-    font-weight:700;
-    text-transform:uppercase;
+    font-weight:600;
     margin:0 0 13px
 }
  .FollowByEmail .before-text{
@@ -2999,16 +3282,6 @@ position: relative;
     display:block;
     padding:0 10px;
     overflow:hidden
-}
- .FollowByEmail .widget-content:after{
-    content:'\f0e0';
-    position:absolute;
-    right:-15px;
-    top:-15px;
-    font-family:FontAwesome;
-    font-size:50px;
-    color:#f0f0f0;
-    transform:rotate(21deg)
 }
  .FollowByEmail .follow-by-email-inner{
     position:relative
@@ -3022,8 +3295,8 @@ position: relative;
     padding:0 10px;
     margin:0 0 10px;
     box-sizing:border-box;
-    border:1px solid #f0f0f0;
-    border-radius:2px;
+    border:1px solid #eee;
+    border-radius:3px;
     transition:ease .17s
 }
  .FollowByEmail .follow-by-email-inner .follow-by-email-submit{
@@ -3035,15 +3308,15 @@ position: relative;
     background-color:$(main.color);
     text-transform:uppercase;
     text-align:center;
-    font-weight:700;
+    font-weight:600;
     cursor:pointer;
     margin:0;
     border:0;
-    border-radius:2px;
-    transition:opacity .17s ease
+    border-radius:3px;
+    transition:background .17s ease
 }
  .FollowByEmail .follow-by-email-inner .follow-by-email-submit:hover{
-    opacity:.85
+    background-color:$(main.dark.color)
 }
  #ArchiveList ul.flat li{
     color:$(title.color);
@@ -3065,16 +3338,16 @@ position: relative;
     transition:color .17s
 }
  #ArchiveList .flat li > a:hover{
-    color:$(title.hover)
+    color:$(main.color)
 }
  #ArchiveList .flat li > a:before{
     content:"\f054";
     float:left;
-    color:#161619;
+    color:$(title.color);
     font-weight:400;
     font-family:FontAwesome;
     font-size:6px;
-    margin:5px 4px 0 0;
+    margin:6px 3px 0 0;
     display:inline-block;
     transition:color .17s
 }
@@ -3088,50 +3361,48 @@ position: relative;
     font-size:11px;
     font-weight:400;
     text-align:center;
-    line-height:16px;
-    border-radius:2px
+    line-height:16px
 }
- .PopularPosts .default-popularpost{
+ .common-widget .PopularPosts .post{
     overflow:hidden;
-    margin:20px 0 0
+    padding:15px 0 0;
+    margin:15px 0 0;
+    border-top:1px dotted #eff3f4
 }
-.PopularPosts .default-popularpost:first-child {
-    margin: 0;
-}
- .PopularPosts .default-popularpost .post:first-child{
+ .common-widget .PopularPosts .post:first-child{
     padding:0;
     margin:0;
     border:0
 }
- .PopularPosts .default-popularpost .post-image-link{
+ .common-widget .PopularPosts .post-image-link{
     position:relative;
-    width:80px;
+    width:75px;
     height:60px;
     float:left;
     overflow:hidden;
     display:block;
     vertical-align:middle;
     margin:0 12px 0 0;
-    border-radius:4px
+    border-radius:3px
 }
- .PopularPosts .default-popularpost .post-info{
+ .common-widget .PopularPosts .post-info{
     overflow:hidden
 }
- .PopularPosts .default-popularpost .post-title{
-    font-size:13px;
+ .common-widget .PopularPosts .post-title{
+    font-size:15px;
     font-weight:400;
     line-height:1.5em;
-    margin:0 0 3px
+    margin:0
 }
- .PopularPosts .default-popularpost .post-title a{
+ .common-widget .PopularPosts .post-title a{
     display:block;
     color:$(title.color);
     transition:color .17s
 }
- .PopularPosts .default-popularpost:hover .post-title a{
-    color:$(title.hover)
+ .common-widget .PopularPosts .post:hover .post-title a{
+    color:$(main.color)
 }
- .PopularPosts .default-popularpost .post-date:before{
+ .common-widget .PopularPosts .post-date:before{
     font-size:10px
 }
  .FeaturedPost .post-image-link{
@@ -3455,18 +3726,19 @@ display:block;
  .back-top{
     display:none;
     z-index:1010;
-    width:32px;
-    height:32px;
+    width:46px;
+    height:46px;
     position:fixed;
-    bottom:25px;
-    right:25px;
+    bottom:28px;
+    right:28px;
     cursor:pointer;
     overflow:hidden;
-    font-size:13px;
+    font-size:15px;
     color:#fff;
     text-align:center;
-    line-height:32px;
-    border-radius:2px
+    line-height:46px;
+    border-radius:50%;
+    box-shadow:0 4px 14px rgba(0,0,0,0.2)
 }
  .back-top:before{
     content:'';
@@ -3476,7 +3748,7 @@ display:block;
     right:0;
     bottom:0;
     background-color:$(main.color);
-    opacity:.5;
+    opacity:1;
     transition:opacity .17s ease
 }
  .back-top:after{
@@ -4096,7 +4368,7 @@ body#layout #hidden-widgets{
 <!-- Global Variables -->
 <script type='text/javascript'>
 //<![CDATA[
-const postPerPage = 7;
+var postPerPage = 7;
 //]]>
 </script>
 
@@ -4381,6 +4653,24 @@ const postPerPage = 7;
 </head>
 <body expr:class='data:blog.pageType'>
   <b:class cond='data:view.isHomepage' name='home'/>
+  <b:if cond='data:view.isPost'>
+    <div class='read-progress'><span/></div>
+    <script>//<![CDATA[
+    (function(){
+      var bar = document.querySelector('.read-progress > span');
+      if (!bar) return;
+      function upd(){
+        var h = document.documentElement;
+        var st = h.scrollTop || document.body.scrollTop;
+        var max = (h.scrollHeight || document.body.scrollHeight) - h.clientHeight;
+        bar.style.width = (max > 0 ? (st / max * 100) : 0) + '%';
+      }
+      window.addEventListener('scroll', upd, {passive:true});
+      window.addEventListener('resize', upd);
+      upd();
+    })();
+    //]]></script>
+  </b:if>
   <b:class cond='data:view.isPage' name='item'/>
   <b:class cond='data:view.isSingleItem' name='item'/>
   <b:class cond='data:view.isArchive' name='index'/>
@@ -4388,7 +4678,7 @@ const postPerPage = 7;
 
 <!-- Boxed Layout Styles -->
 <style type='text/css'>
-#outer-wrapper { max-width: 1370px; background-color: #fff; border-radius: 25px; margin: 50px auto; overflow: hidden; }
+#outer-wrapper { max-width: 1370px; background-color: #fff; border-radius: 14px; margin: 50px auto; overflow: hidden; }
 #overlap-wrapper { margin: 0 !important; }
 .shrink-wrapper { padding: 0 15px; }
 .header-header { padding: 40px 15px; }
@@ -4512,11 +4802,11 @@ const postPerPage = 7;
          <div class='flex-right flex-content'>
             <!-- Top Social --> 
         <b:section class='top-bar-social social' id='top-bar-social' maxwidgets='1' name='Social Top' showaddelement='yes'>
-           <b:widget id='LinkList73' locked='true' title='Social Widget' type='LinkList' version='2' visible='true'>
+           <b:widget id='LinkList73' locked='false' title='Social Widget' type='LinkList' version='2' visible='true'>
              <b:widget-settings>
                <b:widget-setting name='sorting'>NONE</b:widget-setting>
                <b:widget-setting name='text-0'>linkedin</b:widget-setting>
-               <b:widget-setting name='link-0'>https://www.linkedin.com/in/yeol-choi/</b:widget-setting>
+               <b:widget-setting name='link-0'>https://www.linkedin.com/in/yeol-choi</b:widget-setting>
                <b:widget-setting name='text-1'>github</b:widget-setting>
                <b:widget-setting name='link-1'>https://github.com/ten-choi</b:widget-setting>
              </b:widget-settings>
@@ -4588,6 +4878,12 @@ const postPerPage = 7;
           </ul>
         </div>
       </div>
+      <div class='social header-social'>
+        <ul>
+          <li class='linkedin'><a href='https://www.linkedin.com/in/yeol-choi' title='linkedin' target='_blank'/></li>
+          <li class='github'><a href='https://github.com/ten-choi' title='github' target='_blank'/></li>
+        </ul>
+      </div>
       <span class='mobile-menu-toggle'/>
     </div>
     </b:if>
@@ -4613,6 +4909,16 @@ const postPerPage = 7;
       </b:widget>
     </b:section>
   </div>
+
+  <!-- TEMP hero tagline (homepage only) — placeholder copy, remove/replace later -->
+  <b:if cond='data:view.isHomepage'>
+    <div class='hero-tagline'>
+      <h2>I&apos;m a developer who wants to build in English.</h2>
+      <p>Learning to think, write, and ship in English —<br/>
+         notes on backend, databases, and systems,<br/>
+         one post at a time.</p>
+    </div>
+  </b:if>
 
   <!-- Wave shape (homepage only — too tall on item/static pages) -->
   <b:if cond='data:view.isHomepage'>
@@ -4809,11 +5115,6 @@ const postPerPage = 7;
               </div>
             </b:includable>
             <b:includable id='commentPicker' var='post'>
-              <b:if cond='data:post.allowComments'>
-                <div class='title-wrap comments-title'>
-                  <h3><data:messages.postAComment/></h3>
-                </div>
-              </b:if>
               <b:if cond='data:post.commentSource == 1'>
                 <b:include data='post' name='iframeComments'/>
                 <b:elseif cond='data:post.showThreadedComments'/>
@@ -4930,7 +5231,7 @@ const postPerPage = 7;
               <!-- Post Footer Extras -->
               <b:include data='post' name='postLabels'/>
               <b:include data='post' name='postReactions'/>
-              <b:include data='post' name='postShareButtons'/>
+              <!-- postShareButtons removed (bottom social/share links) -->
             </b:includable>
             <b:includable id='googlePlusShare'>
   <b:comment>Disabled (Google+ shut down 2019; g: prefix was undeclared and broke theme restore)</b:comment>
@@ -4939,8 +5240,7 @@ const postPerPage = 7;
               <!-- Post Header Meta -->
                 <div class='post-meta'>
                   <b:include data='post' name='postAuthor'/>
-                  <b:include data='post' name='postTimestamp'/>                
-                 
+                  <b:include data='post' name='postTimestamp'/>
                 </div>
             </b:includable>
             <b:includable id='homePageLink'>
@@ -5125,8 +5425,6 @@ const postPerPage = 7;
               <!-- Post Footer Itens -->
               <div class='post-footer'>
                 <b:include data='post' name='footerBylines'/>
-                <b:include data='post' name='postNavigation'/>
-                <b:include data='post' name='aboutPostAuthor'/>
               </div>
             </b:includable>
             <b:includable id='postFooterAuthorProfile' var='post'>
@@ -5413,47 +5711,20 @@ const postPerPage = 7;
 
       <!-- Sidebar Wrapper -->
       <div id='sidebar-wrapper'>
-        <b:section class='sidebar common-widget' id='sidebar1' name='Sidebar Right (A)' showaddelement='yes'/>
-        <b:section class='sidebar' id='social-widget' maxwidgets='1' name='Social Widget' showaddelement='yes'>
-          <b:widget id='LinkList75' locked='true' title='Social Plugin' type='LinkList' version='2' visible='true'>
-            <b:widget-settings>
-              <b:widget-setting name='sorting'>NONE</b:widget-setting>
-              <b:widget-setting name='text-0'>linkedin</b:widget-setting>
-              <b:widget-setting name='link-0'>https://www.linkedin.com/in/yeol-choi/</b:widget-setting>
-              <b:widget-setting name='text-1'>github</b:widget-setting>
-              <b:widget-setting name='link-1'>https://github.com/ten-choi</b:widget-setting>
-            </b:widget-settings>
-            <b:includable id='main'>
-  <b:include name='widget-title'/>
-  <b:include name='content'/>
-</b:includable>
-            <b:includable id='content'>
-              <div class='widget-content'>
-                <ul class='social-counter social social-color'>
-                  <b:loop values='data:links' var='link'>
-                    <li expr:class='data:link.name'><a expr:href='data:link.target' expr:title='data:link.name' target='_blank'/></li>
-                  </b:loop>
-                </ul>
-              </div>
-            </b:includable>
-          </b:widget>
-        </b:section>
-        <b:section class='sidebar common-widget' id='sidebar2' name='Sidebar Right (B)' showaddelement='yes'>
-          <b:widget id='PopularPosts2' locked='false' title='Most Popular' type='PopularPosts' version='2' visible='true'>
+        <b:section class='sidebar common-widget' id='sidebar1' name='Sidebar Right' showaddelement='yes'>
+          <b:widget id='PopularPosts1' locked='false' title='Popular Posts' type='PopularPosts' version='2' visible='true'>
             <b:widget-settings>
               <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
               <b:widget-setting name='showThumbnails'>true</b:widget-setting>
               <b:widget-setting name='showSnippets'>true</b:widget-setting>
-              <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
+              <b:widget-setting name='timeRange'>LAST_WEEK</b:widget-setting>
             </b:widget-settings>
             <b:includable id='main' var='this'>
       <b:include name='widget-title'/>
       <div class='widget-content'>
-          <b:tag class='main-slider' cond='data:widget.sectionId == &quot;slider-section&quot;' name='ul'>
-        <b:loop index='i' values='data:posts' var='post'>
+        <b:loop values='data:posts' var='post'>
           <b:include data='post' name='postContent'/>
         </b:loop>
-            </b:tag>
       </div>
     </b:includable>
             <b:includable id='blogThisShare'>
@@ -5498,9 +5769,8 @@ const postPerPage = 7;
             <b:includable id='commentsLinkIframe'>
   <!-- G+ comments, no longer available. The includable is retained for backwards-compatibility. -->
 </b:includable>
-            <b:includable id='default' var='post'>
-       <div class='post default-popularpost'>  
-              <b:class expr:name='&quot;item-&quot;+data:i'/>
+            <b:includable id='defaultContent' var='post'>
+               <div class='post'>
         <div class='post-content'>
           <a class='post-image-link' expr:href='data:post.url'>
             <b:if cond='data:post.featuredImage'>
@@ -5519,7 +5789,7 @@ const postPerPage = 7;
           </div>
         </div>
       </div>
-    </b:includable>
+            </b:includable>
             <b:includable id='emailPostIcon'>
   <span class='byline post-icons'>
     <!-- email post links -->
@@ -5549,7 +5819,9 @@ const postPerPage = 7;
   </b:if>
 </b:includable>
             <b:includable id='googlePlusShare'>
-  <b:comment>Disabled (Google+ shut down 2019; g: prefix was undeclared and broke theme restore)</b:comment>
+  <div class='goog-inline-block google-plus-share-container'>
+    <g:plusone annotation='inline' expr:href='data:originalUrl.canonical.http' size='medium' source='blogger:blog:plusone'/>
+  </div>
 </b:includable>
             <b:includable id='headerByline'>
   <b:if cond='data:widgets.Blog.first.headerByline'>
@@ -5562,6 +5834,40 @@ const postPerPage = 7;
     </div>
   </b:if>
 </b:includable>
+            <b:includable id='hotBox' var='post'>
+            <b:if cond='data:i lt 5'>
+              <div class='hot-item'>
+              <b:class expr:name='&quot;item-&quot;+data:i'/>               
+            <div class='hot-item-inner'>
+              <b:if cond='data:i in [0,1]'>
+                               <b:if cond='data:post.labels'><span class='post-tag'><data:post.labels.first.name/></span></b:if>
+            </b:if>
+          <a class='post-image-link' expr:href='data:post.url'>
+            <b:if cond='data:post.featuredImage'>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 640, &quot;16:9&quot;) : resizeImage(data:post.featuredImage, 640, &quot;16:9&quot;)'/>
+              <b:else/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+            </b:if>
+          </a>
+          <div class='post-info'>
+            
+            <h2 class='post-title'>
+              <a expr:href='data:post.url'><data:post.title/></a>
+            </h2>
+            <b:if cond='data:i in [0,1]'>
+            <div class='post-meta'>
+              <span class='post-author'><a expr:href='data:post.author.profileUrl' expr:title='data:post.author.name' target='_blank'><data:post.author.name/></a></span><span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
+            </div>
+              <b:else/>
+            <div class='post-meta'>
+              <span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
+            </div>
+            </b:if>
+          </div>
+      </div>
+              </div>
+            </b:if>
+            </b:includable>
             <b:includable id='linkShare'>
   <b:with value='&quot;window.prompt(\&quot;Copy to clipboard: Ctrl+C, Enter\&quot;, \&quot;&quot; + data:originalUrl + &quot;\&quot;); return false;&quot;' var='onclick'>
     <b:include name='platformShare'/>
@@ -5605,11 +5911,22 @@ const postPerPage = 7;
   </span>
 </b:includable>
             <b:includable id='postContent' var='post'>
-       <b:if cond='data:widget.sectionId == &quot;slider-section&quot;'>
-        <b:include data='post' name='slider-section'/>
-        <b:else/>
-        <b:include data='post' name='default'/>
-      </b:if>
+      <div class='post'>
+        <div class='post-content'>
+          <a class='post-image-link' expr:href='data:post.url'>
+            <b:if cond='data:post.featuredImage'>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 640, &quot;16:9&quot;)'/>
+              <b:else/>
+              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
+            </b:if>
+          </a>
+          <div class='post-info'>
+            <h2 class='post-title'>
+              <a expr:href='data:post.url'><data:post.title/></a>
+            </h2>
+          </div>
+        </div>
+      </div>
     </b:includable>
             <b:includable id='postJumpLink' var='post'>
   <div class='jump-link flat-button'>
@@ -5694,26 +6011,6 @@ const postPerPage = 7;
             <b:includable id='sharingPlatformIcon'>
   <b:include data='{ iconClass: (&quot;touch-icon sharing-&quot; + data:platform.key) }' expr:name='data:platform.key + &quot;Icon&quot;'/>
 </b:includable>
-            <b:includable id='slider-section' var='post'>
-         <b:if cond='data:i lt 10'>
-           <li class='slider-item'>
-              <b:class expr:name='&quot;item-&quot;+data:i'/>
-               <a class='post-image-link' expr:href='data:post.url'>
-            <b:if cond='data:post.featuredImage'>
-              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 640, &quot;16:9&quot;) : resizeImage(data:post.featuredImage, 640, &quot;16:9&quot;)'/>
-              <b:else/>
-              <img class='post-thumb' loading='lazy' expr:alt='data:post.title' src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2235%22%20r%3D%227%22%20fill%3D%22%239ca3af%22%2F%3E%3Cpath%20d%3D%22M20%2075L60%2045L80%2060L110%2035L150%2075Z%22%20fill%3D%22%239ca3af%22%2F%3E%3C%2Fsvg%3E'/>
-            </b:if>
-          </a>
-              <div class='post-info-wrap'><div class='post-info'>
-              <b:if cond='data:post.labels'><span class='post-tag'><data:post.labels.first.name/></span></b:if>
-               <h2 class='post-title'>
-               <a expr:href='data:post.url'><data:post.title/></a>
-               </h2>
-               </div></div>
-           </li>
-           </b:if>
-       </b:includable>
             <b:includable id='snippetedPostByline'>
   <b:with value='(data:widgets first (w =&gt; w.type == &quot;Blog&quot;)).allBylineItems' var='blogBylines'>
     <div class='item-byline'>
@@ -5757,107 +6054,13 @@ const postPerPage = 7;
   </div>
 </b:includable>
           </b:widget>
-          <b:widget id='HTML3' locked='false' title='Random Posts' type='HTML' visible='true'>
-            <b:widget-settings>
-              <b:widget-setting name='content'>3</b:widget-setting>
-            </b:widget-settings>
-            <b:includable id='main'>
-  <b:include name='widget-title'/>
-  <div class='widget-content random-posts-content'>
-    <div class='PopularPosts random-posts' expr:data-count='data:content'></div>
-  </div>
-  <script type='text/javascript'>
-//<![CDATA[
-(function () {
-  var script = document.currentScript;
-  if (!script) return;
-  var content = script.previousElementSibling;
-  if (!content) return;
-  var container = content.querySelector('.random-posts');
-  if (!container) return;
-  var count = parseInt(container.dataset.count, 10) || 3;
-  fetch('/feeds/posts/summary?alt=json&max-results=150', { credentials: 'omit' })
-    .then(function (r) { return r.ok ? r.json() : null; })
-    .then(function (data) {
-      var entries = (data && data.feed && data.feed.entry) || [];
-      if (!entries.length) { script.parentNode.style.display = 'none'; return; }
-      for (var i = entries.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var tmp = entries[i]; entries[i] = entries[j]; entries[j] = tmp;
-      }
-      var picked = entries.slice(0, count);
-      var frag = document.createDocumentFragment();
-      picked.forEach(function (entry, idx) {
-        var title = (entry.title && entry.title.$t) || '';
-        var url = '';
-        if (entry.link) {
-          for (var k = 0; k < entry.link.length; k++) {
-            if (entry.link[k].rel === 'alternate') { url = entry.link[k].href; break; }
-          }
-        }
-        var thumb = '';
-        if (entry.media$thumbnail && entry.media$thumbnail.url) {
-          thumb = entry.media$thumbnail.url.replace(/\/s72-c\//, '/w320-h180-c/');
-        }
-        var dateStr = '';
-        if (entry.published && entry.published.$t) {
-          try {
-            var d = new Date(entry.published.$t);
-            dateStr = d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-          } catch (e) {}
-        }
-        var item = document.createElement('div');
-        item.className = 'post default-popularpost item-' + idx;
-        var inner = '<div class="post-content">';
-        if (thumb) {
-          inner += '<a class="post-image-link"><img class="post-thumb" loading="lazy" alt=""></a>';
-        }
-        inner += '<div class="post-info"><h2 class="post-title"><a></a></h2>';
-        if (dateStr) {
-          inner += '<div class="post-meta"><span class="post-date published"></span></div>';
-        }
-        inner += '</div></div>';
-        item.innerHTML = inner;
-        var titleA = item.querySelector('.post-title a');
-        titleA.textContent = title;
-        titleA.href = url;
-        if (thumb) {
-          var imgLink = item.querySelector('.post-image-link');
-          imgLink.href = url;
-          imgLink.querySelector('img').src = thumb;
-          imgLink.querySelector('img').alt = title;
-        }
-        if (dateStr) {
-          item.querySelector('.post-date').textContent = dateStr;
-        }
-        frag.appendChild(item);
-      });
-      container.appendChild(frag);
-    })
-    .catch(function () { script.parentNode.style.display = 'none'; });
-})();
-//]]>
-  </script>
-</b:includable>
-          </b:widget>
-          <b:widget id='HTML2' locked='false' title='' type='HTML' visible='false'>
-            <b:widget-settings>
-              <b:widget-setting name='content'/>
-            </b:widget-settings>
-            <b:includable id='main'>
-  <b:include name='widget-title'/>
-  <div class='widget-content'>
-    <data:content/>
-  </div>
-</b:includable>
-          </b:widget>
-          <b:widget id='Label4' locked='false' title='Tags' type='Label' visible='true'>
+          <b:widget id='Label3' locked='false' title='Tags' type='Label' version='2' visible='true'>
             <b:widget-settings>
               <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
               <b:widget-setting name='display'>CLOUD</b:widget-setting>
               <b:widget-setting name='selectedLabelsList'/>
               <b:widget-setting name='showType'>ALL</b:widget-setting>
-              <b:widget-setting name='showFreqNumbers'>false</b:widget-setting>
+              <b:widget-setting name='showFreqNumbers'>true</b:widget-setting>
             </b:widget-settings>
             <b:includable id='main' var='this'>
       <b:include name='widget-title'/>
@@ -5870,17 +6073,15 @@ const postPerPage = 7;
       <a class='label-name' expr:href='data:label.url'>
         <data:label.name/>
         <b:if cond='data:this.showFreqNumbers'>
-          <span class='label-count'><data:label.count/></span>
+          <span class='label-count'>(<data:label.count/>)</span>
         </b:if>
       </a>
     </span>
   </b:loop>
 </b:includable>
             <b:includable id='content'>
-      <div class='widget-content'>
-        <b:class expr:name='data:this.display + &quot;-label&quot;'/>
-        <b:include cond='data:this.display == &quot;list&quot;' name='list'/>
-        <b:include cond='data:this.display == &quot;cloud&quot;' name='list'/>
+      <div class='widget-content cloud-label'>
+        <b:include name='list'/>
       </div>
     </b:includable>
             <b:includable id='list'>
@@ -5889,13 +6090,27 @@ const postPerPage = 7;
           <li>
             <a class='label-name' expr:href='data:label.url'>
               <data:label.name/>
-              <b:if cond='data:this.showFreqNumbers'>
-                <span class='label-count'><data:label.count/></span>
-              </b:if>
+              <span class='label-count'>(<data:label.count/>)</span>
             </a>
           </li>
         </b:loop>
       </ul>
+    </b:includable>
+          </b:widget>
+          <b:widget id='BlogSearch1' locked='false' title='Search This Blog' type='BlogSearch' version='2' visible='true'>
+            <b:includable id='main' var='this'>
+      <b:include name='widget-title'/>
+      <b:include name='content'/>
+    </b:includable>
+            <b:includable id='content'>
+      <div class='widget-content' role='search'>
+        <form class='search-form' expr:action='data:blog.searchUrl'>
+          <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
+          <b:include name='urlParamsAsFormInput'/>
+          <input autocomplete='off' class='search-input' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
+          <input class='search-action' expr:value='data:messages.search.escaped' type='submit'/>
+        </form>
+      </div>
     </b:includable>
           </b:widget>
         </b:section>
@@ -5953,7 +6168,7 @@ const postPerPage = 7;
 <b:if cond='data:view.isSingleItem'>
 <!-- Hidden Widgets -->
 <div id='hidden-widgets-wrap' style='display:none'>
-  <b:section class='hidden-widgets' deleted='true' id='hidden-widgets' maxwidgets='1' showaddelement='no'>
+  <b:section class='hidden-widgets' deleted='true' id='hidden-widgets' maxwidgets='5' showaddelement='no'>
     <b:widget id='ContactForm1' locked='false' title='Contact form' type='ContactForm' visible='true'>
       <b:includable id='main' var='this'>
       <b:include name='widget-title'/>
@@ -5962,6 +6177,21 @@ const postPerPage = 7;
       <b:includable id='content'>
       <b:include name='contact-form-content'/>
     </b:includable>
+    </b:widget>
+    <!-- Orphan sidebar widgets (live-only, added via Layout). Placed in this deleted
+         section so a theme upload removes them, leaving only PopularPosts1 / Label3 /
+         BlogSearch1 — matching the language blog's 3-widget sidebar. -->
+    <b:widget id='Label1' locked='false' title='Tags' type='Label' version='2' visible='true'>
+      <b:includable id='main'/>
+    </b:widget>
+    <b:widget id='HTML3' locked='false' title='Random Posts' type='HTML' version='2' visible='true'>
+      <b:includable id='main'/>
+    </b:widget>
+    <b:widget id='Label4' locked='false' title='Tags' type='Label' version='2' visible='true'>
+      <b:includable id='main'/>
+    </b:widget>
+    <b:widget id='PopularPosts2' locked='false' title='Most Popular' type='PopularPosts' version='2' visible='true'>
+      <b:includable id='main'/>
     </b:widget>
   </b:section>
 </div>
@@ -6182,6 +6412,29 @@ pageCurrentBlogger();
   if (backTop) backTop.addEventListener('click', function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+})();
+
+// Comment form host fix: Blogger sometimes points the embedded comment editor
+// iframe at draft.blogger.com, which won't load for visitors and leaves the
+// comment box blank. Rewrite it (and the src anchor) to www.
+(function () {
+  function toWww(u) { return u ? u.replace('://draft.blogger.com', '://www.blogger.com') : u; }
+  var src = document.getElementById('comment-editor-src');
+  if (src) src.href = toWww(src.getAttribute('href') || '');
+  var ifr = document.getElementById('comment-editor');
+  if (!ifr) return;
+  function fix() {
+    var s = ifr.getAttribute('src') || '';
+    if (s.indexOf('draft.blogger.com') !== -1) ifr.src = toWww(s);
+  }
+  fix();
+  try {
+    var mo = new MutationObserver(fix);
+    mo.observe(ifr, { attributes: true, attributeFilter: ['src'] });
+    setTimeout(function () { mo.disconnect(); }, 8000);
+  } catch (e) {
+    var n = 0, iv = setInterval(function () { fix(); if (++n > 40) clearInterval(iv); }, 200);
+  }
 })();
 //]]>
 </script>
