@@ -42,9 +42,29 @@ function parseTags(tags?: string | string[]): string[] {
     .filter(Boolean);
 }
 
+// CommonMark (and therefore marked) will not close a **bold** run whose content ends
+// in ")" when it is immediately followed by a letter — e.g. a Korean/Japanese particle:
+//   **격(case)**과   ->  stays literal **격(case)**과
+// because the closing "**" is preceded by punctuation and not followed by whitespace/
+// punctuation, so it is not a valid right-flanking delimiter. We emit explicit <strong>
+// HTML for exactly that shape. Code spans/blocks are stashed first so we never touch
+// "**" inside code.
+function fixCjkBold(md: string): string {
+  const stash: string[] = [];
+  const protectedMd = md.replace(/```[\s\S]*?```|`[^`\n]+`/g, (m) => {
+    stash.push(m);
+    return `\u0000${stash.length - 1}\u0000`;
+  });
+  const fixed = protectedMd.replace(
+    /\*\*([^\s*\n][^*\n]*\))\*\*(?=[^\s*)\].,!?;:'")」】）])/g,
+    "<strong>$1</strong>"
+  );
+  return fixed.replace(/\u0000(\d+)\u0000/g, (_, i) => stash[Number(i)]);
+}
+
 function markdownToHtml(md: string): string {
   marked.setOptions({ gfm: true, breaks: false });
-  return marked.parse(md, { async: false }) as string;
+  return marked.parse(fixCjkBold(md), { async: false }) as string;
 }
 
 function persistPostIdToFile(filePath: string, postId: string): void {
