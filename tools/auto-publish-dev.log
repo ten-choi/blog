@@ -77,3 +77,25 @@ node.exe : Fatal: invalid_grant
  
 
 [2026-06-01 11:46:25][dev] FAILED before Blogger update: publish.ts exited with code 1; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\dev\database\1.3DBMS Made Ridiculously Easy - The Execution Engine.md
+[2026-06-03 11:17:06][dev] Selected: C:\workSpace\projects\personal\blog\blogs\dev\database\1.3DBMS Made Ridiculously Easy - The Execution Engine.md (title: DBMS Made Ridiculously Easy - The Execution Engine: SQL's Final Journey)
+[2026-06-03 11:17:33][dev] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\dev\database\1.3DBMS Made Ridiculously Easy - The Execution Engine.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\dev\database\1.3DBMS Made Ridiculously Easy - The Execution Engine.md ...
+node.exe : Fatal: invalid_grant
+発生場所 行:1 文字:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Fatal: invalid_grant:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+npm notice
+npm notice New minor version of npm available! 11.12.1 -> 11.16.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+npm notice To update run: npm install -g npm@11.16.0
+npm notice
+
+[2026-06-03 11:17:33][dev] FAILED before Blogger update: publish.ts exited with code 1; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\dev\database\1.3DBMS Made Ridiculously Easy - The Execution Engine.md
