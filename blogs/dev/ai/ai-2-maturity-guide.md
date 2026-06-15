@@ -1,10 +1,10 @@
 ---
 title: "Using AI Well (Part 2) — How to Use It Well: Seven Maturity Stages"
 labels: ["AI", "Using AI Well", "AI agent", "workflow", "automation", "developer productivity"]
-published: false
+published: true
 date:
 readerComments: "ALLOW"
-bloggerPostId:
+bloggerPostId: "289841446393144433"
 ---
 
 ## Introduction
