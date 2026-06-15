@@ -1,10 +1,10 @@
 ---
 title: "Using AI Well (Part 1) — What You Can Use: A Developer's Map of AI Features"
 labels: ["AI", "Using AI Well", "AI agent", "LLM", "Claude Code", "developer productivity"]
-published: false
+published: true
 date:
 readerComments: "ALLOW"
-bloggerPostId:
+bloggerPostId: "1251324303605326220"
 ---
 
 ## Introduction
