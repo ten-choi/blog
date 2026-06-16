@@ -1,10 +1,10 @@
 ---
 title: "Using AI Well (Part 4) — How to Trust What Comes Back: Verification and Trust"
 labels: ["AI", "Using AI Well", "verification", "code review", "testing", "developer productivity"]
-published: false
+published: true
 date:
 readerComments: "ALLOW"
-bloggerPostId:
+bloggerPostId: "980734496663835592"
 ---
 
 ## Introduction
