@@ -1,10 +1,10 @@
 ---
 title: "Using AI Well (Part 3) — Save Tokens and Instruct Properly"
 labels: ["AI", "Using AI Well", "tokens", "context", "prompting", "developer productivity"]
-published: false
+published: true
 date:
 readerComments: "ALLOW"
-bloggerPostId:
+bloggerPostId: "5637210750479059666"
 ---
 
 ## Introduction
