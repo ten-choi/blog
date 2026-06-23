@@ -1,10 +1,10 @@
 ---
 title: "Unit 01 한자읽기와 표기 원칙"
 labels: ["Japanese", "JLPT", "JLPT N2", "한자", "音読み", "訓読み", "熟字訓"]
-published: false
+published: true
 date:
 readerComments: "ALLOW"
-bloggerPostId:
+bloggerPostId: "7002466267374450656"
 ---
 
 ![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
