@@ -1,10 +1,10 @@
 ---
 title: "Unit 03 동사의 활용과 종류 (자동사·타동사)"
 labels: ["Japanese", "JLPT", "JLPT N2", "동사", "자동사", "타동사", "복합동사"]
-published: false
+published: true
 date:
 readerComments: "ALLOW"
-bloggerPostId:
+bloggerPostId: "4741578017406489905"
 ---
 
 ![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
