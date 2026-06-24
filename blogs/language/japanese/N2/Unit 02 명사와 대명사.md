@@ -1,10 +1,10 @@
 ---
 title: "Unit 02 명사와 대명사"
 labels: ["Japanese", "JLPT", "JLPT N2", "명사", "대명사", "추상명사"]
-published: false
+published: true
 date:
 readerComments: "ALLOW"
-bloggerPostId:
+bloggerPostId: "8843216637271481451"
 ---
 
 ![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
