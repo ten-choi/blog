@@ -1,10 +1,10 @@
 ---
 title: "Unit 05 부사와 외래어"
 labels: ["Japanese", "JLPT", "JLPT N2", "부사", "외래어", "의태어", "의성어"]
-published: false
+published: true
 date:
 readerComments: "ALLOW"
-bloggerPostId:
+bloggerPostId: "8237991621482016625"
 ---
 
 ![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
