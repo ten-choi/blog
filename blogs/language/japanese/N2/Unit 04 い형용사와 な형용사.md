@@ -1,10 +1,10 @@
 ---
 title: "Unit 04 い형용사와 な형용사"
 labels: ["Japanese", "JLPT", "JLPT N2", "い형용사", "な형용사", "활용"]
-published: false
+published: true
 date:
 readerComments: "ALLOW"
-bloggerPostId:
+bloggerPostId: "4912013608912657068"
 ---
 
 ![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
