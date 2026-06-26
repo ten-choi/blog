@@ -1,10 +1,10 @@
 ---
 title: "Unit 06 접두어와 접미어"
 labels: ["Japanese", "JLPT", "JLPT N2", "접두어", "접미어", "조어"]
-published: false
+published: true
 date:
 readerComments: "ALLOW"
-bloggerPostId:
+bloggerPostId: "7824299657352748119"
 ---
 
 ![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/language/japanese_banner.webp)
