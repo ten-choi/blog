@@ -1,7 +1,7 @@
-# Auto-publish one post per scheduled run for the given blog target.
+﻿# Auto-publish one post per scheduled run for the given blog target.
 # Picks the alphabetically-first eligible draft under blogs/<target>/,
 # flips frontmatter published: false -> true, runs publish.ts, then commits locally.
-# Does NOT push — user pushes manually after reviewing the commit.
+# Does NOT push - user pushes manually after reviewing the commit.
 #
 # Randomization is handled by Task Scheduler's RandomDelay (set in register-auto-publish-task.ps1),
 # so this script runs immediately when invoked. For manual testing, invoke directly:
@@ -26,6 +26,40 @@ function Log($msg) {
   $line = "[$ts][$Target] $msg"
   Add-Content -Path $logFile -Value $line -Encoding UTF8
   Write-Output $line
+}
+
+# On failure, add a task to Choi Yeol's Notion H2 (shimohanki) work-log DB
+# so the failure is noticed instead of sitting silently in the log. Uses the
+# existing helper, which targets NOTION_DATA_SOURCE_ID (= the H2 DB) and never
+# touches anyone else's DB. Text is ASCII-only on purpose: this .ps1 must stay
+# free of non-ASCII literals so an editor that drops the BOM can't mojibake it.
+# Wrapped so a notification error can never mask the real failure.
+function Notify-Failure($FailFile, $ErrInfo, $Stage) {
+  try {
+    $notion = "C:\workSpace\projects\company\task-manage\notion-task.ps1"
+    if (-not (Test-Path $notion)) { Log "Notify skipped: notion-task.ps1 not found"; return }
+    $leaf  = if ($FailFile) { Split-Path $FailFile -Leaf } else { "(no file selected)" }
+    $today = Get-Date -Format "yyyy-MM-dd"
+    $title = "[Blog auto-publish FAILED] $Target - $leaf"
+    $memo  = "Auto-publish failed at stage: $Stage. Cause: $ErrInfo / Check tools\auto-publish-$Target.log and re-publish manually."
+    & $notion add -Title $title -Category blog-deploy -Memo $memo -Start $today | Out-Null
+    Log "Notion notified (H2 DB): $title"
+  } catch {
+    Log "Notify-Failure error (Notion not updated): $($_.Exception.Message)"
+  }
+}
+
+# Desktop popup on the interactive session, in addition to the Notion task, so a
+# failure is noticed without opening Notion. ASCII-only text on purpose (see above).
+# msg.exe returns immediately (non-blocking) and just no-ops if no one is logged on.
+function Notify-Windows($FailFile, $Stage) {
+  try {
+    $leaf = if ($FailFile) { Split-Path $FailFile -Leaf } else { "(no file)" }
+    $text = "Blog auto-publish FAILED ($Target): $leaf [$Stage]. Check tools\auto-publish-$Target.log and re-publish."
+    & "$env:WINDIR\System32\msg.exe" * $text 2>$null
+  } catch {
+    Log "Notify-Windows error: $($_.Exception.Message)"
+  }
 }
 
 Set-Location $repoRoot
@@ -92,10 +126,14 @@ try {
     # next run to re-publish the same file. Leave the file as published: true and
     # let the user reconcile manually.
     Log "FAILED after Blogger update: $($_.Exception.Message). Frontmatter left as published: true on $($next.FullName); reconcile/commit manually."
+    Notify-Failure -FailFile $next.FullName -ErrInfo $_.Exception.Message -Stage "after Blogger publish (commit/cleanup)"
+    Notify-Windows -FailFile $next.FullName -Stage "after Blogger publish (commit/cleanup)"
   } else {
-    # Blogger publish never succeeded — revert frontmatter so the file stays in the queue.
+    # Blogger publish never succeeded - revert frontmatter so the file stays in the queue.
     [System.IO.File]::WriteAllText($next.FullName, $original, $utf8NoBom)
     Log "FAILED before Blogger update: $($_.Exception.Message); reverted frontmatter on $($next.FullName)"
+    Notify-Failure -FailFile $next.FullName -ErrInfo $_.Exception.Message -Stage "before Blogger publish"
+    Notify-Windows -FailFile $next.FullName -Stage "before Blogger publish"
   }
   exit 1
 } finally {
