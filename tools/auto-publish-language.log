@@ -67,3 +67,423 @@ node.exe : Fatal: invalid_grant
  
 
 [2026-06-01 11:03:21][language] FAILED before Blogger update: publish.ts exited with code 1; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md
+[2026-06-03 12:58:07][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md (title: Unit 04 형용사)
+[2026-06-03 12:58:14][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md ...
+node.exe : Fatal: invalid_grant
+発生場所 行:1 文字:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Fatal: invalid_grant:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[2026-06-03 12:58:14][language] FAILED before Blogger update: publish.ts exited with code 1; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md
+[2026-06-04 11:59:38][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md (title: Unit 04 형용사)
+[2026-06-04 11:59:45][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md ...
+node.exe : Fatal: invalid_grant
+発生場所 行:1 文字:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Fatal: invalid_grant:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[2026-06-04 11:59:45][language] FAILED before Blogger update: publish.ts exited with code 1; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md
+[2026-06-05 12:46:31][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md (title: Unit 04 형용사)
+[2026-06-05 12:46:47][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md ...
+node.exe : Fatal: invalid_grant
+発生場所 行:1 文字:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Fatal: invalid_grant:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[2026-06-05 12:46:47][language] FAILED before Blogger update: publish.ts exited with code 1; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md
+[2026-06-08 10:02:58][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md (title: Unit 04 형용사)
+[2026-06-08 10:03:35][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md ...
+node.exe : Fatal: invalid_grant
+発生場所 行:1 文字:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Fatal: invalid_grant:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[2026-06-08 10:03:35][language] FAILED before Blogger update: publish.ts exited with code 1; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md
+[2026-06-08 11:18:25][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md (title: Unit 04 형용사)
+[2026-06-08 11:18:34][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md ...
+node.exe : Fatal: invalid_grant
+発生場所 行:1 文字:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Fatal: invalid_grant:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[2026-06-08 11:18:34][language] FAILED before Blogger update: publish.ts exited with code 1; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md
+[2026-06-09 11:46:59][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md (title: Unit 04 형용사)
+[2026-06-09 11:47:24][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md ...
+node.exe : Fatal: invalid_grant
+発生場所 行:1 文字:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Fatal: invalid_grant:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[2026-06-09 11:47:24][language] FAILED before Blogger update: publish.ts exited with code 1; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md
+[2026-06-10 11:14:51][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md (title: Unit 04 형용사)
+[2026-06-10 11:15:11][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md ...
+node.exe : Fatal: invalid_grant
+発生場所 行:1 文字:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Fatal: invalid_grant:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[2026-06-10 11:15:11][language] FAILED before Blogger update: publish.ts exited with code 1; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md
+[2026-06-11 12:55:31][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md (title: Unit 04 형용사)
+[2026-06-11 12:55:47][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md ...
+node.exe : Fatal: invalid_grant
+発生場所 行:1 文字:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Fatal: invalid_grant:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[2026-06-11 12:55:47][language] FAILED before Blogger update: publish.ts exited with code 1; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md
+[2026-06-12 11:53:47][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md (title: Unit 04 형용사)
+[2026-06-12 11:54:50][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md ...
+node.exe : Fatal: invalid_grant
+発生場所 行:1 文字:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Fatal: invalid_grant:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[2026-06-12 11:54:50][language] FAILED before Blogger update: publish.ts exited with code 1; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md
+[2026-06-15 09:52:23][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md (title: Unit 04 형용사)
+[2026-06-15 09:53:02][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md ...
+node.exe : Fatal: invalid_grant
+発生場所 行:1 文字:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Fatal: invalid_grant:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[2026-06-15 09:53:02][language] FAILED before Blogger update: publish.ts exited with code 1; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md
+[2026-06-15 11:31:20][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md (title: Unit 04 형용사)
+[2026-06-15 11:31:33][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md ...
+node.exe : Fatal: invalid_grant
+発生場所 行:1 文字:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Fatal: invalid_grant:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[2026-06-15 11:31:33][language] FAILED before Blogger update: publish.ts exited with code 1; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md
+[2026-06-15 12:31:05][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 형용사.md (title: Unit 04 형용사)
+[2026-06-15 12:31:18][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 04 嶸菩圸・ｬ.md ...
+  UPDATED -> https://ten-language-notes.blogspot.com/2026/05/unit-04.html (id: 8703358700865874470)
+
+[2026-06-15 12:31:19][language] SUCCESS: Unit 04 형용사 (committed locally; push manually when ready)
+[2026-06-16 11:45:47][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 05 부사.md (title: Unit 05 부사)
+[2026-06-16 11:46:10][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 05 ・・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 05 ・・ｬ.md ...
+  UPDATED -> https://ten-language-notes.blogspot.com/2026/05/unit-05.html (id: 7632484903593462338)
+
+[2026-06-16 11:46:11][language] SUCCESS: Unit 05 부사 (committed locally; push manually when ready)
+[2026-06-16 16:01:49][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 06 동사의 형태와 종류.md (title: Unit 06 동사의 형태와 종류)
+[2026-06-16 16:02:05][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 06 ・呷ぎ・・嶸倣・・ ・・･・md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 06 ・呷ぎ・・嶸倣・・ ・・･・md ...
+  UPDATED -> https://ten-language-notes.blogspot.com/2026/05/unit-06.html (id: 5356959118438526807)
+
+[2026-06-16 16:02:05][language] SUCCESS: Unit 06 동사의 형태와 종류 (committed locally; push manually when ready)
+[2026-06-17 12:00:25][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 07 수 일치와 태.md (title: Unit 07 수 일치와 태)
+[2026-06-17 12:00:43][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 07 ・・・ｼ・們凰 夋・md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 07 ・・・ｼ・們凰 夋・md ...
+  UPDATED -> https://ten-language-notes.blogspot.com/2026/05/unit-07.html (id: 8804569589412178890)
+
+[2026-06-17 12:00:43][language] SUCCESS: Unit 07 수 일치와 태 (committed locally; push manually when ready)
+[2026-06-17 15:46:58][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 08 시제.md (title: Unit 08 시제)
+[2026-06-17 15:47:10][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 08 ・懍・md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 08 ・懍・md ...
+  UPDATED -> https://ten-language-notes.blogspot.com/2026/05/unit-08.html (id: 5775058857876207851)
+
+[2026-06-17 15:47:10][language] SUCCESS: Unit 08 시제 (committed locally; push manually when ready)
+[2026-06-18 11:47:30][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 09 to부정사와 동명사.md (title: Unit 09 to부정사와 동명사)
+[2026-06-18 11:47:57][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 09 to・・菩ぎ・ ・呱ｪ・ぎ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 09 to・・菩ぎ・ ・呱ｪ・ぎ.md ...
+  UPDATED -> https://ten-language-notes.blogspot.com/2026/05/unit-09-to.html (id: 5706904691592306431)
+
+[2026-06-18 11:47:58][language] SUCCESS: Unit 09 to부정사와 동명사 (committed locally; push manually when ready)
+[2026-06-18 16:06:50][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 10 분사와 분사구문.md (title: Unit 10 분사와 분사구문)
+[2026-06-18 16:07:03][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 10 ・・ぎ・ ・・ぎ・ｬ・ｸ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 10 ・・ぎ・ ・・ぎ・ｬ・ｸ.md ...
+  UPDATED -> https://ten-language-notes.blogspot.com/2026/05/unit-10.html (id: 5192540221226049155)
+
+[2026-06-18 16:07:03][language] SUCCESS: Unit 10 분사와 분사구문 (committed locally; push manually when ready)
+[2026-06-19 11:59:56][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 11 전치사와 접속사.md (title: Unit 11 전치사와 접속사)
+[2026-06-19 12:00:40][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 11 ・・ｹ們ぎ・ ・卓・・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 11 ・・ｹ們ぎ・ ・卓・・ｬ.md ...
+  UPDATED -> https://ten-language-notes.blogspot.com/2026/05/unit-11.html (id: 4567223859174177906)
+
+[2026-06-19 12:00:40][language] SUCCESS: Unit 11 전치사와 접속사 (committed locally; push manually when ready)
+[2026-06-19 15:54:35][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 12 부사절 접속사.md (title: Unit 12 부사절 접속사)
+[2026-06-19 15:54:55][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 12 ・・ｬ・・・卓・・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 12 ・・ｬ・・・卓・・ｬ.md ...
+  UPDATED -> https://ten-language-notes.blogspot.com/2026/05/unit-12.html (id: 2503931738434553737)
+
+[2026-06-19 15:54:56][language] SUCCESS: Unit 12 부사절 접속사 (committed locally; push manually when ready)
+[2026-06-22 12:07:05][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 13 관계대명사.md (title: Unit 13 관계대명사)
+[2026-06-22 12:07:17][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 13 ・・・劇・・ぎ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 13 ・・・劇・・ぎ.md ...
+node.exe : Fatal: invalid_grant
+発生場所 行:1 文字:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Fatal: invalid_grant:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[2026-06-22 12:07:17][language] FAILED before Blogger update: publish.ts exited with code 1; reverted frontmatter on C:\workSpace\projects\personal\blog\blogs\language\english\Unit 13 관계대명사.md
+[2026-06-22 12:07:18][language] Notion notified (H2 DB): [Blog auto-publish FAILED] language - Unit 13 관계대명사.md
+[2026-06-22 12:51:01][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 13 관계대명사.md (title: Unit 13 관계대명사)
+[2026-06-22 12:51:38][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 13 ・・・劇・・ぎ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 13 ・・・劇・・ぎ.md ...
+  UPDATED -> https://ten-language-notes.blogspot.com/2026/05/unit-13.html (id: 7697640943135879216)
+
+[2026-06-22 12:51:38][language] SUCCESS: Unit 13 관계대명사 (committed locally; push manually when ready)
+[2026-06-22 16:04:08][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 14 명사절 접속사.md (title: Unit 14 명사절 접속사)
+[2026-06-22 16:04:37][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 14 ・・ぎ・・・卓・・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 14 ・・ぎ・・・卓・・ｬ.md ...
+  UPDATED -> https://ten-language-notes.blogspot.com/2026/05/unit-14.html (id: 7250116854027567624)
+
+[2026-06-22 16:04:38][language] SUCCESS: Unit 14 명사절 접속사 (committed locally; push manually when ready)
+[2026-06-23 12:11:53][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\english\Unit 15 비교와 도치 구문.md (title: Unit 15 비교와 도치 구문)
+[2026-06-23 12:12:15][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\english\Unit 15 ・・ｵ川凰 ・・ｹ・・ｬ・ｸ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\english\Unit 15 ・・ｵ川凰 ・・ｹ・・ｬ・ｸ.md ...
+  UPDATED -> https://ten-language-notes.blogspot.com/2026/05/unit-15.html (id: 4703070164959423917)
+
+[2026-06-23 12:12:15][language] SUCCESS: Unit 15 비교와 도치 구문 (committed locally; push manually when ready)
+[2026-06-23 16:02:01][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 01 한자읽기와 표기 원칙.md (title: Unit 01 한자읽기와 표기 원칙)
+[2026-06-23 16:02:20][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 01 﨑懍梵・ｽ・ｰ・ 岺懋ｸｰ ・川ｹ・md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 01 﨑懍梵・ｽ・ｰ・ 岺懋ｸｰ ・川ｹ・md ...
+  PUBLISHED -> https://ten-language-notes.blogspot.com/2026/06/unit-01.html (id: 7002466267374450656)
+  bloggerPostId saved to front matter
+
+[2026-06-23 16:02:20][language] SUCCESS: Unit 01 한자읽기와 표기 원칙 (committed locally; push manually when ready)
+[2026-06-24 12:03:38][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 02 명사와 대명사.md (title: Unit 02 명사와 대명사)
+[2026-06-24 12:04:00][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 02 ・・ぎ・ ・・・ぎ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 02 ・・ぎ・ ・・・ぎ.md ...
+  PUBLISHED -> https://ten-language-notes.blogspot.com/2026/06/unit-02.html (id: 8843216637271481451)
+  bloggerPostId saved to front matter
+
+[2026-06-24 12:04:00][language] SUCCESS: Unit 02 명사와 대명사 (committed locally; push manually when ready)
+[2026-06-24 15:59:52][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 03 동사의 활용과 종류 (자동사·타동사).md (title: Unit 03 동사의 활용과 종류 (자동사·타동사))
+[2026-06-24 16:00:12][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 03 ・呷ぎ・・嶹懍圸・ｼ ・・･・(・尖徐・ｬﾂｷ夋・呷ぎ).md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 03 ・呷ぎ・・嶹懍圸・ｼ ・・･・(・尖徐・ｬﾂｷ夋・呷ぎ).md ...
+  PUBLISHED -> https://ten-language-notes.blogspot.com/2026/06/unit-03.html (id: 4741578017406489905)
+  bloggerPostId saved to front matter
+node.exe : npm notice
+発生場所 行:1 文字:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+npm notice New minor version of npm available! 11.12.1 -> 11.17.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.17.0
+npm notice To update run: npm install -g npm@11.17.0
+npm notice
+
+[2026-06-24 16:00:12][language] SUCCESS: Unit 03 동사의 활용과 종류 (자동사·타동사) (committed locally; push manually when ready)
+[2026-06-25 11:55:06][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 04 い형용사와 な형용사.md (title: Unit 04 い형용사와 な형용사)
+[2026-06-25 11:55:26][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 04 縺・・・ｩ・ｬ・ 縺ｪ嶸菩圸・ｬ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 04 縺・・・ｩ・ｬ・ 縺ｪ嶸菩圸・ｬ.md ...
+  PUBLISHED -> https://ten-language-notes.blogspot.com/2026/06/unit-04.html (id: 4912013608912657068)
+  bloggerPostId saved to front matter
+
+[2026-06-25 11:55:27][language] SUCCESS: Unit 04 い형용사와 な형용사 (committed locally; push manually when ready)
+[2026-06-25 15:58:57][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 05 부사와 외래어.md (title: Unit 05 부사와 외래어)
+[2026-06-25 15:59:15][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 05 ・・ｬ・ ・ｸ・們牟.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 05 ・・ｬ・ ・ｸ・們牟.md ...
+  PUBLISHED -> https://ten-language-notes.blogspot.com/2026/06/unit-05.html (id: 8237991621482016625)
+  bloggerPostId saved to front matter
+
+[2026-06-25 15:59:16][language] SUCCESS: Unit 05 부사와 외래어 (committed locally; push manually when ready)
+[2026-06-26 11:56:08][language] Selected: C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 06 접두어와 접미어.md (title: Unit 06 접두어와 접미어)
+[2026-06-26 11:56:25][language] publish.ts output:
+
+> blog@1.0.0 publish:blogger
+> ts-node platforms/blogger/publish.ts C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 06 ・瀧草・ｴ・ ・瀧ｯｸ・ｴ.md
+
+
+Publishing C:\workSpace\projects\personal\blog\blogs\language\japanese\N2\Unit 06 ・瀧草・ｴ・ ・瀧ｯｸ・ｴ.md ...
+  PUBLISHED -> https://ten-language-notes.blogspot.com/2026/06/unit-06.html (id: 7824299657352748119)
+  bloggerPostId saved to front matter
+
+[2026-06-26 11:56:25][language] SUCCESS: Unit 06 접두어와 접미어 (committed locally; push manually when ready)
