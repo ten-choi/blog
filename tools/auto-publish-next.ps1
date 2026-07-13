@@ -1,5 +1,5 @@
 ﻿# Auto-publish one post per scheduled run for the given blog target.
-# Picks the alphabetically-first eligible draft under blogs/<target>/,
+# Picks the alphabetically-first eligible draft under content/<target>/,
 # flips frontmatter published: false -> true, runs publish.ts, then commits locally.
 # Does NOT push - user pushes manually after reviewing the commit.
 #
@@ -64,8 +64,8 @@ function Notify-Windows($FailFile, $Stage) {
 
 Set-Location $repoRoot
 
-# Find candidate drafts under blogs/<target>/ (exclude drafts/ staging folder).
-$candidates = Get-ChildItem -Path "blogs\$Target" -Recurse -Filter "*.md" -File |
+# Find candidate drafts under content/<target>/ (exclude drafts/ staging folder).
+$candidates = Get-ChildItem -Path "content\$Target" -Recurse -Filter "*.md" -File |
   Where-Object { $_.FullName -notmatch "\\drafts\\" } |
   Sort-Object FullName
 

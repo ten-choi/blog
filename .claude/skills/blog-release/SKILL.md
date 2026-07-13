@@ -1,6 +1,6 @@
 ---
 name: blog-release
-description: Publish a draft markdown file from blogs/<dev|language>/drafts/ to Google Blogger with labels, then git-move the file to published/ and commit. Use when the user wants to release, publish, or deploy a blog post.
+description: Publish a draft markdown file from content/<dev|language>/drafts/ to Google Blogger with labels, then git-move the file to published/ and commit. Use when the user wants to release, publish, or deploy a blog post.
 ---
 
 # Blog Release
@@ -10,7 +10,7 @@ End-to-end workflow for releasing a post from this repo to Google Blogger.
 ## Inputs
 
 1. **Blog target** — `dev` or `language`. If not given, ask the user.
-2. **Source file** — path under `blogs/<target>/drafts/`. If not given, list drafts and ask the user to pick.
+2. **Source file** — path under `content/<target>/drafts/`. If not given, list drafts and ask the user to pick.
 
 ## Blog ID mapping
 
@@ -44,7 +44,7 @@ If the user's request didn't specify, ask: which blog — `dev` or `language`?
 
 If the user gave a file path, use it. Otherwise list drafts and ask:
 
-- Use Glob with `blogs/<target>/drafts/**/*.md`
+- Use Glob with `content/<target>/drafts/**/*.md`
 - Present the list, ask which to publish
 
 ### 3. Read and propose labels
@@ -128,8 +128,8 @@ Read the command output:
 
 Compute the destination by mirroring the subpath:
 
-- Source: `blogs/<target>/drafts/<subpath>/<file>.md`
-- Destination: `blogs/<target>/published/<subpath>/<file>.md`
+- Source: `content/<target>/drafts/<subpath>/<file>.md`
+- Destination: `content/<target>/published/<subpath>/<file>.md`
 
 Create the destination directory if it doesn't exist, then `git mv`:
 
