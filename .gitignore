@@ -3,3 +3,5 @@ dist/
 .env
 platforms/blogger/client_secret*.json
 platforms/blogger/token.json
+
+.claude/
