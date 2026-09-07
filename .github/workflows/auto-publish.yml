@@ -1,0 +1,132 @@
+name: Auto-publish Blogger post
+
+on:
+  schedule:
+    - cron: "*/30 23 * * *"
+    - cron: "*/30 0-4 * * *"
+    - cron: "*/30 6-9 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Publish one queued post immediately"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Decide whether this slot should run
+        id: decide
+        shell: bash
+        env:
+          FORCE: ${{ inputs.force || false }}
+        run: |
+          set -euo pipefail
+          if [[ "$FORCE" == "true" ]]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "slot=manual" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          now=$(TZ=Asia/Seoul date '+%Y-%m-%d %H %M')
+          read -r ymd hour minute <<< "$now"
+          slot=""
+          start=0
+          end=0
+          if (( hour >= 8 && hour <= 12 )); then
+            slot="am"
+            start=8
+            end=750
+          elif (( hour >= 15 && hour <= 17 )); then
+            slot="pm"
+            start=15
+            end=1050
+          elif (( hour == 13 )); then
+            slot="am"
+            start=8
+            end=780
+          elif (( hour == 18 )); then
+            slot="pm"
+            start=15
+            end=1080
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if git log --since="$ymd 00:00:00" --grep="\[auto-publish $slot\]" --format=%H | grep -q .; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          elapsed=$(( (10#$hour - start) * 60 + 10#$minute ))
+          if (( elapsed >= end )); then
+            target=0
+          else
+            seed=$(printf '%s' "$ymd-$slot" | sha256sum | cut -c1-8)
+            if [[ "$slot" == "am" ]]; then range=271; else range=151; fi
+            target=$(( 16#$seed % range ))
+          fi
+          if (( elapsed < target )); then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "run=true" >> "$GITHUB_OUTPUT"
+          echo "slot=$slot" >> "$GITHUB_OUTPUT"
+
+      - name: Validate CI credentials
+        if: steps.decide.outputs.run == 'true'
+        env:
+          BLOGGER_REFRESH_TOKEN: ${{ secrets.BLOGGER_REFRESH_TOKEN }}
+        run: test -n "$BLOGGER_REFRESH_TOKEN" || (echo 'BLOGGER_REFRESH_TOKEN secret is missing' >&2; exit 1)
+
+      - name: Install dependencies
+        if: steps.decide.outputs.run == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install packages
+        if: steps.decide.outputs.run == 'true'
+        run: npm ci
+
+      - name: Publish next post
+        if: steps.decide.outputs.run == 'true'
+        id: publish
+        env:
+          BLOGGER_CLIENT_ID: ${{ secrets.BLOGGER_CLIENT_ID }}
+          BLOGGER_TOKEN_PROD: ${{ secrets.BLOGGER_TOKEN_PROD }}
+          BLOGGER_REFRESH_TOKEN: ${{ secrets.BLOGGER_REFRESH_TOKEN }}
+          BLOGGER_BLOG_ID: ${{ secrets.BLOGGER_BLOG_ID }}
+        run: npx ts-node tools/auto-publish-next.ts --dir content/dev/database
+
+      - name: Commit and push write-back
+        if: steps.publish.outputs.published == 'true'
+        env:
+          SLOT: ${{ steps.decide.outputs.slot }}
+          TITLE: ${{ steps.publish.outputs.title }}
+          FILE: ${{ steps.publish.outputs.file }}
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$FILE"
+          git commit -m "publish(dev): $TITLE [auto-publish $SLOT]"
+          git pull --rebase origin main
+          git push origin HEAD:main

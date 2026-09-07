@@ -84,7 +84,7 @@ function persistPostIdToFile(filePath: string, postId: string): void {
 }
 
 async function resolveBlogId(blogger: blogger_v3.Blogger): Promise<string> {
-  const idFromEnv = process.env.BLOGGER_BLOG_ID;
+  const idFromEnv = process.env.BLOGGER_BLOG_ID ?? process.env.BLOGGER_BLOG_ID_DEV;
   if (idFromEnv) return idFromEnv;
 
   const urlFromEnv = process.env.BLOGGER_BLOG_URL;
@@ -97,7 +97,7 @@ async function resolveBlogId(blogger: blogger_v3.Blogger): Promise<string> {
   }
 
   throw new Error(
-    "Set BLOGGER_BLOG_ID or BLOGGER_BLOG_URL in .env. Run `npm run blogger:blogs` to list your blogs."
+    "Set BLOGGER_BLOG_ID (or BLOGGER_BLOG_ID_DEV) or BLOGGER_BLOG_URL in .env. Run `npm run blogger:blogs` to list your blogs."
   );
 }
 
