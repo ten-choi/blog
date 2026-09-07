@@ -126,7 +126,9 @@ function runLoopbackAuth(
 export async function getAuthClient(): Promise<OAuth2Client> {
   const { client_id, client_secret } = loadClientCreds();
 
-  const refreshToken = loadRefreshTokenFromEnv();
+  const refreshToken = process.env.BLOGGER_FORCE_REAUTH === "1"
+    ? null
+    : loadRefreshTokenFromEnv();
   if (refreshToken) {
     const oAuth2Client = new google.auth.OAuth2(client_id, client_secret);
     oAuth2Client.setCredentials({ refresh_token: refreshToken });
