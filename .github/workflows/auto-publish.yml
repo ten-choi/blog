@@ -2,11 +2,11 @@ name: Auto-publish Blogger post
 
 on:
   schedule:
-    # GitHub drops/delays most scheduled ticks (observed: ~3 of 18 a day, delays
-    # up to ~85 min), so each window is polled densely and the decide step below
-    # is what actually rate-limits publishing to one post per slot per day.
+    # Poll densely because GitHub may delay or drop individual scheduled runs.
+    # The decide step rate-limits publishing to one post per slot per KST day.
     - cron: "*/30 0-5 * * *"   # KST 09:00-14:30 - am slot + grace tail
     - cron: "*/30 6-11 * * *"  # KST 15:00-20:30 - pm slot + grace tail
+    - cron: "20 7 * * *"       # TEMP test: 16:20 KST, remove after verification
   workflow_dispatch:
     inputs:
       force:
@@ -37,6 +37,7 @@ jobs:
         shell: bash
         env:
           FORCE: ${{ inputs.force || false }}
+          SCHEDULE: ${{ github.event.schedule || '' }}
         run: |
           set -euo pipefail
           if [[ "$FORCE" == "true" ]]; then
@@ -45,54 +46,49 @@ jobs:
             exit 0
           fi
 
-          read -r ymd hh mm <<< "$(TZ=Asia/Seoul date '+%Y-%m-%d %H %M')"
-          # 10# is required: "09" is an invalid octal literal inside (( )), which
-          # would make every comparison below silently evaluate to false.
-          now=$(( 10#$hh * 60 + 10#$mm ))
-
-          # KST slot windows, in minutes from midnight. Each window is the
-          # publish period plus a grace tail that absorbs GitHub's scheduler
-          # delay, so a tick that arrives late still publishes instead of
-          # falling outside every slot and losing the day.
-          if (( now >= 540 && now < 900 )); then      # 09:00 - 14:59
+          ymd=$(TZ=Asia/Seoul date '+%Y-%m-%d')
+          # Do not infer the slot from the runner's current clock. GitHub can
+          # deliver a scheduled run late, after the original slot's KST window.
+          # The schedule expression is the stable identity of the slot.
+          if [[ "$SCHEDULE" == '*/30 0-5 * * *' ]]; then
             slot="am"
-            start=540
-            range=90                                  # jitter over 09:00 - 10:29
-          elif (( now >= 900 && now < 1260 )); then   # 15:00 - 20:59
+          elif [[ "$SCHEDULE" == '*/30 6-11 * * *' ]]; then
             slot="pm"
-            start=900
-            range=90                                  # jitter over 15:00 - 16:29
+          elif [[ "$SCHEDULE" == '20 7 * * *' ]]; then
+            slot="pm"
+          elif [[ -z "$SCHEDULE" ]]; then
+            echo "Manual run requires force=true; nothing to publish."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            exit 0
           else
+            echo "Unsupported schedule: $SCHEDULE" >&2
+            exit 1
+          fi
+
+          # Include the KST offset; without it Git interprets the boundary in
+          # the Ubuntu runner's UTC timezone and can inspect the wrong day.
+          if git log --since="${ymd}T00:00:00+09:00" --grep="\[auto-publish $slot\]" --format=%H | grep -q .; then
             echo "run=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
-          if git log --since="$ymd 00:00:00" --grep="\[auto-publish $slot\]" --format=%H | grep -q .; then
-            echo "run=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          # Both sides are minutes since the slot opened - keep the units aligned.
-          elapsed=$(( now - start ))
-          if (( elapsed >= range )); then
-            # Past the jitter window: take the first tick we are given.
-            target=0
-          else
-            seed=$(printf '%s' "$ymd-$slot" | sha256sum | cut -c1-8)
-            target=$(( 16#$seed % range ))
-          fi
-          if (( elapsed < target )); then
-            echo "run=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
+          # Every delivered tick is eligible. Dense polling plus the marker
+          # above makes this resilient to delayed/missing cron deliveries.
           echo "run=true" >> "$GITHUB_OUTPUT"
           echo "slot=$slot" >> "$GITHUB_OUTPUT"
 
       - name: Validate CI credentials
         if: steps.decide.outputs.run == 'true'
         env:
+          BLOGGER_CLIENT_ID: ${{ secrets.BLOGGER_CLIENT_ID }}
+          BLOGGER_TOKEN_PROD: ${{ secrets.BLOGGER_TOKEN_PROD }}
           BLOGGER_REFRESH_TOKEN: ${{ secrets.BLOGGER_REFRESH_TOKEN }}
-        run: test -n "$BLOGGER_REFRESH_TOKEN" || (echo 'BLOGGER_REFRESH_TOKEN secret is missing' >&2; exit 1)
+          BLOGGER_BLOG_ID: ${{ secrets.BLOGGER_BLOG_ID }}
+        run: |
+          set -euo pipefail
+          for name in BLOGGER_CLIENT_ID BLOGGER_TOKEN_PROD BLOGGER_REFRESH_TOKEN BLOGGER_BLOG_ID; do
+            [[ -n "${!name}" ]] || { echo "$name secret is missing" >&2; exit 1; }
+          done
 
       - name: Install dependencies
         if: steps.decide.outputs.run == 'true'
