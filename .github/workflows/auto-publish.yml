@@ -6,7 +6,6 @@ on:
     # The decide step rate-limits publishing to one post per slot per KST day.
     - cron: "*/30 0-5 * * *"   # KST 09:00-14:30 - am slot + grace tail
     - cron: "*/30 6-11 * * *"  # KST 15:00-20:30 - pm slot + grace tail
-    - cron: "*/5 7 * * *"      # TEMP test: every 5 min during 16:00 JST, remove after verification
   workflow_dispatch:
     inputs:
       force:
@@ -53,8 +52,6 @@ jobs:
           if [[ "$SCHEDULE" == '*/30 0-5 * * *' ]]; then
             slot="am"
           elif [[ "$SCHEDULE" == '*/30 6-11 * * *' ]]; then
-            slot="pm"
-          elif [[ "$SCHEDULE" == '*/5 7 * * *' ]]; then
             slot="pm"
           elif [[ -z "$SCHEDULE" ]]; then
             echo "Manual run requires force=true; nothing to publish."
