@@ -1,0 +1,20 @@
+# TEMPORARY diagnostic. Measures whether GitHub actually delivers scheduled
+# ticks to this repository, without touching the publish pipeline.
+# Delete once the auto-publish scheduling behaviour is understood.
+name: Schedule probe
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Record tick
+        run: |
+          echo "event=${{ github.event_name }}"
+          echo "utc=$(date -u '+%F %T')"
+          echo "kst=$(TZ=Asia/Seoul date '+%F %T')"
