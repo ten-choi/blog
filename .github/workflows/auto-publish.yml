@@ -2,8 +2,11 @@ name: Auto-publish Blogger post
 
 on:
   schedule:
-    - cron: "*/30 0-4 * * *"
-    - cron: "*/30 6-9 * * *"
+    # GitHub drops/delays most scheduled ticks (observed: ~3 of 18 a day, delays
+    # up to ~85 min), so each window is polled densely and the decide step below
+    # is what actually rate-limits publishing to one post per slot per day.
+    - cron: "*/30 0-5 * * *"   # KST 09:00-14:30 - am slot + grace tail
+    - cron: "*/30 6-11 * * *"  # KST 15:00-20:30 - pm slot + grace tail
   workflow_dispatch:
     inputs:
       force:
@@ -42,27 +45,23 @@ jobs:
             exit 0
           fi
 
-          now=$(TZ=Asia/Seoul date '+%Y-%m-%d %H %M')
-          read -r ymd hour minute <<< "$now"
-          slot=""
-          start=0
-          end=0
-          if (( hour >= 9 && hour <= 12 )); then
+          read -r ymd hh mm <<< "$(TZ=Asia/Seoul date '+%Y-%m-%d %H %M')"
+          # 10# is required: "09" is an invalid octal literal inside (( )), which
+          # would make every comparison below silently evaluate to false.
+          now=$(( 10#$hh * 60 + 10#$mm ))
+
+          # KST slot windows, in minutes from midnight. Each window is the
+          # publish period plus a grace tail that absorbs GitHub's scheduler
+          # delay, so a tick that arrives late still publishes instead of
+          # falling outside every slot and losing the day.
+          if (( now >= 540 && now < 900 )); then      # 09:00 - 14:59
             slot="am"
-            start=9
-            end=780
-          elif (( hour >= 15 && hour <= 17 )); then
+            start=540
+            range=90                                  # jitter over 09:00 - 10:29
+          elif (( now >= 900 && now < 1260 )); then   # 15:00 - 20:59
             slot="pm"
-            start=15
-            end=1050
-          elif (( hour == 13 )); then
-            slot="am"
-            start=9
-            end=840
-          elif (( hour == 18 )); then
-            slot="pm"
-            start=15
-            end=1080
+            start=900
+            range=90                                  # jitter over 15:00 - 16:29
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
             exit 0
@@ -73,12 +72,13 @@ jobs:
             exit 0
           fi
 
-          elapsed=$(( (10#$hour - start) * 60 + 10#$minute ))
-          if (( elapsed >= end )); then
+          # Both sides are minutes since the slot opened - keep the units aligned.
+          elapsed=$(( now - start ))
+          if (( elapsed >= range )); then
+            # Past the jitter window: take the first tick we are given.
             target=0
           else
             seed=$(printf '%s' "$ymd-$slot" | sha256sum | cut -c1-8)
-            if [[ "$slot" == "am" ]]; then range=271; else range=151; fi
             target=$(( 16#$seed % range ))
           fi
           if (( elapsed < target )); then
