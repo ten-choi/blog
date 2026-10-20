@@ -19,7 +19,7 @@ Scrum is an Agile framework used to manage and complete complex projects. It emp
 
 ## 🔄 Scrum Workflow
 
-![Scrum Workflow](https://qlqjs674.notion.site/image/attachment%3A18ab098e-eb11-4b3f-a64b-7b322b59be00%3Aagile_scrum-scrumWorkFlowForImage.png?table=block&id=1cf930ff-582f-8000-abe7-c07bb81399f0&spaceId=6ab3efe6-44b5-4e5c-9d86-56543fb7f59d&width=1420&userId=&cache=v2)
+![Scrum Workflow](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/dev/agile_scrum_workflow_1.webp)
 
 The Scrum workflow typically follows these steps, which are repeated in cycles (sprints) lasting 1-2 weeks:
 
@@ -46,7 +46,7 @@ The Scrum workflow typically follows these steps, which are repeated in cycles (
 
 ## 👥 Roles in Scrum
 
-![Scrum Workflow](https://qlqjs674.notion.site/image/attachment%3Ae89f84eb-5d63-4c18-b710-2447aaca8b02%3Aimage.png?table=block&id=1fb930ff-582f-80f8-971c-dc7230c26f67&spaceId=6ab3efe6-44b5-4e5c-9d86-56543fb7f59d&width=1400&userId=&cache=v2)
+![Scrum Workflow](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/dev/agile_scrum_workflow_2.webp)
 
 Scrum defines three roles. On a small team, one person often wears multiple hats — check with your manager who owns the Product Owner and Scrum Master responsibilities.
 
@@ -63,7 +63,7 @@ Scrum defines three roles. On a small team, one person often wears multiple hats
 
 ## 📂 Artifacts in Scrum
 
-![Scrum Workflow](https://qlqjs674.notion.site/image/attachment%3Aedd6b064-a377-4d92-98c8-f777e7007116%3Aimage.png?table=block&id=1fb930ff-582f-800c-a41a-f3a55ebde0b4&spaceId=6ab3efe6-44b5-4e5c-9d86-56543fb7f59d&width=1420&userId=&cache=v2)
+![Scrum Workflow](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/dev/agile_scrum_workflow_3.webp)
 
 Scrum defines three artifacts. If your team isn't fully Agile yet, you can still keep a backlog in Notion, Google Docs, or Jira — review it with your manager, then move the items you commit to into a separate "Sprint Backlog" section when you start working.
 
@@ -80,7 +80,7 @@ Scrum defines three artifacts. If your team isn't fully Agile yet, you can still
 
 ## 🔔 Scrum Ceremonies
 
-![Scrum Workflow](https://qlqjs674.notion.site/image/attachment%3A5317ef06-95e8-4292-a61e-c9f7c53acc6b%3Aimage.png?table=block&id=1fb930ff-582f-8098-b266-c81b24e5a5ae&spaceId=6ab3efe6-44b5-4e5c-9d86-56543fb7f59d&width=1400&userId=&cache=v2)
+![Scrum Workflow](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/dev/agile_scrum_workflow_4.webp)
 
 Once the backlog exists, the team has to agree on what to tackle first — that's Sprint Planning. Daily Scrums then surface blockers early so they don't derail the sprint. At the end, the Sprint Review captures what worked and what didn't, so the team can keep improving.
 
@@ -97,7 +97,7 @@ Once the backlog exists, the team has to agree on what to tackle first — that'
 
 ## 🆚 Scrum vs. Traditional Waterfall
 
-![Scrum Workflow](https://qlqjs674.notion.site/image/attachment%3Ae964a013-c249-456c-829f-c27166e2cc48%3Aimage.png?table=block&id=1fb930ff-582f-80a3-93af-d0d1535ab3ef&spaceId=6ab3efe6-44b5-4e5c-9d86-56543fb7f59d&width=1420&userId=&cache=v2)
+![Scrum Workflow](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/dev/agile_scrum_workflow_5.webp)
 
 Waterfall isn't bad, but it makes mid-project changes painful. If you need to adapt as you go, Scrum is the better fit.
 

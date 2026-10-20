@@ -29,6 +29,7 @@
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
     "@types/node": "^22.15.18",
+    "sharp": "^0.35.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }

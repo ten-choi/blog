@@ -4,7 +4,7 @@ labels: ["AI", "developer career", "software engineering", "productivity", "futu
 published: true
 date:
 readerComments: "ALLOW"
-bloggerPostId:
+bloggerPostId: "6244805269706013959"
 ---
 
 # Rising Productivity and the End of Workers As We Know Them

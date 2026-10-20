@@ -4,7 +4,7 @@ labels: ["technical writing", "developer career", "English learning", "learning 
 published: true
 date:
 readerComments: "ALLOW"
-bloggerPostId:
+bloggerPostId: "944532693024868355"
 ---
 
 ## It Starts with Curiosity
