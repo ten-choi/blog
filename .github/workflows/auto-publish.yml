@@ -106,7 +106,7 @@ jobs:
           BLOGGER_TOKEN_PROD: ${{ secrets.BLOGGER_TOKEN_PROD }}
           BLOGGER_REFRESH_TOKEN: ${{ secrets.BLOGGER_REFRESH_TOKEN }}
           BLOGGER_BLOG_ID: ${{ secrets.BLOGGER_BLOG_ID }}
-        run: npx ts-node tools/auto-publish-next.ts --dir content/dev/database
+        run: npx ts-node tools/auto-publish-next.ts --dir content/dev/queue
 
       - name: Commit and push write-back
         if: steps.publish.outputs.published == 'true'

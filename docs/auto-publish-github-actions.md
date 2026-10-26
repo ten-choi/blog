@@ -5,7 +5,7 @@
 
 ## 1. 목표
 
-- 대상: `content/dev/database/` 아래 `published: false` 인 md 파일
+- 대상: `content/dev/queue/` 아래 `published: false` 인 md 파일
 - 목적지: dev 블로그 (ten-dev-notes.blogspot.com, Blog ID `3666962477256387094`)
 - 빈도: **하루 2회**, 1회 1개 글
   - 오전 슬롯: **08:00 ~ 13:00 KST** 사이 랜덤 1회
@@ -102,7 +102,7 @@ Job 단계:
 3. `if: run == 'true'` 이하 진행
 4. `actions/setup-node` (Node 22) + `npm ci`
 5. **fail-fast**: `BLOGGER_REFRESH_TOKEN` 비어 있으면 즉시 exit 1 (auth.ts 의 대화형 fallback 진입 방지)
-6. `npx ts-node tools/auto-publish-next.ts --dir content/dev/database` (아래 6절)
+6. `npx ts-node tools/auto-publish-next.ts --dir content/dev/queue` (아래 6절)
    - env: 4개 secrets
 7. `git config user.name "github-actions[bot]"` / email `41898282+github-actions[bot]@users.noreply.github.com`
 8. `git add <그 파일>` → `git commit -m "publish(dev): <title> [auto-publish am]"` → `git pull --rebase origin main` → `git push`
@@ -112,7 +112,7 @@ Job 단계:
 
 기존 `tools/auto-publish-next.ps1` 의 로직을 Node/TS 로 옮긴다 (ubuntu 러너에서 실행하기 위해).
 
-- 입력: `--dir <경로>` (기본 `content/dev/database`), `--dry-run`
+- 입력: `--dir <경로>` (기본 `content/dev/queue`), `--dry-run`
 - 순서:
   1. `--dir` 아래 `*.md` 를 파일명 정렬 → frontmatter `published: false` 인 첫 파일 선택. 없으면 `"Queue empty"` 출력 후 **exit 0** (실패 아님)
   2. `published: false` → `published: true` 치환 (UTF-8 no BOM 유지)
