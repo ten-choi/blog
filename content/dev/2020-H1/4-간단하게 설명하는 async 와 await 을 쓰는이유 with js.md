@@ -1,7 +1,7 @@
 ---
 title: "간단하게 설명하는 async 와 await 을 쓰는이유 with js"
 labels: ["TS","JS","javascript","동기","ES6","async"]
-published: false
+published: true
 date: 2020-05-21T15:22:37+09:00
 readerComments: "ALLOW"
 source: "tistory"
