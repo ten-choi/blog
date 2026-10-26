@@ -1,7 +1,7 @@
 ---
 title: "간단하게 설명하는 node.js 환경 변수 설정 및 설명"
 labels: ["TS","JS","nodejs","환경변수"]
-published: false
+published: true
 date: 2020-05-21T10:14:14+09:00
 readerComments: "ALLOW"
 source: "tistory"
