@@ -1,7 +1,7 @@
 ---
 title: "React의 Redux 데이터 구조 이해하기 1"
 labels: ["TS","JS","react","Redux"]
-published: false
+published: true
 date: 2020-06-17T10:30:58+09:00
 readerComments: "ALLOW"
 source: "tistory"
