@@ -1,7 +1,7 @@
 ---
 title: "react 에서 css 및 Sass에 관한 고찰"
 labels: ["TS","JS","react"]
-published: false
+published: true
 date: 2020-06-11T16:48:43+09:00
 readerComments: "ALLOW"
 source: "tistory"
