@@ -1,7 +1,7 @@
 ---
 title: "react 에서 express 로 값 전달하는 법 1"
 labels: ["TS","JS","react","express"]
-published: false
+published: true
 date: 2020-06-05T17:01:03+09:00
 readerComments: "ALLOW"
 source: "tistory"
