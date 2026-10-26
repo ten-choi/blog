@@ -1,7 +1,7 @@
 ---
 title: "react Context API 이해하기"
 labels: ["TS","JS","react","context"]
-published: false
+published: true
 date: 2020-06-15T15:12:26+09:00
 readerComments: "ALLOW"
 source: "tistory"
