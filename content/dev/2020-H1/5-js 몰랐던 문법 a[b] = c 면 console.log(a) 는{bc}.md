@@ -1,7 +1,7 @@
 ---
 title: "js 몰랐던 문법 a[b] = \"c\" 면 console.log(a) 는{b:\"c\"}"
 labels: ["TS","JS","react","ES6"]
-published: false
+published: true
 date: 2020-05-21T16:42:07+09:00
 readerComments: "ALLOW"
 source: "tistory"
