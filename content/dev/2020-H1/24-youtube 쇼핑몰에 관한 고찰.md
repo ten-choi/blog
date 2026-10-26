@@ -1,7 +1,7 @@
 ---
 title: "youtube 쇼핑몰에 관한 고찰"
 labels: ["ETC","Idea","유튜브"]
-published: false
+published: true
 date: 2020-06-13T13:40:56+09:00
 readerComments: "ALLOW"
 source: "tistory"
