@@ -1,7 +1,7 @@
 ---
 title: "간단하게 사용해보는 node.js와 postgresql 3"
 labels: ["DB","rdb","PostgreSQL","node.js"]
-published: false
+published: true
 date: 2020-06-05T15:31:03+09:00
 readerComments: "ALLOW"
 source: "tistory"
