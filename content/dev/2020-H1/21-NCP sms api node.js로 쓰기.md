@@ -1,7 +1,7 @@
 ---
 title: "NCP sms api node.js로 쓰기"
 labels: ["TS","JS","nodejs","sms","naver","sens"]
-published: false
+published: true
 date: 2020-06-11T12:46:26+09:00
 readerComments: "ALLOW"
 source: "tistory"
