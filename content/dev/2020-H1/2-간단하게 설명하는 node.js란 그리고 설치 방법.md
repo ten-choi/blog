@@ -1,7 +1,7 @@
 ---
 title: "간단하게 설명하는 node.js란? 그리고 설치 방법"
 labels: ["TS","JS","nodejs","npm","node"]
-published: false
+published: true
 date: 2020-05-21T09:52:20+09:00
 readerComments: "ALLOW"
 source: "tistory"
