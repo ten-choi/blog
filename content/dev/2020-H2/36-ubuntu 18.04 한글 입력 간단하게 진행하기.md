@@ -1,7 +1,7 @@
 ---
 title: "ubuntu 18.04 한글 입력 간단하게 진행하기"
 labels: ["OS","Linux","ubuntu"]
-published: false
+published: true
 date: 2020-07-20T16:10:21+09:00
 readerComments: "ALLOW"
 source: "tistory"
