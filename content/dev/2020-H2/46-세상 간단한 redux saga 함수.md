@@ -1,7 +1,7 @@
 ---
 title: "세상 간단한 redux saga 함수"
 labels: ["TS","JS","react","Saga"]
-published: false
+published: true
 date: 2020-09-10T18:13:44+09:00
 readerComments: "ALLOW"
 source: "tistory"
