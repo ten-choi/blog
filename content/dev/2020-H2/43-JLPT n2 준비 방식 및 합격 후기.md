@@ -1,7 +1,7 @@
 ---
 title: "JLPT n2 준비 방식 및 합격 후기"
 labels: ["ETC","JLPT"]
-published: false
+published: true
 date: 2020-08-27T09:58:08+09:00
 readerComments: "ALLOW"
 source: "tistory"
