@@ -1,7 +1,7 @@
 ---
 title: "vmware 를이용해 ubuntu 데스크탑용 간단히 실행하기"
 labels: ["OS","Linux","ubuntu","vmware"]
-published: false
+published: true
 date: 2020-07-17T12:00:20+09:00
 readerComments: "ALLOW"
 source: "tistory"
