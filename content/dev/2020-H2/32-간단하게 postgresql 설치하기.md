@@ -1,7 +1,7 @@
 ---
 title: "간단하게 postgresql 설치하기"
 labels: ["DB","rdb","PostgreSQL"]
-published: false
+published: true
 date: 2020-07-16T13:33:00+09:00
 readerComments: "ALLOW"
 source: "tistory"
