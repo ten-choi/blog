@@ -1,7 +1,7 @@
 ---
 title: "vmware 15.5 centos 7 포트포워딩 하기"
 labels: ["OS","Linux","vmware","vmware15.5","centos7"]
-published: false
+published: true
 date: 2020-07-17T18:06:18+09:00
 readerComments: "ALLOW"
 source: "tistory"
