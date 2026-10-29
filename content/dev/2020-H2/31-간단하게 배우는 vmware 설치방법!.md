@@ -1,7 +1,7 @@
 ---
 title: "간단하게 배우는 vmware 설치방법!"
 labels: ["OS","Linux","VMware"]
-published: false
+published: true
 date: 2020-07-08T13:32:00+09:00
 readerComments: "ALLOW"
 source: "tistory"
