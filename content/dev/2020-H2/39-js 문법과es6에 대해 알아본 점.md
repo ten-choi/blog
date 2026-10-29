@@ -1,7 +1,7 @@
 ---
 title: "js 문법과es6에 대해 알아본 점"
 labels: ["TS","JS","javascript","ES6"]
-published: false
+published: true
 date: 2020-08-12T15:08:11+09:00
 readerComments: "ALLOW"
 source: "tistory"
