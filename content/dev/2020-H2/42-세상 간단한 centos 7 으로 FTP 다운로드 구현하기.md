@@ -1,7 +1,7 @@
 ---
 title: "세상 간단한 centos 7 으로 FTP 다운로드 구현하기"
 labels: ["OS","Linux","ftp","리눅스","centos"]
-published: false
+published: true
 date: 2020-08-26T11:01:51+09:00
 readerComments: "ALLOW"
 source: "tistory"
