@@ -1,7 +1,7 @@
 ---
 title: "누군가 한 ssl 관련 정리"
 labels: []
-published: false
+published: true
 date: 2020-09-17T10:37:07+09:00
 readerComments: "ALLOW"
 source: "tistory"
