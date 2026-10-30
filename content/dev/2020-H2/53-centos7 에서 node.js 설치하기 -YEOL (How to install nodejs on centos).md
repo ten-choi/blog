@@ -1,7 +1,7 @@
 ---
 title: "centos7 에서 node.js 설치하기 (How to install nodejs on centos)"
 labels: ["OS","Linux","centos","centos7"]
-published: false
+published: true
 date: 2020-10-13T13:29:28+09:00
 readerComments: "ALLOW"
 source: "tistory"
