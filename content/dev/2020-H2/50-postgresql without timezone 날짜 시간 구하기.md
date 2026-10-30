@@ -1,7 +1,7 @@
 ---
 title: "postgresql without timezone 날짜 시간 구하기"
 labels: ["DB","rdb","postgresql"]
-published: false
+published: true
 date: 2020-09-25T16:45:31+09:00
 readerComments: "ALLOW"
 source: "tistory"
