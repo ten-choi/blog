@@ -1,7 +1,7 @@
 ---
 title: "누군가의 postgresql 데이터 타입"
 labels: ["DB","rdb"]
-published: false
+published: true
 date: 2020-09-16T14:45:15+09:00
 readerComments: "ALLOW"
 source: "tistory"
