@@ -1,7 +1,7 @@
 ---
 title: "초간단! python 설치하고 Atom으로 실행하기"
 labels: ["Python","atom"]
-published: false
+published: true
 date: 2020-10-21T17:18:46+09:00
 readerComments: "ALLOW"
 source: "tistory"
