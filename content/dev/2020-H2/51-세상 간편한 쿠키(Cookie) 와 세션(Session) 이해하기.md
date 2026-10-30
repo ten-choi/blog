@@ -1,7 +1,7 @@
 ---
 title: "세상 간편한 쿠키(Cookie) 와 세션(Session) 이해하기"
 labels: ["ETC","데이터 통신","쿠키와","쿠키"]
-published: false
+published: true
 date: 2020-10-06T10:16:54+09:00
 readerComments: "ALLOW"
 source: "tistory"
