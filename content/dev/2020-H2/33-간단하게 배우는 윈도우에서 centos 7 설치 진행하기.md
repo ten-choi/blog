@@ -1,7 +1,7 @@
 ---
 title: "간단하게 배우는 윈도우에서 centos 7 설치 진행하기"
 labels: ["OS","Linux","centos7","vmware15.5","vmware"]
-published: false
+published: true
 date: 2020-10-30T11:09:54+09:00
 readerComments: "ALLOW"
 source: "tistory"
