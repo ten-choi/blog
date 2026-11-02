@@ -1,7 +1,7 @@
 ---
 title: "초간단!! postgresql 11을 backup 및 restore with PGadmin"
 labels: ["DB","rdb","postgresql","postgres"]
-published: false
+published: true
 date: 2020-12-28T16:50:38+09:00
 readerComments: "ALLOW"
 source: "tistory"
