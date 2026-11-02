@@ -1,7 +1,7 @@
 ---
 title: "초간단 centos 7 화면보호기 해체 방법"
 labels: ["OS","Linux","CentOS7"]
-published: false
+published: true
 date: 2021-01-20T09:55:32+09:00
 readerComments: "ALLOW"
 source: "tistory"
