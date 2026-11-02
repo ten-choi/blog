@@ -1,7 +1,7 @@
 ---
 title: "[ HR ] 주변인 중에서 비전공인 경우의 IT 취업 흐름"
 labels: ["Office","HR","비전공자","it","비전공","프로그래머","개발자"]
-published: false
+published: true
 date: 2020-12-31T18:20:39+09:00
 readerComments: "ALLOW"
 source: "tistory"
