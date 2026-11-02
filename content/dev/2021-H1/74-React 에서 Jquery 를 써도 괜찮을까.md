@@ -1,7 +1,7 @@
 ---
 title: "React 에서 Jquery 를 써도 괜찮을까?"
 labels: ["react","npm"]
-published: false
+published: true
 date: 2021-01-10T12:15:16+09:00
 readerComments: "ALLOW"
 source: "tistory"
