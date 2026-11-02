@@ -1,7 +1,7 @@
 ---
 title: "쉽게 쓰는 Linux tar 명령어"
 labels: ["OS","Linux","tar"]
-published: false
+published: true
 date: 2020-11-24T11:22:25+09:00
 readerComments: "ALLOW"
 source: "tistory"
