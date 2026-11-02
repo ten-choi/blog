@@ -1,7 +1,7 @@
 ---
 title: "PuTTY 사용법 및 설명"
 labels: ["OS","Linux","putty","리눅스","putty란"]
-published: false
+published: true
 date: 2021-01-06T11:27:23+09:00
 readerComments: "ALLOW"
 source: "tistory"
