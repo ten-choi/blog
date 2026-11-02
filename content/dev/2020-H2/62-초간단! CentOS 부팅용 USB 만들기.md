@@ -1,7 +1,7 @@
 ---
 title: "초간단! CentOS 부팅용 USB 만들기"
 labels: ["OS","Linux","centos"]
-published: false
+published: true
 date: 2020-12-22T11:15:15+09:00
 readerComments: "ALLOW"
 source: "tistory"
