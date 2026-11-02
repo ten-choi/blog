@@ -1,7 +1,7 @@
 ---
 title: "쉽게 배우는 리눅스 파일 전송 with WinScp"
 labels: ["ETC","ETCLanguage","리눅스","win"]
-published: false
+published: true
 date: 2021-01-13T18:02:56+09:00
 readerComments: "ALLOW"
 source: "tistory"
