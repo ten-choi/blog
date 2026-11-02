@@ -1,7 +1,7 @@
 ---
 title: "초간단! React 에서 jQuery 사용하기"
 labels: ["TS","JS","react"]
-published: false
+published: true
 date: 2020-12-30T17:34:51+09:00
 readerComments: "ALLOW"
 source: "tistory"
