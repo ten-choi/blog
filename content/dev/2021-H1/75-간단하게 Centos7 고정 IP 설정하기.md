@@ -1,7 +1,7 @@
 ---
 title: "간단하게 Centos7 고정 IP 설정하기"
 labels: ["OS","Linux","centos7","centos"]
-published: false
+published: true
 date: 2021-01-12T18:02:37+09:00
 readerComments: "ALLOW"
 source: "tistory"
