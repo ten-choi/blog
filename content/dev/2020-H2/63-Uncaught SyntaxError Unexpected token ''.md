@@ -1,7 +1,7 @@
 ---
 title: "Uncaught SyntaxError: Unexpected token '<'"
 labels: ["TS","JS","react","Uncaught"]
-published: false
+published: true
 date: 2020-12-23T10:18:32+09:00
 readerComments: "ALLOW"
 source: "tistory"
