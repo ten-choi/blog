@@ -1,7 +1,7 @@
 ---
 title: "JavaScript 1분 안에 끝내드리겠습니다."
 labels: ["TS","JS","javascript","JavaScript란","javascript에"]
-published: false
+published: true
 date: 2021-01-03T16:07:54+09:00
 readerComments: "ALLOW"
 source: "tistory"
