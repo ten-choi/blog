@@ -1,7 +1,7 @@
 ---
 title: "CentOS7 방화벽 명령어 및 부연 설명"
 labels: ["OS","Linux","centos7"]
-published: false
+published: true
 date: 2021-01-25T18:35:09+09:00
 readerComments: "ALLOW"
 source: "tistory"
