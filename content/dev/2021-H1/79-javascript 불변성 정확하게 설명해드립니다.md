@@ -1,7 +1,7 @@
 ---
 title: "javascript 불변성 정확하게 설명해드립니다"
 labels: ["TS","JS","javascript","불변성","자바스크립트"]
-published: false
+published: true
 date: 2021-01-29T11:29:22+09:00
 readerComments: "ALLOW"
 source: "tistory"
