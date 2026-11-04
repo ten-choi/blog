@@ -1,7 +1,7 @@
 ---
 title: "React, Vue, Html 등 구분없는! CSS로 font 적용하기"
 labels: ["TS","JS","react","폰트","html","vue","css","angular"]
-published: false
+published: true
 date: 2021-02-03T13:10:24+09:00
 readerComments: "ALLOW"
 source: "tistory"
