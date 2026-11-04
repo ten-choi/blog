@@ -1,7 +1,7 @@
 ---
 title: "ubunto 18 root 계정 비밀번호 재설정(초기화)"
 labels: ["OS","Linux","우분투","ubuntu"]
-published: false
+published: true
 date: 2021-02-01T14:50:05+09:00
 readerComments: "ALLOW"
 source: "tistory"
