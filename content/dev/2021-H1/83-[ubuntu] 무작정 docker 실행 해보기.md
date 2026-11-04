@@ -1,7 +1,7 @@
 ---
 title: "[ubuntu] 무작정 docker 실행 해보기"
 labels: ["ETC","Docker"]
-published: false
+published: true
 date: 2021-02-05T17:05:04+09:00
 readerComments: "ALLOW"
 source: "tistory"
