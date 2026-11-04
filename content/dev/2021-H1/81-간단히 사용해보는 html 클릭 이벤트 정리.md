@@ -1,7 +1,7 @@
 ---
 title: "간단히 사용해보는 html 클릭 이벤트 정리"
 labels: ["ETC","Html5","Css3","html"]
-published: false
+published: true
 date: 2021-02-02T13:35:55+09:00
 readerComments: "ALLOW"
 source: "tistory"
