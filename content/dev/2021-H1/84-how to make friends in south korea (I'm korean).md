@@ -1,7 +1,7 @@
 ---
 title: "how to make friends in south korea (I'm korean)"
 labels: ["ForeignLanguage","English","study","south"]
-published: false
+published: true
 date: 2021-02-06T16:26:27+09:00
 readerComments: "ALLOW"
 source: "tistory"
