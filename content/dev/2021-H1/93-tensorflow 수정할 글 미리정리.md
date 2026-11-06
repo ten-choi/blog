@@ -1,7 +1,7 @@
 ---
 title: "tensorflow 수정할 글 미리정리"
 labels: ["ETC","Tensorflow"]
-published: false
+published: true
 date: 2021-05-17T09:01:45+09:00
 readerComments: "ALLOW"
 source: "tistory"
