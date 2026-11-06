@@ -1,7 +1,7 @@
 ---
 title: "The direction of English category has been determined"
 labels: ["ForeignLanguage","English"]
-published: false
+published: true
 date: 2021-12-30T14:32:31+09:00
 readerComments: "ALLOW"
 source: "tistory"
