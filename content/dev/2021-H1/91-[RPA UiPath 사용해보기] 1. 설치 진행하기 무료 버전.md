@@ -1,7 +1,7 @@
 ---
 title: "[RPA UiPath 사용해보기] 1. 설치 진행하기 무료 버전"
 labels: ["ETC","RPA","UiPath"]
-published: false
+published: true
 date: 2021-04-21T15:37:29+09:00
 readerComments: "ALLOW"
 source: "tistory"
