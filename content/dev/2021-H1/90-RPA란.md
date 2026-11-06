@@ -1,7 +1,7 @@
 ---
 title: "RPA란?"
 labels: ["ETC","RPA","UiPath","rpa란"]
-published: false
+published: true
 date: 2021-04-21T15:30:34+09:00
 readerComments: "ALLOW"
 source: "tistory"
