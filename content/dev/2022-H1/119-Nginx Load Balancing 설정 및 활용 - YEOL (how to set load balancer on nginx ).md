@@ -1,7 +1,7 @@
 ---
 title: "Nginx Load Balancing 설정 및 활용 (how to set load balancer on nginx)"
 labels: ["ETC","Nginx"]
-published: false
+published: true
 date: 2022-01-17T13:48:27+09:00
 readerComments: "ALLOW"
 source: "tistory"
