@@ -1,7 +1,7 @@
 ---
 title: "Window MariaDB 비밀번호 분실 시 수정 (MySql root password reset and update windows)"
 labels: ["DB","rdb","mysql","MariaDB"]
-published: false
+published: true
 date: 2021-11-19T16:45:35+09:00
 readerComments: "ALLOW"
 source: "tistory"
