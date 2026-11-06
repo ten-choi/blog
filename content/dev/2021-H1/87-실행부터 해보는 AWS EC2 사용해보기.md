@@ -1,7 +1,7 @@
 ---
 title: "실행부터 해보는 AWS EC2 사용해보기"
 labels: ["Cloud","AWS"]
-published: false
+published: true
 date: 2021-02-17T18:13:15+09:00
 readerComments: "ALLOW"
 source: "tistory"
