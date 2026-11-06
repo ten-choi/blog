@@ -1,7 +1,7 @@
 ---
 title: "GraphQL에서 DataLoader 사용법 (how to use dataloader on graphql)"
 labels: ["ETC","Graphql.js","graphql","데이터로더"]
-published: false
+published: true
 date: 2021-12-20T11:06:46+09:00
 readerComments: "ALLOW"
 source: "tistory"
