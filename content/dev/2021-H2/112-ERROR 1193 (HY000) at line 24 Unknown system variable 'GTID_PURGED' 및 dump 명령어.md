@@ -1,7 +1,7 @@
 ---
 title: "ERROR 1193 (HY000) at line 24: Unknown system variable 'GTID_PURGED' 및 dump 명령어"
 labels: ["TroubleShooting","SQL","gtid_purged","Unknown","mysql"]
-published: false
+published: true
 date: 2021-11-22T14:06:01+09:00
 readerComments: "ALLOW"
 source: "tistory"
