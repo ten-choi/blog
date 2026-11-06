@@ -1,7 +1,7 @@
 ---
 title: "[코딩 테스트] 나머지 한 점 in Js"
 labels: ["CodingTest","코딩테스트","나머지"]
-published: false
+published: true
 date: 2021-05-22T16:53:06+09:00
 readerComments: "ALLOW"
 source: "tistory"
