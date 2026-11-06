@@ -1,7 +1,7 @@
 ---
 title: "[코딩 테스트 - 동적계획법] N으로 표현 in Js"
 labels: ["CodingTest","코딩테스트","N으로"]
-published: false
+published: true
 date: 2021-05-22T17:07:37+09:00
 readerComments: "ALLOW"
 source: "tistory"
