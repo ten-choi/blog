@@ -1,7 +1,7 @@
 ---
 title: "Electron 빌드 하고 인스톨러로 만드는법"
 labels: ["ETC","Electron","Installer","build","builder"]
-published: false
+published: true
 date: 2021-08-02T16:35:45+09:00
 readerComments: "ALLOW"
 source: "tistory"
