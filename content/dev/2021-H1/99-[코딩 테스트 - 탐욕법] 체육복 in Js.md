@@ -1,7 +1,7 @@
 ---
 title: "[코딩 테스트 - 탐욕법] 체육복 in Js"
 labels: ["CodingTest","체육복","코딩테스트"]
-published: false
+published: true
 date: 2021-05-22T17:22:17+09:00
 readerComments: "ALLOW"
 source: "tistory"
