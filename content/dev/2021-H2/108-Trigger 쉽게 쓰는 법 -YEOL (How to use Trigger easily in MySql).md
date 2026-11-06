@@ -1,7 +1,7 @@
 ---
 title: "Trigger 쉽게 쓰는 법 (How to use Trigger easily in MySql)"
 labels: ["DB","rdb","trigger","mysql","sql"]
-published: false
+published: true
 date: 2021-10-29T18:10:46+09:00
 readerComments: "ALLOW"
 source: "tistory"
