@@ -1,7 +1,7 @@
 ---
 title: "Nginx 설치 및 설정과 실행 (how to install and use nginx on centos 7)"
 labels: ["ETC","ETCLanguage","centos","redhat"]
-published: false
+published: true
 date: 2021-10-18T18:03:29+09:00
 readerComments: "ALLOW"
 source: "tistory"
