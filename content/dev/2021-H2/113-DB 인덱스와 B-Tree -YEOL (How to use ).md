@@ -1,7 +1,7 @@
 ---
 title: "DB 인덱스와 B-Tree (How to use)"
 labels: ["DB","rdb","B-tree","SQL"]
-published: false
+published: true
 date: 2021-12-13T15:39:10+09:00
 readerComments: "ALLOW"
 source: "tistory"
