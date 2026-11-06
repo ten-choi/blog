@@ -1,7 +1,7 @@
 ---
 title: "June twenty-nine, twenty twenty-one"
 labels: ["english"]
-published: false
+published: true
 date: 2021-10-18T18:03:44+09:00
 readerComments: "ALLOW"
 source: "tistory"
