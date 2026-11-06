@@ -1,7 +1,7 @@
 ---
 title: "ERROR 1273 (HY000) at line 49: Unknown collation: 'utf8mb4_0900_ai_ci'"
 labels: ["TroubleShooting","SQL","Unknown","mysql"]
-published: false
+published: true
 date: 2021-11-22T13:50:42+09:00
 readerComments: "ALLOW"
 source: "tistory"
