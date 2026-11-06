@@ -1,7 +1,7 @@
 ---
 title: "Azure Load Balancing 설정 및 활용 (how to set load balancer on Azure)"
 labels: ["Cloud","azure"]
-published: false
+published: true
 date: 2022-01-18T15:39:40+09:00
 readerComments: "ALLOW"
 source: "tistory"
