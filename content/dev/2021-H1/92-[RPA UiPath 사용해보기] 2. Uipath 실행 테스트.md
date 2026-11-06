@@ -1,7 +1,7 @@
 ---
 title: "[RPA UiPath 사용해보기] 2. Uipath 실행 테스트"
 labels: ["ETC","RPA","UiPath"]
-published: false
+published: true
 date: 2021-04-21T16:01:04+09:00
 readerComments: "ALLOW"
 source: "tistory"
