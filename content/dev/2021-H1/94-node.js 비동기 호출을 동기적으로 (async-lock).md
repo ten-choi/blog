@@ -1,7 +1,7 @@
 ---
 title: "node.js 비동기 호출을 동기적으로 (async-lock)"
 labels: ["TS","JS","nodejs","비동기를","restapi","async","async-lock"]
-published: false
+published: true
 date: 2021-05-17T09:03:07+09:00
 readerComments: "ALLOW"
 source: "tistory"
