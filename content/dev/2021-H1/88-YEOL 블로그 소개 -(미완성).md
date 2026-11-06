@@ -1,7 +1,7 @@
 ---
 title: "YEOL 블로그 소개 -(미완성)"
 labels: ["Tistory","티스토리"]
-published: false
+published: true
 date: 2021-02-27T15:33:38+09:00
 readerComments: "ALLOW"
 source: "tistory"
