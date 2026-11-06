@@ -1,7 +1,7 @@
 ---
 title: "[코딩 테스트] 멀쩡한 사각형 in Js"
 labels: ["CodingTest","코딩테스트","멀쩡한"]
-published: false
+published: true
 date: 2021-05-23T14:24:10+09:00
 readerComments: "ALLOW"
 source: "tistory"
