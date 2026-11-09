@@ -1,7 +1,7 @@
 ---
 title: "[ DesignPattern ] SRP란 무엇인가"
 labels: ["Architecture","design_pattern","OOP","solid","SRP","DesignPattern"]
-published: false
+published: true
 date: 2023-05-11T16:13:24+09:00
 readerComments: "ALLOW"
 source: "tistory"
