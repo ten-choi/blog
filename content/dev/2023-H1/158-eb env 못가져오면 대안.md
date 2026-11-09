@@ -1,7 +1,7 @@
 ---
 title: "eb env 못가져오면 대안"
 labels: []
-published: false
+published: true
 date: 2023-01-13T16:02:23+09:00
 readerComments: "ALLOW"
 source: "tistory"
