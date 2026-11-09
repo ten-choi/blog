@@ -1,7 +1,7 @@
 ---
 title: "[ MongoDB ] MongoDB 에러 (path\":\"/tmp/mongodb-27017.sock\",\"error\":\"Operation not permitted\")"
 labels: ["TroubleShooting","mongoDB","Operation"]
-published: false
+published: true
 date: 2022-02-17T12:38:25+09:00
 readerComments: "ALLOW"
 source: "tistory"
