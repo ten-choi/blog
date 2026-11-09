@@ -1,7 +1,7 @@
 ---
 title: "[ Django ] Django logging 하기"
 labels: ["Python","django"]
-published: false
+published: true
 date: 2022-08-18T18:46:25+09:00
 readerComments: "ALLOW"
 source: "tistory"
