@@ -1,7 +1,7 @@
 ---
 title: "[ HTTP ] HTTP Status Code 정리 - TenLog"
 labels: ["ETC","데이터 통신","http"]
-published: false
+published: true
 date: 2022-09-02T15:10:11+09:00
 readerComments: "ALLOW"
 source: "tistory"
