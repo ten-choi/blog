@@ -1,7 +1,7 @@
 ---
 title: "[ Aws ] http domain 만들고 https 적용하기"
 labels: ["Cloud","route53","aws"]
-published: false
+published: true
 date: 2022-12-29T13:13:13+09:00
 readerComments: "ALLOW"
 source: "tistory"
