@@ -1,7 +1,7 @@
 ---
 title: "[ Django ] Django 주요 명령어 정리"
 labels: ["Python","django"]
-published: false
+published: true
 date: 2022-08-23T18:23:17+09:00
 readerComments: "ALLOW"
 source: "tistory"
