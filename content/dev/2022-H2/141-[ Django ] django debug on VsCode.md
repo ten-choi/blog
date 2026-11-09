@@ -1,7 +1,7 @@
 ---
 title: "[ Django ] django \bdebug on VsCode"
 labels: ["Python","django","vscode"]
-published: false
+published: true
 date: 2022-08-19T12:43:56+09:00
 readerComments: "ALLOW"
 source: "tistory"
