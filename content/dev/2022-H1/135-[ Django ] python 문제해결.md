@@ -1,7 +1,7 @@
 ---
 title: "[ Django ] python 문제해결"
 labels: ["Python","django"]
-published: false
+published: true
 date: 2022-06-17T16:21:51+09:00
 readerComments: "ALLOW"
 source: "tistory"
