@@ -1,7 +1,7 @@
 ---
 title: "[ Aws ] django eb deploy setting"
 labels: ["Cloud","eb","django"]
-published: false
+published: true
 date: 2023-01-18T10:20:49+09:00
 readerComments: "ALLOW"
 source: "tistory"
