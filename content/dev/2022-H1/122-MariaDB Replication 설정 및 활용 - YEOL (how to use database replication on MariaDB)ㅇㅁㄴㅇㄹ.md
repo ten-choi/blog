@@ -1,7 +1,7 @@
 ---
 title: "MariaDB Replication 설정 및 활용 (how to use database replication on MariaDB)"
 labels: ["Cloud","azure"]
-published: false
+published: true
 date: 2022-01-25T15:31:01+09:00
 readerComments: "ALLOW"
 source: "tistory"
