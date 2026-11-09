@@ -1,7 +1,7 @@
 ---
 title: "OOP와 SOLID에 대해 정리한 내용"
 labels: ["architecture","kr","oop"]
-published: false
+published: true
 date: 2023-05-03T10:00:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "933623489841821655"
