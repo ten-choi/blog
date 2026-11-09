@@ -1,7 +1,7 @@
 ---
 title: "[ Aws ] CloudFront 만드는법"
 labels: ["Cloud","Cloudfront"]
-published: false
+published: true
 date: 2023-01-02T17:38:22+09:00
 readerComments: "ALLOW"
 source: "tistory"
