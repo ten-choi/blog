@@ -1,7 +1,7 @@
 ---
 title: "[ Aws ] elastic beanstalk 구축하기"
 labels: ["Cloud","elastic","AWS","eb"]
-published: false
+published: true
 date: 2022-12-28T15:37:50+09:00
 readerComments: "ALLOW"
 source: "tistory"
