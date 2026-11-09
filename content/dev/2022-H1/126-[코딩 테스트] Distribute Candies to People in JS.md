@@ -1,7 +1,7 @@
 ---
 title: "[코딩 테스트] Distribute Candies to People in JS"
 labels: ["CodingTest","leetcode","코딩테스트","코테","Distribute"]
-published: false
+published: true
 date: 2022-02-20T15:45:10+09:00
 readerComments: "ALLOW"
 source: "tistory"
