@@ -1,7 +1,7 @@
 ---
 title: "[코딩 테스트] 완전탐색 모의고사 in JS"
 labels: ["CodingTest","모의고사","코딩테스트","프로그래머스"]
-published: false
+published: true
 date: 2022-02-22T00:22:31+09:00
 readerComments: "ALLOW"
 source: "tistory"
