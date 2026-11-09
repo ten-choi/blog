@@ -1,7 +1,7 @@
 ---
 title: "[ Architecture ] ubiquitous language의 필요성"
 labels: ["Architecture","ubiquitous"]
-published: false
+published: true
 date: 2022-11-14T18:34:42+09:00
 readerComments: "ALLOW"
 source: "tistory"
