@@ -1,7 +1,7 @@
 ---
 title: "[\bDjango ] env관리를 위한 settings구조 커스텀"
 labels: ["Python","django"]
-published: false
+published: true
 date: 2022-08-22T16:13:41+09:00
 readerComments: "ALLOW"
 source: "tistory"
