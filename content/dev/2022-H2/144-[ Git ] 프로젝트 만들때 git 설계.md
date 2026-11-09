@@ -1,7 +1,7 @@
 ---
 title: "[ Git ] 프로젝트 만들때 git 설계"
 labels: ["ETC","Git"]
-published: false
+published: true
 date: 2022-08-22T17:38:50+09:00
 readerComments: "ALLOW"
 source: "tistory"
