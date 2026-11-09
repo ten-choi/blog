@@ -1,7 +1,7 @@
 ---
 title: "[ \bAWS ] 기초적인 Lambda 사용해보기"
 labels: ["Cloud","aws","lambda"]
-published: false
+published: true
 date: 2022-05-27T17:37:31+09:00
 readerComments: "ALLOW"
 source: "tistory"
