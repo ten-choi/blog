@@ -1,7 +1,7 @@
 ---
 title: "[ Edu ] 2023 backend 초보자 오프라인 강의"
 labels: ["ETC","Education","it","개발자","코딩강의","개발강의","백엔드강의","서버강의"]
-published: false
+published: true
 date: 2022-11-13T15:27:44+09:00
 readerComments: "ALLOW"
 source: "tistory"
