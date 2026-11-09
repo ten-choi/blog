@@ -1,7 +1,7 @@
 ---
 title: "api gateway pattern 분석"
 labels: ["api gateway pattern","architecture","kr"]
-published: false
+published: true
 date: 2023-05-04T10:00:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "4969095454872178128"
