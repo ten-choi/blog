@@ -1,7 +1,7 @@
 ---
 title: "[ Aws ] 간단하게 해보는 EC2 생성 및 ssh, password 로그인"
 labels: ["Cloud","aws","ec2"]
-published: false
+published: true
 date: 2022-02-17T12:37:19+09:00
 readerComments: "ALLOW"
 source: "tistory"
