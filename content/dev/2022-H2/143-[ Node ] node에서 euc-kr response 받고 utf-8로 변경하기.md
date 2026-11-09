@@ -1,7 +1,7 @@
 ---
 title: "[ Node ] node에서 euc-kr response 받고 utf-8로 변경하기"
 labels: ["TS","JS","nodejs","node"]
-published: false
+published: true
 date: 2022-08-22T16:56:07+09:00
 readerComments: "ALLOW"
 source: "tistory"
