@@ -1,7 +1,7 @@
 ---
 title: "[ Django ] django Prod 프로젝트 만들기"
 labels: ["Python","django"]
-published: false
+published: true
 date: 2022-09-02T14:32:59+09:00
 readerComments: "ALLOW"
 source: "tistory"
