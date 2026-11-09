@@ -1,7 +1,7 @@
 ---
 title: "[ Django ] orm 참조 역참조"
 labels: ["Python","django"]
-published: false
+published: true
 date: 2023-03-13T17:57:11+09:00
 readerComments: "ALLOW"
 source: "tistory"
