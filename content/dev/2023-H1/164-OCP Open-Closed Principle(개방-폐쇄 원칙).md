@@ -1,7 +1,7 @@
 ---
 title: "OCP: Open-Closed Principle(개방-폐쇄 원칙)"
 labels: []
-published: false
+published: true
 date: 2023-05-09T11:34:57+09:00
 readerComments: "ALLOW"
 source: "tistory"
