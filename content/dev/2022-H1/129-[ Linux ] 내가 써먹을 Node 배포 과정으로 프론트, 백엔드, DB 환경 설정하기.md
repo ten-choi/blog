@@ -1,7 +1,7 @@
 ---
 title: "[ Linux ] 내가 써먹을 Node 배포 과정으로 프론트, 백엔드, DB 환경 설정하기"
 labels: ["OS","Linux","환경설정","부하분산","MSA","백엔드","장애대응"]
-published: false
+published: true
 date: 2022-04-04T14:59:15+09:00
 readerComments: "ALLOW"
 source: "tistory"
