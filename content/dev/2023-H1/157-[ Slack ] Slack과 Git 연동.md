@@ -1,7 +1,7 @@
 ---
 title: "[ Slack ] Slack과 Git 연동"
 labels: ["Office","Slack","Git"]
-published: false
+published: true
 date: 2023-01-03T16:08:35+09:00
 readerComments: "ALLOW"
 source: "tistory"
