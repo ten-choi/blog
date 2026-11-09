@@ -1,7 +1,7 @@
 ---
 title: "[ Aws ] ec2 보안그룹 만들기"
 labels: ["Cloud","aws"]
-published: false
+published: true
 date: 2022-12-12T18:48:27+09:00
 readerComments: "ALLOW"
 source: "tistory"
