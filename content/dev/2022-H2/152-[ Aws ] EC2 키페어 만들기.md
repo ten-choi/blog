@@ -1,7 +1,7 @@
 ---
 title: "[ Aws ] EC2 키페어 만들기"
 labels: ["Cloud","EC2","key"]
-published: false
+published: true
 date: 2022-12-28T15:34:53+09:00
 readerComments: "ALLOW"
 source: "tistory"
