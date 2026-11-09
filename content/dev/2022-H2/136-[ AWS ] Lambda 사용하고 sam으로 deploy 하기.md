@@ -1,7 +1,7 @@
 ---
 title: "[ AWS ] Lambda 사용하고 sam으로 deploy 하기"
 labels: ["Cloud","aws","SAM","lambda"]
-published: false
+published: true
 date: 2022-07-01T15:49:56+09:00
 readerComments: "ALLOW"
 source: "tistory"
