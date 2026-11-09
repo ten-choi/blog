@@ -1,7 +1,7 @@
 ---
 title: "TED - Can we create the \"perfect\" farm?"
 labels: ["ForeignLanguage","English"]
-published: false
+published: true
 date: 2022-04-03T19:29:18+09:00
 readerComments: "ALLOW"
 source: "tistory"
