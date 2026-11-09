@@ -1,7 +1,7 @@
 ---
 title: "[ Branding ] 피드백 문화가 어떻게되면 좋을까"
 labels: ["Branding","Communication","feedback"]
-published: false
+published: true
 date: 2023-04-20T15:30:44+09:00
 readerComments: "ALLOW"
 source: "tistory"
