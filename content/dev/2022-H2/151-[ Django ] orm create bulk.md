@@ -1,7 +1,7 @@
 ---
 title: "[ Django ] orm create bulk"
 labels: ["Python","django","bulk","create","orm"]
-published: false
+published: true
 date: 2022-12-27T16:40:11+09:00
 readerComments: "ALLOW"
 source: "tistory"
