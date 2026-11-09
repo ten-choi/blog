@@ -1,7 +1,7 @@
 ---
 title: "[ Typescript ] VsCode에서 Typescript Debug 하는법 (How to debug on VsCode When i use Typescript)"
 labels: ["TS","JS","typescript","Debug","VSCode"]
-published: false
+published: true
 date: 2022-05-11T16:46:23+09:00
 readerComments: "ALLOW"
 source: "tistory"
