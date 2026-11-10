@@ -1,7 +1,7 @@
 ---
 title: "Topic: What is the DIP"
 labels: []
-published: false
+published: true
 date: 2023-05-12T14:20:49+09:00
 readerComments: "ALLOW"
 source: "tistory"
