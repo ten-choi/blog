@@ -1,7 +1,7 @@
 ---
 title: "[ aws ] nat를 적용한 vpc 만드는법"
 labels: ["Cloud","aws","NAT","VPC"]
-published: false
+published: true
 date: 2023-06-15T17:54:16+09:00
 readerComments: "ALLOW"
 source: "tistory"
