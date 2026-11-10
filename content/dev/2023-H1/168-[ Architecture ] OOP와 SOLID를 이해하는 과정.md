@@ -1,7 +1,7 @@
 ---
 title: "[ Architecture ] OOP와 SOLID를 이해하는 과정"
 labels: ["Architecture","design_pattern","OOP","solid","DesignPattern"]
-published: false
+published: true
 date: 2023-05-12T11:32:59+09:00
 readerComments: "ALLOW"
 source: "tistory"
