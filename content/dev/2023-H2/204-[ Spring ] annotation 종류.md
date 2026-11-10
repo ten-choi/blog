@@ -1,7 +1,7 @@
 ---
 title: "[ Spring ] annotation 종류"
 labels: ["Java","Kotlin","spring"]
-published: false
+published: true
 date: 2023-12-07T20:21:38+09:00
 readerComments: "ALLOW"
 source: "tistory"
