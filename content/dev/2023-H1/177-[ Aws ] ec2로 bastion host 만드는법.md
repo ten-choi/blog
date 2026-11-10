@@ -1,7 +1,7 @@
 ---
 title: "[ Aws ] ec2로 bastion host 만드는법"
 labels: ["Cloud","aws","EC2","BastionHost"]
-published: false
+published: true
 date: 2023-06-15T18:50:36+09:00
 readerComments: "ALLOW"
 source: "tistory"
