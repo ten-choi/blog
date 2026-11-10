@@ -1,7 +1,7 @@
 ---
 title: "[ Git ] Git을 사용한 코드리뷰 방법"
 labels: ["ETC","Git","code"]
-published: false
+published: true
 date: 2023-10-17T15:52:24+09:00
 readerComments: "ALLOW"
 source: "tistory"
