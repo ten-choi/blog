@@ -1,7 +1,7 @@
 ---
 title: "[ Spring ] IocContainer와 bean의 관계"
 labels: ["Java","Kotlin","spring","DI","bean","IoCContainer"]
-published: false
+published: true
 date: 2023-12-07T19:39:04+09:00
 readerComments: "ALLOW"
 source: "tistory"
