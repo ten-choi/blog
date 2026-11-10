@@ -1,7 +1,7 @@
 ---
 title: "[ Git ] githubに自分の記事のLinkを自動的に更新"
 labels: ["ETC","Git","jp","readme","GitHub"]
-published: false
+published: true
 date: 2023-11-23T11:23:11+09:00
 readerComments: "ALLOW"
 source: "tistory"
