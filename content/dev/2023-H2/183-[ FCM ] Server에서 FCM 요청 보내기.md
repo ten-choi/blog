@@ -1,7 +1,7 @@
 ---
 title: "[ FCM ] Server에서 FCM 요청 보내기"
 labels: ["ThirdParty","FCM","Push"]
-published: false
+published: true
 date: 2023-07-26T11:09:32+09:00
 readerComments: "ALLOW"
 source: "tistory"
