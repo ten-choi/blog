@@ -1,7 +1,7 @@
 ---
 title: "[ Spring ] component scan이"
 labels: ["Java","Kotlin","spring","ComponentScan"]
-published: false
+published: true
 date: 2023-12-07T20:08:11+09:00
 readerComments: "ALLOW"
 source: "tistory"
