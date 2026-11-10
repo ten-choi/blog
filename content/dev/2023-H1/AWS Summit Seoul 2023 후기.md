@@ -1,7 +1,7 @@
 ---
 title: "AWS Summit Seoul 2023 후기"
 labels: ["aws","aws summit 2023","kr","summit"]
-published: false
+published: true
 date: 2023-05-13T10:00:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "7428810658265687602"
