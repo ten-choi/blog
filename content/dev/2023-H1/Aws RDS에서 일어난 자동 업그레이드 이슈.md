@@ -1,7 +1,7 @@
 ---
 title: "Aws RDS에서 일어난 자동 업그레이드 이슈"
 labels: ["aws rds","trouble shooting"]
-published: false
+published: true
 date: 2023-06-01T10:00:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "8494709000801029814"
