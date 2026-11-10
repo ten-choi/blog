@@ -1,7 +1,7 @@
 ---
 title: "[ Spring ] java web api server 만들기"
 labels: ["Java","Kotlin","spring"]
-published: false
+published: true
 date: 2023-12-07T20:21:50+09:00
 readerComments: "ALLOW"
 source: "tistory"
