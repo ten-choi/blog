@@ -1,7 +1,7 @@
 ---
 title: "[ Pattern ] database per service pattern"
 labels: ["Architecture","design_pattern","jp","Pattern","MSA"]
-published: false
+published: true
 date: 2023-12-07T17:45:22+09:00
 readerComments: "ALLOW"
 source: "tistory"
