@@ -1,7 +1,7 @@
 ---
 title: "[ Architecture ] 스타트업의 서버리스 기반 데이터 웨어하우스 구축 사례"
 labels: ["Architecture","aws"]
-published: false
+published: true
 date: 2023-05-14T16:20:01+09:00
 readerComments: "ALLOW"
 source: "tistory"
