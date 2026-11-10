@@ -1,7 +1,7 @@
 ---
 title: "[ AWS ] CloudWatch에서 EC2 Traffic 확인하기"
 labels: ["Cloud","aws","Traffic","CloudWatch"]
-published: false
+published: true
 date: 2023-10-06T10:39:41+09:00
 readerComments: "ALLOW"
 source: "tistory"
