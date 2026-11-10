@@ -1,7 +1,7 @@
 ---
 title: "[ aws ] redis(elasticache) 만드는법"
 labels: ["Cloud","aws","VPC","redis","ElastiCache"]
-published: false
+published: true
 date: 2023-06-15T14:16:45+09:00
 readerComments: "ALLOW"
 source: "tistory"
