@@ -1,7 +1,7 @@
 ---
 title: "[ Java ] java jvm"
 labels: ["Java","Kotlin","JVM"]
-published: false
+published: true
 date: 2023-12-07T20:00:39+09:00
 readerComments: "ALLOW"
 source: "tistory"
