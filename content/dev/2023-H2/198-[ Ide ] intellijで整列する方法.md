@@ -1,7 +1,7 @@
 ---
 title: "[ Ide ] intellijで整列する方法"
 labels: ["ETC","jp","IntelliJ","ide","reformat"]
-published: false
+published: true
 date: 2023-11-26T13:17:00+09:00
 readerComments: "ALLOW"
 source: "tistory"
