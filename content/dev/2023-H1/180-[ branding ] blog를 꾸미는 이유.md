@@ -1,7 +1,7 @@
 ---
 title: "[ branding ] blog를 꾸미는 이유"
 labels: ["Branding","Tistory","blogskin"]
-published: false
+published: true
 date: 2023-06-21T13:15:22+09:00
 readerComments: "ALLOW"
 source: "tistory"
