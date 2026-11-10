@@ -1,7 +1,7 @@
 ---
 title: "git toekn 적용"
 labels: []
-published: false
+published: true
 date: 2023-08-10T17:44:06+09:00
 readerComments: "ALLOW"
 source: "tistory"
