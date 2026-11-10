@@ -1,7 +1,7 @@
 ---
 title: "aws vpc 만드는법"
 labels: ["aws vpc"]
-published: false
+published: true
 date: 2023-06-15T10:00:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "8737191194557604224"
