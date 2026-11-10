@@ -1,7 +1,7 @@
 ---
 title: "[ Mac ] proxycommand"
 labels: ["OS","Mac","proxycommand"]
-published: false
+published: true
 date: 2023-08-10T17:44:01+09:00
 readerComments: "ALLOW"
 source: "tistory"
