@@ -1,7 +1,7 @@
 ---
 title: "[ aws ] ec2에서 scp 사용하는법"
 labels: ["Cloud","aws","scp","EC2"]
-published: false
+published: true
 date: 2023-06-15T18:34:46+09:00
 readerComments: "ALLOW"
 source: "tistory"
