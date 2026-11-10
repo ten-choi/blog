@@ -1,7 +1,7 @@
 ---
 title: "[ Aws ] rds에서 snapshot을 이용한 restore process"
 labels: ["Cloud","aws","snapshot","RDS"]
-published: false
+published: true
 date: 2023-05-22T13:08:37+09:00
 readerComments: "ALLOW"
 source: "tistory"
