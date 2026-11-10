@@ -1,7 +1,7 @@
 ---
 title: "[ aws ] eb관련 vpc설정 진행"
 labels: ["Cloud","aws","eb","VPC"]
-published: false
+published: true
 date: 2023-06-15T19:18:22+09:00
 readerComments: "ALLOW"
 source: "tistory"
