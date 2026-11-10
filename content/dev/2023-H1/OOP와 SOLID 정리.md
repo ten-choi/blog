@@ -1,7 +1,7 @@
 ---
 title: "OOP와 SOLID 정리"
 labels: ["architecture","kr","oop","solid","srp","ocp","lsp","isp","dip"]
-published: false
+published: true
 date: 2023-05-11T19:32:00-07:00
 readerComments: "ALLOW"
 bloggerPostId: "8050796008936059563"
