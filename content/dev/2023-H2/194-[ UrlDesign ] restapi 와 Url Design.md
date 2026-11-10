@@ -1,7 +1,7 @@
 ---
 title: "[ UrlDesign ] restapi 와 Url Design"
 labels: ["Architecture"]
-published: false
+published: true
 date: 2023-10-16T13:25:23+09:00
 readerComments: "ALLOW"
 source: "tistory"
