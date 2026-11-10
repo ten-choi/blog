@@ -1,7 +1,7 @@
 ---
 title: "[ Resume ] notion 날짜 계산 년, 월, 일로 표현하는 법"
 labels: ["Branding","Resume","Formula","notion"]
-published: false
+published: true
 date: 2023-07-16T13:58:50+09:00
 readerComments: "ALLOW"
 source: "tistory"
