@@ -1,7 +1,7 @@
 ---
 title: "[ Spring ] spring batch 란"
 labels: []
-published: false
+published: true
 date: 2023-12-07T20:22:24+09:00
 readerComments: "ALLOW"
 source: "tistory"
