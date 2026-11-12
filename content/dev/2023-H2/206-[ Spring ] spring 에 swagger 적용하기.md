@@ -1,7 +1,7 @@
 ---
 title: "[ Spring ] spring 에 swagger 적용하기"
 labels: ["Java","Kotlin","Spring","jp","Swagger"]
-published: false
+published: true
 date: 2023-12-07T20:22:03+09:00
 readerComments: "ALLOW"
 source: "tistory"
