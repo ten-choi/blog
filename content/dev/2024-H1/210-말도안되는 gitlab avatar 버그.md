@@ -1,7 +1,7 @@
 ---
 title: "말도안되는 gitlab avatar 버그"
 labels: []
-published: false
+published: true
 date: 2024-02-28T11:22:59+09:00
 readerComments: "ALLOW"
 source: "tistory"
