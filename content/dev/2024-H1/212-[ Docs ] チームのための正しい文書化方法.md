@@ -1,7 +1,7 @@
 ---
 title: "[ Docs ] チームのための正しい文書化方法"
 labels: ["Office","jp","docs"]
-published: false
+published: true
 date: 2024-03-01T12:40:15+09:00
 readerComments: "ALLOW"
 source: "tistory"
