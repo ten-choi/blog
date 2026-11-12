@@ -1,7 +1,7 @@
 ---
 title: "[ Spring ] aopを適用して例外処理をしましょう"
 labels: ["Java","Kotlin","spring","AOP","jp"]
-published: false
+published: true
 date: 2023-12-11T21:59:14+09:00
 readerComments: "ALLOW"
 source: "tistory"
