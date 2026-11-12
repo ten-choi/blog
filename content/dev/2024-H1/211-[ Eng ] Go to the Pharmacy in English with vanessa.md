@@ -1,7 +1,7 @@
 ---
 title: "[ Eng ] Go to the Pharmacy in English with vanessa"
 labels: ["ForeignLanguage","English","ENG"]
-published: false
+published: true
 date: 2024-02-29T07:58:47+09:00
 readerComments: "ALLOW"
 source: "tistory"
