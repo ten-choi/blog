@@ -1,7 +1,7 @@
 ---
 title: "[ Spring ] java springを簡単に始めましょう"
 labels: ["Java","Kotlin","spring","jp","springboot"]
-published: false
+published: true
 date: 2023-12-07T20:22:46+09:00
 readerComments: "ALLOW"
 source: "tistory"
