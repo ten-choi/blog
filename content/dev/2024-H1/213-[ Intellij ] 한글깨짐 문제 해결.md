@@ -1,7 +1,7 @@
 ---
 title: "[ Intellij ] 한글깨짐 문제 해결"
 labels: ["IDE","Editor","Intellij"]
-published: false
+published: true
 date: 2024-03-18T10:08:53+09:00
 readerComments: "ALLOW"
 source: "tistory"
