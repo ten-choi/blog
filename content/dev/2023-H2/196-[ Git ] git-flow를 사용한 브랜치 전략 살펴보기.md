@@ -1,7 +1,7 @@
 ---
 title: "[ Git ] git-flow를 사용한 브랜치 전략 살펴보기"
 labels: ["ETC","Git","Strategy","GitHub","git-flow"]
-published: false
+published: true
 date: 2023-12-13T17:39:13+09:00
 readerComments: "ALLOW"
 source: "tistory"
