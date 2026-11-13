@@ -1,7 +1,7 @@
 ---
 title: "MySQL Performance Optimization - Hands-on Test with 12 Million Rows"
 labels: ["database","rdb","mysql","optimization"]
-published: false
+published: true
 date: 2024-10-01T18:56:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "8005591364831844339"
