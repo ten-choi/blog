@@ -1,7 +1,7 @@
 ---
 title: "MySQL Performance Optimization"
 labels: ["database","rdb","mysql","optimization"]
-published: false
+published: true
 date: 2024-12-21T13:24:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "776865947063033887"
