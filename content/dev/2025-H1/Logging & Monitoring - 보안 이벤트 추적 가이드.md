@@ -1,7 +1,7 @@
 ---
 title: "Logging & Monitoring - 보안 이벤트 추적 가이드"
 labels: ["security","logging","monitoring","observability","incident-response"]
-published: false
+published: true
 date: 2025-02-08T10:41:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "8620101333877395326"
