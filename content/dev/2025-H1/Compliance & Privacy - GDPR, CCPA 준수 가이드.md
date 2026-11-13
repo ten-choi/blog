@@ -1,7 +1,7 @@
 ---
 title: "Compliance & Privacy - GDPR, CCPA 준수 가이드"
 labels: ["security","gdpr","compliance","privacy","data-protection"]
-published: false
+published: true
 date: 2025-01-20T17:12:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "8928380236008962513"
