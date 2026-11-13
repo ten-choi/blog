@@ -1,7 +1,7 @@
 ---
 title: "Frontend 보안 - 알아야 할 핵심 개념"
 labels: ["security","frontend","javascript","webdev"]
-published: false
+published: true
 date: 2025-01-30T20:22:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "4816226299361200343"
