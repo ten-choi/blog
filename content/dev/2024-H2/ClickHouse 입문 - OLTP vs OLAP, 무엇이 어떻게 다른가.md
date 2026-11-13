@@ -1,7 +1,7 @@
 ---
 title: "ClickHouse 입문 - OLTP vs OLAP, 무엇이 어떻게 다른가"
 labels: ["Database","ClickHouse","OLAP","MergeTree","Column Store"]
-published: false
+published: true
 date: 2024-12-08T18:49:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "7760821288398810318"
