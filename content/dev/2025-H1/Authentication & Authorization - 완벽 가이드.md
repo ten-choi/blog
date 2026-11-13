@@ -1,7 +1,7 @@
 ---
 title: "Authentication & Authorization - 완벽 가이드"
 labels: ["security","authentication","authorization","jwt","oauth"]
-published: false
+published: true
 date: 2025-01-15T12:50:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "1359551630082924475"
