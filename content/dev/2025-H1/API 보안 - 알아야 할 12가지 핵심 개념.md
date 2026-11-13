@@ -1,7 +1,7 @@
 ---
 title: "API 보안 - 알아야 할 12가지 핵심 개념"
 labels: ["security","api","backend","webdev"]
-published: false
+published: true
 date: 2025-01-06T20:55:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "7482873385980045392"
