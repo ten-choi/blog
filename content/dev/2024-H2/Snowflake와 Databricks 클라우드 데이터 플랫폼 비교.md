@@ -1,7 +1,7 @@
 ---
 title: "Snowflake와 Databricks: 클라우드 데이터 플랫폼 비교"
 labels: ["데이터베이스","OLAP","Snowflake","Databricks","데이터 웨어하우스","데이터 레이크하우스"]
-published: false
+published: true
 date: 2024-12-25T12:22:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "2858720344282997301"
