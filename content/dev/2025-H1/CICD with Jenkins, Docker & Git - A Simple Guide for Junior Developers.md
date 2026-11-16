@@ -1,7 +1,7 @@
 ---
 title: "CI/CD with Jenkins, Docker & Git - A Simple Guide for Junior Developers"
 labels: ["jenkins","docker","cicd","devops"]
-published: false
+published: true
 date: 2025-03-08T20:12:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "6902846579285560724"
