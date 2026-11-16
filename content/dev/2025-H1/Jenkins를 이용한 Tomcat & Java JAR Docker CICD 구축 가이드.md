@@ -1,7 +1,7 @@
 ---
 title: "Jenkins를 이용한 Tomcat & Java JAR Docker CI/CD 구축 가이드"
 labels: ["docker","cicd","jenkins","tomcat"]
-published: false
+published: true
 date: 2025-03-17T13:52:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "3200306956621593052"
