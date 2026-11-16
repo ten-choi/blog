@@ -1,7 +1,7 @@
 ---
 title: "SSDLC - 보안 개발 생명주기 가이드"
 labels: ["security","ssdlc","devops","sast","dast","code-review"]
-published: false
+published: true
 date: 2025-02-21T16:59:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "7243728851501018506"
