@@ -1,7 +1,7 @@
 ---
 title: "쿠버네티스(Kubernetes) 설치 및 구성 가이드"
 labels: ["kubernetes","docker","devops","k8s","monitoring"]
-published: false
+published: true
 date: 2025-03-28T21:49:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "3269508961655564788"
