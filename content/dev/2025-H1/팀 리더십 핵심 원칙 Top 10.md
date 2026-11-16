@@ -1,7 +1,7 @@
 ---
 title: "팀 리더십 핵심 원칙 Top 10"
 labels: ["팀워크","리더십","커뮤니케이션","갈등 관리","1on1"]
-published: false
+published: true
 date: 2025-04-18T21:54:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "9219178253365303485"
