@@ -1,7 +1,7 @@
 ---
 title: "일본 영어 사내공용어 IT 포지션 인터뷰 프로세스"
 labels: []
-published: false
+published: true
 date: 2025-04-03T16:44:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "6407401509807391138"
