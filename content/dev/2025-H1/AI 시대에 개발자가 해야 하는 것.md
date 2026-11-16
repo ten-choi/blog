@@ -1,7 +1,7 @@
 ---
 title: "AI 시대에 개발자가 해야 하는 것"
 labels: ["워크플로","AI","개발자 역할","소통","커뮤니케이션"]
-published: false
+published: true
 date: 2025-04-29T17:45:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "6517798586012290624"
