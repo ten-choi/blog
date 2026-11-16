@@ -1,7 +1,7 @@
 ---
 title: "My English Learning Journey"
 labels: ["english","language-learning","study-abroad","personal-development","education"]
-published: false
+published: true
 date: 2025-05-30T10:00:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "1667644400901822411"
