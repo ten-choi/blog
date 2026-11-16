@@ -1,7 +1,7 @@
 ---
 title: "Supply Chain Security - 의존성 보안 가이드"
 labels: ["security","supply-chain","dependencies","vulnerability","open-source"]
-published: false
+published: true
 date: 2025-02-27T10:12:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "3581658808689764283"
