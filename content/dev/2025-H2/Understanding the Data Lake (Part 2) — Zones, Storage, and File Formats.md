@@ -1,7 +1,7 @@
 ---
 title: "Understanding the Data Lake (Part 2) — Zones, Storage, and File Formats"
 labels: ["Data Platform Series","Data Lake","Data Engineering","Parquet","Object Storage","Big Data","File Formats"]
-published: false
+published: true
 date: 2025-10-25T17:02:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "7567955714131471450"
