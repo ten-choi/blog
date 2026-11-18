@@ -1,7 +1,7 @@
 ---
 title: "모노토닉 스택(Monotonic Stack) 명확하게 이해하기"
 labels: ["알고리즘", "자료구조", "스택", "코딩테스트", "Monotonic Stack"]
-published: false
+published: true
 date: 2025-07-28T11:20:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "8823034553767211470"
