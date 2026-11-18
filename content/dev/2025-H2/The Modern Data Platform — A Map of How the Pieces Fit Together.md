@@ -1,7 +1,7 @@
 ---
 title: "The Modern Data Platform — A Map of How the Pieces Fit Together"
 labels: ["Data Platform Series","Data Platform","Data Architecture","Data Engineering","Data Warehouse","Data Lake","Big Data"]
-published: false
+published: true
 date: 2025-10-02T14:21:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "6122738343482648358"
