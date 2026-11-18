@@ -1,7 +1,7 @@
 ---
 title: "Understanding the Data Lake (Part 1) — Lake vs. Warehouse, and Why Both Exist"
 labels: ["Data Platform Series","Data Lake","Data Warehouse","Data Engineering","Big Data","Analytics"]
-published: false
+published: true
 date: 2025-10-20T13:20:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "5477003041906608365"
