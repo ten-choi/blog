@@ -1,7 +1,7 @@
 ---
 title: "The Data Warehouse (Part 1) — OLTP vs. OLAP and the Modeling Foundations"
 labels: ["Data Platform Series","Data Warehouse","Data Modeling","OLTP","OLAP","Normalization","Analytics","Data Engineering"]
-published: false
+published: true
 date: 2025-10-07T17:30:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "8715312600187839644"
