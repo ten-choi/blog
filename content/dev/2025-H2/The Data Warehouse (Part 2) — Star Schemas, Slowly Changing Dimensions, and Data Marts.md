@@ -1,7 +1,7 @@
 ---
 title: "The Data Warehouse (Part 2) — Star Schemas, Slowly Changing Dimensions, and Data Marts"
 labels: ["Data Platform Series","Data Warehouse","Dimensional Modeling","Star Schema","Slowly Changing Dimension","Data Mart","Analytics","Data Engineering"]
-published: false
+published: true
 date: 2025-10-14T14:44:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "5646301954839810417"
