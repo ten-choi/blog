@@ -1,7 +1,7 @@
 ---
 title: "Moving Data (Part 1) — What a Data Pipeline Actually Is"
 labels: ["Data Platform Series","Data Pipeline","Data Engineering","ETL","Data Integration","Big Data"]
-published: false
+published: true
 date: 2025-11-07T13:45:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "7229787233617606638"
