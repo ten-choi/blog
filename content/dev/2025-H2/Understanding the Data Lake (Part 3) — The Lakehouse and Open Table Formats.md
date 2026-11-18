@@ -1,7 +1,7 @@
 ---
 title: "Understanding the Data Lake (Part 3) — The Lakehouse and Open Table Formats"
 labels: ["Data Platform Series","Data Lake","Lakehouse","Apache Iceberg","Delta Lake","Apache Hudi","Data Engineering"]
-published: false
+published: true
 date: 2025-11-01T09:47:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "4602550724696742381"
