@@ -1,7 +1,7 @@
 ---
 title: "Moving Data (Part 2) — Data Ingestion: Getting Data In"
 labels: ["Data Platform Series","Data Ingestion","Data Pipeline","Change Data Capture","Data Engineering","Streaming"]
-published: false
+published: true
 date: 2025-11-13T16:13:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "7561127865041087041"
