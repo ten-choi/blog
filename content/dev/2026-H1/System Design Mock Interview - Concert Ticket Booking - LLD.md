@@ -1,7 +1,7 @@
 ---
 title: "System Design Mock Interview - LLD: \"Design That Seat Hold as Classes\""
 labels: ["System Design","LLD","Concurrency","Object-Oriented","Tech Interviews"]
-published: false
+published: true
 date: 2026-04-08T11:26:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "1126863387339354116"
@@ -30,23 +30,39 @@ For a 3-hour session, a solid time split is 30 min requirements & design / 2 hou
 
 ## 1. Clarifying Requirements — This Time, Concurrency Can't Be Set Aside
 
-**Interviewer** — Here's the problem. **Design and implement the booking domain as classes: seat selection → hold → payment → confirmation.**
+**Interviewer** — Here's the problem. **Implement the booking domain as classes: seat selection → hold → payment → confirmation.**
 
-**Me** — Let me confirm the scope. **Hold TTL is 7 minutes**, and when grabbing multiple seats at once it's **all-or-nothing** — is that right?
+**Me** — Okay, a few questions first. How long should a hold last before it expires?
 
-**Interviewer** — Correct.
+**Interviewer** — 7 minutes, same as in the design round.
 
-**Me** — For pricing, I'll assume there's a **base price per grade**, and that early-bird discounts or promotions **may be added later**. Payment is an external payment gateway (PG), so I'll put it behind an interface and stub it. And since this problem is meaningless without concurrency — **I'll embrace concurrent requests for the same seat from the start**.
+**Me** — And if someone selects several seats at once and one of them is already taken — should they get the rest, or should the whole request fail?
 
-**Interviewer** — Good. Let's go with that.
+**Interviewer** — What do you think?
 
-> 💡 **Coaching note** — In a read-assembly problem like a feed, "I'll set concurrency aside with a single-process assumption" is a good move. Make the same move here and you're **setting aside the body of the problem** — that's a deduction. What can be simplified and what can't — that judgment itself is a grading item at the requirements stage.
+**Me** — I'd fail the whole thing. If you're buying three seats for you and your friends, two scattered seats isn't really what you wanted. So **all-or-nothing**.
+
+**Interviewer** — Agreed.
+
+**Me** — For pricing, is it just a fixed price per seat grade?
+
+**Interviewer** — For now. But marketing will probably want early-bird discounts and promotions at some point.
+
+**Me** — Then I'll make pricing easy to swap. And payment — should I integrate with a real payment gateway, or can I put it behind an interface and stub it?
+
+**Interviewer** — Stub it.
+
+**Me** — One more. In some problems I'd ask to assume a single process and leave concurrency for later. Here I don't think I can — two people grabbing the same seat is the whole problem. So I'd like to **handle concurrent requests from the start**, if that's okay.
+
+**Interviewer** — Yes, please do.
+
+> 💡 **Coaching note** — Every assumption here came out as a question, and the interviewer confirmed it — or turned it back ("What do you think?"), which is an invitation to show judgment, not a trap. And in a read-assembly problem like a feed, "I'll set concurrency aside with a single-process assumption" is a good move. Make the same move here and you're **setting aside the body of the problem** — that's a deduction. What can be simplified and what can't — that judgment itself is a grading item at the requirements stage.
 
 ---
 
 ## 2. Collect the Nouns, Find What Will Change — and Find the 'State'
 
-**Me** — Let me collect the nouns — event, seat, hold, booking, payment, pricing policy. Connecting the relationships:
+**Me** — Let me start by listing the nouns: event, seat, hold, booking, payment, pricing. Roughly, they connect like this.
 
 ```
 Event ──1:N──▶ Seat (grade, status: AVAILABLE/HELD/SOLD, version)
@@ -56,7 +72,13 @@ PricingPolicy ─ per-grade pricing + promotions (first thing to change!)
 PaymentGateway ─ external PG (interface + stub)
 ```
 
-Two things stand out in this domain. First, **the "first thing to change" is the pricing policy** — starting from grade-based pricing, then early-bird discounts, coupons, all the way to dynamic pricing. That gets extracted via the Strategy pattern. Second, there's an axis many domains don't have — **state**. Holds and bookings are objects whose state flows over time, so we need to **explicitly restrict the allowed transitions**. I want to block the bug where `EXPIRED` comes back to life as `CONFIRMED` — as close to compile time as possible.
+Two things jump out at me. One is what you just mentioned — **pricing is the first thing that'll change**. Grade-based today, then early-bird, coupons, maybe dynamic pricing someday. So I'd pull that out as a strategy.
+
+The other is **state**. A hold starts active, then gets confirmed, or expires, or gets released. That changes over time, so I want the allowed transitions written down explicitly. The bug I'm most worried about is an expired hold getting confirmed anyway.
+
+**Interviewer** — How would that even happen?
+
+**Me** — The payment webhook arrives a few seconds after the hold expired, and the code just sets the status to CONFIRMED without checking where it came from. If the transitions are restricted in one place, that becomes an error instead of a silent double-sell.
 
 > 💡 **Coaching note** — On top of "nouns = classes, verbs = responsibilities," in this problem you must find **"the things that change as time passes."** Those are your state machine candidates. In booking/order/delivery-style domains, the state machine is almost always the main event.
 
@@ -64,7 +86,7 @@ Two things stand out in this domain. First, **the "first thing to change" is the
 
 ## 3. The Code Skeleton — State Machine and Strategy
 
-**Me** — Let me set up the skeleton. First, pin the state transitions down in one place.
+**Me** — Let me put the skeleton up. I'll start with the state transitions, all in one place.
 
 ```java
 enum HoldStatus {
@@ -94,7 +116,7 @@ class SeatHold {
 }
 ```
 
-Pricing gets extracted as a strategy.
+And pricing as a strategy, since that's the part you said will change.
 
 ```java
 interface PricingPolicy {                       // adding promotions must not
@@ -104,9 +126,9 @@ class GradeBasePricing implements PricingPolicy { /* base price per grade */ }
 class EarlyBirdPricing  implements PricingPolicy { /* early-bird discount — later */ }
 ```
 
-**Interviewer** — Any reason you pinned the transitions in an enum table? If-statements would work too.
+**Interviewer** — Why put the transitions in a table inside the enum? If-statements would work too.
 
-**Me** — With if-statements, transition rules tend to scatter across the codebase. Gathering them into a table turns the allowed transitions into **a spec you can see at a glance**, and when a new state is added, it's easy to catch a missed transition in review. "You can never go from EXPIRED to CONFIRMED" exists as code, not as documentation.
+**Me** — They would, but with if-statements the rules tend to end up scattered across services. In a table, you can see every allowed transition at a glance, and if someone adds a new state later, a missing transition is easy to spot in review. "You can never go from EXPIRED to CONFIRMED" lives in the code, not in a wiki page.
 
 > 💡 **Coaching note** — The Strategy pattern shows up in nearly every LLD problem, and that's no accident. **Patterns aren't relearned per problem — they're the same answer to the same question: "where will this change?"** The other half here is the state machine side — a transition table is the lightest implementation of the State pattern, and if per-state behavior gets complex, you promote it to per-state classes.
 
@@ -114,9 +136,9 @@ class EarlyBirdPricing  implements PricingPolicy { /* early-bird discount — la
 
 ## 4. Concurrency — The Main Event of This Interview
 
-**Interviewer** — Alright, the core. **Two threads try to hold the same seat at the same time.** Make sure there's exactly one winner.
+**Interviewer** — Alright, the core. **Two threads try to hold the same seat at the same time.** Make sure exactly one wins.
 
-**Me** — If the application does "read → looks free → save," both threads pass the "looks free" check. The gap between check and update is the problem. So we push **the verdict down into a single atomic operation in the store**.
+**Me** — If the code reads the seat, sees that it's free, and then saves, both threads can see "free" before either one saves. The gap between the check and the update is the problem. So I'd **push the decision down into a single atomic operation** in the database.
 
 ```java
 class SeatRepository {
@@ -130,7 +152,7 @@ class SeatRepository {
 class HoldService {
     @Transactional
     public SeatHold hold(User user, List<Long> seatIds) {
-        List<Long> sorted = seatIds.stream().sorted().toList();  // global lock order (see point 3)
+        List<Long> sorted = seatIds.stream().sorted().toList();  // global lock order
         long holdId = holds.nextId();
         int updated = seats.holdSeats(sorted, holdId);
         if (updated != sorted.size())
@@ -140,17 +162,17 @@ class HoldService {
 }
 ```
 
-Three points.
+The `status='AVAILABLE'` condition is what does the locking. When two transactions race, the database's row lock decides who goes first, and the second one updates zero rows because the seat isn't available anymore. If fewer rows were updated than seats requested, I throw, the transaction rolls back, and that gives us all-or-nothing.
 
-1. **`WHERE status='AVAILABLE'` is the lock** — even when two transactions race, the database's row locks decide the order, and the loser updates 0 rows because the condition no longer matches.
-2. **Affected rows ≠ requested seats → exception → transaction rollback** — all-or-nothing is implemented via the transaction boundary.
-3. **Seat IDs are sorted before updating** — if A grabs (3, 7) and B grabs (7, 3) and the rows are locked in **separate statements** (per-row `SELECT FOR UPDATE`, one UPDATE per seat), they can end up waiting on each other: a **deadlock**. Fixing a global lock order is the classic prevention. To be precise, within the single `IN` UPDATE above the database picks its own locking order regardless of list order — here the statement's atomicity is doing the work, and the sort is cheap insurance for the day this grows into multi-statement locking.
+**Interviewer** — Why are you sorting the seat IDs?
 
-**Interviewer** — How does this compare with `SELECT FOR UPDATE` or optimistic locking (a version column)?
+**Me** — It's insurance against deadlocks. If A locks seats 3 then 7, and B locks 7 then 3, in separate statements, they can end up waiting on each other forever. Always locking in the same order prevents that. To be honest, in this single `IN` update the database picks its own order anyway, so it's not strictly needed today — but if this ever turns into one statement per seat, the sort is already there.
 
-**Me** — All three can work, but they fit different situations. **Optimistic locking** is great when conflicts are rare — but a ticket-open is conflict-by-default, so you get a retry storm. **`SELECT FOR UPDATE` (pessimistic)** is for when you need complex validation logic after reading. Here the verdict is a single question — "is it AVAILABLE?" — so **one conditional UPDATE** is the simplest and has the fewest round trips. Use the simple thing first; escalate when the requirements get complex.
+**Interviewer** — How does this compare with `SELECT FOR UPDATE`, or optimistic locking with a version column?
 
-> 💡 **Coaching note** — The skeleton of a concurrency answer is the same whether it's ticketing or likes: **eliminate the check-then-update gap and make the verdict a single atomic operation**. A likes counter's "unique constraint + atomic INCR" and this post's "conditional UPDATE" are the same principle in different clothes. The extra talking points unique to this problem: **lock ordering (deadlocks)** and **the optimistic-vs-pessimistic decision criterion** (conflict frequency).
+**Me** — All three can work; it depends on the situation. **Optimistic locking** is great when conflicts are rare — but at ticket open, conflicts are the normal case, so we'd get a storm of retries. **`SELECT FOR UPDATE`** makes sense when you need to read the row and run more complex checks before deciding. Here the only question is "is it available?", so **one conditional UPDATE** is the simplest and needs the fewest round trips. I'd start with that and only move to something heavier if the rules get more complicated.
+
+> 💡 **Coaching note** — The skeleton of a concurrency answer is the same whether it's ticketing or likes: **eliminate the check-then-update gap and make the verdict a single atomic operation**. A likes counter's "unique constraint + atomic INCR" and this post's "conditional UPDATE" are the same principle in different clothes. The extra talking points unique to this problem: **lock ordering (deadlocks)** and **the optimistic-vs-pessimistic decision criterion** (conflict frequency). And note the honesty about the sort — saying "this isn't strictly needed yet, here's why it's there" scores better than pretending it's essential.
 
 ---
 
@@ -158,12 +180,15 @@ Three points.
 
 **Interviewer** — Who releases a hold once its 7 minutes are up?
 
-**Me** — Two layers.
+**Me** — I'd do it in two ways. First, **lazily**: when someone tries to hold a seat and the existing hold on it has already expired, we release it right there and continue. That way seats don't sit idle even if a background job is running late.
 
-- **Lazy evaluation** — when someone tries to hold that seat again, if the existing hold has expired, we release it on the spot and proceed. Even if the scheduler runs late, seats don't sit idle.
-- **The sweeper** — periodically cleans up ACTIVE holds where `expires_at < now`. There's a race here too — the sweeper can collide with the exact moment a user finishes paying. So expiry is also decided atomically via a **conditional update** (`WHERE status='ACTIVE' AND expires_at < :now`). If confirmation lands first, the sweeper loses; if expiry lands first, the payment confirmation fails and flows into the refund path.
+Second, a **sweeper** that periodically cleans up active holds whose `expires_at` has passed. But there's a race here too — the sweeper might run at the exact moment the user finishes paying.
 
-And since time baked into logic makes testing impossible, I won't call `Instant.now()` directly — I'll **inject a `Clock`**.
+**Interviewer** — So what happens then?
+
+**Me** — Expiry is just another state change, so I'd do it the same way: a **conditional update**, `WHERE status='ACTIVE' AND expires_at < :now`. If the payment confirmation lands first, the sweeper's update matches nothing. If expiry lands first, the confirmation fails and we refund the payment.
+
+Oh, and I won't call `Instant.now()` directly anywhere. I'll **inject a `Clock`**, otherwise there's no way to test any of this without actually waiting 7 minutes.
 
 > 💡 **Coaching note** — For time-dependent logic — TTLs, deadlines, retries — design maturity shows in whether **"clock injection" is already in place**. And since even expiry is just another state transition, the transition table from section 3 and the conditional update from section 4 get reused here as-is.
 
@@ -171,9 +196,9 @@ And since time baked into logic makes testing impossible, I won't call `Instant.
 
 ## 6. Tests — The Last 30 Minutes
 
-**Interviewer** — Let's wrap up with tests. What will you verify?
+**Interviewer** — Let's wrap up with tests. What would you verify?
 
-**Me** — Four tests, ordered by this problem's pressure points.
+**Me** — I'd go after the riskiest parts first. The race is number one.
 
 ```java
 @Test
@@ -187,12 +212,16 @@ void concurrent_holds_on_same_seat_have_exactly_one_winner() throws Exception {
 }
 ```
 
-1. **Concurrent hold race** — two threads grab the same seat, exactly one succeeds (code above)
-2. **All-or-nothing** — requesting (3, 7) when 7 is already taken must not grab 3 either
-3. **Re-hold after TTL expiry** — advance a fake `Clock` by 8 minutes and a different user can grab the same seat
-4. **Illegal transition blocked** — `transitionTo(CONFIRMED)` on an EXPIRED hold throws
+So the full list would be:
 
-The PG is a stub behind an interface, so we can fabricate both payment-success and payment-failure scenarios at will, and thanks to `Clock` injection, test 3 runs without a single `sleep`.
+1. **Concurrent hold race** — two threads grab the same seat, exactly one succeeds (above)
+2. **All-or-nothing** — if I ask for seats 3 and 7 and 7 is already taken, I shouldn't end up holding 3 either
+3. **Re-hold after expiry** — move a fake `Clock` forward 8 minutes, and a different user can grab the same seat
+4. **Illegal transition** — calling `transitionTo(CONFIRMED)` on an expired hold throws
+
+The payment gateway is a stub, so I can make it succeed or fail whenever I want. And because the clock is injected, test 3 runs without a single `sleep`.
+
+**Interviewer** — Good. That's time.
 
 > 💡 **Coaching note** — With concurrency tests, the score isn't for "perfect reproduction" — it's for **having expressed the race scenario in code** at all. And the habit of **nailing down a state machine's forbidden transitions in tests**, like #4, is the cheapest regression insurance you can buy in real work.
 
@@ -200,7 +229,7 @@ The PG is a stub behind an interface, so we can fabricate both payment-success a
 
 ## 7. Interview Retro — What Was Actually Being Graded
 
-1. **Requirements clarification** — extracted the TTL and all-or-nothing, and judged that concurrency could NOT be set aside in this problem
+1. **Requirements clarification** — turned every assumption (TTL, all-or-nothing, stubbed PG) into a question, and judged that concurrency could NOT be set aside in this problem
 2. **Entity extraction** — found classes in the nouns, and the state machine in "the things that change over time"
 3. **Flexibility where change comes** — pricing policy as a Strategy, state transitions as a table
 4. **Concurrency** — conditional atomic update + transaction rollback (all-or-nothing) + fixed lock ordering (deadlocks), down to the optimistic-vs-pessimistic decision criterion
