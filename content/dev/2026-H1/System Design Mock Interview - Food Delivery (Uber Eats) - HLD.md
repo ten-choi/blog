@@ -1,7 +1,7 @@
 ---
 title: "System Design Mock Interview - HLD: \"Design a Food Delivery App (Uber Eats)\""
 labels: ["System Design","HLD","Real-Time","Location-Based","Tech Interviews"]
-published: false
+published: true
 date: 2026-01-03T10:50:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "7713251821293643453"
