@@ -1,7 +1,7 @@
 ---
 title: "Data Governance Made Simple (Part 1) — What It Is and Why Every Team Eventually Needs It"
 labels: ["Data Platform Series","Data Governance","Data Management","Data Quality","Metadata","Data Engineering"]
-published: false
+published: true
 date: 2025-12-07T16:54:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "6280740213053691774"
