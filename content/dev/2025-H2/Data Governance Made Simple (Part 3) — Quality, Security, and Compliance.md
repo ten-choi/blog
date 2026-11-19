@@ -1,7 +1,7 @@
 ---
 title: "Data Governance Made Simple (Part 3) — Quality, Security, and Compliance"
 labels: ["Data Platform Series","Data Governance","Data Quality","Data Security","Data Privacy","Compliance","Data Engineering"]
-published: false
+published: true
 date: 2025-12-19T11:31:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "4291189687823124488"
