@@ -1,7 +1,7 @@
 ---
 title: "Moving Data (Part 4) — Data Integration: Making Many Sources Agree"
 labels: ["Data Platform Series","Data Integration","Data Pipeline","Data Quality","Master Data Management","Data Engineering"]
-published: false
+published: true
 date: 2025-11-24T21:25:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "8059592165565156624"
