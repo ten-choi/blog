@@ -1,7 +1,7 @@
 ---
 title: "System Design Mock Interview - LLD: \"Implement an LRU Cache and a Token Bucket\""
 labels: ["System Design","LLD","Data Structures","Concurrency","Tech Interviews"]
-published: false
+published: true
 date: 2026-04-29T11:39:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "2001170232327230691"
