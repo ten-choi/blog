@@ -1,7 +1,7 @@
 ---
 title: "Data Governance Made Simple (Part 2) — Metadata, the Data Catalog, and Lineage"
 labels: ["Data Platform Series","Data Governance","Metadata","Data Catalog","Data Lineage","Data Engineering"]
-published: false
+published: true
 date: 2025-12-13T17:28:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "5387143867367428572"
