@@ -1,7 +1,7 @@
 ---
 title: "System Design Mock Interview - LLD: \"Design That Dispatch Service as Classes\""
 labels: ["System Design","LLD","Real-Time","Object-Oriented","Tech Interviews"]
-published: false
+published: true
 date: 2026-01-14T19:14:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "3954424572587232708"
