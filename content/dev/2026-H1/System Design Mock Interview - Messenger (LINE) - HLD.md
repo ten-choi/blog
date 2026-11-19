@@ -1,7 +1,7 @@
 ---
 title: "System Design Mock Interview - HLD: \"Design a Messenger Like LINE\""
 labels: ["System Design","HLD","Real-Time","Messaging","Tech Interviews"]
-published: false
+published: true
 date: 2026-02-15T17:47:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "7410603898880823660"
