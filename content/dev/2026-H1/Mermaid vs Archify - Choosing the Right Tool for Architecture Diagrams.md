@@ -1,7 +1,7 @@
 ---
 title: "Mermaid vs Archify - Choosing the Right Tool for Architecture Diagrams"
 labels: ["Mermaid","Archify","architecture diagram","documentation","software development"]
-published: false
+published: true
 date: 2026-05-15T10:00:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "3667831273068738507"
