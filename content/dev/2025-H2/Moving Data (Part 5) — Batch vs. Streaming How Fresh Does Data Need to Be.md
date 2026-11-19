@@ -1,7 +1,7 @@
 ---
 title: "Moving Data (Part 5) — Batch vs. Streaming: How Fresh Does Data Need to Be?"
 labels: ["Data Platform Series","Streaming Data","Batch Processing","Real-Time","Data Pipeline","Data Engineering","Kafka"]
-published: false
+published: true
 date: 2025-12-02T19:02:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "5697565782198271270"
