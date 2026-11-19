@@ -1,7 +1,7 @@
 ---
 title: "System Design Mock Interview - LLD: \"Design That Wallet (the Ledger) as Classes\""
 labels: ["System Design","LLD","Payments","Concurrency","Tech Interviews"]
-published: false
+published: true
 date: 2026-03-17T13:22:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "4034159713881800815"
