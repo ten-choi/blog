@@ -1,7 +1,7 @@
 ---
 title: "System Design Mock Interview - HLD: \"Design Instagram\""
 labels: ["System Design","HLD","Architecture","Tech Interviews"]
-published: false
+published: true
 date: 2026-01-27T21:33:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "2053554341783640022"
