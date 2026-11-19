@@ -1,7 +1,7 @@
 ---
 title: "System Design Mock Interview - HLD: \"Design a Mobile Payment Service like PayPay\""
 labels: ["System Design","HLD","Payments","Ledger","Tech Interviews"]
-published: false
+published: true
 date: 2026-03-05T21:08:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "59880292639934273"
