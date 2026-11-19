@@ -1,7 +1,7 @@
 ---
 title: "System Design Mock Interview - LLD: \"Design That Message Delivery as Classes\""
 labels: ["System Design","LLD","Messaging","Object-Oriented","Tech Interviews"]
-published: false
+published: true
 date: 2026-02-23T18:44:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "355133375488182737"
