@@ -1,7 +1,7 @@
 ---
 title: "System Design Mock Interview - HLD: \"Design a URL Shortener — and a Rate Limiter, Too\""
 labels: ["System Design","HLD","Distributed ID","Rate Limiter","Tech Interviews"]
-published: false
+published: true
 date: 2026-04-17T09:38:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "7160149266519132906"
