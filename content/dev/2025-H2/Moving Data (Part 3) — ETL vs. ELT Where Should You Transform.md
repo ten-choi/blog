@@ -1,7 +1,7 @@
 ---
 title: "Moving Data (Part 3) — ETL vs. ELT: Where Should You Transform?"
 labels: ["Data Platform Series","ETL","ELT","Data Pipeline","Data Warehouse","Data Lake","Data Engineering"]
-published: false
+published: true
 date: 2025-11-20T17:58:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "128931964584336896"
