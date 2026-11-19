@@ -1,7 +1,7 @@
 ---
 title: "Business Intelligence — Turning Data Into Decisions"
 labels: ["Data Platform Series","Business Intelligence","BI","Analytics","Data Visualization","Dashboards","Data Engineering"]
-published: false
+published: true
 date: 2025-12-25T18:28:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "4419259817790932921"
