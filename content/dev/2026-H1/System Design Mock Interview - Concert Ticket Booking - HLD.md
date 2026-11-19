@@ -1,7 +1,7 @@
 ---
 title: "System Design Mock Interview - HLD: \"Design a Concert Ticket Booking System\""
 labels: ["System Design","HLD","Concurrency","Queueing","Tech Interviews"]
-published: false
+published: true
 date: 2026-03-27T21:18:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "7294742125074855332"
@@ -30,37 +30,55 @@ For a 45-minute interview, a solid time split is 5 min requirements / 5 min back
 
 ## 1. Requirements First — No Boxes Yet
 
-**Interviewer** — Here's today's problem. **Design a ticket booking system for a popular concert.**
+**Interviewer** — Today's problem: **design a ticket booking system for a popular concert.**
 
-**Me** — Let me narrow the scope first. Should I take the core features to be **browsing shows and seats, seat selection and booking, and payment**? Leaving cancellations, transfers, and refunds out of scope.
+**Me** — Okay. Before I draw anything, I'd like to make sure I know what we're building. What should a user be able to do? I'm picturing browsing shows, looking at the seat map, picking seats, and paying. Do you also want me to cover things like cancellations, transferring a ticket to someone else, or refunds?
 
-**Interviewer** — Good. Let's go with those three.
+**Interviewer** — Let's keep it to browsing, picking seats, and paying. Leave cancellations, transfers, and refunds out for today.
 
-**Me** — The non-functional side feels like the real body of this problem. What **concurrent user count at the moment tickets open** should I assume? And I can take it that **selling the same seat to two people** is absolutely not allowed, right?
+**Me** — Got it. Then I suspect most of the difficulty is on the non-functional side. Roughly how many people are we expecting right when sales open?
 
-**Interviewer** — Let's say 50,000 seats and 1 million people piling in at open. Double-selling is obviously out. One more thing — please also care about **fairness: first come, first served**.
+**Interviewer** — Say 50,000 seats, and about a million people trying to get in at open.
 
-> 💡 **Coaching note** — In most product-design problems (feeds, messengers), functional requirements drive the conversation, but in ticketing **the non-functional requirements (the spike, strong consistency, fairness) ARE the problem**. The moment you say this out loud, the interviewer sees you as someone who understands the problem.
+**Me** — A million people for 50,000 seats. And I assume we can never sell the same seat to two people?
+
+**Interviewer** — Right, double-selling is not acceptable. One more thing: it should feel fair. First come, first served.
+
+**Me** — Okay, let me write that down so we can come back to it.
+
+```
+Functional      browse shows & seat map / hold seats / pay
+Out of scope    cancellation, transfer, refund
+Non-functional  50K seats, ~1M users at open
+                no double-selling (strong consistency on seats)
+                fairness (first come, first served)
+```
+
+> 💡 **Coaching note** — Notice who drew the line. The candidate **listed candidates and asked**; the interviewer **decided** what was out of scope. Announcing "I'll leave X out" on your own reads as dodging work — asking lets the interviewer steer, and you still get a narrow scope. Also notice where the questions went: in most product-design problems (feeds, messengers) the functional requirements drive the conversation, but in ticketing **the non-functional requirements (the spike, strong consistency, fairness) ARE the problem**. Asking about them first tells the interviewer you've seen that.
 
 ---
 
 ## 2. Back-of-Envelope Math — These Numbers Decide the Architecture
 
-**Me** — Let me run the numbers. With 50,000 seats and 1 million people waiting, **only 5% of requests can succeed**. If the requests concentrate in the first few seconds after open, we're looking at hundreds of thousands of QPS at peak — and most of that traffic is **requests that are going to fail anyway**.
+**Me** — Can I take a couple of minutes for some quick numbers? I think they'll drive most of the design.
 
-Three conclusions fall out of this.
+**Interviewer** — Go ahead.
 
-1. **We must not take the spike head-on** — letting traffic that's 95% doomed to fail through to the database isn't just wasteful, it's self-harm. We need to **form a line at the entrance**.
-2. **Seat state needs strong consistency** — the "truth" about 50,000 seats must be managed atomically in one place.
-3. **Separate browsing from booking** — read traffic looking at the seat map and write traffic grabbing seats have completely different requirements, so they get separate paths.
+**Me** — 50,000 seats, a million people. So **at most 5% of people get a seat**. If most of them hit the button in the first few seconds, we're looking at hundreds of thousands of requests per second at peak — and 95% of that traffic is going to fail no matter what we do.
 
-> 💡 **Coaching note** — In a read-heavy system, one line like "reads are 50x writes" justifies every cache and fan-out decision; in ticketing, the "5% success rate" line justifies **the queue**. The purpose of back-of-envelope math is always to extract the one line that **justifies your next decision**.
+**Interviewer** — So what does that tell you?
+
+**Me** — Three things, I think. First, **we shouldn't let that spike reach the database**. If 95% of requests are going to fail anyway, sending all of them to the DB just to say no would hurt the 5% who could actually succeed. So I want some kind of line at the entrance. Second, **the seat state has to live in one place that can be updated atomically** — that's where the no-double-selling rule gets enforced. And third, looking at the seat map and grabbing a seat are very different kinds of traffic, so **I'd give browsing and booking separate paths**.
+
+**Interviewer** — Okay. Let's see how that turns into an API.
+
+> 💡 **Coaching note** — In a read-heavy system, one line like "reads are 50x writes" justifies every cache and fan-out decision; in ticketing, the "5% success rate" line justifies **the queue**. The purpose of back-of-envelope math is always to extract the one line that **justifies your next decision** — and when the interviewer asks "so what does that tell you?", that line is the answer.
 
 ---
 
 ## 3. API and Data Model — Contracts Before Boxes
 
-**Me** — Let me write down the contract first. Since there's a queue, it shows up in the API too.
+**Me** — Since we're putting a line at the entrance, the queue shows up in the API too. Let me sketch it.
 
 ```
 POST /queue/enter        (event_id)                        → queue_token, position
@@ -70,9 +88,13 @@ POST /holds              (queue_token, seat_ids[])         → hold_id, expiry t
 POST /bookings           (hold_id, payment_info, idempotency key) → booking_id
 ```
 
-I've split booking into two phases: **hold (reserve) → pay → confirm**. Picking seats and paying takes a few minutes, and if we don't lock the seats during that window, you get the worst possible UX — losing your seat while on the payment screen. In exchange, holds carry a **TTL (say, 7 minutes)** so abandoners can't sit on seats forever.
+**Interviewer** — Why separate holds from bookings? Why not book directly?
 
-Here's the data model:
+**Me** — Because picking seats and paying takes a few minutes. If the seat isn't reserved during that time, someone can lose it while they're typing in their card details — that's about the worst experience we could give them. So it's **hold, then pay, then confirm**. But the hold has to expire, or people who close the tab would sit on seats forever. I'd start with something like **7 minutes** — does that sound reasonable?
+
+**Interviewer** — 7 minutes is fine.
+
+**Me** — Then the data model would look roughly like this.
 
 ```
 events   (id, name, open_at, ...)
@@ -81,25 +103,29 @@ holds    (id, user_id, seat_ids, expires_at, status)
 bookings (id, hold_id, user_id, amount, status, idempotency_key)
 ```
 
-**Interviewer** — Seat map reads (GET /seats) will also explode at open. Are you hitting the seats table every time?
+**Interviewer** — Seat map reads are going to explode at open too. Are you hitting the seats table every time?
 
-**Me** — No — browsing is served from a **cached seat map**. It's fine if it's a few seconds stale, because the final truth is decided by the database at hold time anyway. "What you **see** is approximate; what you **grab** is exact" — that's this system's consistency principle.
+**Me** — No, I'd serve the seat map from a **cache**. If it's a few seconds behind, that's okay, because the real check happens in the database when someone tries to hold a seat. So what you **see** is approximate, but what you **get** is exact.
 
-> 💡 **Coaching note** — Needing strong consistency does NOT mean applying strong consistency to **every path** — do that and the system collapses. Being able to **articulate the split** between where truth is mandatory (hold/confirm) and where staleness is fine (seat map display) is one of the grading points of this problem.
+> 💡 **Coaching note** — Needing strong consistency does NOT mean applying strong consistency to **every path** — do that and the system collapses. Being able to **articulate the split** between where truth is mandatory (hold/confirm) and where staleness is fine (seat map display) is one of the grading points of this problem. And notice the small "does that sound reasonable?" on the TTL — a number you picked becomes a number you both agreed on.
 
 ---
 
 ## 4. Traffic Defense — The Virtual Waiting Room
 
-**Me** — Now the first main body of the architecture: the entrance. Instead of letting the 1 million people at open into the service, we put them in a **Virtual Waiting Room**.
+**Me** — If it's okay with you, I'd like to start with the entrance, since that's where the million people hit us first.
 
-- Entry requests get a **queue token and a position number** (a Redis counter or Kafka offset), and the client just polls its position. This path is nearly stateless, so it scales horizontally as far as we like.
-- We admit people only as fast as the booking service behind it can handle — say, **N per second**. We're throttling the faucet (leaky bucket).
-- Only admitted users get access to the hold API, and **token validation** blocks direct calls that try to skip the line.
+**Interviewer** — Sure.
 
-**Interviewer** — Couldn't you skip the queue and just add a ton of servers (autoscaling)?
+**Me** — Instead of letting everyone into the booking service at once, I'd put them in a **virtual waiting room**. When you arrive, you get a queue token and a position number — that can just be a Redis counter, or a Kafka offset — and the client polls its position. This part holds almost no state, so it scales out easily.
 
-**Me** — We can add app servers, but **there's only one database holding the truth about those 50,000 seats**. Scale the servers 100x and you've just funneled 100x the contention into that single point. Besides, 95% of the requests will fail anyway, so the extra capacity would only be used to "return failures faster." When the contested resource is fixed, the answer isn't scale-out — it's **admission control**. And the queue position also answers the fairness requirement.
+Behind it, we let people in only as fast as the booking service can actually handle — say **N per second**, like a leaky bucket. And the hold API only accepts admitted tokens, so nobody can skip the line by calling it directly.
+
+**Interviewer** — Couldn't you skip the queue and just add a ton of servers? Autoscale it?
+
+**Me** — We could add app servers, but they'd all still be fighting over the same 50,000 rows in **one database**. A hundred times the servers just means a hundred times the contention on that one spot. And since 95% of requests fail anyway, the extra servers would mostly be returning failures faster. When the thing everyone wants is fixed in size, I think the answer is **controlling how many people get in**, not adding servers. The queue position also gives us the first-come-first-served fairness you asked for.
+
+**Interviewer** — Fair enough.
 
 > 💡 **Coaching note** — "Why not just scale out?" is the classic trap question for this problem. You need to be able to say: **when the bottleneck is the shared resource (inventory) itself, horizontal scaling is not the answer**. Every architecture technique has a weak spot, and "fixed inventory" is scale-out's weak spot in ticketing.
 
@@ -107,7 +133,9 @@ bookings (id, hold_id, user_id, amount, status, idempotency_key)
 
 ## 5. Seat Holds — The One Line That Prevents Double-Selling
 
-**Me** — The second main body: seat locking. When two admitted users try to hold **the same seat at the same time**, there must be exactly one winner. The key is a **conditional atomic update** in the database.
+**Interviewer** — Now say two admitted users click the same seat at the same moment. How do you make sure only one of them gets it?
+
+**Me** — I'd let the database decide, with a **conditional update**.
 
 ```sql
 UPDATE seats
@@ -116,11 +144,15 @@ WHERE  id IN (:seat_ids)
   AND  status = 'AVAILABLE';   -- this condition IS the lock
 ```
 
-If the affected row count differs from the requested seat count — meaning someone got there first — we **roll back everything** and return a failure (partial success is worse UX). It's all inside one transaction, so it's atomic, and per-seat contention is sorted out by the database's row locks.
+The `status = 'AVAILABLE'` part is basically the lock. Whoever reaches the row first flips it to HELD, and the second one doesn't match the condition anymore. If the number of updated rows doesn't match the number of seats requested — meaning someone got one of them first — I'd **roll back the whole thing** and return an error. Getting two of your three seats is worse than getting none.
+
+**Interviewer** — Why not a distributed lock? Something like Redis?
+
+**Me** — I could, but the database already holds the truth about the seats, and its row locks already give us the guarantee we need. A separate lock in Redis is one more thing that can disagree with the database. I'd only reach for it if the database turned out to be the bottleneck.
 
 **Interviewer** — What about people who hold seats and then walk away without paying?
 
-**Me** — Once a hold's `expires_at` passes, an expiry processor flips the seats back to `AVAILABLE`. When the payment-complete webhook arrives, that's when we confirm the seats as `SOLD`. Payment goes through an external payment gateway (PG), which is slow and can fail, so it stays **asynchronous**, and the `idempotency_key` ensures a duplicate webhook can't double-confirm.
+**Me** — Once a hold's `expires_at` passes, a background job sets those seats back to `AVAILABLE`. When the payment-complete webhook comes in, that's when we mark them `SOLD`. Payment goes through an external payment gateway (PG), which can be slow or fail, so I'd keep that **asynchronous** — and the `idempotency_key` makes sure a duplicate webhook can't confirm the booking twice.
 
 > 💡 **Coaching note** — You score higher showing that **the one line `WHERE status = 'AVAILABLE'` is the lock** than by throwing around fancy words like "distributed locks" or "Redis Redlock." Tools come second. The class-level implementation of this conditional update is covered in code in the [LLD post](<./Ticket Booking - LLD.md>).
 
@@ -128,7 +160,7 @@ If the affected row count differs from the requested seat count — meaning some
 
 ## 6. The Full Picture
 
-**Me** — Putting every decision so far on one page:
+**Me** — Let me put it all on one page so we can walk through it end to end.
 
 ```
 Client
@@ -147,21 +179,25 @@ Load Balancer → Booking Service
 Expiry processor ─ reverts holds past expires_at back to AVAILABLE
 ```
 
-**Interviewer** — What if the server dies right after payment confirmation? The PG says it's paid, but the seat is still stuck at HELD.
+**Interviewer** — What if the server dies right after payment goes through? The PG says it's paid, but the seat is still stuck at HELD.
 
-**Me** — The PG **retries** the webhook, and on our side the idempotency key makes receiving it any number of times safe. Any inconsistency that still remains gets caught by a **reconciliation batch that compares PG transaction records against bookings**. For money flows, "**guaranteed convergence after the fact**" is more realistic than "perfect in real time."
+**Me** — The PG **retries** the webhook, and thanks to the idempotency key, receiving it more than once is safe. If something is still out of sync after that, I'd have a **reconciliation job that compares the PG's transaction records against our bookings** and fixes the difference. With money, I think it's more realistic to guarantee that things **end up consistent** than to try to be perfect in real time.
 
 ---
 
 ## 7. "Where Would You Improve First?" — Version 2
 
-**Interviewer** — We have some time left. What are this design's limitations?
+**Interviewer** — We have a few minutes left. Where does this design fall short?
 
-**Me** — I'd point at three spots.
+**Me** — Hmm, three places come to mind.
 
-1. **Bots and macros** — queue-position fairness is helpless against bots. I'd add CAPTCHAs and device fingerprinting at entry, per-account purchase limits, and anomaly-pattern detection at the waiting room layer.
-2. **Seat contention hotspots** — even among 50,000 seats, contention concentrates on specific front-row zones. **Partitioning the seat table by zone** isolates row-lock contention within each zone. For "any N seats" requests, another option is to allocate against per-zone counters first and defer the exact seat assignment.
-3. **Seat map freshness** — if users keep clicking "seats they can't actually grab" because the cache is stale, I'd evolve toward a real-time seat map that **pushes seat-state-change events over WebSocket/SSE**.
+The first is **bots**. A fair queue doesn't help if half the line is scripts. I'd add CAPTCHAs and device fingerprinting at the entrance, purchase limits per account, and watch for odd patterns in the waiting room.
+
+The second is **hot zones**. Even with 50,000 seats, everyone wants the front rows, so the contention piles up in a few zones. **Partitioning the seat table by zone** would keep that contention contained. And for "any two seats in this section" requests, we could count down a per-zone counter first and assign the exact seats later.
+
+The third is **the seat map going stale**. If people keep clicking seats that are already gone because the cache is behind, I'd move toward **pushing seat-status changes over WebSocket or SSE**.
+
+**Interviewer** — Good. Let's stop there.
 
 > 💡 **Coaching note** — Version 2 candidates always come from **"where my design's assumptions break."** The queue's assumption (humans stand in line) is broken by bots; the row lock's assumption (contention is evenly spread) is broken by hotspots.
 
@@ -169,11 +205,11 @@ Expiry processor ─ reverts holds past expires_at back to AVAILABLE
 
 ## 8. Interview Retro — What Was Actually Being Graded
 
-1. **Requirements gathering** — identified up front that the non-functional side (spike, no double-selling, fairness) is the body of the problem
+1. **Requirements gathering** — asked instead of assumed: let the interviewer set the scope, and identified up front that the non-functional side (spike, no double-selling, fairness) is the body of the problem
 2. **Back-of-envelope math** — derived the need for a queue from the "5% success rate"
 3. **API & data model** — baked the hold→pay→confirm two-phase flow and TTL into the contract
 4. **Architecture** — separated the browsing path (cache) from the booking path (DB truth), plus the virtual waiting room
-5. **Trade-off negotiation** — answered "why not scale out?" with the shared-resource bottleneck, and the failure question with idempotency keys + reconciliation batches
+5. **Trade-off negotiation** — answered "why not scale out?" with the shared-resource bottleneck, and the failure question with idempotency keys + reconciliation jobs
 6. **Foresight** — named the next bottlenecks first: bots, hotspots, seat map freshness
 
 Zoom out and you can see the two archetypes of HLD interviews — **read-explosion problems (feeds, timelines) are "precompute and distribute" problems** (caches, fan-out, CDN), and **write-contention problems (tickets, inventory) are "form a line and lock precisely" problems** (queues, atomic locking, idempotency). When you meet a new problem, ask first: *which kind is this?*
