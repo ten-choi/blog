@@ -1,7 +1,7 @@
 ---
 title: "System Design Mock Interview - LLD: \"Now Design That Feed Service as Classes\""
 labels: ["System Design","LLD","OOP","Tech Interviews"]
-published: false
+published: true
 date: 2026-02-06T18:45:00+09:00
 readerComments: "ALLOW"
 bloggerPostId: "3944801420120580993"
