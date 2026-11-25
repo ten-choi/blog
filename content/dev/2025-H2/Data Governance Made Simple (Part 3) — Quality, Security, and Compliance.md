@@ -1,149 +1,150 @@
 ---
 title: "Data Governance Made Simple (Part 3) — Quality, Security, and Compliance"
-labels: ["Data Platform Series","Data Governance","Data Quality","Data Security","Data Privacy","Compliance","Data Engineering"]
+labels: ["Data Platform Series","Data Governance","Data Quality","Data Security","Data Privacy","Compliance","Data Engineering","Archive"]
 published: true
 date: 2025-12-19T11:31:00+09:00
 readerComments: "ALLOW"
+language: en
 bloggerPostId: "4291189687823124488"
 source: "archive"
 archivePath: "_archive/data/14-governance-3-quality-security-compliance.md"
 ---
 
-**데이터 플랫폼 시리즈 · 14/15** · 데이터 거버넌스 3/3
+**Data Platform Series · 14/15** · Data Governance 3/3
 
-> 시리즈의 마지막 편입니다. 1부와 2부에서는 거버넌스가 *무엇*인지, 그리고 데이터를 어떻게 *찾고 추적*하는지를 다뤘습니다. 이번 편은 집행(enforcement)의 측면, 즉 데이터를 신뢰할 수 있게 만들고, 안전하게 지키며, 법의 테두리 안에 머무는 방법에 관한 이야기입니다.
+> This is the last part of the series. Parts 1 and 2 covered *what* governance is and how to *find and trace* data. This part is about the enforcement side: how to make data trustworthy, keep it safe, and stay within the law.
 
-## 1. data quality(데이터 품질): 측정할 수 있는 신뢰
+## 1. Data Quality: Trust You Can Measure
 
-누구나 "좋은 데이터"를 원하지만, '좋다'는 것은 느낌이 아니라 측정 가능한 여러 차원의 집합입니다. 품질 문제를 측정할 수 없다면, 그것이 나아지고 있는지 나빠지고 있는지조차 알 수 없습니다. 추적할 만한 가치가 있는 차원들을 살펴보겠습니다.
+Everyone wants "good data," but "good" isn't a feeling — it's a set of measurable dimensions. If you can't measure a quality problem, you can't even tell whether it's getting better or worse. Here are the dimensions worth tracking:
 
-| 차원 | 답하려는 질문 | 실패 사례 |
+| Dimension | The question it answers | Failure example |
 |-----------|-------------------------|-----------------|
-| **accuracy(정확성)** | 값이 현실과 일치하는가? | 고객의 국가 정보가 틀렸다 |
-| **completeness(완전성)** | 필수 값이 채워져 있는가? | 주문의 12%에 `user_id`가 null이다 |
-| **consistency(일관성)** | 시스템들이 서로 일치하는가? | CRM과 청구 시스템의 합계가 다르다 |
-| **timeliness(적시성)** | 충분히 최신인가? | "실시간" 대시보드가 6시간 뒤처져 있다 |
-| **uniqueness(고유성)** | 원치 않는 중복이 있는가? | 같은 주문이 두 번 집계되었다 |
-| **validity(유효성)** | 규칙을 따르는가? | `@`가 없는 이메일 필드 |
+| **Accuracy** | Do the values match reality? | A customer's country is wrong |
+| **Completeness** | Are required values filled in? | 12% of orders have a null `user_id` |
+| **Consistency** | Do systems agree with each other? | CRM and billing totals differ |
+| **Timeliness** | Is it fresh enough? | The "real-time" dashboard is 6 hours behind |
+| **Uniqueness** | Are there unwanted duplicates? | The same order was counted twice |
+| **Validity** | Does it follow the rules? | An email field with no `@` |
 
-실무적인 방법은 이 차원들을 파이프라인과 함께 실행되는 **automated check(자동화된 검사)**로 바꾸는 것입니다. `user_id`가 절대 null이 아니라는 것, 행(row) 수가 하루 사이 20% 넘게 줄어들지 않는다는 것, freshness(신선도)가 한 시간 이내로 유지된다는 것을 단언(assert)하는 식이죠.
+The practical approach is to turn these dimensions into **automated checks** that run alongside your pipelines — asserting that `user_id` is never null, that row counts don't drop by more than 20% from one day to the next, that freshness stays within an hour.
 
-이 검사들은 머릿속이 아니라 코드로 적습니다. 예를 들어 dbt에서는 모델 옆에 테스트를 선언해 두면 됩니다.
+You write these checks in code, not in your head. In dbt, for example, you just declare tests next to the model:
 
 ```yaml
-# schema.yml — orders 모델
+# schema.yml — orders model
 columns:
   - name: user_id
     tests:
-      - not_null      # null이면 실패
-      - unique        # 중복이면 실패
+      - not_null      # fails on null
+      - unique        # fails on duplicates
 ```
 
-Great Expectations나 Soda 같은 도구를 쓰면 expectation(기대)을 YAML이나 SQL로 선언하고 freshness, 분포 변화까지 검사할 수 있지만, 핵심은 도구가 아니라 다음 한 가지입니다. **검사가 실패했을 때 무슨 일이 일어나는가.**
+With tools like Great Expectations or Soda, you can declare expectations in YAML or SQL and even check freshness and distribution shifts. But the key isn't the tool — it's one thing: **what happens when a check fails.**
 
-> **현업 함정:** 경고만 띄우고 아무도 호출받지 않는 검사는 연극입니다. 대시보드 한구석에 빨간 점이 떠 있어도 보는 사람이 없으면 없는 것과 같습니다. 실패를 실제 행동과 연결하세요. (1) Slack/PagerDuty로 담당자에게 alert(경보)를 보내거나, (2) CI에서 테스트를 fail시켜 배포를 막거나, (3) 파이프라인을 멈추고 불량 행을 quarantine(격리) 테이블로 빼서 좋은 데이터만 하류로 흘려보내는 식이죠. 이해관계자가 오류를 알아채기 *전에* 적절한 담당자가 먼저 알게 되어야 합니다.
+> **Real-world trap:** a check that only raises a warning and pages nobody is theater. A red dot in the corner of a dashboard that nobody looks at might as well not exist. Tie failures to real action: (1) send an alert to the owner via Slack/PagerDuty, (2) fail the test in CI to block the deploy, or (3) halt the pipeline and move bad rows into a quarantine table so only good data flows downstream. The right owner should find out *before* stakeholders notice the error.
 
-> 이는 1부에서 다룬 "data contract(데이터 계약)" 개념과 직접 연결됩니다. 품질에 대한 기대는, 그것이 요란하게 실패하는 검사로 바뀌는 순간 더 이상 좋은 의도에 머물지 않게 됩니다. 아무도 강제하지 않는 정의는 그저 주석에 불과합니다.
+> This connects directly to the "data contract" idea from Part 1. A quality expectation stops being a good intention the moment it becomes a check that fails loudly. A definition nobody enforces is just a comment.
 
 ---
 
-## 2. data security(데이터 보안): 누가 무엇을 볼 수 있는가
+## 2. Data Security: Who Can See What
 
-거버넌스에서의 보안은 대부분 **access control(접근 제어)**에 관한 것입니다. 각 사람과 시스템이 자신에게 허락된 데이터만 볼 수 있도록 보장하는 것이죠.
+Security in governance is mostly about **access control** — making sure each person and system can see only the data they're allowed to.
 
-### classification(분류)이 먼저입니다
+### Classification Comes First
 
-모든 데이터가 동등하지는 않기 때문에 데이터를 균일하게 보호할 수는 없습니다. 출발점은 **classification(분류)**, 즉 민감도에 따라 데이터에 태그를 붙이는 것입니다.
+Not all data is equal, so you can't protect it uniformly. The starting point is **classification**: tagging data by sensitivity.
 
-- **Public(공개)** — 누구에게나 공개해도 괜찮은 데이터(예: 발행된 블로그 콘텐츠).
-- **Internal(내부)** — 직원용으로, 유출되어도 피해가 적은 데이터(예: 집계 지표).
-- **Confidential(기밀)** — 접근이 제한되며, 유출되면 실질적 피해가 발생하는 데이터(예: 고객별 매출).
-- **Restricted / PII(제한/개인식별정보)** — 법적 결과를 동반하는 개인 정보 또는 규제 대상 데이터(예: 이름, 이메일, 결제 정보).
+- **Public** — fine to show anyone (e.g., published blog content).
+- **Internal** — for employees; little harm if leaked (e.g., aggregate metrics).
+- **Confidential** — restricted access; real harm if leaked (e.g., per-customer revenue).
+- **Restricted / PII** — personal or regulated data with legal consequences (e.g., names, emails, payment details).
 
-데이터가 일단 분류되면, 규칙을 매번 개별 사례마다 결정하는 대신 태그를 따라 자동으로 적용할 수 있습니다.
+Once data is classified, rules can be applied automatically by following the tags, instead of deciding every case individually.
 
-### 접근 통제하기
+### Controlling Access
 
-가장 일반적인 모델은 **role-based access control(역할 기반 접근 제어, RBAC)**입니다. 권한이 *역할*(분석가, 엔지니어, 지원 담당)에 부여되고, 사람은 그 역할을 부여받습니다. 이 방식은 한 번에 한 테이블씩 개인에게 접근 권한을 주는 것보다 훨씬 잘 확장됩니다. 누군가 팀을 옮기면 권한 부여 50건을 손대는 게 아니라 그 사람의 역할만 바꾸면 되니까요.
+The most common model is **role-based access control (RBAC)**. Permissions are granted to *roles* (analyst, engineer, support), and people are assigned those roles. This scales far better than granting individuals access one table at a time — when someone changes teams, you change their role instead of touching 50 grants.
 
-실무에서 RBAC는 결국 warehouse(웨어하우스) 안의 GRANT 문으로 구체화됩니다. 권한은 *역할*에 주고, 사람은 *역할*에 배정하는 것이 핵심입니다. 절대 테이블마다 개인에게 직접 주지 마세요.
+In practice, RBAC ends up as GRANT statements inside the warehouse. The key is to give permissions to *roles* and assign people to *roles*. Never grant directly to individuals, table by table.
 
 ```sql
--- Snowflake/BigQuery 모두 같은 패턴
-GRANT SELECT ON analytics.orders TO ROLE analyst;  -- 권한은 역할에
-GRANT ROLE analyst TO USER jane;                    -- 사람은 역할에 배정
+-- Same pattern in Snowflake and BigQuery
+GRANT SELECT ON analytics.orders TO ROLE analyst;  -- permissions go to the role
+GRANT ROLE analyst TO USER jane;                    -- people get assigned to the role
 ```
 
-더 세밀한 통제가 필요하다면 **attribute-based access control(속성 기반 접근 제어, ABAC)**이 있습니다. 사용자, 데이터, 그리고 맥락(context)의 속성에 따라 접근이 결정되는 방식입니다(예: "지원 상담원은 고객 데이터를 볼 수 있지만, 오직 자신의 담당 지역 고객에 한해서만"). 더 강력하지만 더 복잡하므로, 역할만으로는 규칙을 표현할 수 없을 때 꺼내 쓰면 됩니다.
+If you need finer-grained control, there's **attribute-based access control (ABAC)**, where access is decided by attributes of the user, the data, and the context (e.g., "support agents can see customer data, but only for customers in their own region"). It's more powerful but more complex, so reach for it when roles alone can't express the rule.
 
-### masking(마스킹)과 anonymization(익명화)
+### Masking and Anonymization
 
-때로는 데이터셋으로 작업해야 하지만 민감한 부분은 보아서는 안 되는 경우가 있습니다. 두 가지 기법이 있습니다.
+Sometimes you need to work with a dataset without seeing its sensitive parts. There are two techniques:
 
-- **masking(마스킹)** — 값을 사용 가능한 상태로 유지하면서 일부를 가리는 것입니다: `j•••@example.com`, 또는 신용카드를 `**** **** **** 4321`로 표시하는 식이죠. 구조는 남고, 비밀은 사라집니다.
-- **anonymization(익명화) / pseudonymization(가명화)** — 레코드가 특정 개인으로 거슬러 추적되지 못하도록 식별자를 제거하거나 대체하는 것입니다. *익명화*는 재식별을 불가능하게 만드는 것을 목표로 하고, *가명화*는 식별자를 토큰으로 바꾸되 별도로 보관된 키가 있어야만 되돌릴 수 있게 합니다.
+- **Masking** — hiding part of a value while keeping it usable: `j•••@example.com`, or showing a credit card as `**** **** **** 4321`. The structure stays; the secret goes.
+- **Anonymization / pseudonymization** — removing or replacing identifiers so a record can't be traced back to a specific person. *Anonymization* aims to make re-identification impossible; *pseudonymization* replaces identifiers with tokens that can only be reversed with a separately stored key.
 
-현대 웨어하우스는 이를 **dynamic data masking(동적 데이터 마스킹)**으로 지원합니다. 원본은 그대로 두고, *누가 조회하느냐*에 따라 같은 컬럼이 다르게 보이게 만드는 정책이죠. analyst 역할이 `SELECT email FROM users`를 실행하면 다음처럼 마스킹된 값이 돌아옵니다.
+Modern warehouses support this through **dynamic data masking**: a policy that leaves the original intact but makes the same column look different depending on *who is querying*. When the analyst role runs `SELECT email FROM users`, it gets masked values back, like this:
 
 ```text
 email
 -----------------
-j•••@example.com   -- analyst가 본 결과
-jane@example.com   -- support 역할은 원본 그대로
+j•••@example.com   -- what the analyst sees
+jane@example.com   -- the support role sees the original
 ```
 
-이러한 기법 덕분에 분석가와 ML 팀은 원본 개인 정보에 전혀 손대지 않고도 현실적인 데이터로 작업할 수 있습니다.
+These techniques let analysts and ML teams work with realistic data without ever touching the raw personal information.
 
-> **현업 함정:** 가명화된 데이터를 "이제 개인정보가 아니다"라고 착각하지 마세요. 되돌릴 키가 어딘가 존재하는 한, GDPR을 비롯한 다수의 법은 가명화된 데이터를 여전히 개인 데이터로 취급합니다. 마스킹은 화면을 가릴 뿐, 법적 책임까지 가려 주지는 않습니다.
-
----
-
-## 3. compliance(컴플라이언스): 빠져나갈 수 없는 규칙
-
-개인정보 보호 규제는 거버넌스가 모범 사례(best practice)에서 법적 의무로 바뀌는 지점입니다. 구체적인 법은 지역마다 다릅니다. EU의 **GDPR**, 캘리포니아의 **CCPA/CPRA**, 그리고 여러 국가의 동등한 법률들이 있죠. 하지만 이들은 엔지니어가 이해해 두어야 할 공통의 척추(spine)를 공유합니다.
-
-**① 어떤 개인 데이터를 왜 보유하고 있는지 알아야 합니다.** "우리는 사용자 데이터를 일부 수집합니다"는 변호의 여지가 없는 입장입니다. 어떤 개인 데이터를, 어디에 두고 있으며, 그것을 보유하는 정당한 목적이 무엇인지에 대한 inventory(목록)가 필요합니다. (앞서 다룬 catalog(카탈로그)와 분류가 직접적으로 빛을 발하는 대목입니다.)
-
-**② purpose limitation(목적 제한).** 한 가지 이유로 수집한 데이터를 다른 용도로 자유롭게 재사용할 수는 없습니다. 주문 확인용으로 모은 이메일이 자동으로 광고 모델에 투입할 수 있는 당신 소유가 되는 것은 아닙니다.
-
-**③ 개인의 권리.** 사람들은 당신이 자신에 대해 무엇을 보유하고 있는지 물을 수 있고, 그것을 정정해 달라고 요청할 수 있으며, 그리고 엔지니어링에 가장 큰 부담을 주는 것 — **삭제**를 요청할 수 있습니다. "right to be forgotten(잊힐 권리)"은 모든 시스템에 걸쳐 한 사람의 데이터를 *찾아 제거*할 수 있어야 함을 뜻합니다.
-
-실제로 삭제 요청이 들어왔을 때의 runbook(런북)은 대략 이렇게 흘러갑니다.
-
-1. **찾기** — lineage(2부)와 PII 태그로 그 사람의 데이터가 *어느 시스템·어느 테이블*에 흩어져 있는지 모두 추려냅니다. 이 단계가 없으면 나머지는 추측이 됩니다.
-2. **삭제** — 각 시스템에서 해당 행을 제거합니다. 여기서 lakehouse(레이크하우스)의 **row-level delete(행 단위 삭제)**가 빛을 발합니다. 예전 같으면 거대한 Parquet 파일 전체를 다시 써야 했을 일을, 이제는 한 사람의 행만 삭제 표시할 수 있으니까요.
-3. **남기기** — *누구의 데이터를, 언제, 어떤 요청에 따라* 지웠는지 audit log(감사 로그)에 기록합니다. 삭제했다는 사실 자체를 입증할 수 있어야 합니다.
-
-PII는 미리 **분류·태깅**해 두는 것이 핵심입니다. 그러면 위 규칙이 컬럼마다가 아니라 *태그를 따라* 자동으로 적용되어, 새 테이블이 생겨도 사람이 일일이 챙기지 않아도 됩니다.
-
-**④ retention(보존) 한도.** 개인 데이터는 실제로 필요한 기간 동안만 보관하고 그 후에는 폐기할 것이 요구됩니다. "혹시 모르니까"라며 무기한 저장하는 것은 자산이 아니라 부채입니다.
-
-**⑤ auditability(감사 가능성).** *누가, 무엇을, 언제* 접근했는지 보여줄 수 있어야 합니다. 접근 로그와 audit trail(감사 추적)은 "우리는 개인정보 보호를 진지하게 여깁니다"라는 말을 실제로 입증할 수 있는 무언가로 바꿔 줍니다.
-
-> **현업 함정:** 가장 흔한 실패는 "정책은 있는데 집행이 없음"입니다. 위키에 보존 정책이 적혀 있지만 실제로 만료된 데이터를 지우는 작업(job)은 아무도 돌리지 않고, 삭제 요청 절차 문서는 있지만 막상 요청이 오면 손으로 헤맨다면 — 그 정책은 감사에서 종이에 불과합니다. 정책은 코드와 스케줄러로 집행될 때만 진짜입니다.
-
-> 이 중 어느 것도 당신이 변호사가 될 것을 요구하지는 않습니다. 다만 데이터 플랫폼이 이러한 질문들에 답을 가질 수 있도록 설계되기를 요구할 뿐입니다. 그리고 그것이 바로 거버넌스의 핵심입니다.
+> **Real-world trap:** don't fool yourself into thinking pseudonymized data is "no longer personal data." As long as a key to reverse it exists somewhere, GDPR and many other laws still treat pseudonymized data as personal data. Masking hides the screen, not your legal liability.
 
 ---
 
-## 4. AI 시대의 거버넌스
+## 3. Compliance: The Rules You Can't Opt Out Of
 
-마지막으로 한마디 덧붙입니다. 이 분야가 향하고 있는 방향이기 때문입니다. 데이터가 machine learning(머신러닝)에 투입될 때, 모든 거버넌스 관심사는 한층 더 날카로워집니다.
+Privacy regulation is where governance turns from best practice into legal obligation. The specific laws vary by region — the EU's **GDPR**, California's **CCPA/CPRA**, and equivalent laws in many countries — but they share a common spine that engineers should understand.
 
-- **품질**이 더 중요해집니다. 잘못된 컬럼 하나가 보고서 하나에 그치지 않고, 조용히 그리고 대규모로 모델을 저하시키기 때문입니다.
-- **lineage**는 모델까지 확장되어야 합니다. *어떤* 데이터가 *어떤* 모델을 학습시켰는지는 당신이 답해야 할 질문이 되며, 때로는 규제 당국이 그 질문을 던지기도 합니다.
-- **개인정보 보호**는 미묘해집니다. 모델이 학습 데이터를 기억했다가 유출할 수 있기 때문에, "테이블을 익명화했습니다"가 자동으로 이야기의 끝이 되지는 않습니다.
+**① Know what personal data you hold, and why.** "We collect some user data" is an indefensible position. You need an inventory of what personal data you have, where it lives, and the legitimate purpose for holding it. (This is where the catalog and classification covered earlier pay off directly.)
 
-일찍이 거버넌스에 투자한 팀들이 지금 AI를 *안전하게* 도입할 수 있는 팀들입니다. 그러지 못한 팀들은 신뢰란 플랫폼이 다 만들어진 뒤에 나중에 갖다 붙일 수 있는 것이 아님을 깨닫고 있습니다.
+**② Purpose limitation.** You can't freely reuse data collected for one reason for something else. An email collected for order confirmations doesn't automatically become yours to feed into an ad model.
+
+**③ Individual rights.** People can ask what you hold about them, ask you to correct it, and — the one that weighs most heavily on engineering — ask you to **delete** it. The "right to be forgotten" means you have to be able to *find and remove* one person's data across every system.
+
+When a deletion request actually comes in, the runbook goes roughly like this:
+
+1. **Find** — use lineage (Part 2) and PII tags to pin down *which systems and which tables* that person's data is scattered across. Without this step, everything after it is guesswork.
+2. **Delete** — remove the relevant rows from each system. This is where the lakehouse's **row-level delete** shines: work that used to mean rewriting an entire huge Parquet file can now be done by marking just that one person's rows as deleted.
+3. **Record** — write to an audit log *whose data was deleted, when, and under which request*. You need to be able to prove that the deletion happened.
+
+The key is to **classify and tag** PII up front. Then the rules above apply automatically *by following the tags* rather than column by column, so nobody has to babysit each new table as it appears.
+
+**④ Retention limits.** You're required to keep personal data only as long as you actually need it, and dispose of it afterwards. Storing it indefinitely "just in case" is a liability, not an asset.
+
+**⑤ Auditability.** You have to be able to show *who* accessed *what*, and *when*. Access logs and audit trails turn "we take privacy seriously" into something you can actually prove.
+
+> **Real-world trap:** the most common failure is "policy without enforcement." If the retention policy is written in the wiki but nobody actually runs a job that deletes expired data, or there's a documented procedure for deletion requests but the team fumbles through it by hand when one arrives — that policy is just paper in an audit. A policy is real only when it's enforced by code and a scheduler.
+
+> None of this requires you to become a lawyer. It just requires the data platform to be designed so these questions have answers. And that's exactly what governance is about.
 
 ---
 
-## 5. 시리즈를 마무리하며
+## 4. Governance in the Age of AI
 
-세 편, 하나의 일관된 줄기였습니다.
+One last note, because it's where the field is heading. When data feeds machine learning, every governance concern gets sharper.
 
-- **1부** — 거버넌스는 사람, 정책, 그리고 프로세스입니다. 명확한 ownership(소유권)과 공유된 정의이지, 제품이 아닙니다.
-- **2부** — metadata(메타데이터), 카탈로그, 그리고 lineage가 데이터를 찾을 수 있고 추적할 수 있게 만듭니다.
-- **3부** — 품질, 보안, 그리고 컴플라이언스가 데이터를 신뢰할 수 있고, 안전하며, 합법적인 것으로 만듭니다.
+- **Quality** matters more, because one bad column doesn't stop at one report — it degrades a model, quietly and at scale.
+- **Lineage** has to extend to models. *Which* data trained *which* model becomes a question you have to answer — and sometimes regulators are the ones asking.
+- **Privacy** gets subtle. Models can memorize and leak training data, so "we anonymized the table" isn't automatically the end of the story.
 
-데이터 거버넌스는 따분하다는 평판을 갖고 있지만, 그 이면의 목표는 결코 관료적이지 않습니다. 그것은 사람들이 실제로 *신뢰하는*, 그리고 데이터와 규제와 활용 사례가 늘어나도 계속 신뢰할 수 있는 데이터 플랫폼입니다. 작게 시작하세요. 소유자를 정하세요. 용어 하나를 정의하세요. 품질 검사 하나를 추가하세요. 거버넌스는 정직한 답변 하나하나로 쌓아 올리는 것입니다.
+The teams that invested in governance early are the ones that can adopt AI *safely* now. The ones that didn't are learning that trust isn't something you can bolt on after the platform is built.
+
+---
+
+## 5. Wrapping Up the Series
+
+Three parts, one consistent thread:
+
+- **Part 1** — Governance is people, policies, and processes: clear ownership and shared definitions, not a product.
+- **Part 2** — Metadata, catalogs, and lineage make data findable and traceable.
+- **Part 3** — Quality, security, and compliance make data trustworthy, safe, and lawful.
+
+Data governance has a reputation for being dull, but the goal behind it is anything but bureaucratic: a data platform people actually *trust*, and keep trusting as data, regulations, and use cases grow. Start small. Name an owner. Define one term. Add one quality check. Governance is built one honest answer at a time.

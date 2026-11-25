@@ -1,6 +1,6 @@
 ---
 title: "Uncaught SyntaxError: Unexpected token '<'"
-labels: ["TS","JS","react","Uncaught"]
+labels: ["TS","JS","react","Uncaught","Archive"]
 published: true
 date: 2020-12-23T10:18:32+09:00
 readerComments: "ALLOW"
@@ -10,22 +10,22 @@ tistoryUrl: "https://yeolceo.tistory.com/63"
 tistoryCategory: "TS, JS/react"
 tistoryTags: ["Uncaught"]
 tistoryPostedAt: "2020-12-23 10:18:32"
-language: ko
+language: en
 bloggerPostId: "3775347678913541048"
 ---
 ![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/dev/tistory/63/img.webp)
 
-이 미친 에러를 알게 되었습니다. 저는 react에서 이문제가 일어났습니다.
+I ran into this maddening error. In my case, it happened in React.
 
 ![](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/dev/tistory/63/img_1.webp)
 
-코드 2에서 위와 같은 에러가 떴고 찾아본 결과 코드 1이 있으면 해결이 됩니다.
+Line 2 below threw the error above, and after some digging I found that adding line 1 fixes it.
 
 ```html
-</head>
+<head>
     <title>React App</title>
-    <base href="/" />                               -코드 1  - 해결용 코드 
-    <script src="free.player.1.8.4.js"></script>    -코드 2  - 문제의 스크립트
+    <base href="/" />                               - Line 1 - the fix
+    <script src="free.player.1.8.4.js"></script>    - Line 2 - the problematic script
   </head>
 
   <body>
@@ -34,14 +34,14 @@ bloggerPostId: "3775347678913541048"
   </body>
 ```
 
-**\- 알아본 결과**
+**\- What I Found**
 
-<base href="URL" /> 
+<base href="URL" /> 
 
-base 요소는 페이지 내의 모든 상대 url의 기준을 잡아주는 요소입니다. 
+The base element sets the base URL for every relative URL on the page.
 
-제 경우에는 url을 변경하면 다른 페이지를 실행하는 기능이 있었는데 그중 한 페이지만 이런 문제가 나왔습니다. 
+In my case, the app loaded different pages depending on the URL, and only one of those pages had this problem.
 
-내부 코드를 전부 지워도 같은 결과가 나오더군요. 다른 react 파일은 이런 경우가 없었습니다.
+Even after deleting all of its internal code, I got the same result. None of the other React files had this issue.
 
-즉 특수한 경우에 일어나고 모든 url이 아닌 미정의 url 에서 base url 이문제가 되는 경우가 생깁니다.
+In other words, it happens in specific cases: not on every URL, but on undefined URLs, where the base URL becomes the problem.

@@ -73,7 +73,7 @@ Tomcatに必要な設定ファイルと構成を`docker-compose.yml`に追加し
 
 ### 3.2 Harbor Registry ログイン
 
-**Harbor レジストリURL**: [https://registry.example.com/harbor/projects/10/repositories](https://registry.example.com/harbor/projects/10/repositories)
+**Harbor レジストリURL**: [https://registry.example.com/harbor/projects/1/repositories](https://registry.example.com/harbor/projects/1/repositories)
 
 Linuxサーバーから Harborレジストリにアクセスするには、Dockerログインが必要です。セキュリティのため標準入力(stdin)を通じてパスワードを渡す方式を使用します：
 
@@ -88,7 +88,7 @@ echo "your_password" | docker login registry.example.com -u your_username --pass
 ログインが完了したら、ビルドされたイメージをHarborレジストリにアップロードします：
 
 ```bash
-docker push registry.example.com/rebirth/my-app:latest
+docker push registry.example.com/myproject/my-app:latest
 ```
 
 ---
@@ -100,7 +100,7 @@ docker push registry.example.com/rebirth/my-app:latest
 本番サーバーからHarborレジストリよりイメージを取得します：
 
 ```bash
-docker pull registry.example.com/rebirth/my-app:latest
+docker pull registry.example.com/myproject/my-app:latest
 ```
 
 ### 4.2 Container実行
@@ -108,7 +108,7 @@ docker pull registry.example.com/rebirth/my-app:latest
 ダウンロードしたイメージでコンテナを実行します：
 
 ```bash
-docker run registry.example.com/rebirth/my-app:latest
+docker run registry.example.com/myproject/my-app:latest
 ```
 
 実際の本番環境ではポートマッピング、環境変数、volumeマウントなどの追加オプションが必要になる場合があります：
@@ -118,7 +118,7 @@ docker run -d \
   --name my-app \
   -p 8080:8080 \
   -e SPRING_PROFILES_ACTIVE=production \
-  registry.example.com/rebirth/my-app:latest
+  registry.example.com/myproject/my-app:latest
 ```
 
 ✅ ここまで問題なく進行できたら、Dockerによるアプリケーション実行が正常に検証されたことになります。

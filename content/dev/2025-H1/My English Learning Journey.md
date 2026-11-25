@@ -1,9 +1,10 @@
 ---
 title: "My English Learning Journey"
-labels: ["english","language-learning","study-abroad","personal-development","education"]
+labels: ["english","language-learning","study-abroad","personal-development","education","Archive"]
 published: true
 date: 2025-05-30T10:00:00+09:00
 readerComments: "ALLOW"
+language: en
 bloggerPostId: "1667644400901822411"
 source: "archive"
 archivePath: "_archive/dev/career/cv interview.md"
@@ -11,9 +12,9 @@ archivePath: "_archive/dev/career/cv interview.md"
 
 i
 
-prabably i can speak noramal talk but business level is differnce 
+probably i can speak normal talk but business level is different 
 so i should practice how do i do
-when i search hire process x hireing process in japan
+when i search hire process x hiring process in japan
 i think x is big company and it's fine to think that is normal process
 
 1. CV Reviewing 
@@ -22,31 +23,31 @@ i think x is big company and it's fine to think that is normal process
 4. Offer
 
 
-so i think i start how to response cv reviwing
-Top 10 Behavioral Software Engineering Interview Questions - Expoenet youtube
+so i think i start how to respond to cv reviewing
+Top 10 Behavioral Software Engineering Interview Questions - Exponent youtube
 
 
-why thay ask 
+why they ask 
 https://www.linkedin.com/pulse/27-most-common-job-interview-questions-answers-jeff-haden/
 
 i should tell my skill in english 
 https://roadmap.sh/questions/ 
 
-10 quistion youtube
+10 question youtube
 https://www.youtube.com/watch?v=T25I2FQ9Mok
 
 
 1. introduce my self
 
-i wrok about 6years as backend engenner, 
-one of my personlity is i love effitiont.
-when i do work or somthting
+i work about 6years as backend engineer, 
+one of my personality is i love efficient.
+when i do work or something
 
-when i did project in company i 나는 효율적인 부분들을 많이 어필했다
+when i did project in company i pitched a lot of the efficiency-related parts
 one of the big part is talk about infra service aws
 team working and communicate
 
-because this compony devide work permission so most of backend engineer can't handle aws.
+because this company divide work permission so most of backend engineer can't handle aws.
 but when we need aws setting we have to request infra team.
 
 I have designed, developed, and deployed various services.

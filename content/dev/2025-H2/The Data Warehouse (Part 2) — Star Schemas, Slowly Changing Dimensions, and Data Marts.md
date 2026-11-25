@@ -1,28 +1,29 @@
 ---
 title: "The Data Warehouse (Part 2) — Star Schemas, Slowly Changing Dimensions, and Data Marts"
-labels: ["Data Platform Series","Data Warehouse","Dimensional Modeling","Star Schema","Slowly Changing Dimension","Data Mart","Analytics","Data Engineering"]
+labels: ["Data Platform Series","Data Warehouse","Dimensional Modeling","Star Schema","Slowly Changing Dimension","Data Mart","Analytics","Data Engineering","Archive"]
 published: true
 date: 2025-10-14T14:44:00+09:00
 readerComments: "ALLOW"
+language: en
 bloggerPostId: "5646301954839810417"
 source: "archive"
 archivePath: "_archive/data/03-warehouse-2-star-schema-scd-marts.md"
 ---
 
-**데이터 플랫폼 시리즈 · 03/15** · 저장과 아키텍처 — 데이터 웨어하우스 2/2
+**Data Platform Series · 03/15** · Storage and Architecture — The Data Warehouse 2/2
 
-> 1부는 "쓰기를 위해서는 정규화하고, 읽기를 위해서는 역정규화하라"는 규칙으로 끝났습니다. 이번 편은 그 규칙이 분석의 세계에서 구체적으로 어떤 모습으로 굳어졌는지를 다룹니다. fact와 dimension으로 이루어진 star schema(스타 스키마), 시간에 따른 변화를 다루는 slowly changing dimension(SCD), 그리고 팀이 웨어하우스의 한 조각을 떼어 갖는 data mart(데이터 마트) — 웨어하우스에서 가장 중요한 모델링 개념들입니다.
+> Part 1 ended with the rule "normalize for writes, denormalize for reads." This part covers the concrete shape that rule has hardened into in the analytics world: the star schema built from facts and dimensions, slowly changing dimensions (SCDs) for handling change over time, and data marts, where a team carves out its own slice of the warehouse — the most important modeling concepts in the warehouse.
 
-## 1. 차원 모델링과 스타 스키마
+## 1. Dimensional modeling and the star schema
 
-분석에 한정해서 보면, 1부의 "읽기를 위해 역정규화하라"를 가장 잘 구현해 낸 지배적인 접근법이 dimensional modeling(차원 모델링)이며, 그 대표적인 형태가 star schema(스타 스키마)입니다. 이것은 웨어하우스에서 가장 중요한 단 하나의 개념이므로, 차근차근 쌓아 올려 봅시다.
+For analytics specifically, the dominant approach that best embodies Part 1's "denormalize for reads" is dimensional modeling, and its signature form is the star schema. This is the single most important concept in the warehouse, so let's build it up step by step.
 
-차원 모델링은 데이터를 두 종류의 테이블로 나눕니다.
+Dimensional modeling splits data into two kinds of tables.
 
-- **fact table(팩트 테이블)** — *측정값* 또는 *이벤트*입니다. 일어난 사건 하나당 한 행이며, 여러분이 합산하고 세게 될 숫자로 가득합니다. `sales_fact` 테이블은 판매 한 건당 한 행을 가지며, `amount`, `quantity` 같은 컬럼을 갖습니다.
-- **dimension table(차원 테이블)** — fact를 설명하는 *맥락*입니다. 누가, 무엇을, 어디서, 언제. `customer` 차원, `product` 차원, `date` 차원처럼 말입니다.
+- **Fact table** — The *measurements* or *events*. One row per thing that happened, full of numbers you'll sum and count. A `sales_fact` table has one row per sale, with columns like `amount` and `quantity`.
+- **Dimension table** — The *context* that describes the facts: who, what, where, when. A `customer` dimension, a `product` dimension, a `date` dimension, and so on.
 
-하나의 fact table을 중심에 두고 그 주위를 차원들이 둘러싸도록 배치하면 별 모양이 됩니다.
+Put a single fact table in the middle and surround it with dimensions, and you get a star shape.
 
 ```
         ┌───────────┐
@@ -45,7 +46,7 @@ archivePath: "_archive/data/03-warehouse-2-star-schema-scd-marts.md"
         └───────────┘
 ```
 
-왜 이런 형태일까요? 분석가들이 던지는 질문은 거의 항상 *"어떤 맥락으로 잘라낸 하나의 숫자"*이기 때문입니다. 지역별(차원), 월별(차원), 제품 카테고리별(차원) 매출(fact)처럼요. 그런 질문은 star schema에서 거의 똑같은 모양의 쿼리로 떨어집니다 — fact 하나를 고르고, 잘라 보고 싶은 차원 두세 개를 조인한 뒤, 집계하면 끝입니다.
+Why this shape? Because the questions analysts ask are almost always *"a number, sliced by some context."* Revenue (fact) by region (dimension), by month (dimension), by product category (dimension). In a star schema, those questions all turn into queries of nearly the same shape: pick one fact, join the two or three dimensions you want to slice by, aggregate, done.
 
 ```sql
 SELECT  d.year_month, p.category, SUM(f.amount) AS revenue
@@ -56,26 +57,26 @@ WHERE   d.year = 2025
 GROUP BY d.year_month, p.category;
 ```
 
-fact는 좁고 길며(숫자와 키만), 차원은 작고 설명적입니다. 그래서 엔진은 거대한 fact를 한 번 훑으면서 작은 차원들을 가볍게 붙이기만 하면 됩니다. star schema가 *의도적으로 역정규화된* 설계인 이유, 그리고 그런 쿼리가 단순하고 빠른 이유가 바로 이 모양에 있습니다.
+Facts are narrow and long (just numbers and keys), and dimensions are small and descriptive. So the engine only has to scan the huge fact once and lightly attach the small dimensions. That shape is exactly why the star schema is a *deliberately denormalized* design, and why its queries are simple and fast.
 
-실무에서는 이런 모델을 손으로 SQL을 짜서 한 번에 만들기보다, **dbt** 같은 도구로 계층을 쌓아 만듭니다. 소스를 가볍게 정리한 staging 모델 → 거기서 깎아낸 dimension/fact 모델 → 팀이 소비하는 mart 모델 순서로 의존성을 선언해 두면, 변환 로직이 버전 관리되고 테스트와 함께 재실행됩니다. 이 모델들이 실제로 돌아가는 곳이 1부에서 말한 Snowflake/BigQuery/Redshift 같은 웨어하우스입니다.
+In practice, you don't build these models in one go with hand-written SQL; you build them in layers with a tool like **dbt**. Declare the dependencies in order — staging models that lightly clean up the sources → dimension/fact models carved out of those → mart models that teams consume — and your transformation logic becomes version-controlled and re-runnable along with its tests. Where these models actually run is the warehouse from Part 1: Snowflake/BigQuery/Redshift.
 
-> **현업 함정 — grain을 흐리지 마세요.** fact table을 설계할 때 가장 먼저 정해야 하는 것은 "한 행이 정확히 무엇 하나를 의미하는가", 즉 **grain(입도)** 입니다. 주문 한 건인지, 주문 라인 한 줄인지, 일별 집계 한 줄인지. 서로 다른 grain의 행을 한 테이블에 섞으면 `SUM`이 조용히 중복 합산(double-counting)되어, 아무도 에러를 못 보는 채로 매출이 부풀려집니다. 한 fact table = 하나의 grain을 규칙으로 못박으세요.
+> **Real-world trap — don't blur the grain.** The first thing to decide when designing a fact table is "what exactly does one row mean?" — its **grain**. One order? One order line? One daily aggregate? Mix rows of different grains in one table and `SUM` silently double-counts, inflating revenue without anyone ever seeing an error. Nail it down as a rule: one fact table = one grain.
 
-### star schema vs. snowflake schema
+### Star schema vs. snowflake schema
 
-"snowflake schema(스노우플레이크 스키마)"라는 말도 듣게 될 것입니다. 이는 dimension table을 다시 하위 테이블로 정규화한 star schema입니다(예: `product` → `product` + `category` + `brand`). 저장 공간을 약간 절약하는 대신 조인이 더 많아집니다. 실무에서는 분석 용도로 **대개 star schema가 승리합니다.** 조인이 적다는 것은 더 빠르고 단순한 쿼리를 의미하며, 저장 공간은 저렴하기 때문입니다. 용어는 알아 두되, snowflake는 구체적인 이유가 있을 때만 꺼내 드세요.
+You'll also hear the term "snowflake schema." It's a star schema whose dimension tables have been normalized further into sub-tables (e.g., `product` → `product` + `category` + `brand`). It saves a little storage in exchange for more joins. In practice, **the star schema usually wins** for analytics: fewer joins mean faster, simpler queries, and storage is cheap. Know the term, but only reach for a snowflake when you have a specific reason.
 
 ---
 
-## 2. 시간에 따른 변화 다루기 — slowly changing dimension (SCD)
+## 2. Handling change over time — slowly changing dimensions (SCD)
 
-워낙 자주 등장해서 짚어둘 만한 모델링 문제가 하나 있습니다. 데이터는 변하고, 때로는 현재 값뿐 아니라 그 변화의 *이력*이 필요하다는 것입니다. 어떤 고객이 다른 도시로 이사를 갔습니다. 예전 도시 정보를 덮어쓸까요, 아니면 작년 매출이 여전히 올바르게 귀속되도록 그가 예전에 다른 곳에 살았다는 사실을 기억해 둘까요?
+One modeling problem comes up so often it's worth calling out: data changes, and sometimes you need not just the current value but the *history* of those changes. A customer moves to another city. Do you overwrite the old city, or remember that they used to live somewhere else so that last year's sales are still attributed correctly?
 
-이것이 바로 **slowly changing dimension(서서히 변하는 차원, SCD)** 문제입니다. 실무에서 마주치는 선택지는 거의 둘로 좁혀집니다.
+This is the **slowly changing dimension (SCD)** problem. In practice, the options you'll face narrow down to two.
 
-- **SCD Type 1 (overwrite)** — 그냥 덮어씁니다. 단순하고 차원이 작게 유지되지만, 이력을 잃습니다. "지금 값만 맞으면 된다"는 속성에 씁니다.
-- **SCD Type 2 (versioned rows)** — 값이 바뀔 때마다 새 행을 추가하고, 각 버전에 유효 구간(`valid_from` / `valid_to`)과 변치 않는 surrogate key(대체 키)를 붙여 어느 fact가 어느 버전을 가리키는지 고정합니다. 이력을 보존하지만 차원이 커지고 쿼리가 조금 복잡해집니다.
+- **SCD Type 1 (overwrite)** — Just overwrite it. Simple, and the dimension stays small, but you lose history. Use it for attributes where "only the current value needs to be right."
+- **SCD Type 2 (versioned rows)** — Add a new row every time the value changes, giving each version a validity range (`valid_from` / `valid_to`) and a stable surrogate key that pins which version each fact points to. It preserves history, but the dimension grows and queries get a bit more complex.
 
 ```
 customer_key | customer_id | city  | valid_from | valid_to   | is_current
@@ -83,48 +84,48 @@ customer_key | customer_id | city  | valid_from | valid_to   | is_current
        1042  |     42      | Busan | 2025-06-01 | 9999-12-31 | true
 ```
 
-같은 고객(`customer_id = 42`)이지만 `customer_key`가 다른 두 행으로 살아 있어서, 작년 주문은 여전히 Seoul로, 올해 주문은 Busan으로 정확히 귀속됩니다. "이 속성에 대해 이력을 유지할 것인가(Type 2), 아니면 현재 값만 충분한가(Type 1)?"는 끊임없이 마주하게 될 모델링 결정이며, 잘못 고르면 과거 보고서가 조용히 망가집니다.
+It's the same customer (`customer_id = 42`), but they live on as two rows with different `customer_key`s, so last year's orders are still correctly attributed to Seoul and this year's to Busan. "Do we keep history for this attribute (Type 2), or is the current value enough (Type 1)?" is a modeling decision you'll face constantly — and choosing wrong quietly breaks your historical reports.
 
-실무 팁 하나: dbt를 쓴다면 **snapshot** 기능이 바로 이 Type 2 행 버전 관리(`valid_from`/`valid_to` 채우기, 변경 감지)를 자동화해 줍니다. 손으로 MERGE 로직을 짜기 전에 먼저 살펴볼 가치가 있습니다.
+One practical tip: if you use dbt, its **snapshot** feature automates exactly this Type 2 row versioning (filling in `valid_from`/`valid_to`, detecting changes). It's worth a look before you hand-write MERGE logic.
 
 ---
 
-## 3. 데이터 마트 — 팀이 웨어하우스의 한 조각을 갖는 이유
+## 3. Data marts — why teams get their own slice of the warehouse
 
-### 문제: 웨어하우스는 어느 한 팀에게는 너무 크다
+### The problem: the warehouse is too big for any one team
 
-어느 회사의 데이터 웨어하우스를 떠올려 봅시다. 그 안에는 *모든 것* — 영업, 마케팅, 재무, 인사, 물류, 지원 — 이 수백 개의 테이블로 모델링되어 들어 있습니다. 그런데 재무팀은 그저 월간 보고서를 만들고 싶을 뿐입니다. 이들에게 그 거대한 웨어하우스는 부담스럽기만 합니다.
+Picture a company's data warehouse. It holds *everything* — sales, marketing, finance, HR, logistics, support — modeled across hundreds of tables. But the finance team just wants to build a monthly report. For them, that huge warehouse is nothing but a burden.
 
-- 정작 필요한 십여 개의 테이블을 찾기 위해 수백 개의 테이블을 헤쳐 나가야 합니다.
-- 웨어하우스가 회사 전체를 동시에 떠받치고 있다 보니 쿼리가 원하는 만큼 빠르지 않습니다.
-- 인사 데이터나 다른 민감한 데이터를 실수로 건드리거나, 심지어 들여다보는 것조차 원치 않습니다.
+- They have to wade through hundreds of tables to find the dozen they actually need.
+- Because the warehouse is serving the whole company at once, queries aren't as fast as they'd like.
+- They don't want to accidentally touch — or even see — HR data or other sensitive data.
 
-해결책은 재무팀에게 **필요한 데이터만 담고, 그들이 생각하는 방식대로 형태를 잡은 더 작고 집중된 저장소**를 주는 것입니다. 그것이 바로 데이터 마트입니다.
+The fix is to give the finance team **a smaller, focused store that holds only the data they need, shaped the way they think about it**. That's a data mart.
 
-> **데이터 마트는 데이터 웨어하우스의 부분 집합으로, 단일 주제 영역(subject area), 팀, 또는 비즈니스 기능 단위로 범위가 좁혀진 것입니다.**
+> **A data mart is a subset of a data warehouse, scoped to a single subject area, team, or business function.**
 
-웨어하우스가 모든 것을 갖춘 대형 마트라면, 데이터 마트는 전문점입니다 — 재무 마트, 마케팅 마트, 영업 마트 — 각각은 자기 고객이 찾아오는 것만 진열해 둡니다.
+If the warehouse is a big-box store that has everything, data marts are specialty shops — a finance mart, a marketing mart, a sales mart — each stocking only what its own customers come in for.
 
-### 웨어하우스 대 마트, 나란히 비교
+### Warehouse vs. mart, side by side
 
 | | Data Warehouse | Data Mart |
 |---|----------------|-----------|
-| **범위** | 조직 전체 | 한 팀 / 한 주제 |
-| **크기** | 큼 | 작고 집중적 |
-| **대상** | 모두 | 특정 그룹 |
-| **테이블** | 수백 개 | 엄선된 소수 |
-| **구축 주체** | 중앙 데이터 팀 | 중앙 또는 로컬 팀 |
-| **목적** | 단일 진실 공급원(single source of truth) | 하나의 용도에 빠르고 쉬운 접근 |
+| **Scope** | The whole organization | One team / one subject |
+| **Size** | Large | Small and focused |
+| **Audience** | Everyone | A specific group |
+| **Tables** | Hundreds | A curated few |
+| **Built by** | Central data team | Central or local team |
+| **Purpose** | Single source of truth | Fast, easy access for one use |
 
-마트는 다른 *기술*이 아닙니다 — 보통 동일한 웨어하우스 기술을 쓰되, 더 작고 목적에 맞게 구성한 테이블 모음일 뿐입니다(앞에서 다룬 것과 같은 fact와 dimension을, 하나의 주제에 맞게 필터링하고 미리 집계해 둔 것입니다). dbt를 쓰는 팀이라면 마트는 보통 `marts/finance/`, `marts/marketing/` 처럼 디렉터리로 나뉜 한 무더기의 모델로 나타납니다.
+A mart isn't a different *technology* — it usually uses the same warehouse technology, just as a smaller, purpose-built set of tables (the same facts and dimensions we covered above, filtered and pre-aggregated for one subject). On a team using dbt, marts usually show up as bundles of models split into directories like `marts/finance/` and `marts/marketing/`.
 
-### 마트를 만드는 두 가지 방식: top-down 대 bottom-up
+### Two ways to build marts: top-down vs. bottom-up
 
-여기에는 고전적인 아키텍처 논쟁이 있는데, 양쪽 입장을 알면 현실의 데이터 플랫폼이 많이 이해됩니다. 핵심은 *무엇을 먼저 만드느냐* — 웨어하우스냐, 마트냐 — 입니다.
+There's a classic architecture debate here, and knowing both sides explains a lot about real-world data platforms. The crux is *what you build first* — the warehouse or the marts.
 
-#### Top-down(하향식, Inmon 방식)
+#### Top-down (the Inmon approach)
 
-크고 통합된 **전사 웨어하우스를 먼저** 단일 진실 공급원으로 구축합니다. 그런 다음 필요에 따라 그 안에서 **마트를 잘라냅니다**.
+Build the large, integrated **enterprise warehouse first** as the single source of truth. Then **carve marts out of it** as needed.
 
 ```
 sources ──► enterprise warehouse ──► finance mart
@@ -132,12 +133,12 @@ sources ──► enterprise warehouse ──► finance mart
                                  └─► sales mart
 ```
 
-- **장점:** 모든 마트가 일관되고 거버넌스가 적용된 하나의 소스에서 파생됩니다 — 그래서 숫자가 항상 일치합니다.
-- **단점:** 시작이 느립니다. 누군가 가치를 얻기 전에 웨어하우스 전체를 먼저 만들어야 합니다.
+- **Pros:** Every mart derives from one consistent, governed source — so the numbers always match.
+- **Cons:** Slow to start. You have to build the whole warehouse before anyone gets value.
 
-#### Bottom-up(상향식, Kimball 방식)
+#### Bottom-up (the Kimball approach)
 
-**마트를 먼저** 한 번에 한 주제씩 구축하고, 공통의 "정합(conformed)" 차원을 공유하는 마트 모음이 사실상 웨어하우스가 *되도록* 합니다.
+Build **marts first**, one subject at a time, and let the collection of marts — sharing common "conformed" dimensions — effectively *become* the warehouse.
 
 ```
 sources ──► finance mart   ┐
@@ -145,53 +146,53 @@ sources ──► finance mart   ┐
          └─► sales mart     ┘
 ```
 
-- **장점:** 가치 실현까지의 시간이 빠릅니다. 각 팀이 쓸모 있는 마트를 빠르게 손에 넣습니다.
-- **단점:** 규율이 없으면 마트들이 서로 어긋나기 시작하고, 결국 데이터 거버넌스 시리즈에서 자세히 다룰 "다섯 개의 서로 다른 숫자" 문제로 흘러가게 됩니다 — 공유 차원을 진짜로 일관되게 유지하지 않는다면 말이죠.
+- **Pros:** Fast time to value. Each team gets a useful mart quickly.
+- **Cons:** Without discipline, the marts start drifting apart, and you end up with the "five different numbers" problem covered in detail in the Data Governance series — unless you genuinely keep the shared dimensions consistent.
 
-> 대부분의 실제 조직은 그 중간 어딘가에 자리 잡으며, 이 논쟁은 예전만큼 뜨겁지 않습니다. 변치 않는 교훈은 trade-off(절충) 그 자체입니다 — **일관성 우선이라 더 느리거나, 가치 우선이라 더 빠르거나.** 똑같은 긴장 관계가 데이터 아키텍처 곳곳에서 나타납니다.
+> Most real organizations land somewhere in between, and the debate isn't as heated as it once was. The lasting lesson is the trade-off itself — **slower because consistency comes first, or faster because value comes first.** The same tension shows up all over data architecture.
 
-### 주의할 점: 마트는 진실을 파편화할 수 있다
+### A caution: marts can fragment the truth
 
-데이터 마트의 강점 — 한 팀에게 자기만의 깔끔한 조각을 주는 것 — 은 동시에 위험이기도 합니다. 마트를 제각각 자체 정의로 독립적으로 만들면, 거버넌스가 막으려는 바로 그 혼란을 그대로 재현하게 됩니다. 재무팀의 "active customer"가 마케팅팀의 그것과 슬그머니 달라지고, 두 보고서의 숫자가 어긋나는 것입니다.
+The strength of a data mart — giving a team its own clean slice — is also its risk. Build marts independently, each with its own definitions, and you recreate exactly the chaos governance is meant to prevent. Finance's "active customer" quietly diverges from marketing's, and the numbers in their two reports stop matching.
 
-이를 막는 장치가 **conformed dimension(정합 차원)** 입니다. 모든 마트가 동일하게 사용하는, 합의되고 공유된 차원 정의(하나의 표준 `customer`, 하나의 표준 `date`)입니다. 마트들이 정합 차원을 공유하면 서로 비교 가능한 상태를 유지하고, 그렇지 않으면 파편화됩니다. 이는 거버넌스(일관된 정의)가 스토리지 계층에서 모습을 드러내는 것입니다.
+The safeguard is the **conformed dimension**: an agreed-upon, shared dimension definition (one standard `customer`, one standard `date`) that every mart uses identically. When marts share conformed dimensions, they stay comparable; when they don't, they fragment. This is governance (consistent definitions) showing up at the storage layer.
 
-> **현업 함정 — 마트 drift.** conformed dimension을 "공유하자"고 말로만 정해 두고 강제하지 않으면, 각 팀이 조용히 자기 차원을 복제해 약간씩 손보기 시작합니다. 반년 뒤면 같은 이름의 `customer` 차원이 마트마다 다른 정의로 존재하고, 임원 대시보드의 숫자가 팀별로 어긋나기 시작합니다. dbt를 쓴다면 공유 차원을 한 곳(`models/marts/core/`)에 두고 모든 마트가 그것을 `ref()`로 참조하도록 만들어, 복제 자체를 코드 수준에서 막는 것이 가장 현실적인 방어책입니다.
+> **Real-world trap — mart drift.** If you only agree verbally to "share" conformed dimensions without enforcing it, each team quietly starts copying its own dimension and tweaking it a little. Six months later, a `customer` dimension with the same name exists in every mart with a different definition, and the numbers on the executive dashboard start disagreeing team by team. If you use dbt, the most practical defense is to keep the shared dimensions in one place (`models/marts/core/`) and have every mart reference them via `ref()`, blocking duplication at the code level.
 
-### 애초에 마트가 필요하긴 한가?
+### Do you even need marts?
 
-현대적인 관점에서 한마디. 마트가 생겨난 배경에는 과거의 웨어하우스가 느리고 비쌌다는 점이 있습니다. 그래서 각 팀에 더 작은 사본을 주는 것이 실제로 성능에 도움이 되었죠. 오늘날의 클라우드 웨어하우스와 lakehouse(레이크하우스)는 충분히 빨라서, 성능만으로는 예전만큼 강력한 이유가 되지 못합니다.
+A word from the modern perspective. Marts came about partly because warehouses used to be slow and expensive, so giving each team a smaller copy genuinely helped performance. Today's cloud warehouses and lakehouses are fast enough that performance alone isn't as strong a reason as it used to be.
 
-그렇다면 마트는 언제 여전히 제 값을 할까요?
+So when do marts still earn their keep?
 
-- **명확성** — 작고 엄선된 테이블 모음은 비기술 팀에게 전체 웨어하우스보다 훨씬 다루기 쉽습니다.
-- **접근 제어** — 마트는 "이 팀은 이 데이터만 본다"는 경계를 자연스럽게 만들어 줍니다.
-- **성능** — 미리 집계되고 집중된 테이블은 반복되는 무거운 쿼리를 여전히 빠르게 만듭니다.
-- **소유권** — 마트는 한 팀이 명확하게 소유하고 관리할 무언가를 줍니다.
+- **Clarity** — A small, curated set of tables is far easier for non-technical teams to work with than the entire warehouse.
+- **Access control** — A mart naturally draws the boundary "this team sees only this data."
+- **Performance** — Pre-aggregated, focused tables still make repeated heavy queries fast.
+- **Ownership** — A mart gives a team something clearly theirs to own and maintain.
 
-이 중 어느 것도 해당하지 않는다면 — 작은 회사, 단일 분석 팀, 빠른 웨어하우스 — 형식적인 마트가 전혀 필요 없을 수도 있습니다. 웨어하우스 안에 잘 정리된 스키마만으로도 그 역할을 해낼 수 있습니다. 늘 그렇듯, 교과서에 나온다고 계층을 추가하지 마세요. 실제로 겪고 있는 문제를 해결할 때 추가하세요.
-
----
-
-## 4. lake, lakehouse 사이에서 웨어하우스의 위치
-
-다음 글부터 시작하는 데이터 레이크 시리즈에서 자세히 다루겠지만, 사람들이 가장 명확히 정리되기를 바라는 비교가 바로 이것이므로, 셋이 어떻게 관계 맺는지 미리 짚어 둡시다.
-
-- **Warehouse** — 정형화되고, 모델링되어 있으며, 빠르고, 신뢰할 수 있습니다. 정해진 질문과 신뢰성 있는 리포팅에 가장 적합합니다. 비용이 더 들고, 정형 데이터만 담습니다.
-- **Lake** — 원천 그대로이고, 어떤 형식이든 담으며, 저렴하고, 유연합니다. 탐색, ML, 그리고 모든 것을 보존하는 데 가장 적합합니다. 거버넌스가 없으면 늪(swamp)이 될 위험이 있습니다.
-- **Lakehouse** — lake에 트랜잭션 계층을 더한 것으로, 두 작업을 한곳에서 모두 해내는 것을 목표로 합니다.
-
-솔직한 요약은 이렇습니다. lakehouse는 웨어하우스의 역할을 *흡수*하려 하고 있으며, 많은 현대적 스택에서 실제로 그렇게 하고 있습니다. 하지만 웨어하우스의 핵심 *아이디어*인 차원 모델링, star schema, 빠른 분석을 위한 깔끔한 정형 테이블은 사라지지 않습니다. 그것들은 lakehouse *내부에* 적용됩니다. 그러므로 웨어하우스를 배우는 것은 레거시 시스템을 배우는 것이 아니라, 모든 분석용 저장소의 토대가 되는 모델링 규율을 배우는 것입니다.
+If none of these apply — a small company, a single analytics team, a fast warehouse — you may not need formal marts at all. Well-organized schemas inside the warehouse can do the job. As always, don't add a layer because it's in the textbook. Add it when it solves a problem you actually have.
 
 ---
 
-## 5. 핵심 정리
+## 4. Where the warehouse sits among the lake and the lakehouse
 
-웨어하우스의 힘은 기술 자체보다 **모델링 규율**에서 나옵니다. 그 규율의 핵심을 이번 편에서 다뤘습니다.
+We'll cover this in detail in the data lake posts starting with the next one, but since this is the comparison people most want spelled out, let's preview how the three relate.
 
-- 분석에서는 fact와 dimension으로 이루어진 **star schema**를 갖춘 **차원 모델링**이 표준입니다. fact의 **grain**을 하나로 못박는 것이 첫 번째 규칙입니다.
-- 시간에 따른 변화는 **slowly changing dimension(SCD)** 으로 다룹니다 — 덮어쓸 것인가(Type 1), 버전 행으로 이력을 보존할 것인가(Type 2). 실무에서는 dbt snapshot이 Type 2를 자동화해 줍니다.
-- 실무에서는 이 모델들을 dbt로 staging → dimension/fact → marts 계층으로 쌓고, Snowflake/BigQuery/Redshift 같은 웨어하우스 위에서 돌립니다.
-- 한 팀에게 너무 큰 웨어하우스는 **data mart**로 잘라낼 수 있습니다 — 웨어하우스를 먼저 만들고 마트를 잘라낼 것인가(top-down, Inmon), 아니면 마트를 먼저 만들어 그것들이 모여 웨어하우스가 되도록 할 것인가(bottom-up, Kimball). 어느 쪽이든, 마트를 정직하게 유지해 주는 것은 **conformed dimension(정합 차원)** 입니다.
+- **Warehouse** — Structured, modeled, fast, and reliable. Best for well-defined questions and trustworthy reporting. More expensive, and holds only structured data.
+- **Lake** — Raw, any format, cheap, and flexible. Best for exploration, ML, and keeping everything. Without governance, it risks turning into a swamp.
+- **Lakehouse** — A lake plus a transactional layer, aiming to do both jobs in one place.
 
-이로써 저장소와 모델링에 관한 그림이 완성되었습니다. 데이터가 애초에 이 저장소 *안으로* 어떻게 들어오는지 — ingestion(수집), ETL/ELT, integration(통합), streaming(스트리밍) — 는 Moving Data(데이터 이동) 시리즈에서 다루고, 일관된 정의와 신뢰를 떠받치는 거버넌스는 데이터 거버넌스 시리즈에서 다룹니다. 다음 글에서는 웨어하우스의 짝꿍이자 대조군인 **data lake(데이터 레이크)** 로 넘어갑니다.
+The honest summary: the lakehouse is trying to *absorb* the warehouse's role, and in many modern stacks it actually does. But the warehouse's core *ideas* — dimensional modeling, star schemas, clean structured tables for fast analytics — aren't going away. They get applied *inside* the lakehouse. So learning the warehouse isn't learning a legacy system; it's learning the modeling discipline that underpins every analytical store.
+
+---
+
+## 5. Key takeaways
+
+A warehouse's power comes less from the technology itself than from **modeling discipline**. This part covered the core of that discipline.
+
+- In analytics, **dimensional modeling** with a **star schema** made of facts and dimensions is the standard. Pinning each fact table to a single **grain** is rule number one.
+- Change over time is handled with **slowly changing dimensions (SCDs)** — overwrite (Type 1), or preserve history with versioned rows (Type 2). In practice, dbt snapshots automate Type 2.
+- In practice, these models are built in dbt as staging → dimension/fact → marts layers and run on a warehouse like Snowflake/BigQuery/Redshift.
+- A warehouse that's too big for one team can be carved into **data marts** — either build the warehouse first and carve out marts (top-down, Inmon), or build marts first and let them add up to the warehouse (bottom-up, Kimball). Either way, what keeps marts honest is **conformed dimensions**.
+
+That completes the picture of storage and modeling. How data gets *into* these stores in the first place — ingestion, ETL/ELT, integration, streaming — is covered in the Moving Data series, and the governance that holds up consistent definitions and trust is covered in the Data Governance series. In the next post, we move on to the warehouse's partner and counterpart: the **data lake**.

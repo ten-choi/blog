@@ -1,129 +1,130 @@
 ---
 title: "Data Governance Made Simple (Part 1) — What It Is and Why Every Team Eventually Needs It"
-labels: ["Data Platform Series","Data Governance","Data Management","Data Quality","Metadata","Data Engineering"]
+labels: ["Data Platform Series","Data Governance","Data Management","Data Quality","Metadata","Data Engineering","Archive"]
 published: true
 date: 2025-12-07T16:54:00+09:00
 readerComments: "ALLOW"
+language: en
 bloggerPostId: "6280740213053691774"
 source: "archive"
 archivePath: "_archive/data/12-governance-1-foundations.md"
 ---
 
-**데이터 플랫폼 시리즈 · 12/15** · 데이터 거버넌스 1/3
+**Data Platform Series · 12/15** · Data Governance 1/3
 
-> 회의에서 계속 듣기만 했지 정작 그게 무슨 뜻인지 제대로 들어본 적 없는 엔지니어를 위한, data governance(데이터 거버넌스)에 대한 실용적인 입문서입니다.
+> A practical primer on data governance for engineers who keep hearing the term in meetings but have never had anyone properly explain what it means.
 
-## 1. 아무도 책임지지 않는 문제
+## 1. The Problem Nobody Owns
 
-성장한 지 3년쯤 된 회사를 떠올려 봅시다. "월간 활성 사용자(monthly active users)"를 보고하는 대시보드가 다섯 개나 있는데, 하나하나가 전부 다른 숫자를 보여줍니다. 마케팅팀은 자기 대시보드를 신뢰하고, 데이터팀은 네 번째 대시보드를 신뢰하며, 그 차이를 설명할 수 있는 사람은 아무도 없습니다. 각각이 어떻게 만들어졌는지 기억하는 사람이 없기 때문입니다.
+Picture a company about three years into its growth. There are five dashboards reporting "monthly active users," and every one of them shows a different number. Marketing trusts its own dashboard, the data team trusts the fourth one, and nobody can explain the difference — because nobody remembers how each one was built.
 
-이것은 도구(tooling)의 문제가 아닙니다. 웨어하우스도 멀쩡하고, BI 도구도 멀쩡하며, 파이프라인도 잘 돌아갑니다. 진짜 문제는 **"활성 사용자"의 정의를 아무도 책임지지 않고**, 그 숫자가 어디서 나오는지 아무도 모르며, 숫자가 어긋나도(drift) 책임지는 사람이 없다는 것입니다.
+This isn't a tooling problem. The warehouse is fine, the BI tool is fine, and the pipelines run just fine. The real problem is that **nobody owns the definition of "active user,"** nobody knows where the number comes from, and nobody is accountable when the numbers drift.
 
-바로 그 간극 — 명확한 소유권(ownership), 공유된 정의, 데이터에 대한 신뢰의 부재 — 이것을 메우기 위해 존재하는 것이 데이터 거버넌스입니다.
+That gap — the absence of clear ownership, shared definitions, and trust in the data — is exactly what data governance exists to fill.
 
 ---
 
-## 2. 그래서 데이터 거버넌스란 무엇인가?
+## 2. So What Is Data Governance?
 
-짧은 정의는 이렇습니다.
+Here's the short definition:
 
-> **데이터 거버넌스란, 조직의 데이터가 어떻게 정의되고, 생산되고, 보호되고, 사용되는지를 결정하는 사람·정책·프로세스의 집합입니다.**
+> **Data governance is the set of people, policies, and processes that decide how an organization's data is defined, produced, protected, and used.**
 
-이 문장에 *없는* 것에 주목해 주세요. 바로 특정 제품(product)입니다. 거버넌스는 설치하는 도구가 아닙니다. 데이터에 대한 합의(agreement)의 집합이며, 도구는 그것을 뒷받침할 뿐입니다. 도구(카탈로그, 품질 모니터, 접근 제어 시스템)는 나중에 등장하며, 합의가 먼저 존재할 때에만 도움이 됩니다.
+Notice what's *not* in that sentence: a product. Governance isn't a tool you install. It's a set of agreements about your data, and tools merely support it. The tools (catalogs, quality monitors, access control systems) come later, and they only help if the agreements exist first.
 
-거버넌스를 이해하는 데에는, 건강한 데이터 조직이라면 빠르게 답할 수 있어야 할 몇 가지 질문으로 쪼개 보는 것이 도움이 됩니다.
+To understand governance, it helps to break it down into a few questions a healthy data organization should be able to answer quickly:
 
-| 질문 | 거버넌스 영역 |
+| Question | Governance area |
 |------|---------------|
-| 이 데이터는 무엇을 *의미*하며, 누가 그것을 정하는가? | 정의 / business glossary(비즈니스 용어집) |
-| 이 숫자는 어디서 왔는가? | lineage(리니지) / metadata(메타데이터) |
-| 오늘 이 데이터를 신뢰할 수 있는가? | data quality(데이터 품질) |
-| 누가 이것을 볼 수 있는가? | 보안 및 접근 제어 |
-| 우리가 이것을 보관해도 되는가? | 프라이버시 및 컴플라이언스 |
-| 문제가 생기면 누구에게 물어보는가? | 소유권 / stewardship(스튜어드십) |
+| What does this data *mean*, and who decides that? | Definitions / business glossary |
+| Where did this number come from? | Lineage / metadata |
+| Can we trust this data today? | Data quality |
+| Who is allowed to see this? | Security and access control |
+| Are we even allowed to keep this? | Privacy and compliance |
+| Who do we ask when something goes wrong? | Ownership / stewardship |
 
-팀이 이 질문 중 어느 하나라도 답하기 어렵다면, 그것은 거버넌스의 공백입니다. 마침 질문을 받게 된 그 사람 개인의 잘못이 아닙니다.
-
----
-
-## 3. 왜 예전보다 갑자기 더 중요해졌는가
-
-데이터 거버넌스는 대기업에서 수십 년간 존재해 왔지만, 한때는 은행과 보험 업계만의 관심사였습니다. 세 가지 변화가 이것을 모두의 과제로 끌어내렸습니다.
-
-**① 데이터의 양과 종류가 폭발했습니다.** 오늘날의 회사 하나는 이벤트 로그, 트랜잭션 데이터베이스, 서드파티 API, 비정형 텍스트를 모두 생산합니다. 데이터가 잘 정돈된 SQL 데이터베이스 하나였을 때는 규칙을 머릿속에 담아 둘 수 있었습니다. 이제는 불가능합니다.
-
-**② 규제가 이빨을 드러냈습니다.** 프라이버시 법규(GDPR, CCPA, 그리고 지역별로 수많은 사촌들)는 "우리는 일부 사용자 데이터를 저장한다"는 사실을 법적·재무적 결과가 따르는 문제로 바꿔 놓았습니다. 이제는 어떤 개인정보를 보유하고 있는지 *알아야* 하고, 그것을 어떻게 다루는지 증명할 수 있어야 합니다.
-
-**③ AI와 ML이 품질의 판돈을 키웠습니다.** 리포트의 잘못된 한 행(row)은 분석가 한 명을 오도할 뿐입니다. 하지만 모델에 입력되는 잘못된 한 열(column)은 수백만 명이 쓰는 제품을 조용히 망가뜨릴 수 있습니다. 기업들이 자사 데이터로 학습을 시작하는 순간, "garbage in, garbage out"은 이사회 수준의 리스크가 되었습니다.
+If your team struggles to answer any one of these, that's a governance gap — not the personal fault of whoever happened to get asked.
 
 ---
 
-## 4. 사람의 측면: 실제로 이 일을 하는 사람은 누구인가
+## 3. Why It Suddenly Matters More Than It Used To
 
-거버넌스가 실패하는 가장 흔한 이유는 정책이 틀렸기 때문이 아니라, **책임자로 지명된 사람이 없기 때문**입니다. 몇 가지 표준 역할이 이 문제를 해결합니다. 직함은 회사마다 다르지만, 책임의 내용은 놀라울 만큼 일관됩니다.
+Data governance has existed in large enterprises for decades, but it was once a concern mainly for banks and insurers. Three shifts have made it everyone's problem.
 
-- **data owner(데이터 오너)** — 보통은 비즈니스 리더입니다(예: 마케팅 데이터에 대한 마케팅 책임자). *데이터가 무엇을 의미하는지*와 누가 그것을 사용할 수 있는지에 대해 책임을 집니다. 정책을 정하지만, SQL을 작성하지는 않습니다.
-- **data steward(데이터 스튜어드)** — 특정 도메인을 직접 챙기는 관리자입니다. 정의를 유지·관리하고, 품질을 살피며, "이 컬럼은 무슨 뜻이죠?"라는 질문에 답합니다. 가장 중요한 거버넌스 역할이자, 가장 자주 빠져 있는 역할이기도 합니다.
-- **data custodian(데이터 커스터디언)** — 보통은 엔지니어링/플랫폼팀입니다. 저장소, 파이프라인, 백업, 접근 제어 집행 등 데이터의 *기술적* 관리를 책임집니다.
-- **data consumer(데이터 컨슈머)** — 분석가, 사이언티스트, 앱 개발자입니다. 수동적인 존재가 아닙니다. 문제를 보고하고, 정책 범위 안에서 데이터를 사용할 것이 기대됩니다.
+**① The volume and variety of data exploded.** A single company today produces event logs, transactional databases, third-party APIs, and unstructured text. When your data was one tidy SQL database, you could keep the rules in your head. Not anymore.
 
-실무에서 이 역할들은 새로 사람을 뽑는 게 아니라, **이미 있는 사람에게 책임을 붙이는** 방식으로 채워집니다. 가령 결제 데이터라면 — owner는 결제 도메인의 PM이나 팀장, steward는 그 도메인을 매일 들여다보는 분석가/엔지니어, custodian은 플랫폼팀, consumer는 그 데이터를 쓰는 모든 팀입니다. 한 사람이 여러 모자를 쓰는 경우도 흔하지만, *지명되어 있다는 것* 자체가 핵심입니다.
+**② Regulation grew teeth.** Privacy laws (GDPR, CCPA, and countless regional cousins) turned "we store some user data" into a matter with legal and financial consequences. You now have to *know* what personal data you hold and be able to prove how you handle it.
 
-핵심은 이것입니다. **소유권은 부여되는 것이지, 당연히 주어지는 것이 아닙니다.** "데이터팀이 데이터를 소유한다"는 답은 답이 아닙니다(non-answer). 데이터팀은 파이프라인은 운영할 수 있어도, "active user"가 비즈니스적으로 무엇을 의미하는지는 정할 수 없습니다. 그건 도메인의 일입니다. 그래서 ownership은 도메인별로 지명되어야 합니다. *모든* 도메인을 소유한다는 것은 결국 아무것도 소유하지 않는 것과 같습니다.
+**③ AI and ML raised the stakes on quality.** One bad row in a report misleads one analyst. But one bad column feeding a model can quietly break a product used by millions. The moment companies started training on their own data, "garbage in, garbage out" became a board-level risk.
 
 ---
 
-## 5. 멘탈 모델: 계약으로서의 거버넌스
+## 4. The People Side: Who Actually Does This Work
 
-이 글에서 단 하나만 가져간다면, 이 관점을 가져가세요. 중요한 데이터셋이라면 모두 암묵적인 계약(contract)이 따라붙어 있어야 합니다.
+The most common reason governance fails isn't that the policies are wrong — it's that **nobody has been named as responsible**. A handful of standard roles solve this. Titles vary from company to company, but the responsibilities are remarkably consistent.
 
-- **정의** — 각 필드가 비즈니스 관점에서 무엇을 의미하는가.
-- **출처** — 어디서 왔고 어떻게 생산되는가.
-- **품질 기대치** — "좋다"는 것이 무엇인지(`user_id`에 null이 없을 것, 신선도(freshness) 1시간 이내 등).
-- **접근 규칙** — 누가, 어떤 조건에서 읽을 수 있는가.
-- **오너** — 팀이 아니라, 한 사람의 이름.
+- **Data owner** — usually a business leader (e.g., the head of marketing for marketing data). Accountable for *what the data means* and who may use it. Sets policy, but doesn't write SQL.
+- **Data steward** — the hands-on caretaker of a specific domain. Maintains definitions, keeps an eye on quality, and answers "what does this column mean?" It's the most important governance role, and also the one most often missing.
+- **Data custodian** — usually the engineering/platform team. Responsible for the *technical* care of the data: storage, pipelines, backups, enforcing access control.
+- **Data consumer** — analysts, scientists, app developers. They're not passive; they're expected to report problems and use the data within policy.
 
-이 "계약"이 추상적으로 들린다면, 실무에서는 이렇게 한 파일로 적습니다. 거창한 표준이 아니라, 팀이 코드와 함께 버전 관리(version control)에 넣어 두는 짧은 문서입니다.
+In practice, these roles are filled not by hiring new people but by **attaching responsibilities to people you already have**. Take payments data: the owner is the PM or team lead for the payments domain, the steward is the analyst/engineer who looks at that domain every day, the custodian is the platform team, and the consumers are every team that uses the data. One person often wears several hats, but *being named* is the whole point.
+
+The key idea: **ownership is assigned, not assumed.** "The data team owns the data" is a non-answer. The data team can run the pipelines, but it can't decide what "active user" means for the business — that's the domain's job. So ownership has to be named per domain. Owning *every* domain amounts to owning nothing.
+
+---
+
+## 5. A Mental Model: Governance as a Contract
+
+If you take away just one thing from this post, take this framing: every important dataset should come with an implicit contract.
+
+- **Definition** — what each field means in business terms.
+- **Origin** — where it comes from and how it's produced.
+- **Quality expectations** — what "good" looks like (no nulls in `user_id`, freshness within 1 hour, etc.).
+- **Access rules** — who can read it, and under what conditions.
+- **Owner** — one person's name, not a team.
+
+If this "contract" sounds abstract, in practice you write it down as a single file. Not some grand standard — just a short document the team keeps in version control alongside the code.
 
 ```yaml
 dataset: daily_active_users
-owner: jane.kim          # 팀이 아니라 사람 이름
+owner: jane.kim          # a person's name, not a team
 fields:
-  user_id: "고유 사용자 식별자 (PII 아님)"
-  active_date: "사용자가 1회 이상 세션을 연 날짜 (UTC)"
-freshness_sla: 1h        # 매시간 갱신, 지연 시 알림
+  user_id: "Unique user identifier (not PII)"
+  active_date: "Date the user opened at least one session (UTC)"
+freshness_sla: 1h        # refreshed hourly, alert on delay
 quality:
   - user_id not null
   - active_date >= '2020-01-01'
 ```
 
-이렇게 파일로 두면 좋은 점은, 정의가 바뀔 때 PR로 리뷰되고, 누가 언제 왜 바꿨는지 기록이 남는다는 것입니다. 이 다섯 가지가 모두 문서화되고 누군가 그것을 책임질 때, 비로소 거버넌스가 있는 것입니다. 이것이 2년 전에 파이프라인을 만든 사람의 머릿속에만 들어 있다면, 그것은 리스크입니다.
+The nice thing about keeping it as a file is that definition changes get reviewed in a PR, and there's a record of who changed what, when, and why. When all five of these are documented and someone is accountable for them, you have governance. If they live only in the head of whoever built the pipeline two years ago, you have a risk.
 
 ---
 
-## 6. 이렇게 시작하라: 첫 3단계
+## 6. Start Like This: The First Three Steps
 
-거버넌스는 "관료적"이라는 평판을 달고 다니고, 그 평판은 대개 순서를 거꾸로 밟아서 생깁니다 — 정책 문서부터 잔뜩 쓰거나, 비싼 카탈로그 도구부터 사거나. **도구를 사기 전에 합의가 먼저입니다.** 첫걸음은 작게, 가장 아픈 곳 하나에서 시작합니다.
+Governance carries a reputation for being "bureaucratic," and that reputation usually comes from doing things in the wrong order — writing a pile of policy documents first, or buying an expensive catalog tool first. **Agreements come before tools.** Start small, with the one place that hurts most.
 
-1. **가장 문제가 된 지표 하나에 owner를 지명한다.** 회의 때마다 숫자가 안 맞는 그 지표(예: "active user")를 고르고, 그 정의를 책임질 *한 사람*의 이름을 붙입니다.
-2. **그 정의를 한 곳에 단 하나로 적는다.** 처음에는 공유 위키나 Google Sheet면 충분합니다. 중요한 건 도구가 아니라 "정의가 한 군데에만 있다"는 사실입니다. DataHub나 OpenMetadata 같은 카탈로그 도구는 정의가 늘어나고 흩어지기 시작할 때(2부에서 다룹니다) 도입해도 늦지 않습니다.
-3. **그 데이터에 quality check 하나를 건다.** 예를 들어 `user_id`가 null이 아닌지 확인하는 검사 하나. dbt를 쓴다면 dbt test로, 아니면 Great Expectations 같은 도구나 간단한 쿼리 하나로도 시작할 수 있습니다.
+1. **Name an owner for your single most troublesome metric.** Pick the metric whose numbers never match in meetings (e.g., "active user") and attach the name of *one person* who is accountable for its definition.
+2. **Write that definition down once, in one place.** A shared wiki or a Google Sheet is enough at first. What matters isn't the tool but the fact that "the definition lives in exactly one place." Catalog tools like DataHub or OpenMetadata can come in once definitions start multiplying and scattering (covered in Part 2).
+3. **Put one quality check on that data.** For example, a single check that `user_id` is never null. If you use dbt, make it a dbt test; otherwise you can start with a tool like Great Expectations, or even a simple query.
 
-이 세 가지 — owner 한 명, 정의 한 줄, 검사 하나 — 만으로 거버넌스는 이미 시작된 것입니다. 여기서 도메인을 하나씩 늘려 가면 됩니다.
+With just these three — one owner, one line of definition, one check — governance has already started. From there, you add domains one at a time.
 
-**현업에서 흔히 빠지는 함정:**
+**Common pitfalls in practice:**
 
-- **문서만 있고 책임자는 없는 거버넌스.** 규정과 정책 문서는 두껍게 쌓이는데 정작 "이 지표 틀렸어요"라고 했을 때 고칠 사람이 지정돼 있지 않습니다. 문서보다 owner의 이름이 먼저입니다.
-- **합의 없이 도구부터 사는 것.** 카탈로그 도구를 도입하면 거버넌스가 생긴다고 착각하기 쉽습니다. 채워 넣을 정의와 책임자가 없으면, 비싼 빈 카탈로그만 남습니다.
-- **모든 것을 한 번에 소유하려는 것.** 전사 데이터를 한꺼번에 거버넌스하려다 지쳐서 아무것도 못 하게 됩니다. 가장 아픈 도메인 하나부터 끝까지 해보는 편이 낫습니다.
+- **Governance with documents but no one responsible.** Rules and policy documents pile up, but when someone says "this metric is wrong," there's nobody designated to fix it. The owner's name comes before the documentation.
+- **Buying tools before reaching agreement.** It's easy to assume adopting a catalog tool gives you governance. Without definitions and owners to fill it, all you get is an expensive, empty catalog.
+- **Trying to own everything at once.** Trying to govern all of the company's data at once leaves you exhausted and accomplishing nothing. You're better off taking one painful domain all the way through.
 
 ---
 
-## 7. 이 시리즈에서 다룰 내용
+## 7. What This Series Will Cover
 
-이번 글은 어휘와 *왜*, 그리고 첫걸음을 다뤘습니다. 데이터 거버넌스 시리즈의 나머지 글들은 더 구체적으로 들어갑니다.
+This post covered the vocabulary, the *why*, and the first steps. The rest of the Data Governance series gets more concrete.
 
-- **2부 — 메타데이터, data catalog(데이터 카탈로그), 그리고 리니지.** 조직이 데이터를 *찾을 수 있고(findable)* *추적 가능하게(traceable)* 만드는 방법을 다룹니다. 기술적 메타데이터와 비즈니스 메타데이터의 차이, 데이터 카탈로그가 실제로 하는 일, 그리고 지난 장애 때 다들 "있었으면" 했던 그 기능, 리니지에 대해 이야기합니다.
-- **3부 — 데이터 품질, 보안, 그리고 컴플라이언스.** 품질을 측정하는 차원들, 접근 제어와 data masking(데이터 마스킹)이 실무에서 어떻게 동작하는지, 그리고 프라이버시 규제가 엔지니어링팀에 무엇을 요구하는지를 다룹니다.
+- **Part 2 — Metadata, the data catalog, and lineage.** How organizations make data *findable* and *traceable*. We'll talk about the difference between technical and business metadata, what a data catalog actually does, and lineage — the feature everyone wished they'd had during the last incident.
+- **Part 3 — Data quality, security, and compliance.** The dimensions used to measure quality, how access control and data masking work in practice, and what privacy regulations demand of engineering teams.
 
-거버넌스는 관료적이라는 평판을 달고 다닙니다. 하지만 꼭 그럴 필요는 없습니다. 잘만 하면, 거버넌스란 사람들이 신뢰하는 데이터 플랫폼과, 사람들이 조용히 우회해 버리는 데이터 플랫폼 사이의 차이일 뿐입니다.
+Governance carries a reputation for bureaucracy. But it doesn't have to. Done well, governance is simply the difference between a data platform people trust and one they quietly route around.

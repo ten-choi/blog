@@ -1,9 +1,10 @@
 ---
 title: "LeetCode 560. Subarray Sum Equals K - Prefix Sum + HashMap in O(n)"
-labels: ["LeetCode","Algorithm","Prefix Sum","HashMap","Coding Interview","Java"]
+labels: ["LeetCode","Algorithm","Prefix Sum","HashMap","Coding Interview","Java","Archive"]
 published: true
 date: 2025-07-23T10:40:00+09:00
 readerComments: "ALLOW"
+language: en
 bloggerPostId: "1197072615306752045"
 source: "archive"
 archivePath: "_archive/dev/algorithms/leetcode/560.md"
@@ -111,7 +112,7 @@ class Solution {
             // *after* that point up to here sum to exactly k.
             count += prefixCount.getOrDefault(sum - k, 0);
 
-            // Record the current prefix sum (after the lookup, not before)  결국에 이게 누적값 하는게 마이너스 역할이다 . 
+            // Record the current prefix sum (after the lookup, not before). In the end, this accumulation is what plays the "minus" role.
             prefixCount.merge(sum, 1, Integer::sum);
         }
 
@@ -119,9 +120,9 @@ class Solution {
     }
 }
 ```
-1, 2, 3 으로 예를 들면
+Taking 1, 2, 3 as an example:
 
-sum += num ;일때 sum 1이면 count 0이고 prifix merge가 
+when `sum += num;` gives sum = 1, count is 0 and the prefix merge...
 
 
 

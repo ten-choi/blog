@@ -1,125 +1,126 @@
 ---
 title: "Understanding the Data Lake (Part 1) — Lake vs. Warehouse, and Why Both Exist"
-labels: ["Data Platform Series","Data Lake","Data Warehouse","Data Engineering","Big Data","Analytics"]
+labels: ["Data Platform Series","Data Lake","Data Warehouse","Data Engineering","Big Data","Analytics","Archive"]
 published: true
 date: 2025-10-20T13:20:00+09:00
 readerComments: "ALLOW"
+language: en
 bloggerPostId: "5477003041906608365"
 source: "archive"
 archivePath: "_archive/data/04-lake-1-vs-warehouse.md"
 ---
 
-**데이터 플랫폼 시리즈 · 04/15** · 저장과 아키텍처 — 데이터 레이크 1/3
+**Data Platform Series · 04/15** · Storage and Architecture — The Data Lake 1/3
 
-> "이건 warehouse(웨어하우스)에 넣어야 하나, lake(레이크)에 넣어야 하나?" 이 질문은 많은 엔지니어를 곤란하게 만듭니다. 그 차이가 명확하게 설명되는 경우가 드물기 때문입니다. 이 시리즈는 바로 그 점을 바로잡습니다. 1부는 가장 근본적인 갈림길에서 시작합니다.
+> "Should this go in the warehouse or the lake?" That question trips up a lot of engineers, because the difference is rarely explained clearly. This series fixes that. Part 1 starts at the most fundamental fork in the road.
 
-## 1. 웨어하우스부터 시작합니다, 그것이 먼저 등장했으니까요
+## 1. Start with the warehouse, because it came first
 
-"데이터 레이크"라는 표현이 생기기 전, 분석은 **data warehouse(데이터 웨어하우스)** 위에서 돌아갔습니다(앞의 웨어하우스 1·2부에서 자세히 다뤘습니다). 그리고 웨어하우스를 이해하는 것이야말로 레이크가 왜 등장했는지를 가장 빠르게 이해하는 길입니다.
+Before the phrase "data lake" existed, analytics ran on the **data warehouse** (covered in detail in The Data Warehouse Parts 1–2). And understanding the warehouse is the fastest way to understand why the lake came along.
 
-데이터 웨어하우스는 분석을 위해 특별히 만들어진 데이터베이스입니다. 그 핵심 특징은 **schema-on-write(쓰기 시점 스키마)**입니다. 어떤 데이터든 들어가기 전에 구조(테이블, 컬럼, 타입)를 먼저 정의하고, 들어오는 데이터는 그 구조에 맞게 정제되고 재가공됩니다. 데이터가 *들어오는* 길목에서 모델링되는 것이죠. 실무에서는 보통 `Snowflake`나 `BigQuery` 같은 클라우드 웨어하우스가 이 역할을 맡습니다.
+A data warehouse is a database purpose-built for analytics. Its defining trait is **schema-on-write**: before any data goes in, you define the structure (tables, columns, types) first, and incoming data is cleaned and reshaped to fit it. The data gets modeled on its way *in*. In practice, a cloud warehouse like `Snowflake` or `BigQuery` usually plays this role.
 
-이 설계에는 분명한 강점이 있습니다.
+This design has clear strengths.
 
-- 데이터가 이미 구조화되고 최적화되어 있기 때문에 쿼리가 **빠르고 예측 가능합니다**.
-- 스키마에 맞지 않으면 아무것도 들어올 수 없기 때문에 데이터가 **깨끗하고 일관적입니다**.
-- 분석가 입장에서 **다루기 쉽습니다**. 깔끔한 테이블과 믿을 수 있는 SQL을 손에 쥐게 되니까요.
+- Queries are **fast and predictable**, because the data is already structured and optimized.
+- The data is **clean and consistent**, because nothing gets in unless it fits the schema.
+- It's **easy to work with** for analysts, who get clean tables and trustworthy SQL.
 
-그리고 레이크가 존재하는 이유 그 자체인, 한 가지 분명한 한계가 있습니다.
+And it has one clear limitation — which is the whole reason the lake exists.
 
-> 모든 것이 저장되기 *전에* 구조화되고 모델링되어야 합니다. 이는 비용이 크고, 변경이 느리며, 정해진 형태가 없는 데이터(원시 로그, 이미지, JSON 덩어리, 센서 스트림)에는 그냥 통하지 않습니다.
+> Everything has to be structured and modeled *before* it's stored. That's expensive, slow to change, and simply doesn't work for data without a fixed shape (raw logs, images, blobs of JSON, sensor streams).
 
 ---
 
-## 2. 데이터 레이크: 일단 저장하고, 구조는 나중에
+## 2. The data lake: store it now, structure it later
 
-**data lake(데이터 레이크)**는 웨어하우스의 핵심 전제를 뒤집습니다. 쓰기 시점 스키마 대신 **schema-on-read(읽기 시점 스키마)**를 사용합니다. 데이터를 원시 그대로의 원본 형태로(어떤 포맷이든, 구조화되었든 아니든) 저장하고, 특정 용도로 *읽는 그 순간에만* 구조를 적용합니다.
+A **data lake** flips the warehouse's core premise. Instead of schema-on-write, it uses **schema-on-read**: it stores data in its raw, original form (any format, structured or not), and applies structure *only at the moment you read it* for a particular purpose.
 
-사고방식의 전환은 "형태를 정한 뒤 저장한다"에서 **"전부 저장하고, 형태는 용도마다 정한다"**로 옮겨가는 것입니다.
+The mindset shift is from "shape it, then store it" to **"store everything, and shape it per use."**
 
-레이크는 다음을 담도록 만들어졌습니다.
+A lake is built to hold:
 
-- **structured(구조화된)** 데이터 — 데이터베이스 익스포트, CSV.
-- **semi-structured(반구조화된)** 데이터 — JSON, XML, 로그.
-- **unstructured(비구조화된)** 데이터 — 이미지, 오디오, 비디오, 자유 형식 텍스트, PDF.
+- **Structured** data — database exports, CSVs.
+- **Semi-structured** data — JSON, XML, logs.
+- **Unstructured** data — images, audio, video, free-form text, PDFs.
 
-물리적으로 보면 데이터 레이크는 보통 그냥 **object storage(오브젝트 스토리지)**(`S3`, `GCS`, `ADLS` 같은 클라우드 저장소 — 거대하고 저렴하며 사실상 무제한인 폴더라고 생각하면 됩니다)에 파일들을 담아두고, 필요할 때 다양한 엔진이 그 파일들을 읽어가는 구조입니다. 실무에서는 그 안의 분석용 데이터를 대부분 컬럼형인 `Parquet`로 떨어뜨려 두는데, 읽기 성능과 압축 효율이 크게 차이 나기 때문입니다. 경로도 보통 용도가 한눈에 보이도록 정리해 둡니다.
+Physically, a data lake is usually just files sitting in **object storage** (cloud storage like `S3`, `GCS`, or `ADLS` — think of it as a huge, cheap, effectively unlimited folder), with various engines reading those files when needed. In practice, most of the analytical data in there is dropped as columnar `Parquet`, because the difference in read performance and compression is huge. Paths are usually organized so their purpose is obvious at a glance:
 
 ```
 s3://my-lake/raw/events/dt=2026-06-09/part-0001.parquet
 ```
 
-오브젝트 스토리지가 레이크의 토대인 이유와 파일 포맷 선택은 2부에서 깊이 다루겠습니다.
+Why object storage is the foundation of the lake, and how to choose file formats, are covered in depth in Part 2.
 
-그 강점은 웨어하우스의 한계를 거울처럼 뒤집은 모습입니다.
+Its strengths are a mirror image of the warehouse's limitations.
 
-- **무엇이든 저장합니다**. 아직 어떻게 쓸지 정하지 못한 데이터까지도요.
-- **규모가 커져도 저렴합니다** — 오브젝트 스토리지는 TB당 비용이 웨어하우스 스토리지보다 대략 한 자릿수(order-of-magnitude) 더 쌉니다. 그래서 "일단 다 저장한다"가 실제로 감당 가능한 전략이 됩니다.
-- **유연합니다** — 같은 원시 데이터를 서로 다른 팀(분석가, 데이터 과학자, ML 파이프라인)이 서로 다른 방식으로 읽을 수 있습니다.
+- It **stores anything**, even data you haven't yet decided how to use.
+- It's **cheap at scale** — object storage costs roughly an order of magnitude less per TB than warehouse storage, which makes "just store everything" an actually affordable strategy.
+- It's **flexible** — the same raw data can be read in different ways by different teams (analysts, data scientists, ML pipelines).
 
 ---
 
-## 3. 나란히 놓고 비교하기
+## 3. Side by side
 
 | | Data Warehouse | Data Lake |
 |---|----------------|-----------|
-| **스키마** | 쓰기 시점 (구조 먼저) | 읽기 시점 (구조 나중에) |
-| **데이터 타입** | 구조화 | 구조화, 반구조화, 비구조화 |
-| **처리 시점** | 적재 전 | 읽을 때 |
-| **TB당 비용** | 높음 | 낮음 |
-| **쿼리 속도** | 빠르고 최적화됨 | 상황에 따라 다름; 알맞은 엔진 필요 |
-| **주 사용자** | 분석가, BI | 데이터 과학자, 엔지니어, ML |
-| **적합한 용도** | 정해진 질문, 리포팅 | 탐색, 원시 데이터 보존, ML |
+| **Schema** | On write (structure first) | On read (structure later) |
+| **Data types** | Structured | Structured, semi-structured, unstructured |
+| **When processing happens** | Before loading | At read time |
+| **Cost per TB** | High | Low |
+| **Query speed** | Fast and optimized | Varies; needs the right engine |
+| **Main users** | Analysts, BI | Data scientists, engineers, ML |
+| **Best for** | Well-defined questions, reporting | Exploration, preserving raw data, ML |
 
-이 철학 전체를 한 줄로 담아내는 행은 *처리 시점*입니다. 웨어하우스는 구조화 비용을 미리 지불하고 속도와 정돈됨을 얻습니다. 레이크는 그 비용을 뒤로 미루고 유연함과 저렴한 스토리지를 얻습니다. 어느 쪽도 "더 낫다"고 할 수 없습니다. 둘은 서로 다른 순간에 최적화되어 있을 뿐입니다.
-
----
-
-## 4. 그래서 무엇을 써야 할까요? (대개: 둘 다)
-
-"웨어하우스 *대* 레이크"라는 구도는 다소 오해를 부릅니다. 실무에서는 성숙한 조직 대부분이 **둘 다** 운영하며, 데이터는 흔히 둘 사이를 오가기 때문입니다.
-
-- 원시 이벤트, 로그, 파일은 먼저 **레이크**(오브젝트 스토리지)에 떨어집니다 — 저렴하고, 사전 모델링이 필요 없으며, 무엇도 잃지 않습니다.
-- 그중 정기적인 리포팅을 떠받치는 부분집합은 정제되고 모델링되어 **웨어하우스**에 적재되며, 분석가들은 거기서 빠르고 믿을 수 있는 SQL을 얻습니다.
-
-다시 말해, 레이크는 "전부 보존하는 곳", 웨어하우스는 "매일 들여다보는 핵심만 추려 둔 곳"인 셈입니다. 현업에서 빠르게 갈라보는 기준은 이렇습니다.
-
-**이럴 때 웨어하우스를 택하세요.**
-
-- 물어볼 질문이 미리 정해져 있다 — 재무 리포팅, 임원용 대시보드, 표준 KPI.
-- 빠르고 통제되며 믿을 수 있는 답, 깨끗한 테이블과 SQL이 필요하다.
-- 같은 쿼리를 매일/매주 반복해서 돌린다.
-
-**이럴 때 레이크를 택하세요.**
-
-- 무엇을 물을지 아직 모른다 — 탐색적 분석이 먼저다.
-- 데이터가 크거나, 지저분하거나, 형태가 제각각이다(로그, JSON, 이미지).
-- 머신러닝 파이프라인에 원시 데이터를 그대로 공급해야 한다.
-- 지금 당장은 안 쓰더라도 일단 원본을 보존해 둬야 한다.
-
-판단이 애매하면, 원본은 레이크에 보존하고 정기적으로 쓰는 부분만 웨어하우스로 끌어올리는 쪽이 대개 안전한 기본값입니다.
+The one row that captures the whole philosophy is *when processing happens*. The warehouse pays the cost of structuring up front and gets speed and tidiness in return. The lake defers that cost and gets flexibility and cheap storage. Neither is "better" — they're simply optimized for different moments.
 
 ---
 
-## 5. 함정: 레이크는 썩을 수 있습니다
+## 4. So which should you use? (Usually: both)
 
-미리 알아두어야 할 실패 양상이 하나 있습니다. 데이터 레이크가 잘못되는 가장 흔한 경로이기 때문입니다. 바로 **data swamp(데이터 늪)**입니다.
+The "warehouse *vs.* lake" framing is a bit misleading. In practice, most mature organizations run **both**, and data often flows between them.
 
-레이크는 사전 구조 없이 무엇이든 받아들이기 때문에, 누구도 찾지도, 이해하지도, 신뢰하지도 못하는 방대한 파일 더미로 끝나버리기가 위험할 만큼 쉽습니다. 흔한 시나리오는 이렇습니다. 여러 팀이 1~2년에 걸쳐 제각기 파일을 떨어뜨려 두었는데, 어느 날 분석가가 들어와 보니 출처를 알 수 없는 수백 개의 파일이 쌓여 있습니다. `final_v2_real.csv` 같은 이름이 보이지만 누가 만들었는지, 언제 것인지, 믿어도 되는지 아무도 모릅니다. 결국 모두가 그 레이크를 신뢰하지 않게 되고, 다들 자기만의 사본을 또 만들기 시작합니다. "전부 저장한다"가 어느새 "전부 저장하고 그 전부를 놓쳐버린다"로 조용히 바뀝니다. 늪은 governance(거버넌스)가 없는 레이크입니다.
+- Raw events, logs, and files land in the **lake** (object storage) first — cheap, no up-front modeling needed, nothing lost.
+- The subset that supports regular reporting is cleaned, modeled, and loaded into the **warehouse**, where analysts get fast, trustworthy SQL.
 
-실무적인 예방책은 단순합니다. **첫날부터 카탈로그와 소유권을 함께 도입하는 것**입니다.
+In other words, the lake is "where everything is kept," and the warehouse is "where the core things you look at every day are curated." Here's a quick rule of thumb from the field.
 
-- 데이터셋마다 **owner(소유자)**를 명시합니다 — 책임지는 사람이 없는 데이터셋은 만들지 않습니다.
-- `DataHub`나 `OpenMetadata` 같은 **catalog(카탈로그)**에 스키마, 출처, 설명, 계보를 등록해 누구나 검색하고 신뢰할 수 있게 합니다.
-- 이 과정을 데이터 적재 *이후*가 아니라 적재 파이프라인의 일부로 넣습니다. 나중에 소급해서 정리하려 하면 이미 늦습니다.
+**Choose the warehouse when:**
 
-바로 이 점이 데이터 거버넌스 시리즈(카탈로깅, 소유권, 계보)와 데이터 레이크 시리즈가 같은 이야기의 양면인 이유입니다. 레이크는 저렴하고 유연한 스토리지를 제공하고, 거버넌스는 그것이 늪이 되지 않도록 막아줍니다. 카탈로그 없는 레이크는 정체불명의 파일로 가득 찬 폴더일 뿐입니다.
+- The questions are known in advance — financial reporting, executive dashboards, standard KPIs.
+- You need fast, controlled, trustworthy answers with clean tables and SQL.
+- You run the same queries over and over, daily or weekly.
+
+**Choose the lake when:**
+
+- You don't know yet what you'll ask — exploratory analysis comes first.
+- The data is large, messy, or comes in all shapes (logs, JSON, images).
+- You need to feed raw data as-is into machine learning pipelines.
+- You need to keep the originals even if you won't use them right now.
+
+When in doubt, keeping the originals in the lake and promoting only the regularly used parts to the warehouse is usually a safe default.
 
 ---
 
-## 6. 다음 편 예고
+## 5. The trap: lakes can rot
 
-이제 핵심 구분을 손에 넣었습니다. 웨어하우스는 데이터를 들어오는 길에서 구조화하고, 레이크는 나가는 길에서 구조화하며, 진지한 플랫폼은 둘 다 사용합니다.
+There's one failure mode you should know about up front, because it's the most common way data lakes go wrong: the **data swamp**.
 
-- **2부 — 레이크 내부.** 실제 아키텍처: raw / cleansed / curated 영역 모델, 오브젝트 스토리지가 그 토대인 이유, 그리고 성능을 좌우하는 파일 포맷(CSV와 JSON 대 컬럼형인 Parquet와 ORC).
-- **3부 — 레이크하우스.** open table format(오픈 테이블 포맷)(Delta Lake, Apache Iceberg, Apache Hudi)이 어떻게 레이크 방식 스토리지 *위에* 웨어하우스급 신뢰성을 더했는지, 그리고 "레이크하우스"가 어떻게 이 분야 전체가 나아가는 방향이 되었는지.
+Because a lake accepts anything without up-front structure, it's dangerously easy for it to end up as a vast pile of files that nobody can find, understand, or trust. A common scenario: over a year or two, various teams each drop their files in, and one day an analyst comes in to find hundreds of files of unknown origin. There are names like `final_v2_real.csv`, but nobody knows who made them, when, or whether they can be trusted. Eventually everyone stops trusting the lake, and everyone starts making their own copies again. "Store everything" quietly turns into "store everything and lose track of all of it." A swamp is a lake without governance.
+
+The practical prevention is simple: **bring in a catalog and ownership from day one.**
+
+- Name an **owner** for every dataset — don't create datasets that nobody is responsible for.
+- Register schemas, sources, descriptions, and lineage in a **catalog** like `DataHub` or `OpenMetadata`, so anyone can search for data and trust it.
+- Make this part of the ingestion pipeline, not something done *after* loading. Trying to clean it up retroactively is already too late.
+
+This is exactly why the Data Governance series (cataloging, ownership, lineage) and the Data Lake series are two sides of the same story. The lake provides cheap, flexible storage, and governance keeps it from becoming a swamp. A lake without a catalog is just a folder full of mystery files.
+
+---
+
+## 6. Coming up next
+
+You now have the core distinction: the warehouse structures data on the way in, the lake structures it on the way out, and serious platforms use both.
+
+- **Part 2 — Inside the lake.** The actual architecture: the raw / cleansed / curated zone model, why object storage is its foundation, and the file formats that make or break performance (CSV and JSON vs. columnar Parquet and ORC).
+- **Part 3 — The lakehouse.** How open table formats (Delta Lake, Apache Iceberg, Apache Hudi) added warehouse-grade reliability *on top of* lake-style storage, and how the "lakehouse" became the direction the whole field is heading.

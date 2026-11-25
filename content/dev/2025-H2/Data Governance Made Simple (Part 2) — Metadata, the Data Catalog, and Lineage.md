@@ -1,100 +1,101 @@
 ---
 title: "Data Governance Made Simple (Part 2) — Metadata, the Data Catalog, and Lineage"
-labels: ["Data Platform Series","Data Governance","Metadata","Data Catalog","Data Lineage","Data Engineering"]
+labels: ["Data Platform Series","Data Governance","Metadata","Data Catalog","Data Lineage","Data Engineering","Archive"]
 published: true
 date: 2025-12-13T17:28:00+09:00
 readerComments: "ALLOW"
+language: en
 bloggerPostId: "5387143867367428572"
 source: "archive"
 archivePath: "_archive/data/13-governance-2-metadata-catalog-lineage.md"
 ---
 
-**데이터 플랫폼 시리즈 · 13/15** · 데이터 거버넌스 2/3
+**Data Platform Series · 13/15** · Data Governance 2/3
 
-> 1부에서는 data governance(데이터 거버넌스)가 무엇이고 팀에 왜 필요한지를 다뤘습니다. 이번 편은 거버넌스가 매일매일 실제로 작동하게 만드는 장치를 다룹니다. 즉, 어떤 데이터를 갖고 있는지, 그 데이터가 무엇을 의미하는지, 그리고 어디서 왔는지를 아는 일입니다.
+> Part 1 covered what data governance is and why teams need it. This part covers the machinery that makes governance actually work day to day: knowing what data you have, what it means, and where it came from.
 
-## 1. 시간을 가장 많이 잡아먹는 두 가지 질문
+## 1. The Two Questions That Eat the Most Time
 
-어느 데이터 팀에 가든 똑같은 두 질문을 반복해서 듣게 됩니다.
+Go to any data team and you'll hear the same two questions over and over:
 
-1. *"혹시 이걸 이미 담고 있는 테이블이 있나요?"*
-2. *"잠깐, 이 숫자는 도대체 어디서 나온 거죠?"*
+1. *"Is there already a table that has this?"*
+2. *"Wait, where on earth did this number come from?"*
 
-첫 번째는 **discovery(발견)** 문제입니다. 두 번째는 **lineage(리니지)** 문제입니다. 둘 다 동일한 기반 위에서 풀립니다. 바로 metadata(메타데이터)입니다. 메타데이터만 제대로 갖춰두면 매일 생기는 엄청난 양의 마찰이 그냥 사라집니다.
+The first is a **discovery** problem. The second is a **lineage** problem. Both are solved on the same foundation: metadata. Get your metadata right, and an enormous amount of daily friction simply disappears.
 
 ---
 
-## 2. 메타데이터: 데이터에 관한 데이터
+## 2. Metadata: Data About Data
 
-메타데이터는 데이터 자체가 아니라 데이터셋*에 관한* 설명 정보일 뿐입니다. 사람마다 관심을 두는 종류가 다르기 때문에, 세 가지로 나눠 보면 이해하기 쉽습니다.
+Metadata isn't the data itself — it's just descriptive information *about* a dataset. Different people care about different kinds, so it's easier to understand when split into three:
 
-| 종류 | 무엇을 설명하나 | 예시 | 누가 관심을 갖나 |
+| Kind | What it describes | Examples | Who cares |
 |------|-------------------|---------|-----------|
-| **기술적(Technical)** | 구조와 저장 방식 | 컬럼 타입, 테이블 크기, partition key(파티션 키), 파일 포맷 | 엔지니어 |
-| **비즈니스적(Business)** | 쉬운 말로 표현한 의미 | "`arpu` = 유료 사용자 1인당 월 평균 매출" | 분석가, 이해관계자 |
-| **운영적(Operational)** | 런타임 동작 | 마지막 갱신 시각, 시간에 따른 행 수, 이 데이터를 만든 파이프라인 | 장애 발생 시 모두 |
+| **Technical** | Structure and storage | Column types, table size, partition key, file format | Engineers |
+| **Business** | Meaning in plain language | "`arpu` = average monthly revenue per paying user" | Analysts, stakeholders |
+| **Operational** | Runtime behavior | Last refresh time, row counts over time, the pipeline that produced it | Everyone, during an incident |
 
-대부분의 팀이 저지르는 실수는 **기술적** 메타데이터만 수집하는 것입니다. 데이터베이스가 공짜로 떠먹여 주니 가장 쉬운 종류이기 때문입니다. 하지만 1부에서 나온 "활성 사용자 수가 다섯 개나 돌아다니는" 문제를 실제로 *예방*하는 메타데이터는 **비즈니스적** 메타데이터이며, 이것은 사람(steward, 스튜어드)이 직접 적어 넣어야 합니다.
+The mistake most teams make is collecting only **technical** metadata. It's the easiest kind, since the database hands it to you for free. But the metadata that actually *prevents* the "five different active-user counts floating around" problem from Part 1 is **business** metadata — and a person (a steward) has to write it in.
 
-이 구분이 실무에서 가장 중요한 이유는, 두 종류가 **수집되는 방식이 완전히 다르기 때문**입니다. 기술적·운영적 메타데이터는 도구가 알아서 긁어옵니다. 비즈니스적 메타데이터는 누군가 손으로 채워야 합니다. 다음 장의 카탈로그 이야기는 사실상 이 한 문장의 반복입니다.
-
----
-
-## 3. 데이터 카탈로그: 데이터를 위한 검색 엔진
-
-**data catalog(데이터 카탈로그)**는 메타데이터를 수집해 검색 가능하게 만드는 시스템입니다. 조직이 저장하는 모든 것을 위한 검색 엔진 더하기 사전이라고 생각하면 됩니다.
-
-쓸 만한 카탈로그는 보통 다음을 제공합니다.
-
-- **검색 및 발견(Search & discovery)** — 이름, 컬럼, 비즈니스 용어로 테이블을 찾을 수 있어, 사람들이 이미 존재하는 데이터셋을 다시 만드는 일을 멈추게 합니다.
-- **business glossary(비즈니스 용어집)** — 표준 정의입니다. "활성 사용자"는 *한 번만* 정의되고, 그 용어를 쓰는 모든 데이터셋이 그 정의에 연결됩니다.
-- **소유권 및 연락처 정보** — 중요한 데이터셋마다 스튜어드가 표시되어, "누구에게 물어봐야 하지?"에 답이 생깁니다.
-- **사용 신호(Usage signals)** — 어떤 테이블이 자주 쿼리되는지(아마 신뢰할 만함), 어떤 테이블이 1년째 손도 안 닿았는지(아마 버려짐)를 보여줍니다.
-
-> 용어집은 조용히 강력한 기능입니다. 대부분의 "데이터 논쟁"은 숫자에 대한 논쟁이 아닙니다. 두 사람이 같은 단어를 서로 다른 의미로 쓰고 있는 것입니다. 정의의 단일 출처 하나가 그런 논쟁의 놀랄 만큼 큰 비중을 해소해 줍니다.
-
-### 실제로는 어떻게 채워지나: 절반은 자동, 절반은 사람
-
-카탈로그 도구를 처음 켜면 마법처럼 보입니다. 창고에 connector(커넥터)를 연결하면 도구가 스키마를 crawling(크롤링)해서, 모든 테이블·컬럼·타입·행 수를 **기술적 메타데이터**로 자동 ingest(수집)합니다. 며칠 만에 수천 개 테이블이 검색되는 화면을 보면 다 끝난 것 같죠.
-
-하지만 자동으로 들어오는 건 딱 거기까지입니다. **비즈니스 메타데이터(정의·소유자)는 도구가 알 길이 없으므로 사람이 채워야 합니다.** `usr_actv_30d`라는 컬럼이 정확히 무엇을 세는지, 누가 책임지는지는 스튜어드가 직접 적어 넣지 않으면 영원히 비어 있습니다. 즉 카탈로그 작업의 진짜 노동은 "도구 설치"가 아니라 "사람이 빈칸을 채우는 운영"입니다.
-
-도구를 고른다면 대략 이렇게 나뉩니다.
-
-- **OSS** — DataHub, OpenMetadata, Amundsen. 직접 운영해야 하지만 비용·종속이 없습니다.
-- **엔터프라이즈** — Collibra, Alation. 거버넌스 워크플로·승인 절차가 풍부하고 지원이 붙습니다.
-
-그런데 시작하려고 무거운 플랫폼을 살 필요는 없습니다. **도구가 없어도 잘 관리되는 위키 한 장, 시트 한 장이 곧 카탈로그입니다.** 테이블 이름 · 한 줄 정의 · 소유자 · 비고, 이 네 칸짜리 표 하나면 시작점으로 충분합니다. 핵심은 메타데이터가 누군가의 기억 속에 갇히는 게 아니라, 오래 남고 찾을 수 있는 어딘가에 적혀 있다는 점입니다. 작게 시작하고, 시트가 감당이 안 될 때 도구를 들이세요.
-
-### 현업 함정: 검색은 되는데 의미는 모르는 카탈로그
-
-가장 흔한 실패 두 가지입니다.
-
-- **자동 수집만 켜 둔 빈 카탈로그** — 수천 개 테이블이 검색은 되는데, 정의는 전부 비어 있습니다. 컬럼 이름만 보고 의미를 추측해야 하니 사실상 검색 가능한 스키마 덤프일 뿐, 거버넌스 도구가 아닙니다.
-- **stale(낡은)해지는 카탈로그** — 초기에 열심히 채웠다가 아무도 유지하지 않아, 정의가 코드와 어긋나고 소유자는 이미 퇴사한 상태가 됩니다. 한 번 "여기 적힌 건 못 믿어"라는 인식이 박히면 아무도 안 보게 됩니다.
-
-두 함정의 해법은 같습니다. **소유자·스튜어드가 있어야 카탈로그가 산다**는 것입니다.
-
-**카탈로그를 살아있게 유지하는 법 (체크리스트)**
-
-- [ ] 모든 핵심 테이블에 **소유자**가 지정되어 있다 (빈칸이면 그 테이블은 버려진 것).
-- [ ] 새 데이터셋을 만들 때 **정의 작성을 배포 절차에 포함**한다 (PR 체크리스트, 머지 조건 등).
-- [ ] 용어집 정의는 **코드의 단일 출처**(예: dbt 모델 description)에서 생성해 어긋남을 막는다.
-- [ ] **stale 신호를 노출**한다 — N일 이상 미갱신/미사용 테이블, 정의 없는 테이블을 주기적으로 리포트.
-- [ ] 검색·정의에 대한 **피드백 경로**가 있다 ("이 정의 틀렸어요" 한 번에 보내기).
+This distinction matters most in practice because the two kinds are **collected in completely different ways**. Technical and operational metadata get scraped automatically by tools. Business metadata has to be filled in by hand. The catalog discussion in the next section is really just that one sentence repeated.
 
 ---
 
-## 4. 데이터 리니지: 데이터가 흐르는 경로의 지도
+## 3. The Data Catalog: A Search Engine for Your Data
 
-**lineage(리니지)**는 다음 질문에 답합니다. *어떤 데이터 한 조각이든, 그것은 어디서 왔고 무엇이 그것에 의존하는가?* 리니지는 원천(raw source)에서 출발해, 모든 변환을 거쳐, 최종 대시보드나 모델에 이르는 경로를 추적합니다.
+A **data catalog** is a system that collects metadata and makes it searchable. Think of it as a search engine plus a dictionary for everything your organization stores.
 
-리니지는 두 방향으로 읽으며, 둘 다 가치가 있습니다.
+A useful catalog typically provides:
 
-- **상류(Upstream, 이건 어디서 왔지?)** — 어떤 숫자가 이상해 보입니다. 변환을 거꾸로 거슬러 올라가 원천 테이블에 도달하고 버그를 찾아냅니다. 리니지가 없으면 이건 고고학 발굴이지만, 있으면 클릭 한 번입니다.
-- **하류(Downstream, 무엇이 이것에 의존하지?)** — 어떤 컬럼을 바꾸고 싶습니다. 리니지는 그로 인해 깨질 모든 리포트, 모델, 파이프라인을 보여줍니다. 자신 있는 변경과 금요일 오후의 장애 사이의 차이가 바로 이것입니다.
+- **Search & discovery** — find tables by name, column, or business term, so people stop rebuilding datasets that already exist.
+- **Business glossary** — canonical definitions. "Active user" is defined *once*, and every dataset that uses the term links to that definition.
+- **Ownership and contact info** — each important dataset shows its steward, so "who do I ask?" has an answer.
+- **Usage signals** — shows which tables are queried often (probably trustworthy) and which haven't been touched in a year (probably abandoned).
 
-간단한 흐름은 다음과 같습니다.
+> The glossary is a quietly powerful feature. Most "data arguments" aren't arguments about numbers — they're two people using the same word to mean different things. A single source of definitions settles a surprisingly large share of those arguments.
+
+### How It Actually Gets Filled: Half Automatic, Half Human
+
+The first time you switch on a catalog tool, it looks like magic. Connect a connector to your warehouse, and the tool crawls the schemas and automatically ingests every table, column, type, and row count as **technical metadata**. Seeing thousands of tables become searchable within days makes it feel like you're done.
+
+But that's as far as the automatic part goes. **Business metadata (definitions, owners) is something the tool has no way of knowing, so people have to fill it in.** Exactly what a column called `usr_actv_30d` counts, and who's accountable for it, stays blank forever unless a steward writes it down. In other words, the real labor of a catalog isn't "installing the tool" — it's "the ongoing work of people filling in the blanks."
+
+If you're choosing a tool, they roughly split like this:
+
+- **OSS** — DataHub, OpenMetadata, Amundsen. You run them yourself, but there's no license cost or lock-in.
+- **Enterprise** — Collibra, Alation. Rich governance workflows and approval processes, with support included.
+
+That said, you don't need to buy a heavyweight platform to get started. **Even without a tool, one well-maintained wiki page or spreadsheet is a catalog.** A four-column table — table name, one-line definition, owner, notes — is plenty as a starting point. The key is that the metadata is written down somewhere durable and findable, not locked in someone's memory. Start small, and bring in a tool when the spreadsheet can't keep up.
+
+### Real-World Trap: A Catalog You Can Search but Not Understand
+
+The two most common failures:
+
+- **An empty catalog with only auto-ingestion turned on** — thousands of tables are searchable, but every definition is blank. People have to guess meaning from column names, so it's really just a searchable schema dump, not a governance tool.
+- **A catalog that goes stale** — it gets filled in enthusiastically at first, then nobody maintains it, so definitions drift from the code and the listed owners have already left the company. Once the perception "you can't trust anything written here" sets in, nobody looks at it anymore.
+
+Both traps have the same fix: **a catalog stays alive only if it has owners and stewards.**
+
+**How to keep a catalog alive (checklist)**
+
+- [ ] Every core table has an **owner** assigned (if it's blank, that table is abandoned).
+- [ ] **Writing definitions is part of the release process** when creating a new dataset (PR checklist, merge requirements, etc.).
+- [ ] Glossary definitions are generated from **a single source in code** (e.g., dbt model descriptions) to prevent drift.
+- [ ] **Stale signals are surfaced** — periodically report tables not refreshed/used for N+ days and tables without definitions.
+- [ ] There's a **feedback path** for search and definitions (a one-click "this definition is wrong").
+
+---
+
+## 4. Data Lineage: A Map of How Data Flows
+
+**Lineage** answers this question: *for any piece of data, where did it come from, and what depends on it?* Lineage traces the path from the raw source, through every transformation, to the final dashboard or model.
+
+Lineage is read in two directions, and both are valuable:
+
+- **Upstream (where did this come from?)** — a number looks off. You walk back through the transformations to the source table and find the bug. Without lineage this is an archaeological dig; with it, it's one click.
+- **Downstream (what depends on this?)** — you want to change a column. Lineage shows you every report, model, and pipeline that will break as a result. That's the difference between a confident change and a Friday-afternoon outage.
+
+Here's a simple flow:
 
 ```
 [orders table] ─┐
@@ -102,13 +103,13 @@ archivePath: "_archive/data/13-governance-2-metadata-catalog-lineage.md"
 [refunds table]─┘                               └─► [revenue_forecast model]
 ```
 
-`orders`가 바뀌면, 리니지는 finance 대시보드*와* 예측 모델이 모두 영향을 받는다고 즉시 알려줍니다. 바로 그 하나의 기능이, 지난 장애 때 사람들이 가장 있었으면 했던 것입니다.
+If `orders` changes, lineage immediately tells you that both the finance dashboard *and* the forecast model are affected. That single capability is exactly what people most wished they'd had during the last incident.
 
-### 실제로는: 손으로 그리지 않는다
+### In Practice: You Don't Draw It by Hand
 
-예전에는 리니지를 사람이 다이어그램으로 그렸습니다. 그리는 순간부터 낡기 시작했죠. 지금의 modern stack(모던 스택)에서는 리니지가 거의 **공짜로** 나옵니다.
+Lineage used to be drawn as diagrams by people, and it started going stale the moment it was drawn. In today's modern stack, lineage comes almost **for free**.
 
-- **dbt** — 변환을 SQL로 작성할 때 다른 모델을 `ref()`로 참조하면, dbt가 그 `ref()` 그래프를 읽어 테이블 수준 리니지를 자동으로 만들어 줍니다. 즉 변환 코드 자체가 리니지의 출처입니다. 아래처럼 참조만 해도 `orders`·`refunds` → `daily_revenue` 엣지가 생깁니다.
+- **dbt** — when you write transformations in SQL and reference other models with `ref()`, dbt reads that `ref()` graph and builds table-level lineage automatically. In other words, the transformation code itself is the source of lineage. Just referencing them as below creates the `orders`/`refunds` → `daily_revenue` edges.
 
 ```sql
 -- models/daily_revenue.sql
@@ -120,32 +121,32 @@ left join {{ ref('refunds') }} r using (order_id)
 group by 1
 ```
 
-- **OpenLineage** — 도구마다 따로 노는 리니지를 한데 모으기 위한 **표준**입니다. Airflow, Spark, dbt 등이 OpenLineage 형식으로 실행 이벤트를 내보내면, 카탈로그(DataHub, OpenMetadata 등)가 이를 받아 스택 전체를 가로지르는 리니지를 조립합니다. 손으로 그리는 대신 파이프라인이 실행되면서 스스로 리니지를 보고하는 셈입니다.
+- **OpenLineage** — a **standard** for pulling together lineage that otherwise lives separately in each tool. When Airflow, Spark, dbt, and others emit run events in the OpenLineage format, a catalog (DataHub, OpenMetadata, etc.) receives them and assembles lineage across the whole stack. Instead of drawing it by hand, the pipelines report their own lineage as they run.
 
-요점은 분명합니다. 리니지는 별도로 "그리는" 산출물이 아니라, **변환 코드와 파이프라인 실행에서 자동으로 흘러나오게** 만드는 것이 목표입니다.
+The point is clear: lineage isn't a separate artifact you "draw." The goal is to have it **flow out automatically from your transformation code and pipeline runs.**
 
-### 컬럼 수준 vs. 테이블 수준
+### Column-Level vs. Table-Level
 
-리니지에는 두 가지 해상도가 있습니다. **table-level(테이블 수준)** 리니지("대시보드 X가 테이블 Y를 사용한다")는 포착하기 쉽고 대부분의 영향 분석에는 충분합니다. **column-level lineage(컬럼 수준 리니지)**("이 대시보드의 매출 수치는 구체적으로 `orders.amount`에서 `refunds.amount`를 뺀 값에서 나온다")는 만들기 더 어렵지만, 디버깅과 컴플라이언스에 매우 유용합니다. 예를 들어 어떤 PII 한 조각이 정확히 어디로 흘러가는지 추적하는 경우가 그렇습니다.
-
----
-
-## 5. 가까운 친척: 마스터 데이터 관리
-
-이왕 다루는 김에, 알아둘 가치가 있는 관련 용어 하나를 짚겠습니다. **master data management(마스터 데이터 관리, MDM)**는 비즈니스가 곳곳에서 참조하는 핵심 엔티티, 즉 고객, 상품, 위치를 다룹니다. MDM이 푸는 문제는 이것입니다. 같은 고객이 세 시스템에서 조금씩 다른 세 개의 레코드로 존재하는 바람에, "우리 고객은 몇 명인가?"에 깔끔한 답이 없다는 것이죠.
-
-MDM은 각 핵심 엔티티에 대해 권위 있는 단일 버전을 수립합니다. 가장 많이 공유되고 가장 많이 참조되는 "명사"에 특별히 적용한 거버넌스라고 생각해도 됩니다. 그 자체로 깊은 주제이니, 지금은 이 용어와 그것이 다루는 문제를 알아두는 정도로 충분합니다.
+Lineage comes in two resolutions. **Table-level** lineage ("dashboard X uses table Y") is easy to capture and good enough for most impact analysis. **Column-level lineage** ("this dashboard's revenue figure comes specifically from `orders.amount` minus `refunds.amount`") is harder to build but extremely useful for debugging and compliance — for example, tracing exactly where a particular piece of PII flows.
 
 ---
 
-## 6. 이 모든 게 어떻게 맞물리나
+## 5. A Close Relative: Master Data Management
 
-메타데이터, 카탈로그, 리니지는 세 개의 별개 과제가 아닙니다. 하나의 역량을 이루는 여러 층입니다.
+While we're here, one related term is worth knowing. **Master data management (MDM)** deals with the core entities the business references everywhere: customers, products, locations. The problem MDM solves is this: the same customer exists as three slightly different records in three systems, so "how many customers do we have?" has no clean answer.
 
-1. **메타데이터**는 데이터에 관한 날것의 정보입니다.
-2. **카탈로그**는 그 메타데이터를 검색 가능하게 만들어, 사람들이 데이터를 *찾고 이해*할 수 있게 합니다.
-3. **리니지**는 시스템 전반에 걸쳐 메타데이터를 연결해, 사람들이 데이터를 *추적하고 신뢰*할 수 있게 합니다.
+MDM establishes a single authoritative version of each core entity. You can think of it as governance applied specifically to the most widely shared, most heavily referenced "nouns." It's a deep topic in its own right, so for now it's enough to know the term and the problem it addresses.
 
-이 셋이 합쳐지면 불투명한 테이블 더미가 탐색 가능한 무언가로 바뀝니다. 그 탐색 가능성이야말로 1부에 나온 거버넌스 *역할들*이 실제로 제 일을 하게 해 주는 것입니다. 스튜어드는 보이지도 않는 정의를 유지할 수 없고, 오너는 리니지 없이 영향을 평가할 수 없으니까요. 그리고 앞서 본 대로, 이 역량을 살아있게 유지하는 힘은 도구가 아니라 **빈칸을 채우고 낡은 것을 고치는 사람**에게서 나옵니다.
+---
 
-**다음 — 3부:** 거버넌스의 집행(enforcement) 측면입니다. 데이터 품질을 (단지 주장하는 게 아니라) 어떻게 측정하는지, access control(접근 제어)과 masking(마스킹)이 실제로 데이터를 어떻게 보호하는지, 그리고 privacy(프라이버시) 규제가 엔지니어에게 실제로 무엇을 요구하는지를 살펴봅니다.
+## 6. How It All Fits Together
+
+Metadata, catalogs, and lineage aren't three separate projects. They're layers of a single capability.
+
+1. **Metadata** is the raw information about your data.
+2. **The catalog** makes that metadata searchable, so people can *find and understand* data.
+3. **Lineage** connects metadata across systems, so people can *trace and trust* data.
+
+Together, they turn an opaque pile of tables into something navigable. And that navigability is what lets the governance *roles* from Part 1 actually do their jobs — a steward can't maintain definitions nobody can see, and an owner can't assess impact without lineage. And as we saw, what keeps this capability alive isn't the tools but **the people who fill in the blanks and fix what's gone stale.**
+
+**Next — Part 3:** the enforcement side of governance. We'll look at how to measure data quality (rather than just claim it), how access control and masking actually protect data, and what privacy regulations really demand of engineers.

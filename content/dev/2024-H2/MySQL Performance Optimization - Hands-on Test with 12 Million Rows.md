@@ -1,9 +1,10 @@
 ---
 title: "MySQL Performance Optimization - Hands-on Test with 12 Million Rows"
-labels: ["database","rdb","mysql","optimization"]
+labels: ["database","rdb","mysql","optimization","Archive"]
 published: true
 date: 2024-10-01T18:56:00+09:00
 readerComments: "ALLOW"
+language: en
 bloggerPostId: "8005591364831844339"
 source: "archive"
 archivePath: "_archive/dev/database/mysql optimzize index and algorithm.md"
@@ -11,12 +12,12 @@ archivePath: "_archive/dev/database/mysql optimzize index and algorithm.md"
 
 
 
-im gonna show problem and performence what i handle big data on table 
+I'm going to walk through the problems I ran into, and the performance I got, when handling a large amount of data in a single table.
 
 
-i create table and that put in snowflake_id 
-the table name is article
-so create 12 mliun data on article table and then check this performence
+I created a table that uses a Snowflake ID as its key.
+The table is called article.
+I loaded 12 million rows into the article table and then checked the performance.
 
 
 ![NotionImage](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/dev/archive/mysql-optimzize-index-and-algorithm/img.webp)
@@ -25,21 +26,25 @@ so create 12 mliun data on article table and then check this performence
 
 
 
+```sql
 select * from article where board_id = 1 order by created_at desc limit 30 offset 90;
+```
 
 
 ![NotionImage](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/dev/archive/mysql-optimzize-index-and-algorithm/img_1.webp)
 
-i guess more good computer get better result but mine spend 27 sec
+A better machine would probably do better, but mine took 27 seconds.
 
-so is very slow its not usable code so how to handle this problem
-
-
+That's far too slow to be usable. So how do we fix it?
 
 
 
+
+
+```sql
 create index idx_board_id_article_id on article(board_id asc,
 article_id desc);
+```
 
 ![NotionImage](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/dev/archive/mysql-optimzize-index-and-algorithm/img_2.webp)
 
@@ -50,104 +55,110 @@ article_id desc);
 ![NotionImage](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/dev/archive/mysql-optimzize-index-and-algorithm/img_4.webp)
 
 
-so i cheked how much spend time and key and search type
-this is meaning it work but is it okay? is that solved problem because we create index 
+I checked the execution time, the key used, and the access type.
+So it works. But is that the end of it? Did creating an index solve the problem?
 
-the answer is No 
-im gonna show you if i change offset value
+The answer is no.
+Let me show you what happens when I change the offset value.
 
 
 ![NotionImage](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/dev/archive/mysql-optimzize-index-and-algorithm/img_5.webp)
 
 
-its too late so i checked queryplan but notthing to change
+It's way too slow, so I checked the query plan, but nothing had changed.
 
+```sql
 mysql> explain select * from article where board_id = 1 order by article_id desc limit 30 offset 1499970;
+```
 
 ![NotionImage](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/dev/archive/mysql-optimzize-index-and-algorithm/img_6.webp)
 
 
 
-mysql은 
-innodb 가 스토리지 엔진으로서 default 로 들어있다
-andthen 
+In MySQL,
+InnoDB is the default storage engine.
 
-트랜잭션, 외래키, 충돌방지, 장애복수
-4개의 기능이 특징이라고한다 
+Its four defining features are said to be
+transactions, foreign keys, concurrency control (locking), and crash recovery.
 
-and then innodb is clusterd index primary key
+On top of that, InnoDB uses the primary key as a clustered index.
 
-그래서 article_id 를기준으로 하는 조회의 경우 프라이머리키를 이용한 조회라면 clusterd index가 자동으로 생성된다
+So when you query by article_id, which is the primary key, you're using the clustered index that InnoDB creates automatically.
 
-so if you look this picktuer this is very fast
-and so why is it so fase?
+If you look at this picture, that query is very fast.
+So why is it so fast?
 
 ![NotionImage](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/dev/archive/mysql-optimzize-index-and-algorithm/img_7.webp)
 
-because we use primary key 
-we don't create but automaticaly primary key have clusterd index on innodb
+Because we're using the primary key.
+We didn't create it ourselves; in InnoDB, the primary key automatically gets a clustered index.
 
 ![NotionImage](https://cdn.jsdelivr.net/gh/ten-choi/blog-images@main/dev/archive/mysql-optimzize-index-and-algorithm/img_8.webp)
 
 
-if we create index when we create call secondary index or non-clousterd index
+An index that we create ourselves is called a secondary index (or non-clustered index).
 
-leafnode have index column data and pointer to access clusterd index
+Its leaf nodes hold the indexed column data and a pointer for accessing the clustered index.
 
-세컨더리 인덱스는 클러스터드 인덱스와 관계하기때문에
+Because a secondary index depends on the clustered index,
 
-리프노드에서 세컨더리 인덱스에 저장된 컬럼을 찾은후 클러스터드 아이디와 매칭해서 찾는다
+a lookup first finds the indexed columns in the secondary index's leaf nodes, then matches them to the clustered index's ID to find the row.
 
 
-아래 같은 경우에는 offset까지 도달하는데 계속해서 clusterd_index와 secondry index를 확인해야 한다 왜냐하면 order by가 들어가있기때문이다
+In the query below, MySQL has to keep going back and forth between the clustered index and the secondary index all the way until it reaches the offset, because of the order by.
+
+```sql
 select * from article where board_id = 1 order by article_id desc limit 30 offset 1499970;
+```
 
-1. WHERE board_id = 1 에 맞는 row들을 idx_board_id_article_id 인덱스를 통해 순서대로 스캔
-2. article_id DESC로 정렬된 순서를 유지하며 row들을 하나씩 가져옴
-3. OFFSET 개수만큼 버림 (1499970개 스킵)
-4. 그 다음 LIMIT 30개만 SELECT 결과로 반환
+1. Scan the rows matching WHERE board_id = 1 in order through the idx_board_id_article_id index
+2. Fetch rows one by one, keeping the article_id DESC order
+3. Discard as many rows as the OFFSET (skip 1,499,970 rows)
+4. Return only the next 30 rows (LIMIT) as the SELECT result
 
-즉, 처음부터 1499970개의 row를 순차적으로 읽고 버린 뒤, 그 다음 30개를 리턴하는 구조입니다.
-offset 지옥이라고 한다
+In other words, it reads and throws away 1,499,970 rows from the start, then returns the next 30.
+This is known as "offset hell."
 
 
-그래서 실무에선 어떻게하느냐 
-keyset pagination) 또는 Seek method 라는 방식으로 offset없이 필요한 부분만 사용한다
+So what do people do in practice?
+They use an approach called keyset pagination (or the seek method), which avoids offset entirely and reads only the part that's needed.
 
--- 첫 요청
+```sql
+-- First request
 SELECT * FROM article 
 WHERE board_id = 1 
 ORDER BY article_id DESC 
 LIMIT 30;
 
--- 다음 요청
+-- Next request
 SELECT * FROM article 
 WHERE board_id = 1 
-  AND article_id < {이전 마지막 article_id}
+  AND article_id < {last article_id from the previous page}
 ORDER BY article_id DESC 
 LIMIT 30;
+```
 
 
-covering index라는게 있다
-index만으로 모든 쿼리의 데이터를 처리할수있는 index이며
-clusterd index없이 secondary index만으로 쿼리 가능한 index를 말한다 
+There's also something called a covering index.
+It's an index that can serve all the data a query needs by itself,
+meaning the query can be answered from the secondary index alone, without going to the clustered index.
 
 
-하지만 offset이 커지고 그 기능이 필요하다면 다른 방식으로 해결하나
-년단위로 스킵한다던가 테이블에 파티션을 만들어 정보를 분리하는등
-원래 정보량 자체가 많다면 이런식으로 해결하는것도 방법이다
+But if the offset grows large and you really do need that functionality, you have to solve it another way:
+for example, skipping by year, or partitioning the table to split the data.
+If the data volume itself is huge, that kind of approach is an option.
 
-혹은 정책으로 해결하는경우도있다
-저렇게 오래된 이전 데이터를 추출한는것이 정상적인 유저가 아니라고 판단하여 제한 혹은
-범위 검색등을 제공하는 방법이 있다
+Sometimes it's solved with policy instead.
+You can decide that a normal user wouldn't be pulling data that old, and either restrict it or
+offer range-based search instead.
 
-논리적으로 무한스크롤 같이 뒷페이지로 가도 균등한 조회속도를 낼술있지만 이렇게 많은 정보량이 있는경우 채택할 방법이 아닐수있다
+Logically, something like infinite scroll can keep query speed consistent even on later pages, but with this much data it may not be the approach to adopt.
 
 
-페이징방식을 무한스크롤으로 할경우 
+If you implement paging as infinite scroll:
 
-신규로 페이지가 만들어지거나 삭제되면 조회할때 중복 혹은 누락이 발생할수있다
-무한스크롤은 마지막에 부른데이터를 기점으로 id를 기반으로 호출한다
+when new pages are created or deleted, you can get duplicates or missing items while browsing.
+Infinite scroll fetches the next batch based on the ID of the last item it loaded.
 
 
 

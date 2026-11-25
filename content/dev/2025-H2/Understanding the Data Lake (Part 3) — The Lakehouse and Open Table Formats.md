@@ -1,120 +1,121 @@
 ---
 title: "Understanding the Data Lake (Part 3) — The Lakehouse and Open Table Formats"
-labels: ["Data Platform Series","Data Lake","Lakehouse","Apache Iceberg","Delta Lake","Apache Hudi","Data Engineering"]
+labels: ["Data Platform Series","Data Lake","Lakehouse","Apache Iceberg","Delta Lake","Apache Hudi","Data Engineering","Archive"]
 published: true
 date: 2025-11-01T09:47:00+09:00
 readerComments: "ALLOW"
+language: en
 bloggerPostId: "4602550724696742381"
 source: "archive"
 archivePath: "_archive/data/06-lake-3-lakehouse-table-formats.md"
 ---
 
-**데이터 플랫폼 시리즈 · 06/15** · 저장과 아키텍처 — 데이터 레이크 3/3
+**Data Platform Series · 06/15** · Storage and Architecture — Data Lake 3/3
 
-> 마지막 편입니다. 1부에서는 lake(레이크) 대 warehouse(웨어하우스)의 구도를 잡았고, 2부에서는 레이크의 영역(zone), 스토리지, 파일 포맷의 내부를 살펴봤습니다. 그리고 우리는 한 가지 문제로 마무리했습니다. object storage(오브젝트 스토리지)에 그냥 놓인 파일에는 트랜잭션이 없다는 것이었죠. 이번 편은 업계가 그 문제를 어떻게 해결했는지, 그리고 왜 "lakehouse(레이크하우스)"가 모두가 향하는 종착지가 되었는지에 대한 이야기입니다.
+> This is the final part. In Part 1 we framed the lake vs. warehouse picture, and in Part 2 we looked inside the lake: its zones, storage, and file formats. We ended on one problem: plain files sitting in object storage have no transactions. This part is about how the industry solved that problem, and why the "lakehouse" became the destination everyone is heading toward.
 
-## 1. 그냥 파일만 쌓인 레이크의 문제
+## 1. The Problem with a Lake That's Just Files
 
-2부는 우리에게 빠르고, 저렴하고, 확장 가능한 레이크를 남겨줬습니다. 그리고 조용히 도사린 위험도 함께였죠. 여러분의 "테이블"이 사실은 폴더 안에 쌓인 Parquet 파일 더미일 뿐일 때, 데이터베이스가 조용히 대신해 주던 모든 것을 잃게 됩니다.
+Part 2 left us with a lake that's fast, cheap, and scalable. It also left us with a quiet hazard. When your "table" is really just a pile of Parquet files in a folder, you lose everything a database used to do for you behind the scenes.
 
-- **트랜잭션이 없습니다.** 한 작업이 파일 묶음을 쓰던 도중에 실패합니다. 이제 새 파일의 절반은 존재하고 절반은 존재하지 않습니다. 읽는 쪽은 엉망으로 일부만 남은 테이블을 보게 됩니다.
-- **격리(isolation)가 없습니다.** 한 작업이 테이블을 읽는 동안 다른 작업이 그것을 다시 씁니다. 읽는 쪽은 옛 파일과 새 파일이 뒤섞인 것을 받게 됩니다. 일관된 상태로는 실제로 존재한 적이 없는 결과를 말이죠.
-- **스키마 강제(schema enforcement)가 없습니다.** 누군가가 잘못된 컬럼을 가진 파일을 폴더에 던져 넣는 것을 막을 방법이 없습니다. "테이블"은 소리 없이 일관성을 잃어갑니다.
-- **손쉬운 업데이트나 삭제가 없습니다.** 어떤 사용자 한 명의 행을 삭제하고 싶으신가요(뒤의 거버넌스 시리즈에서 다룰 "잊힐 권리"가 요구하는 바로 그 작업입니다)? 직접 손으로 파일을 다시 써야 합니다.
-- **이력(history)이 없습니다.** 데이터를 덮어쓰면 어제 버전은 사라집니다. "지난 화요일에는 이게 어떤 모습이었지?"라고 물어볼 방법이 없습니다.
+- **No transactions.** A job fails halfway through writing a batch of files. Now half the new files exist and half don't. Readers see a messy, partially written table.
+- **No isolation.** One job reads a table while another job rewrites it. The reader gets a mix of old and new files — a result that never actually existed as a consistent state.
+- **No schema enforcement.** Nothing stops someone from dropping a file with the wrong columns into the folder. The "table" silently drifts into inconsistency.
+- **No easy updates or deletes.** Want to delete one user's rows (exactly what the "right to be forgotten," covered later in the governance series, requires)? You have to rewrite the files by hand.
+- **No history.** Overwrite the data and yesterday's version is gone. There's no way to ask, "What did this look like last Tuesday?"
 
-> **현업 함정.** "그냥 S3 버킷에 Parquet를 폴더로 쌓아도 테이블이잖아?"라는 말은 읽기만 하는 동안에는 맞습니다. 하지만 두 개의 작업이 동시에 같은 폴더에 쓰거나, 한 작업이 중간에 죽는 순간 깨집니다. 이때 남는 건 부분적으로만 쓰인 파일과, 그것을 정상 데이터로 착각해 읽어 버리는 쿼리입니다. 트랜잭션이 없는 "테이블"은 평소엔 멀쩡해 보이다가 가장 곤란한 순간에 무너집니다. 바로 이것이 테이블 포맷이 필요한 이유입니다.
+> **Real-world pitfall.** "If I just stack Parquet files in folders in an S3 bucket, isn't that a table?" That's true as long as you're only reading. But it breaks the moment two jobs write to the same folder at once, or a job dies halfway through. What you're left with is partially written files and queries that happily read them as if they were valid data. A "table" without transactions looks fine most of the time, then falls apart at the worst possible moment. This is exactly why table formats exist.
 
-웨어하우스에는 이런 문제가 결코 없었습니다. 바로 **ACID transaction(ACID 트랜잭션)**을 가지고 있었기 때문이죠. 레이크는 저렴하고 유연한 스토리지를 얻는 대가로 그것을 내주었습니다. 레이크하우스는 그 둘을 모두 손에 넣으려는 시도입니다.
-
----
-
-## 2. 레이크하우스라는 발상
-
-> **lakehouse(레이크하우스)**는 데이터베이스 같은 트랜잭션 계층을 저렴한 오브젝트 스토리지 *위에* 올려서, 웨어하우스의 신뢰성과 레이크의 경제성을 동시에 얻는 아키텍처입니다.
-
-여러분은 여전히 Parquet 파일을 오브젝트 스토리지에 저장합니다. 정확히 2부에서 설명한 그대로죠. 새로운 재료는 **open table format(오픈 테이블 포맷)**입니다. 그 파일들 위에 얹혀서, 어느 순간에 어떤 파일들이 테이블을 구성하는지를 트랜잭션 단위로 추적하는 메타데이터 계층입니다. 바로 이 메타데이터 계층이, 그냥 쌓인 파일 더미에 트랜잭션과 스키마 강제와 이력을 되돌려 줍니다.
-
-그 결과는 하나의 시스템입니다. 신뢰할 수 있는 SQL을 원하는 분석가와, 가공되지 않은 유연함을 원하는 데이터 과학자 모두를 데이터를 별도의 웨어하우스로 복사하지 않고도 동시에 만족시킬 수 있는 시스템이죠.
+Warehouses never had these problems, because they had **ACID transactions**. The lake gave those up in exchange for cheap, flexible storage. The lakehouse is the attempt to have both.
 
 ---
 
-## 3. 테이블 포맷은 어떻게 동작하는가 (핵심 트릭)
+## 2. The Lakehouse Idea
 
-깊은 내부 구조까지 알 필요는 없지만, 중심이 되는 메커니즘은 이해해 둘 가치가 있습니다. 뒤이어 나오는 모든 기능을 설명해 주기 때문입니다.
+> A **lakehouse** is an architecture that puts a database-like transactional layer *on top of* cheap object storage, giving you the reliability of a warehouse and the economics of a lake at the same time.
 
-테이블을 "이 폴더 안의 모든 파일"이라고 정의하는 대신, 테이블 포맷은 *지금 이 순간* 어떤 파일들이 테이블의 일부인지를 명시적으로 나열하는 **metadata log(메타데이터 로그)**를 유지합니다. 데이터를 쓰는 과정은 대략 이렇게 진행됩니다.
+You still store Parquet files in object storage, exactly as described in Part 2. The new ingredient is the **open table format**: a metadata layer that sits on top of those files and tracks, transactionally, which files make up the table at any given moment. That metadata layer is what gives a plain pile of files back its transactions, schema enforcement, and history.
 
-1. 한 작업이 새로운 Parquet 데이터 파일을 씁니다. 쓰는 동안 그 파일들은 아직 테이블의 일부가 아닙니다.
-2. 작업이 성공적으로 끝나면, 메타데이터 로그에 새 항목을 커밋합니다. "이제 테이블은 이 파일들로 구성된다"라고 말이죠.
-3. 읽는 쪽은 항상 메타데이터를 참조해 현재의 파일 집합을 파악합니다. 절반만 쓰인 상태를 결코 보지 않습니다.
+The result is a single system — one that can serve both analysts who want reliable SQL and data scientists who want raw flexibility, without copying the data into a separate warehouse.
 
-이 단 하나의 간접 참조, 즉 *폴더 내용이 아니라 메타데이터가 테이블을 정의한다*는 것이 바로 대표적인 기능들을 만들어 냅니다.
+---
 
-- **ACID 트랜잭션** — 쓰기는 그 커밋이 안착할 때에만 보이게 되며, 전부 아니면 전무(all-or-nothing)입니다. 절반만 쓰인 테이블은 더 이상 없습니다.
-- **snapshot isolation(스냅샷 격리)** — 쓰는 쪽이 한창 작업 중이어도 읽는 쪽은 일관된 스냅샷을 봅니다.
-- **time travel(타임 트래블)** — 각 커밋이 버전이 매겨진 스냅샷이기 때문에, 과거의 특정 버전이나 시점 *기준으로* 테이블을 조회할 수 있습니다. ("어제 시점의 테이블을 보여줘.") 추상적인 이야기가 아니라, Spark나 Trino에서 이런 식의 한 줄짜리 쿼리가 됩니다.
+## 3. How a Table Format Works (the Core Trick)
+
+You don't need to know the deep internals, but the central mechanism is worth understanding, because it explains every feature that follows.
+
+Instead of defining a table as "every file in this folder," a table format maintains a **metadata log** that explicitly lists which files are part of the table *right now*. A write goes roughly like this:
+
+1. A job writes new Parquet data files. While they're being written, those files are not yet part of the table.
+2. When the job finishes successfully, it commits a new entry to the metadata log: "the table now consists of these files."
+3. Readers always consult the metadata to find the current set of files. They never see a half-written state.
+
+This single indirection — *the metadata defines the table, not the folder contents* — is what produces the headline features:
+
+- **ACID transactions** — a write becomes visible only when its commit lands, and it's all-or-nothing. No more half-written tables.
+- **Snapshot isolation** — readers see a consistent snapshot even while a writer is in the middle of its work.
+- **Time travel** — because each commit is a versioned snapshot, you can query the table *as of* a past version or point in time. ("Show me the table as it was yesterday.") This isn't abstract; in Spark or Trino it's a one-line query like this:
 
   ```sql
-  -- 특정 버전 기준으로 조회
+  -- Query as of a specific version
   SELECT * FROM orders VERSION AS OF 42;
-  -- 특정 시점 기준으로 조회 (배포 직전 상태 재현 등)
+  -- Query as of a specific point in time (e.g., reproducing the state right before a deploy)
   SELECT * FROM orders TIMESTAMP AS OF '2026-06-08 09:00:00';
   ```
 
-- **schema evolution(스키마 진화)** — 컬럼을 추가하거나, 이름을 바꾸거나, 삭제하는 작업을 메타데이터로 추적하면서 모든 것을 다시 쓰지 않고도 안전하게 할 수 있습니다.
-- **효율적인 업데이트와 삭제** — 포맷은 어떤 파일이 어떤 행을 담고 있는지 정확히 알고 있으므로, 특정 레코드(예: 한 사용자의 데이터)를 삭제하는 일은 직접 파일을 뒤지는 작업이 아니라 관리되는 연산이 됩니다. 폴더를 뒤져 파일을 다시 쓰는 대신, 다음 한 줄이면 됩니다.
+- **Schema evolution** — you can add, rename, or drop columns safely, tracked in metadata, without rewriting everything.
+- **Efficient updates and deletes** — because the format knows exactly which files hold which rows, deleting specific records (say, one user's data) becomes a managed operation rather than a manual file hunt. Instead of digging through folders and rewriting files, it's one line:
 
   ```sql
   DELETE FROM users WHERE id = 'user-12345';
   ```
 
-  거버넌스 시리즈에서 다룰 "잊힐 권리"가, 운영 절차가 아니라 실제로 실행 가능한 SQL 한 줄이 되는 순간입니다.
+  This is the moment the "right to be forgotten" from the governance series stops being an operational procedure and becomes a single, actually executable line of SQL.
 
 ---
 
-## 4. 세 가지 오픈 테이블 포맷
+## 4. The Three Open Table Formats
 
-세 가지 포맷이 주도하고 있으며, 같은 문제를 서로 다른 강조점으로 해결합니다. 세 이름 모두 듣게 될 테니, 각각이 무엇으로 알려져 있는지 알아 두는 것이 좋습니다.
+Three formats dominate, solving the same problem with different emphases. You'll hear all three names, so it's worth knowing what each is known for.
 
 | | Apache Iceberg | Delta Lake | Apache Hudi |
 |---|----------------|------------|-------------|
-| **출신** | Netflix | Databricks | Uber |
-| **유명한 점** | 엔진 중립적 설계, 거대한 테이블, 깔끔한 진화 | 긴밀한 Spark 통합, 단순하고 폭넓게 채택됨 | 빠른 업서트, 스트리밍/증분 적재 |
-| **강점 영역** | 대규모의 개방적이고 다중 엔진을 아우르는 분석 | Spark 중심 플랫폼 | 쓰기가 많고 자주 갱신되는 데이터 |
+| **Origin** | Netflix | Databricks | Uber |
+| **Known for** | Engine-neutral design, huge tables, clean evolution | Tight Spark integration, simple and widely adopted | Fast upserts, streaming/incremental loads |
+| **Sweet spot** | Large-scale, open, multi-engine analytics | Spark-centric platforms | Write-heavy, frequently updated data |
 
-- **Apache Iceberg**는 처음부터 **엔진 중립적(engine-neutral)**이 되도록 설계되었습니다. 어떤 단일 처리 엔진도 이를 소유하지 않으며, 그래서 공통의 상호운용성 표준이 되었습니다. 매우 큰 테이블과 깔끔한 스키마/파티션 진화에 강합니다.
-- **Delta Lake**는 Spark 세계에서 나왔으며, 여러분의 스택이 Spark 중심이라면 가장 매끄러운 선택지입니다. 단순한 사고 모델, 성숙한 완성도, 매우 폭넓은 사용이 특징입니다.
-- **Apache Hudi**는 **upsert(업서트)**, 즉 레코드를 효율적으로 갱신하고 삽입하는 작업을 중심으로 만들어졌으며, 그래서 스트리밍과 끊임없이 변하는 데이터에 자연스럽게 들어맞습니다.
+- **Apache Iceberg** was designed from the start to be **engine-neutral**. No single processing engine owns it, which is why it has become the common interoperability standard. It's strong on very large tables and clean schema/partition evolution.
+- **Delta Lake** comes from the Spark world and is the smoothest choice if your stack is Spark-centric. It's known for a simple mental model, maturity, and very broad usage.
+- **Apache Hudi** was built around **upserts** — efficiently updating and inserting records — which makes it a natural fit for streaming and constantly changing data.
 
-### 어느 포맷을 고를까
+### Which Format to Pick
 
-학습 목적에서는 이 차이점들보다 공통의 발상이 더 중요합니다. **세 가지 모두 Parquet 파일이 담긴 폴더를 진짜 트랜잭션 테이블로 바꿔 줍니다.** 기초적인 용도라면 어느 것을 골라도 크게 잘못될 일은 없습니다. 다만 실무에서 막상 하나를 골라야 한다면, 출발점은 대개 다음과 같습니다.
+For learning purposes, the shared idea matters more than these differences: **all three turn a folder of Parquet files into a real transactional table.** For basic use, you can't go far wrong with any of them. But if you actually have to pick one in practice, the starting point usually looks like this:
 
-- **Spark 중심**이고 단순하게 가고 싶다 → **Delta Lake**.
-- **엔진 중립**이 필요하거나 **초대형 테이블**을 다룬다 → **Apache Iceberg**.
-- **업서트가 잦고 스트리밍/증분 적재**가 핵심이다 → **Apache Hudi**.
+- **Spark-centric** and you want to keep it simple → **Delta Lake**.
+- You need **engine neutrality** or deal with **very large tables** → **Apache Iceberg**.
+- **Frequent upserts and streaming/incremental loads** are central → **Apache Hudi**.
 
-그리고 현실적으로 이 선택은 취향보다 **여러분의 쿼리 엔진(Spark/Trino/Flink)과 관리형 플랫폼**을 따라가는 경우가 많습니다. 어떤 엔진과 매니지드 서비스가 어떤 포맷을 일급으로 지원하는지가, 결국 가장 마찰 없는 선택을 결정합니다.
-
----
-
-## 5. 왜 이것이 이야기 전체를 하나로 묶는가
-
-레이크하우스는 단순한 성능 트릭이 아닙니다. 레이크를 *거버넌스 가능하게* 만들어 주는 것이며, 이는 데이터 거버넌스 시리즈와 고리를 잇습니다.
-
-- **스키마 강제**는 레이크가 소리 없이 늪(swamp)으로 퇴화하는 것을 막아 줍니다.
-- **타임 트래블**은 감사 가능성(auditability)과 과거 결과를 재현할 능력을 제공합니다.
-- **행 단위 삭제(row-level delete)**는 프라이버시 요청("잊힐 권리")을 실제로 실행 가능하게 만듭니다.
-- **트랜잭션 메타데이터**는 data catalog(데이터 카탈로그)와 lineage(리니지) 도구가 연결해 들어갈 수 있는 바로 그런 종류의 것입니다.
-
-> **현업 함정.** 트랜잭션은 공짜가 아닙니다. 스트리밍이나 잦은 작은 커밋은 **작은 파일(small file)**을 끝없이 만들어 내고, 그러면 메타데이터가 비대해지면서 쿼리 플래닝과 읽기 성능이 함께 무너집니다. 그래서 운영에는 주기적인 **compaction/optimize**가 필요합니다. 작은 파일들을 큰 파일로 합치고 오래된 스냅샷을 정리하는 작업이죠. 일종의 짧은 체크리스트로 기억해 두세요. ① 작은 파일이 쌓이는가, ② compaction/optimize를 스케줄로 돌리는가, ③ 더 이상 필요 없는 옛 스냅샷을 만료시키는가. 이걸 빼먹으면 "느려진 레이크하우스"의 거의 모든 원인이 여기에 있습니다.
-
-그냥 평범한 레이크는 저렴한 스토리지를 주지만 아무런 보장이 없습니다. 레이크하우스는 저렴한 스토리지를 보장과 *함께* 줍니다. 그래서 오늘날 사람들이 "우리는 데이터 레이크를 구축하고 있다"라고 말할 때, 비록 그 단어를 쓰지 않더라도 사실은 레이크하우스를 의미하는 경우가 매우 많습니다.
+Realistically, this choice often follows **your query engine (Spark/Trino/Flink) and managed platform** more than personal taste. Which engines and managed services support which format as a first-class citizen ends up deciding the lowest-friction choice.
 
 ---
 
-## 6. 그림 한 장으로 보는 시리즈
+## 5. Why This Ties the Whole Story Together
+
+The lakehouse isn't just a performance trick. It's what makes the lake *governable*, which connects it to the data governance series.
+
+- **Schema enforcement** keeps the lake from silently degrading into a swamp.
+- **Time travel** provides auditability and the ability to reproduce past results.
+- **Row-level deletes** make privacy requests (the "right to be forgotten") actually executable.
+- **Transactional metadata** is exactly the kind of thing data catalog and lineage tools can hook into.
+
+> **Real-world pitfall.** Transactions aren't free. Streaming or frequent small commits produce an endless stream of **small files**, which bloats the metadata and drags down both query planning and read performance. That's why operations need periodic **compaction/optimize**: merging small files into larger ones and cleaning up old snapshots. Keep it in mind as a short checklist: (1) Are small files piling up? (2) Are you running compaction/optimize on a schedule? (3) Are you expiring old snapshots you no longer need? Skip these, and you've found the cause of almost every "slow lakehouse."
+
+A plain lake gives you cheap storage with no guarantees. A lakehouse gives you cheap storage *with* guarantees. That's why, today, when people say "we're building a data lake," they very often actually mean a lakehouse, even if they don't use the word.
+
+---
+
+## 6. The Series in One Picture
 
 ```
 Warehouse  : structure-first, fast, reliable, expensive, structured-only   (Part 1)
@@ -124,6 +125,6 @@ Lakehouse  : the lake + a transactional metadata layer (Iceberg/Delta/Hudi)(Part
            = cheap & flexible AND reliable & governable
 ```
 
-이 분야가 그려 온 궤적은, 웨어하우스의 신뢰성과 레이크의 경제성 사이에서 양자택일하기를 멈추고, 둘 모두를 제공하는 무언가를 만들어 내는 것이었습니다. 그것이 바로 레이크하우스이며, "웨어하우스"와 "레이크" 사이의 경계가 해마다 점점 더 흐려지는 이유이기도 합니다.
+The trajectory of this field has been to stop choosing between the reliability of a warehouse and the economics of a lake, and to build something that delivers both. That's the lakehouse, and it's also why the line between "warehouse" and "lake" gets blurrier every year.
 
-세 편을 모두 읽으셨다면, 이제 여러분은 데이터 레이크가 *무엇인지*뿐 아니라 *왜* 그 아키텍처가 지금과 같은 모습인지, 그리고 그것이 어디로 향하고 있는지까지 이해하게 되셨습니다. 그것이 현대 데이터 엔지니어링의 다른 모든 것이 세워져 있는 토대입니다.
+If you've read all three parts, you now understand not just *what* a data lake is, but *why* its architecture looks the way it does and where it's heading. That's the foundation everything else in modern data engineering is built on.

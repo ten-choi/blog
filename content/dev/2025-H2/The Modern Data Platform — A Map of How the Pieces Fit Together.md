@@ -1,39 +1,40 @@
 ---
 title: "The Modern Data Platform — A Map of How the Pieces Fit Together"
-labels: ["Data Platform Series","Data Platform","Data Architecture","Data Engineering","Data Warehouse","Data Lake","Big Data"]
+labels: ["Data Platform Series","Data Platform","Data Architecture","Data Engineering","Data Warehouse","Data Lake","Big Data","Archive"]
 published: true
 date: 2025-10-02T14:21:00+09:00
 readerComments: "ALLOW"
+language: en
 bloggerPostId: "6122738343482648358"
 source: "archive"
 archivePath: "_archive/data/01-platform-overview.md"
 ---
 
-**데이터 플랫폼 시리즈 · 01/15** · 전체 지도 (여기서 시작)
+**Data Platform Series · 01/15** · The Big Map (start here)
 
-> 데이터 용어들의 알파벳 수프 속에서 길을 잃은 느낌을 받은 적이 있다면 — warehouse, lake, ETL, ELT, pipeline, catalog, lineage, BI — 이 글이 바로 그 지도입니다. 어느 하나를 깊이 파고들지는 않습니다. 대신 이 모든 것이 어떻게 연결되는지를 보여 줘서, 나머지 주제들이 자리 잡을 곳을 만들어 줍니다.
+> If you've ever felt lost in the alphabet soup of data terms — warehouse, lake, ETL, ELT, pipeline, catalog, lineage, BI — this post is the map. It doesn't go deep on any one of them. Instead, it shows how they all connect, so the rest of the topics have a place to land.
 
-## 1. 이 글이 답하려는 질문
+## 1. The question this post answers
 
-회의나 채용 공고에서 이런 단어들을 계속 듣게 됩니다. *data platform(데이터 플랫폼), data warehouse(데이터 웨어하우스), data lake(데이터 레이크), data pipeline(데이터 파이프라인), ETL, data governance(데이터 거버넌스), business intelligence.* 각각은 따로따로 설명되고, 결국 정의들만 잔뜩 쌓일 뿐 서로 어떻게 관련되는지에 대한 감은 잡히지 않습니다.
+You keep hearing these words in meetings and job postings: *data platform, data warehouse, data lake, data pipeline, ETL, data governance, business intelligence.* Each one gets explained on its own, and you end up with a pile of definitions but no sense of how they relate to each other.
 
-해결책은 용어를 외우기를 멈추고 **데이터 한 조각의 여정**을 따라가기 시작하는 것입니다. 어딘가에서 만들어지는 순간부터, 누군가 그것으로 의사 결정을 내리는 순간까지 말입니다. 데이터 세계의 거의 모든 용어는 그 여정 위에 있는 하나의 단계이거나, 도구이거나, 안전장치일 뿐입니다.
-
----
-
-## 2. "데이터 플랫폼"이란 실제로 무엇인가
-
-> **data platform(데이터 플랫폼)**은 조직이 자신의 데이터를 수집하고, 저장하고, 처리하고, 관리하고, 소비하기 위해 사용하는 시스템 전체를 가리킵니다.
-
-이것은 포괄적인 용어이지, 하나의 제품이 아닙니다. 누군가 "우리는 데이터 플랫폼을 구축하고 있다"라고 말한다면, 데이터가 서로 단절된 도구들에 흩어져 있는 상태가 아니라, 이런 역량들을 하나의 일관된 무언가로 조립하고 있다는 뜻입니다.
-
-그리고 **data architecture(데이터 아키텍처)**는 단순히 그 플랫폼의 *설계*입니다. 데이터가 어떻게 흐르고, 어디에 저장되며, 어떻게 보호되고, 각 부분이 어떻게 연결되는지에 대한 의도적인 결정들이죠. 플랫폼이 *무엇*이라면, 아키텍처는 *그것이 어떻게 배치되는가*입니다.
+The fix is to stop memorizing terms and start following **the journey of a single piece of data** — from the moment it's created somewhere to the moment someone makes a decision with it. Almost every term in the data world is just a stage, a tool, or a safeguard along that journey.
 
 ---
 
-## 3. 데이터 한 조각의 여정
+## 2. What a "data platform" actually is
 
-플랫폼 전체를 하나의 흐름으로 보여 드리겠습니다. 이 시리즈의 모든 주제는 이 선 위 어딘가에 자리합니다.
+> A **data platform** is the entire system an organization uses to collect, store, process, manage, and consume its data.
+
+It's an umbrella term, not a single product. When someone says "we're building a data platform," they mean they're assembling these capabilities into one coherent whole, instead of leaving data scattered across disconnected tools.
+
+And **data architecture** is simply the *design* of that platform: the deliberate decisions about how data flows, where it's stored, how it's protected, and how the pieces connect. If the platform is the *what*, the architecture is *how it's laid out*.
+
+---
+
+## 3. The journey of a piece of data
+
+Here's the whole platform as a single flow. Every topic in this series sits somewhere on this line.
 
 ```
   SOURCES          MOVEMENT            STORAGE              CONSUMPTION
@@ -54,128 +55,128 @@ archivePath: "_archive/data/01-platform-overview.md"
                           (a layer underneath everything)
 ```
 
-왼쪽에서 오른쪽으로 읽어 보세요. 데이터는 소스에서 **만들어지고**, 파이프라인을 통해 **이동하며**, warehouse/lake/lakehouse에 **저장되고**, 대시보드, 리포트, ML에 의해 **소비됩니다**. 이 모든 것의 아래에는 **거버넌스**가 자리합니다. 전체를 찾을 수 있고, 신뢰할 수 있고, 안전하며, 합법적인 상태로 유지해 주는 계층이죠.
+Read it left to right. Data is **created** at the sources, **moved** through pipelines, **stored** in a warehouse/lake/lakehouse, and **consumed** by dashboards, reports, and ML. Underneath all of it sits **governance** — the layer that keeps the whole thing findable, trustworthy, secure, and legal.
 
-이제 각 단계를 따라가며 등장하는 용어들의 이름을 붙여 보겠습니다.
-
----
-
-## 4. 네 개의 단계, 용어 하나하나
-
-### Stage 1 — Sources(소스, 데이터가 태어나는 곳)
-
-데이터는 운영 시스템에서 시작됩니다. 애플리케이션의 데이터베이스, 서드파티 API, 사용자 활동에서 발생하는 event stream(이벤트 스트림), 파일, 센서 같은 것들이죠. 이런 시스템은 *비즈니스를 운영하기* 위해 만들어진 것이지, 분석하기 위해 만들어진 것이 아닙니다. 바로 그래서 우리는 분석을 위해 데이터를 다른 곳으로 옮깁니다.
-
-### Stage 2 — Movement(이동, 거기서 여기로 데이터 가져오기)
-
-이것은 배관 작업에 해당하며, 데이터 엔지니어 업무의 큰 부분을 차지합니다.
-
-- **data pipeline(데이터 파이프라인)**은 데이터를 소스에서 목적지로 운반하며 그 과정에서 변환하는 자동화된 경로입니다.
-- **data ingestion(데이터 수집)**은 첫 단계로, 소스에서 데이터를 *안으로* 끌어오는 작업입니다.
-- **ETL**과 **ELT**는 데이터를 *언제* 변환하느냐(적재 전에 할 것인가, 후에 할 것인가)에 대한 두 가지 전략입니다. 이 구분은 누구나 헷갈려 하기 때문에 별도의 글로 다룹니다.
-- **data integration(데이터 통합)**은 여러 소스의 데이터를 하나의 일관된 뷰로 결합하는, 더 넓은 의미의 행위입니다.
-- **streaming(스트리밍)**은 연속적으로 도착하여 거의 실시간으로 처리되어야 하는 데이터를 다루며, 정해진 일정에 따라 처리하는 **batch(배치)** 처리와 대비됩니다.
-
-실무에서는 이 단계가 보통 두 종류의 도구로 갈립니다. 소스에서 데이터를 *옮기는* 부분은 Fivetran/Airbyte 같은 매니지드 커넥터나, 데이터베이스 변경을 잡아내는 CDC(Debezium, Kafka Connect)로 처리하고, 그 파이프라인들을 *언제 어떤 순서로 돌릴지*는 Apache Airflow(대안으로 Dagster/Prefect) 같은 orchestrator(오케스트레이터)가 묶어 줍니다. 실시간이 필요해지면 그제서야 Kafka + Flink/Spark 같은 스트리밍 스택이 등장합니다.
-
-*(이 단계 전체는 이 커리큘럼에서 Moving Data(데이터 이동) 시리즈에 해당합니다.)*
-
-### Stage 3 — Storage(저장, 분석을 위해 데이터가 머무는 곳)
-
-여기에 그 유명한 저장 관련 용어들이 자리합니다. 이들은 서로 *바꿔 쓸 수 있는 말이 아닙니다*.
-
-- **data warehouse(데이터 웨어하우스)**는 빠른 분석 쿼리에 최적화된, 깨끗하고 구조화되고 모델링된 데이터를 저장합니다. 리포팅의 중추죠. (실무에서는 Snowflake/BigQuery/Redshift가 대표적입니다.)
-- **data lake(데이터 레이크)**는 어떤 종류의 raw data(원시 데이터)든 저렴하게 저장하며, 구조는 나중에 적용합니다. (object storage(오브젝트 스토리지) 위에 Parquet 같은 포맷으로 쌓는 형태가 일반적입니다.)
-- **data lakehouse(데이터 레이크하우스)**는 둘을 결합합니다. lake의 경제성과 warehouse의 신뢰성을 함께 갖추죠. (Iceberg/Delta/Hudi 같은 open table format(오픈 테이블 포맷)이 이를 가능하게 합니다.)
-- **data mart(데이터 마트)**는 하나의 팀이나 주제를 위해 만들어진, warehouse의 작고 집중된 한 조각입니다(예: 재무 마트).
-- **data modeling(데이터 모델링)**은 이런 저장소에서 데이터가 어떻게 구조화될지를 *설계하는* 작업입니다(테이블, 관계, schema(스키마)). 변환·모델링 단계는 실무에서 dbt로 작성하고 버전 관리하는 경우가 많습니다.
-
-*(저장과 모델링은 이 시리즈의 데이터 웨어하우스 1·2부와 데이터 레이크 1~3부에서 다룹니다.)*
-
-### Stage 4 — Consumption(소비, 데이터를 의사 결정으로 바꾸기)
-
-플랫폼이 존재하는 이유 그 자체입니다.
-
-- **business intelligence (BI)**는 사람들이 데이터를 탐색하고 의사 결정을 내릴 수 있게 해 주는 대시보드, 리포트, 분석입니다. (Looker/Tableau/Power BI 같은 상용 도구나 Metabase/Superset 같은 OSS 도구를 얹습니다.)
-- BI를 넘어서면 **machine learning(머신러닝)**이 자리합니다. 같은 데이터를 소비하여 예측과 제품을 구동하죠.
-
-### 그 아래의 계층 — Governance(거버넌스)
-
-모든 단계에 걸쳐, **data governance(데이터 거버넌스)**는 데이터가 신뢰할 만하고 안전하도록 보장합니다. **catalog(카탈로그)**는 데이터를 찾을 수 있게 하고, **metadata(메타데이터)**는 그것을 설명하며, **lineage(리니지)**는 데이터가 어디에서 왔는지를 추적하고, **quality(품질)** 검사는 데이터를 신뢰할 수 있게 유지하며, **security(보안)**는 누가 무엇을 볼 수 있는지를 통제합니다. (catalog/lineage는 OSS의 DataHub/OpenMetadata/Amundsen이나 엔터프라이즈의 Collibra/Alation으로, quality 검사는 dbt tests/Great Expectations/Soda로 다루는 식입니다.)
-
-*(이것은 이 커리큘럼의 데이터 거버넌스 시리즈에 해당합니다.)*
+Now let's walk through each stage and name the terms you'll meet along the way.
 
 ---
 
-## 5. 처음부터 끝까지, 실제 예시 하나
+## 4. The four stages, term by term
 
-구체적으로 살펴봅시다. 어떤 사용자가 여러분의 앱에서 무언가를 구매합니다.
+### Stage 1 — Sources (where data is born)
 
-1. **Source** — 구매 내역이 앱의 운영 데이터베이스에 기록됩니다.
-2. **Movement** — 밤사이(배치)에 또는 수 초 이내(스트리밍)에, **파이프라인이** 그 주문을 **인제스트하고** 분석에 적합한 형태로 **변환합니다**. 처음에는 대부분 야간 배치 한 번으로 충분하고, "어제 매출은 충분히 빠르다"가 깨질 때 비로소 스트리밍을 검토하게 됩니다.
-3. **Storage** — 주문은 raw 이력으로서 **data lake**에 안착하고, 깨끗하게 모델링된 버전은 **warehouse**로 들어갑니다. 재무팀의 **data mart**는 이를 매출 수치로 집계합니다.
-4. **Consumption** — **BI 대시보드**가 오늘의 매출을 보여 주고, **ML 모델**은 주문 이력을 사용해 제품을 추천합니다.
-5. **Governance** — 이 전 과정에서, **catalog**는 분석가가 매출 테이블을 찾게 해 주고, **lineage**는 그 수치가 어디에서 왔는지 증명하며, **quality 검사**는 잘못된 배치를 잡아내고, **access control(접근 제어)**은 고객 정보를 제한된 상태로 유지합니다.
+Data starts in operational systems: your application's databases, third-party APIs, event streams from user activity, files, sensors. These systems are built to *run the business*, not to analyze it — which is exactly why we move the data somewhere else for analysis.
 
-여러분이 들어 본 모든 유행어는 그저 이 순간들 중 하나일 뿐입니다. 이것이 이 분야 전체를, 한 문장으로 요약한 것입니다.
+### Stage 2 — Movement (getting data from there to here)
+
+This is the plumbing, and it makes up a big chunk of a data engineer's job.
+
+- A **data pipeline** is an automated path that carries data from a source to a destination, transforming it along the way.
+- **Data ingestion** is the first step: pulling data *in* from the sources.
+- **ETL** and **ELT** are two strategies for *when* to transform the data (before loading or after). Everyone mixes these up, so they get a post of their own.
+- **Data integration** is the broader act of combining data from multiple sources into one consistent view.
+- **Streaming** handles data that arrives continuously and needs to be processed in near real time, as opposed to **batch** processing, which runs on a fixed schedule.
+
+In practice, this stage usually splits into two kinds of tools. The part that *moves* data out of the sources is handled by managed connectors like Fivetran/Airbyte, or by CDC tools that capture database changes (Debezium, Kafka Connect). Deciding *when and in what order* those pipelines run is the job of an orchestrator like Apache Airflow (or alternatives such as Dagster/Prefect). Only when you actually need real time does a streaming stack like Kafka + Flink/Spark enter the picture.
+
+*(This entire stage maps to the Moving Data series in this curriculum.)*
+
+### Stage 3 — Storage (where data lives for analysis)
+
+This is where the famous storage terms live — and they are *not interchangeable*.
+
+- A **data warehouse** stores clean, structured, modeled data optimized for fast analytical queries. It's the backbone of reporting. (Snowflake/BigQuery/Redshift are the typical examples.)
+- A **data lake** stores raw data of any kind cheaply and applies structure later. (Usually files in a format like Parquet sitting on object storage.)
+- A **data lakehouse** combines the two: the economics of a lake with the reliability of a warehouse. (Open table formats like Iceberg/Delta/Hudi make this possible.)
+- A **data mart** is a small, focused slice of the warehouse built for one team or subject (e.g., a finance mart).
+- **Data modeling** is the work of *designing* how data is structured in these stores (tables, relationships, schemas). In practice, the transformation and modeling layer is often written and version-controlled in dbt.
+
+*(Storage and modeling are covered in The Data Warehouse Parts 1–2 and Understanding the Data Lake Parts 1–3 in this series.)*
+
+### Stage 4 — Consumption (turning data into decisions)
+
+This is the whole reason the platform exists.
+
+- **Business intelligence (BI)** is the dashboards, reports, and analysis that let people explore data and make decisions. (You put a commercial tool like Looker/Tableau/Power BI or an OSS tool like Metabase/Superset on top.)
+- Beyond BI sits **machine learning**, which consumes the same data to power predictions and products.
+
+### The layer underneath — Governance
+
+Across every stage, **data governance** makes sure the data is trustworthy and secure. A **catalog** makes data findable, **metadata** describes it, **lineage** tracks where it came from, **quality** checks keep it reliable, and **security** controls who can see what. (Catalog/lineage is handled by OSS tools like DataHub/OpenMetadata/Amundsen or enterprise tools like Collibra/Alation; quality checks by dbt tests/Great Expectations/Soda.)
+
+*(This maps to the Data Governance series in this curriculum.)*
 
 ---
 
-## 6. 그래서 어디서부터 시작하는가 (현실판)
+## 5. One real example, end to end
 
-위 지도를 보고 가장 흔히 하는 오해는 "이 모든 계층을 처음부터 다 만들어야 한다"는 생각입니다. 실무에서는 그렇게 하지 않습니다. 거의 모든 팀은 **하나의 소스로 시작**합니다. 가장 답이 절실한 질문(예: "어제 매출이 얼마였나?") 하나를 정하고, 그 질문에 답할 수 있는 **최소한의 경로**만 깝니다.
+Let's make it concrete. A user buys something in your app.
 
-전형적인 첫걸음은 이렇습니다.
+1. **Source** — The purchase is recorded in the app's operational database.
+2. **Movement** — Overnight (batch) or within seconds (streaming), a **pipeline ingests** the order and **transforms** it into a shape suited for analysis. At first a single nightly batch is usually enough; you only start looking at streaming once "yesterday's revenue is fast enough" stops being true.
+3. **Storage** — The order lands in the **data lake** as raw history, and a clean, modeled version goes into the **warehouse**. The finance team's **data mart** rolls it up into revenue figures.
+4. **Consumption** — A **BI dashboard** shows today's revenue, and an **ML model** uses order history to recommend products.
+5. **Governance** — Throughout all of this, the **catalog** helps analysts find the revenue table, **lineage** proves where the numbers came from, **quality checks** catch a bad batch, and **access control** keeps customer information restricted.
 
-1. **소스 하나를 고른다** — 운영 DB나 결제 데이터처럼 질문에 직접 닿는 것 하나.
-2. **그것을 한 곳에 내려놓는다(land it)** — 매니지드 커넥터(Fivetran/Airbyte)로 warehouse에 그대로 적재.
-3. **warehouse + 대시보드 몇 개** — Snowflake/BigQuery 같은 warehouse에 dbt로 가벼운 모델 몇 개를 얹고, Metabase/Looker로 대시보드를 띄운다.
-
-여기까지가 이미 쓸모 있는 플랫폼입니다. data lake, streaming, 본격적인 catalog/lineage 같은 것은 **실제로 필요해질 때** 추가합니다. raw를 보관할 이유가 생기면 lake를, 신선도가 문제가 되면 streaming을, 테이블이 너무 많아 아무도 못 찾게 되면 catalog를 들이는 식이죠.
-
-> **현업 함정 — 답할 질문이 생기기도 전에 플랫폼을 과설계하는 것.** 아무도 묻지 않은 질문을 위해 lake, 스트리밍, 메시 아키텍처를 미리 깔아 두면, 그 복잡성은 곧 운영·온콜·인지 비용으로 돌아옵니다. **복잡성은 비용이지 정교함의 표시가 아닙니다.** 계층은 질문이 끌어당길 때 추가하세요.
+Every buzzword you've heard is just one of these moments. That's the whole field, in one paragraph.
 
 ---
 
-## 7. 아키텍처는 트레이드오프에 관한 것
+## 6. So where do you start? (The realistic version)
 
-마지막으로 한 가지 생각만 더 짚고 넘어가겠습니다. 이것이 "용어를 아는 것"과 "플랫폼을 설계하는 것"을 가르는 지점이기 때문입니다. 단 하나의 올바른 아키텍처란 존재하지 않습니다. 아키텍처를 설계한다는 것은 곧 트레이드오프를 한다는 뜻입니다.
+The most common misreading of the map above is "we have to build every one of these layers from day one." That's not how it works in practice. Almost every team **starts with a single source**. They pick the one question that most urgently needs an answer (e.g., "How much did we sell yesterday?") and build only the **minimum path** needed to answer it.
 
-- **Batch vs. streaming** — 더 단순하고 저렴하게 갈 것인가, 아니면 더 신선하지만 더 복잡하게 갈 것인가?
-- **ETL vs. ELT** — 저장 전에 변환할 것인가(통제), 아니면 저장 후에 변환할 것인가(유연성)?
-- **Warehouse vs. lake vs. lakehouse** — 구조화되고 빠르게, 원시적이고 저렴하게, 아니면 둘 다?
-- **Centralized vs. decentralized** — 한 팀이 모든 데이터를 소유할 것인가, 아니면 각 도메인이 자기 데이터를 소유할 것인가?
+A typical first step looks like this:
 
-좋은 data architecture는 도구가 가장 많은 것이 아니라, 그 트레이드오프가 조직의 실제 요구에 들어맞는 것입니다. 필요하지 않은 복잡성은 비용이지, 정교함의 표시가 아닙니다.
+1. **Pick one source** — one thing that directly touches the question, like the operational DB or payment data.
+2. **Land it** — load it as-is into a warehouse with a managed connector (Fivetran/Airbyte).
+3. **A warehouse + a few dashboards** — put a handful of lightweight dbt models on a warehouse like Snowflake/BigQuery, and bring up dashboards in Metabase/Looker.
+
+That alone is already a useful platform. Things like a data lake, streaming, or a full-blown catalog/lineage setup get added **when you actually need them**: a lake once you have a reason to keep raw data, streaming once freshness becomes a problem, a catalog once there are so many tables that nobody can find anything.
+
+> **Real-world trap — over-engineering the platform before you have questions to answer.** If you lay down a lake, streaming, and a mesh architecture in advance for questions nobody has asked, that complexity quickly comes back as operational, on-call, and cognitive cost. **Complexity is a cost, not a sign of sophistication.** Add layers when the questions pull them in.
 
 ---
 
-## 8. 이 시리즈의 나머지를 활용하는 방법
+## 7. Architecture is about trade-offs
 
-이제 여러분은 지도를 갖게 되었습니다. 남은 글들은 각각 이미 살펴본 단계 안으로 들어갑니다. 하나의 통합된 **데이터 플랫폼 시리즈**로서, 트랙별 읽기 순서는 다음과 같습니다.
+One last idea before we move on, because it's what separates "knowing the terms" from "designing a platform." There is no single correct architecture. Designing an architecture means making trade-offs.
 
-(이 글이 출발점입니다. 아래 번호 순서대로 읽으면 됩니다.)
+- **Batch vs. streaming** — simpler and cheaper, or fresher but more complex?
+- **ETL vs. ELT** — transform before storing (control), or after storing (flexibility)?
+- **Warehouse vs. lake vs. lakehouse** — structured and fast, raw and cheap, or both?
+- **Centralized vs. decentralized** — does one team own all the data, or does each domain own its own?
 
-**① 저장과 아키텍처 (Storage)**
-- **02.** *The Data Warehouse (Part 1)* — OLTP vs OLAP, 모델링의 세 수준, 정규화/역정규화 (저장소 트랙의 토대)
-- **03.** *The Data Warehouse (Part 2)* — 차원 모델링과 star schema, SCD, data mart
-- **04.** *Understanding the Data Lake (Part 1)* — 레이크 대 웨어하우스, 왜 둘 다 존재하는가
-- **05.** *Understanding the Data Lake (Part 2)* — 존, 오브젝트 스토리지, 파일 포맷
-- **06.** *Understanding the Data Lake (Part 3)* — 레이크하우스와 오픈 테이블 포맷
+A good data architecture isn't the one with the most tools — it's the one whose trade-offs fit the organization's real needs. Complexity you don't need is a cost, not a sign of sophistication.
 
-**② Moving Data (데이터 이동)**
-- **07.** *Part 1* — 데이터 파이프라인이란 무엇인가
-- **08.** *Part 2* — 데이터 수집(ingestion)
+---
+
+## 8. How to use the rest of this series
+
+You now have the map. Each of the remaining posts zooms into one of the stages we've just walked through. As a single, unified **Data Platform Series**, here is the reading order by track.
+
+(This post is the starting point. Just read the rest in the numbered order below.)
+
+**① Storage and Architecture (Storage)**
+- **02.** *The Data Warehouse (Part 1)* — OLTP vs. OLAP, the three levels of modeling, normalization/denormalization (the foundation of the storage track)
+- **03.** *The Data Warehouse (Part 2)* — dimensional modeling and the star schema, SCDs, data marts
+- **04.** *Understanding the Data Lake (Part 1)* — lake vs. warehouse, and why both exist
+- **05.** *Understanding the Data Lake (Part 2)* — zones, object storage, file formats
+- **06.** *Understanding the Data Lake (Part 3)* — the lakehouse and open table formats
+
+**② Moving Data**
+- **07.** *Part 1* — what a data pipeline is
+- **08.** *Part 2* — data ingestion
 - **09.** *Part 3* — ETL vs. ELT
-- **10.** *Part 4* — 데이터 통합(integration)
-- **11.** *Part 5* — 배치 vs. 스트리밍
+- **10.** *Part 4* — data integration
+- **11.** *Part 5* — batch vs. streaming
 
-**③ 데이터 거버넌스 (Governance)**
-- **12.** *Part 1* — 거버넌스란 무엇이고, 왜 모든 팀이 결국 필요로 하는가
-- **13.** *Part 2* — 메타데이터, 데이터 카탈로그, 리니지
-- **14.** *Part 3* — 품질, 보안, 컴플라이언스
+**③ Data Governance (Governance)**
+- **12.** *Part 1* — what governance is, and why every team ends up needing it
+- **13.** *Part 2* — metadata, data catalogs, lineage
+- **14.** *Part 3* — quality, security, compliance
 
-**④ 데이터 활용 (Consumption)**
-- **15.** *Business Intelligence* — 데이터를 의사 결정으로
+**④ Using Data (Consumption)**
+- **15.** *Business Intelligence* — from data to decisions
 
-새로운 용어가 등장할 때마다, 3번 섹션의 다이어그램으로 돌아와 이렇게 물어보세요. *이건 어느 단계이고, 데이터는 어떤 여정 위에 있는가?* 그 질문에 답할 수 있게 되는 순간, 데이터 세계의 거의 모든 것이 제자리를 찾아 들어갑니다.
+Whenever a new term shows up, come back to the diagram in Section 3 and ask: *Which stage is this, and where on the journey is the data?* Once you can answer that, almost everything in the data world falls into place.
