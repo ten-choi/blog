@@ -13,11 +13,6 @@ tistoryPostedAt: "2021-02-27 15:33:38"
 language: en
 bloggerPostId: "8110488271765227927"
 ---
-\[Photo to be added later\]
-
-
-
-
 I started this blog thinking it'd be pretty cool to look back on someday.
 
 Ultimately it helps me technically, since I'm organizing what I've done and turning it into posts,

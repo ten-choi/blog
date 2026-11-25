@@ -1,7 +1,7 @@
 ---
 title: "Notification System Design"
 labels: ["Archive"]
-published: true
+published: false
 date: 2023-10-06T10:39:17+09:00
 readerComments: "ALLOW"
 source: "tistory"

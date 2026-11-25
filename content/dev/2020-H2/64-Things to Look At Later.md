@@ -1,7 +1,7 @@
 ---
 title: "Things to Look At Later"
 labels: ["Archive"]
-published: true
+published: false
 date: 2020-12-24T13:34:23+09:00
 readerComments: "ALLOW"
 source: "tistory"

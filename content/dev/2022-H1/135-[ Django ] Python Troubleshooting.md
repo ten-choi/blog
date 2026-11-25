@@ -1,7 +1,7 @@
 ---
 title: "[ Django ] Python Troubleshooting"
 labels: ["Python","django","Archive"]
-published: true
+published: false
 date: 2022-06-17T16:21:51+09:00
 readerComments: "ALLOW"
 source: "tistory"

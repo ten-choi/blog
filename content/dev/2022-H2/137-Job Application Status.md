@@ -1,7 +1,7 @@
 ---
 title: "Job Application Status"
 labels: ["ETC","Archive"]
-published: true
+published: false
 date: 2022-07-28T10:25:13+09:00
 readerComments: "ALLOW"
 source: "tistory"

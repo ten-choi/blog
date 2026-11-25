@@ -1,7 +1,7 @@
 ---
 title: "A Workaround When eb Can't Load Env Variables"
 labels: ["Archive"]
-published: true
+published: false
 date: 2023-01-13T16:02:23+09:00
 readerComments: "ALLOW"
 source: "tistory"

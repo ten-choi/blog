@@ -34,8 +34,6 @@ is it better on cost than before
 we picked the biggest project among the 70 projects as the first one
 i created a draw.io diagram to communicate.
 
-
-
 aws ecs fargate and ecs both exist
 
 when i looked at aws re:Post, based on the cost analysis of ecs deployment options:
@@ -47,6 +45,4 @@ Fargate would be more expensive since it charges separately for vCPU and memory 
 and the final change: when i run the docker image for the kotlin server we need a spring boot profile
 so we wrote the env profile in the task definition
 
-
-that is a bargain
 

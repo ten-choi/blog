@@ -1,7 +1,7 @@
 ---
 title: "[ AWS ] Checking EC2 Traffic in CloudWatch"
 labels: ["Cloud","aws","Traffic","CloudWatch","Archive"]
-published: true
+published: false
 date: 2023-10-06T10:39:41+09:00
 readerComments: "ALLOW"
 source: "tistory"

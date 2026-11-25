@@ -1,7 +1,7 @@
 ---
 title: "TensorFlow Setup Notes (Draft to Revise Later)"
 labels: ["ETC","Tensorflow","Archive"]
-published: true
+published: false
 date: 2021-05-17T09:01:45+09:00
 readerComments: "ALLOW"
 source: "tistory"
